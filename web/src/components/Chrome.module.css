@@ -37,6 +37,7 @@
 
 .utilityHours {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -156,6 +157,7 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--r-pill);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -188,6 +190,7 @@
 
 .ageLabel {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -213,6 +216,7 @@
   background: var(--magenta);
   color: var(--magenta-ink);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 15px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -243,6 +247,7 @@
   justify-content: center;
   min-height: 56px;
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 15px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -273,6 +278,7 @@
 
 .footerHours {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 17px;
   letter-spacing: 0.14em;
   color: var(--gold);
@@ -334,6 +340,7 @@
   align-items: center;
   gap: 7px;
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 17px;
   letter-spacing: 0.1em;
   text-transform: uppercase;

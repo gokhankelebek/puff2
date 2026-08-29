@@ -16,6 +16,7 @@
   border-radius: var(--r-button);
   color: var(--magenta-text);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 15px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -38,6 +39,7 @@
 
 .shelfTitle {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-weight: 400;
   font-size: clamp(1.5rem, 6vw, 1.875rem);
   letter-spacing: 0.08em;
@@ -129,6 +131,7 @@
 
 .tilePrice {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 19px;
   letter-spacing: 0.04em;
   color: var(--gold);
@@ -188,6 +191,7 @@
   background: var(--magenta);
   color: var(--magenta-ink);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 15px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -228,6 +232,7 @@
 
 .popularTitle {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-weight: 400;
   font-size: 17px;
   letter-spacing: 0.16em;
@@ -275,6 +280,7 @@
 
 .groupTitle {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-weight: 400;
   font-size: 21px;
   letter-spacing: 0.12em;
@@ -290,6 +296,7 @@
 
 .groupMore {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 14px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -314,6 +321,7 @@
 
 .emptyLine {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 21px;
   letter-spacing: 0.06em;
   color: var(--text);
@@ -338,6 +346,7 @@
 
 .emptyLink {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 15px;
   letter-spacing: 0.12em;
   text-transform: uppercase;

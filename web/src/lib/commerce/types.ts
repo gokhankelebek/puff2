@@ -234,14 +234,22 @@ export type Department =
   | "hemp"
   | "accessories";
 
+/**
+ * Canonical order, and it is a MERCHANDISING order, not alphabetical.
+ *
+ * Both the homepage floor grid and /floor read this. They used to keep
+ * separate lists, so the same six cards appeared in two different orders one
+ * click apart and the muscle memory built on the homepage was wrong on the
+ * index it led to.
+ */
 export const DEPARTMENTS: readonly Department[] = [
   "vape",
+  "glass",
   "cigars",
+  "accessories",
   "cigarettes",
   "hookah",
-  "glass",
   "hemp",
-  "accessories",
 ];
 
 export const DEPARTMENT_LABELS: Record<Department, string> = {

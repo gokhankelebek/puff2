@@ -45,6 +45,7 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--r-pill);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 14px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -186,51 +187,6 @@
   text-decoration: underline;
 }
 
-/* --------------------------------------------------------------------------
-   5b — desktop: 260 px sticky filter rail beside the results.
-   -------------------------------------------------------------------------- */
-
-@media (min-width: 1200px) {
-  .wrap {
-    display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
-    grid-template-areas:
-      "head head"
-      "hubs hubs"
-      "warn warn"
-      "rail results";
-    column-gap: 32px;
-    max-width: 1360px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 40px 40px;
-    align-items: start;
-  }
-
-  .head { grid-area: head; padding-inline: 0; }
-  .hubs { grid-area: hubs; padding-inline: 0; }
-
-  /* The mobile sheet unpacked into an always-open rail that scrolls
-     independently of the results. */
-  .facets {
-    grid-area: rail;
-    position: sticky;
-    top: 20px;
-    flex-direction: column;
-    gap: 14px;
-    padding: 16px;
-    margin-bottom: 0;
-    border: 1px solid var(--border);
-    border-radius: var(--r-card);
-    background: var(--surface);
-  }
-
-  .facetRow { flex-wrap: wrap; overflow-x: visible; }
-
-  /* PageNicotineWarning and the grid share the results column. */
-  .wrap > :global(*):nth-child(3) { grid-area: warn; }
-}
-
 /* --- Filter sheet entry -------------------------------------------------- */
 
 .filterBar {
@@ -247,6 +203,7 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--r-pill);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 14px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -273,3 +230,66 @@
   letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 }
+
+/* --------------------------------------------------------------------------
+   5b — desktop: 260 px sticky filter rail beside the results.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1200px) {
+  .wrap {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-areas:
+      "head head"
+      "hubs hubs"
+      "warn warn"
+      "rail results";
+    column-gap: 32px;
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px 40px;
+    align-items: start;
+  }
+
+  .head { grid-area: head; padding-inline: 0; }
+  .hubs { grid-area: hubs; padding-inline: 0; }
+  .warn { grid-area: warn; }
+
+  /* The mobile sheet unpacked into an always-open rail beside the results.
+
+     .filterBar becomes a real box here rather than display:contents. As
+     contents it dissolved, so the Filters link and the facets were two
+     SEPARATE grid items -- the link auto-placed into `results` and shoved the
+     product grid into the 260px rail column. Every department page rendered
+     74 products as four 54px columns beside 988px of empty page. */
+  .filterBar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    grid-area: rail;
+    position: sticky;
+    top: 20px;
+  }
+
+  .filterLink { align-self: stretch; justify-content: center; }
+
+  .facets {
+    /* The rail above is the sticky element now. */
+    position: static;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    margin-bottom: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    background: var(--surface);
+  }
+
+  .facetRow { flex-wrap: wrap; overflow-x: visible; }
+
+  /* Named, not positional. The old rule was `.wrap > *:nth-child(3)`, which
+     silently pointed at the wrong child whenever the hubs nav was absent. */
+  .results { grid-area: results; min-width: 0; }
+}
+

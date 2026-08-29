@@ -70,6 +70,7 @@
 
 .name {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 21px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -97,6 +98,7 @@
 
 .pendingTitle {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-weight: 400;
   font-size: 19px;
   letter-spacing: 0.1em;
@@ -118,6 +120,7 @@
 
 .pendingName {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 17px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -129,9 +132,13 @@
 @media (min-width: 1200px) {
   .main { max-width: 1360px; margin: 0 auto; width: 100%; }
   .head { padding-inline: 40px; }
+  /* Three, not five. Six departments into five columns left one card alone
+     beside four empty slots — the exact "dangling card reads as a loading
+     failure" case the mobile cap was written to avoid. Three gives two full
+     rows and the cards grow enough that the shot box stops looking empty. */
   .grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
     padding-inline: 40px;
   }
   .pending { margin-inline: 40px; }

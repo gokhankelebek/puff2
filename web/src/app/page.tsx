@@ -10,6 +10,7 @@ import {
   formatMoney,
   stockLabel,
   DEPARTMENT_LABELS,
+  DEPARTMENTS,
   type Department,
   type Product,
 } from "@/lib/commerce";
@@ -31,9 +32,12 @@ import DepartmentIcon from "@/components/DepartmentIcon";
  */
 const RAIL_ORDER: Department[] = ["vape", "glass", "cigars", "accessories"];
 
-/** The rail bleeds its last card off-screen as a scroll affordance, so an
- *  even count would sit flush and read as the end of the list. */
-const RAIL_SIZE = 9;
+/**
+ * Nine on mobile, where the rail scrolls and the last card bleeds off-screen
+ * as the scroll affordance. Ten on desktop, where it becomes a 5-across grid
+ * and nine would leave a hole in the second row.
+ */
+const RAIL_SIZE = 10;
 
 /**
  * "THE FLOOR" — every department, in the order the shop wants them walked.
@@ -56,16 +60,6 @@ const FLOOR_NOTES: Record<Department, string> = {
   accessories: "Lighters, papers, grinders",
 };
 
-/** Biggest shelves lead. Anything with nothing published sorts to the back. */
-const FLOOR_ORDER: Department[] = [
-  "vape",
-  "glass",
-  "cigars",
-  "accessories",
-  "cigarettes",
-  "hookah",
-  "hemp",
-];
 
 export default async function HomePage() {
   const h = await headers();
@@ -184,7 +178,7 @@ export default async function HomePage() {
             </a>
           </div>
           <ul className={s.floorGrid}>
-            {FLOOR_ORDER.map((department, i) => {
+            {DEPARTMENTS.map((department, i) => {
               const n = counts[department] ?? 0;
               return (
                 <li key={department} className={s.floorCell}>

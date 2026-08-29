@@ -131,7 +131,9 @@ export default async function CategoryPage({
         {/* A browse grid of priced, pictured products is advertising, and
             21 CFR 1143.3(a) attaches to the advertisement. See
             components/PageNicotineWarning. */}
-        <PageNicotineWarning products={items} />
+        <div className={s.warn}>
+          <PageNicotineWarning products={items} />
+        </div>
 
         <div className={s.filterBar}>
           <a className={s.filterLink} href={`/${department}/filters`}>
@@ -143,11 +145,13 @@ export default async function CategoryPage({
           {hasFlavors && <Facets department={department} search={sp} products={all} />}
         </div>
 
-        {items.length === 0 ? (
-          <EmptyResults clearHref={`/${department}`} filtered={filterCount > 0} />
-        ) : (
-          <ProductTiles items={items} />
-        )}
+        <div className={s.results}>
+          {items.length === 0 ? (
+            <EmptyResults clearHref={`/${department}`} filtered={filterCount > 0} />
+          ) : (
+            <ProductTiles items={items} />
+          )}
+        </div>
       </main>
 
       <Bulbs />

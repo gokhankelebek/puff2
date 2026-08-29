@@ -17,6 +17,7 @@
   padding: 8px 0;
   background: var(--bg);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 24px;
   letter-spacing: 0.1em;
   color: var(--gold);
@@ -118,6 +119,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 19px;
   letter-spacing: 0.09em;
   text-transform: uppercase;

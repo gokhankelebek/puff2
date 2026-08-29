@@ -74,6 +74,7 @@
 
 .price {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 34px;
   letter-spacing: 0.04em;
   color: var(--gold);
@@ -176,6 +177,7 @@
   background: var(--magenta);
   color: var(--magenta-ink);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 17px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -194,6 +196,7 @@
   border-radius: var(--r-button);
   color: var(--text);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 15px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -232,6 +235,7 @@
 
 .trustTitle {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 17px;
   letter-spacing: 0.1em;
   text-transform: uppercase;

@@ -32,6 +32,7 @@
   background: none;
   color: var(--text-muted);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -300,6 +301,7 @@
 
 .hitPrice {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 16px;
   letter-spacing: 0.04em;
   color: var(--gold);
@@ -315,6 +317,7 @@
   border-top: 1px solid var(--hairline);
   margin-top: 4px;
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;

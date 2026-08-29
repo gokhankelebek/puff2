@@ -30,6 +30,7 @@
 
 .headTitle {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 21px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -246,6 +247,7 @@
   background: var(--magenta);
   color: var(--magenta-ink);
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 18px;
   letter-spacing: 0.12em;
   text-transform: uppercase;

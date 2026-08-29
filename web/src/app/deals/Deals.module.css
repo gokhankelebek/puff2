@@ -5,6 +5,7 @@
 .pageTitle {
   padding: 20px var(--gutter) 0;
   font-family: var(--font-display);
+  line-height: 0.92;
   font-weight: 400;
   font-size: clamp(2.375rem, 11vw, 3.5rem);
   letter-spacing: 0.05em;
@@ -41,6 +42,7 @@
 
 .featureEyebrow {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 14px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -71,6 +73,7 @@
 
 .countdown {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 26px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -85,6 +88,7 @@
 .sectionTitle {
   padding: 0 var(--gutter) 14px;
   font-family: var(--font-display);
+  line-height: 0.92;
   font-weight: 400;
   font-size: clamp(1.75rem, 7vw, 2.25rem);
   letter-spacing: 0.07em;
@@ -138,6 +142,7 @@
 
 .rowHeadline {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 26px;
   letter-spacing: 0.04em;
   color: var(--gold);
@@ -158,6 +163,7 @@
 
 .signupTitle {
   font-family: var(--font-display);
+  line-height: 0.92;
   font-weight: 400;
   font-size: 26px;
   letter-spacing: 0.12em;
@@ -183,6 +189,7 @@
   background: var(--gold);
   color: #17111f;
   font-family: var(--font-display);
+  line-height: 0.92;
   font-size: 17px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
