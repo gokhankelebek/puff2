@@ -111,6 +111,6 @@ export function syncThemeColor(theme: Theme, pinned: boolean): void {
   const meta = existing ?? document.createElement("meta");
   meta.setAttribute("name", "theme-color");
   meta.setAttribute(RUNTIME_META, "");
-  meta.setAttribute("content", theme === "light" ? "#ede8de" : "#100d0b");
+  meta.setAttribute("content", theme === "light" ? "#f7f2e8" : "#0a0714");
   if (!existing) head.prepend(meta);
 }

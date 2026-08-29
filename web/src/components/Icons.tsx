@@ -22,7 +22,7 @@ const base = (size: number) => ({
   "aria-hidden": true,
 });
 
-const EMBER = "var(--volt)";
+const EMBER = "var(--magenta)";
 
 export function IconDisposables({ size = 24, className }: IconProps) {
   return (

@@ -1,39 +1,41 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader } from "next/font/google";
+import { Bebas_Neue, Instrument_Sans, Yellowtail } from "next/font/google";
 import "./globals.css";
 import { INIT_SCRIPT } from "@/lib/theme";
 import InlineScript from "@/components/InlineScript";
 
-/* Inter, per the Neon Haze design system.
-   It replaces both Barlow Semi Condensed and IBM Plex Mono — the mockup uses
-   one family for everything, headings at weight 500.
+/* Marquee Neon uses three faces and each one has exactly one job.
 
-   Losing the mono is the one thing to watch: the clock is the reason it was
-   there, because a proportional face reflows the header every second and fails
-   CLS on its own. Inter carries real tabular figures, so the existing
-   `font-variant-numeric: tabular-nums` on the clock and the price columns
-   keeps them fixed-width without a second family. */
-const display = Inter({
+   Bebas Neue is the sign: condensed caps, 400 only, no lowercase. Everything
+   it does is size and tracking, which is why the ladder lives in globals.css
+   as named steps rather than ad-hoc font-size overrides.
+
+   Yellowtail is the neon script, and it is used for exactly one word — the
+   "Puff" in the logo lockup. Nothing else on the site is script.
+
+   Instrument Sans carries every piece of body copy. It has real tabular
+   figures, which the clock, the countdowns and the price columns all need:
+   a proportional face reflows the header once a second and fails CLS on its
+   own. That is why `.numeric` is a utility and not a per-component decision. */
+const display = Bebas_Neue({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400"],
   display: "swap",
-  variable: "--font-display",
+  variable: "--font-bebas",
 });
 
-/* Same family. The variable is kept because ~100 rules reference it for the
-   small letterspaced labels; it no longer means "monospace", it means "the UI
-   label face". Renaming it is a mechanical follow-up, not a behaviour change. */
-const mono = Inter({
+const script = Yellowtail({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400"],
   display: "swap",
-  variable: "--font-mono",
+  variable: "--font-yellowtail",
 });
 
-const humidor = Newsreader({
+const bodyFace = Instrument_Sans({
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
   display: "swap",
-  variable: "--font-humidor",
+  variable: "--font-instrument",
 });
 
 export const metadata: Metadata = {
@@ -51,8 +53,8 @@ export const viewport: Viewport = {
      an explicit day/night choice rewrites the tag at runtime, because a static
      value cannot know about it. See src/lib/theme.ts. */
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#100d0b" },
-    { media: "(prefers-color-scheme: light)", color: "#ede8de" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0714" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f2e8" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -145,9 +147,7 @@ export default function RootLayout({
       <head>
         <InlineScript html={INIT_SCRIPT} />
       </head>
-      <body
-        className={`${display.variable} ${mono.variable} ${humidor.variable}`}
-      >
+      <body className={`${display.variable} ${script.variable} ${bodyFace.variable}`}>
         {children}
         <script
           type="application/ld+json"

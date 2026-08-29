@@ -1,194 +1,305 @@
 /* ==========================================================================
-   PUFF VEGAS — token layer, STRIPPED FOR REDESIGN
+   PUFF VEGAS — "Marquee Neon"
+   Token layer. Night-first: the bare :root IS the night palette.
 
-   The "Vegas neon" / "The 24" palette has been removed. What survives here is
-   the *contract*, not the design:
+   The conceit, and the thing that makes day mode work: the site is a SIGN.
+   At 4 a.m. the tubes are lit — magenta and cyan glow, gold marquee bulbs
+   burn. At 2 p.m. the same sign is unlit: the tubes read as solid pigment
+   with no glow, the bulbs are dark ivory with a rim, the ground is
+   sun-bleached paper. Day mode is not "the neon palette on white".
 
-     - every token NAME the components reference, so nothing dangles
-     - the reset, the `.mono` / `.micro` / `.srOnly` utilities
-     - the accessibility floor (focus ring, reduced-motion budget)
-     - the `data-theme` light/dark mechanism
+   Two islands stay dark at all hours because they are the lit part of the
+   sign: the top utility bar and the hotel-delivery band.
 
-   Every colour below is a neutral placeholder chosen only to keep the stripped
-   site legible while the new design is imported. None of it is a decision.
-   Replace the values; keep the names until the new system says otherwise.
-
-   Removed deliberately, and why:
-     - the brand red / volt / hot ramps      — superseded by the new direction
-     - the flavour swatch palette            — product data, needs re-deriving
-     - the humidor `[data-zone]` shift       — an art-direction call, not structure
-     - the late-band `[data-band]` shift     — same
-   The `data-zone` and `data-band` attributes are STILL emitted by the pages, so
-   both remain available as hooks if the new design wants them.
+   Source: design-src/design_handoff_smoke_shop/README.md
    ========================================================================== */
 
 :root {
+  color-scheme: dark;
+
   /* Ground */
-  --bg-void: #131313;
-  --bg-base: #1a1a1a;
-  --surface: #242424;
-  --surface-lift: #2e2e2e;
-  --hairline: color-mix(in srgb, #ffffff 16%, transparent);
+  --bg: #0a0714;
+  --bg-alt: #0e0619;
+  --surface: #12091f;
+  --border: #2a1b3d;
+  --border-strong: #3a2a52;
+  --border-hover: #4e3a6b;
+  --hairline: #1e1330;
 
-  /* Ink — each step still clears 4.5:1 on the surface it sits on, because that
-     was a build criterion here and stays one through the redesign. */
-  --ink-max: #f2f2f2;
-  --ink: #d6d6d6;
-  --ink-mute: #b0b0b0;
-  --ink-faint: #949494;
+  /* Ink. --text-dim is the floor for legal copy; the spec is explicit that
+     nothing dimmer may carry body text. */
+  --text: #f7f0ff;
+  --text-status: #f3eafb;
+  --text-muted: #c6b6dc;
+  --text-dim: #9c8cb8;
+  --text-faint: #8c7ba6;
+  --text-disabled: #6e5f85;
 
-  /* Accent. Neutral on purpose: a placeholder accent that looks like a choice
-     invites the redesign to inherit it by accident. */
-  --brand: #8c8c8c;
-  --volt: #b8b8b8;
-  --volt-lift: #d0d0d0;
-  --volt-wash: #2b2b2b;
-  --volt-core: #e8e8e8;
-  --hot: #b8b8b8;
-  --hot-lift: #d0d0d0;
-  --hot-wash: #2b2b2b;
-  --accent: var(--volt);
+  /* Signage. Magenta acts, cyan labels, gold prices. */
+  --magenta: #ff2e88;
+  --magenta-ink: #12061a;
+  --magenta-tint: rgba(255, 46, 136, 0.12);
+  --magenta-text: #ffb3d3;
+  --magenta-text-2: #ff9ac4;
+  --cyan: #24e0ff;
+  --cyan-tint: rgba(36, 224, 255, 0.12);
+  --cyan-text: #cff6ff;
+  --gold: #ffc84a;
+  --green: #7ff0c0;
 
-  /* Signal. Stock state is information, not branding, so it keeps a hue —
-     "counted" has to stay distinguishable from "out" no matter the palette. */
-  --live: #4cd4a0;
-  --alert: #ff6b61;
+  /* Photo placeholder grounds — rotated per card so a grid of unshot
+     products does not read as one flat block. */
+  --photo-1: #1a0e2b;
+  --photo-2: #0e1b2b;
+  --photo-3: #22150e;
+  --photo-4: #1f1524;
+  --photo-5: #101f1a;
 
-  /* Cigar room */
-  --amber: #c9c9c9;
-  --amber-deep: #333333;
-  --humidor-bg: #1a1a1a;
-  --humidor-surface: #242424;
+  /* Flavour swatches. This is product data, not brand colour: the only job is
+     separating ten families at thumbnail size, so they stay saturated and are
+     re-picked per theme rather than tinted from the accents. The design's
+     FLAVOR PROFILE filter (Fruit / Ice / Dessert / Tobacco) groups these. */
+  --flavor-mint: #2ce8c8;
+  --flavor-berry: #ff3d8a;
+  --flavor-tropical: #ff9a1f;
+  --flavor-citrus: #ffd426;
+  --flavor-grape: #a06bff;
+  --flavor-melon: #ff6b6b;
+  --flavor-orchard: #7ed957;
+  --flavor-tobacco: #c98a4b;
+  --flavor-dessert: #ffb9d0;
+  --flavor-unflavored: #8b95a5;
 
-  /* Flavour swatches. Ten families still have to separate at thumbnail size,
-     so these stay distinct — but they are placeholders, not the new palette. */
-  --flavor-mint: #9fb8b2;
-  --flavor-berry: #b89fae;
-  --flavor-tropical: #b8ac9f;
-  --flavor-citrus: #b8b59f;
-  --flavor-grape: #a89fb8;
-  --flavor-melon: #b8a2a2;
-  --flavor-orchard: #a6b89f;
-  --flavor-tobacco: #b0a89f;
-  --flavor-dessert: #b8aeb4;
-  --flavor-unflavored: #a0a0a0;
+  /* Neon glow recipes. Static by default: the spec allows exactly one
+     breathing element (the current order-tracking step). */
+  --glow-magenta-text: 0 0 10px rgba(255, 46, 136, 0.85), 0 0 26px rgba(255, 46, 136, 0.45);
+  --glow-magenta-text-lg: 0 0 14px rgba(255, 46, 136, 0.85), 0 0 34px rgba(255, 46, 136, 0.45);
+  --glow-cyan-text: 0 0 10px rgba(36, 224, 255, 0.7), 0 0 26px rgba(36, 224, 255, 0.35);
+  --glow-cta: 0 0 24px rgba(255, 46, 136, 0.45);
+  --glow-panel: 0 0 24px rgba(255, 46, 136, 0.18);
+  --panel-live-bg: rgba(255, 46, 136, 0.08);
 
-  /* Ramp + card */
-  --neutral-900: #262626;
-  --neutral-800: #3d3d3d;
-  --card-bg: color-mix(in srgb, var(--neutral-900) 60%, transparent);
-  --card-border: var(--neutral-800);
-  --card-border-hover: var(--volt);
-  --glow: #2b2b2b;
-  --cat-ink: #c4c4c4;
+  /* The marquee bulb strip — the signature divider, reused everywhere.
+     Held in tokens so day mode can unlight it without every call site
+     knowing how a bulb is drawn. */
+  --bulb-h: 12px;
+  --bulb-bg: var(--surface);
+  --bulb-border: var(--border);
+  --bulb-size: 14px 12px;
+  --bulb-image: radial-gradient(
+    circle at 6px 6px,
+    #ffc84a 2.2px,
+    rgba(255, 200, 74, 0.18) 3.2px,
+    transparent 3.6px
+  );
 
-  /* Geometry */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
+  /* Type */
+  --font-display: var(--font-bebas), "Oswald", "Arial Narrow", sans-serif;
+  --font-script: var(--font-yellowtail), "Brush Script MT", cursive;
+  --font-body: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
-  /* Type scale. The --t-mega floor stays at 2.4rem: the spec'd 3.5rem clipped
-     the clock's last characters at 375px. Keep the floor if the new design
-     keeps a wide single-line hero. */
-  --t-mega: clamp(2.4rem, 11vw, 11rem);
-  --t-d1: clamp(2.5rem, 6vw, 4.5rem);
-  --t-h2: clamp(2rem, 4.4vw, 3.2rem);
-  --t-body: 1.0625rem;
-  --t-micro: 0.75rem;
+  /* Geometry. The spec's ladder, named by role rather than by pixel so a
+     card and a panel cannot drift apart. */
+  --r-thumb: 8px;
+  --r-button: 12px;
+  --r-card: 16px;
+  --r-pill: 999px;
+  --gutter: 20px;
+  --tap: 44px;
 
   /* Motion */
-  --ease-heat: cubic-bezier(0.7, 0, 0.84, 0);
-  --ease-cool: cubic-bezier(0.16, 1, 0.3, 1);
-  --d-micro: 125ms;
-  --d-std: 250ms;
-  --d-page: 500ms;
-  --d-heat: 320ms;
-  --d-cool: 900ms;
-  --pace-1: var(--d-micro);
-  --pace-2: var(--d-std);
-  --temp: 0;
+  --d-state: 175ms;
+  --d-sheet: 250ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Light. Explicit toggle or system preference only — never switched by time of
-   day. That rule outlives the palette. */
+/* --------------------------------------------------------------------------
+   Day — the sign unlit.
+
+   The attribute values stay `light` / `dark` because src/lib/theme.ts and its
+   pre-paint INIT_SCRIPT already speak that vocabulary and the value never
+   reaches the server. The user-facing switch is labelled NIGHT / DAY.
+
+   Every glow is removed rather than softened, because a dimmed glow on paper
+   reads as a rendering fault. The colour ramp is not the night ramp lightened:
+   each accent is re-picked for contrast on white, which is why gold drops all
+   the way to #8A5D06 (the brighter #A8730B only clears AA at 24px and up).
+   -------------------------------------------------------------------------- */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f7f2e8;
+  /* Deliberately still dark: the utility bar is the sign band. */
+  --bg-alt: #17111f;
+  --surface: #ffffff;
+  --border: #e2d8c6;
+  --border-strong: #d9ceb9;
+  --border-hover: #c9bca2;
+  --hairline: #e6ddcd;
+
+  --text: #17111f;
+  --text-status: #f3eafb;
+  --text-muted: #574a63;
+  --text-dim: #6e6178;
+  /* Day has no separate faint tier — #8B7F96 fails AA on white. */
+  --text-faint: #6e6178;
+  --text-disabled: #8b8194;
+
+  --magenta: #d6156b;
+  --magenta-ink: #ffffff;
+  --magenta-tint: rgba(214, 21, 107, 0.1);
+  --magenta-text: #b01158;
+  --magenta-text-2: #b01158;
+  --cyan: #0e7c99;
+  --cyan-tint: rgba(14, 124, 153, 0.1);
+  --cyan-text: #0a5e75;
+  --gold: #8a5d06;
+  --green: #0e7a55;
+
+  --photo-1: #ede4d3;
+  --photo-2: #e4eaec;
+  --photo-3: #efe6d0;
+  --photo-4: #ede3e1;
+  --photo-5: #e4eae2;
+
+  /* Flavour swatches, re-picked for paper. */
+  --flavor-mint: #0f8f79;
+  --flavor-berry: #c11a5e;
+  --flavor-tropical: #a85c00;
+  --flavor-citrus: #8a6d00;
+  --flavor-grape: #6a3fc0;
+  --flavor-melon: #c0392f;
+  --flavor-orchard: #3d7a1f;
+  --flavor-tobacco: #85552a;
+  --flavor-dessert: #b3527a;
+  --flavor-unflavored: #5c6470;
+
+  /* Kill every glow. Neon returns only inside the dark islands. */
+  --glow-magenta-text: none;
+  --glow-magenta-text-lg: none;
+  --glow-cyan-text: none;
+  --glow-cta: none;
+  --glow-panel: none;
+  --panel-live-bg: rgba(214, 21, 107, 0.06);
+
+  /* Unlit bulbs: dark ivory with a rim, no burn. */
+  --bulb-bg: #f0e7d4;
+  --bulb-border: #d9ceb9;
+  --bulb-size: 16px 14px;
+  --bulb-image: radial-gradient(
+    circle at 7px 7px,
+    #e4d6b4 2.6px,
+    #d3c39f 3.8px,
+    transparent 4.2px
+  );
+}
+
+/* System preference, when no explicit choice has been made. */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg-void: #fafafa;
-    --bg-base: #f2f2f2;
-    --surface: #e6e6e6;
-    --surface-lift: #dadada;
-    --hairline: color-mix(in srgb, #000000 18%, transparent);
-    --ink-max: #141414;
-    --ink: #3d3d3d;
-    --ink-mute: #565656;
-    --ink-faint: #5f5f5f;
-    --brand: #6b6b6b;
-    --volt: #4a4a4a;
-    --volt-lift: #303030;
-    --volt-wash: #e8e8e8;
-    --volt-core: #2a2a2a;
-    --hot: #4a4a4a;
-    --hot-lift: #303030;
-    --hot-wash: #e8e8e8;
-    --live: #0a7049;
-    --alert: #b3261e;
-    --amber: #5c5c5c;
-    --amber-deep: #dcdcdc;
-    --humidor-bg: #f0f0f0;
-    --humidor-surface: #e4e4e4;
-    --neutral-900: #dadada;
-    --neutral-800: #b8b8b8;
-    --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
-    --card-border: #cacaca;
-    --card-border-hover: #4a4a4a;
-    --glow: #e8e8e8;
-    --cat-ink: #4a4a4a;
+    color-scheme: light;
+
+    --bg: #f7f2e8;
+    --bg-alt: #17111f;
+    --surface: #ffffff;
+    --border: #e2d8c6;
+    --border-strong: #d9ceb9;
+    --border-hover: #c9bca2;
+    --hairline: #e6ddcd;
+
+    --text: #17111f;
+    --text-status: #f3eafb;
+    --text-muted: #574a63;
+    --text-dim: #6e6178;
+    --text-faint: #6e6178;
+    --text-disabled: #8b8194;
+
+    --magenta: #d6156b;
+    --magenta-ink: #ffffff;
+    --magenta-tint: rgba(214, 21, 107, 0.1);
+    --magenta-text: #b01158;
+    --magenta-text-2: #b01158;
+    --cyan: #0e7c99;
+    --cyan-tint: rgba(14, 124, 153, 0.1);
+    --cyan-text: #0a5e75;
+    --gold: #8a5d06;
+    --green: #0e7a55;
+
+    --photo-1: #ede4d3;
+    --photo-2: #e4eaec;
+    --photo-3: #efe6d0;
+    --photo-4: #ede3e1;
+    --photo-5: #e4eae2;
+
+  /* Flavour swatches, re-picked for paper. */
+  --flavor-mint: #0f8f79;
+  --flavor-berry: #c11a5e;
+  --flavor-tropical: #a85c00;
+  --flavor-citrus: #8a6d00;
+  --flavor-grape: #6a3fc0;
+  --flavor-melon: #c0392f;
+  --flavor-orchard: #3d7a1f;
+  --flavor-tobacco: #85552a;
+  --flavor-dessert: #b3527a;
+  --flavor-unflavored: #5c6470;
+
+    --glow-magenta-text: none;
+    --glow-magenta-text-lg: none;
+    --glow-cyan-text: none;
+    --glow-cta: none;
+    --glow-panel: none;
+    --panel-live-bg: rgba(214, 21, 107, 0.06);
+
+    --bulb-bg: #f0e7d4;
+    --bulb-border: #d9ceb9;
+    --bulb-size: 16px 14px;
+    --bulb-image: radial-gradient(
+      circle at 7px 7px,
+      #e4d6b4 2.6px,
+      #d3c39f 3.8px,
+      transparent 4.2px
+    );
   }
 }
 
-:root[data-theme="light"] {
-  --bg-void: #fafafa;
-  --bg-base: #f2f2f2;
-  --surface: #e6e6e6;
-  --surface-lift: #dadada;
-  --hairline: color-mix(in srgb, #000000 18%, transparent);
-  --ink-max: #141414;
-  --ink: #3d3d3d;
-  --ink-mute: #565656;
-  --ink-faint: #5f5f5f;
-  --brand: #6b6b6b;
-  --volt: #4a4a4a;
-  --volt-lift: #303030;
-  --volt-wash: #e8e8e8;
-  --volt-core: #2a2a2a;
-  --hot: #4a4a4a;
-  --hot-lift: #303030;
-  --hot-wash: #e8e8e8;
-  --live: #0a7049;
-  --alert: #b3261e;
-  --amber: #5c5c5c;
-  --amber-deep: #dcdcdc;
-  --humidor-bg: #f0f0f0;
-  --humidor-surface: #e4e4e4;
-  --neutral-900: #dadada;
-  --neutral-800: #b8b8b8;
-  --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
-  --card-border: #cacaca;
-  --card-border-hover: #4a4a4a;
-  --glow: #e8e8e8;
-  --cat-ink: #4a4a4a;
+/* The dark islands. Inside these the sign is lit at any hour, so they carry
+   the night ramp regardless of theme. Applied to the utility bar and the
+   hotel-delivery band. */
+[data-island="lit"] {
+  color-scheme: dark;
+  --surface: #12091f;
+  --border: #2a1b3d;
+  --border-strong: #3a2a52;
+  --text: #f7f0ff;
+  --text-muted: #c6b6dc;
+  --text-dim: #9c8cb8;
+  --text-faint: #8c7ba6;
+  --magenta: #ff2e88;
+  --magenta-ink: #12061a;
+  --magenta-text: #ffb3d3;
+  --cyan: #24e0ff;
+  --cyan-text: #cff6ff;
+  --gold: #ffc84a;
+  --green: #7ff0c0;
+  --glow-magenta-text: 0 0 10px rgba(255, 46, 136, 0.85), 0 0 26px rgba(255, 46, 136, 0.45);
+  --glow-cyan-text: 0 0 10px rgba(36, 224, 255, 0.7), 0 0 26px rgba(36, 224, 255, 0.35);
+  --glow-cta: 0 0 24px rgba(255, 46, 136, 0.45);
+  background: var(--bg-alt);
+  color: var(--text);
 }
 
-/* Repaint the palette as one move when the day/night control is used, so the
-   page does not half-animate and half-snap. Set for ~320ms by the toggle only. */
+/* Repaint as one move when the Night/Day switch is used, so the page does not
+   half-animate and half-snap. Set briefly by the toggle, never during normal
+   browsing, and never for anyone who asked for reduced motion. */
 :root[data-theme-anim] *,
 :root[data-theme-anim] *::before,
 :root[data-theme-anim] *::after {
   transition:
-    background-color 260ms var(--ease-cool),
-    border-color 260ms var(--ease-cool),
-    box-shadow 260ms var(--ease-cool),
-    color 260ms var(--ease-cool) !important;
+    background-color 260ms var(--ease-out),
+    border-color 260ms var(--ease-out),
+    box-shadow 260ms var(--ease-out),
+    color 260ms var(--ease-out) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -207,10 +318,10 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg-void);
-  color: var(--ink);
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--t-body);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -237,15 +348,15 @@ a {
   text-decoration: none;
 }
 
-ul {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* `video` is included on purpose. There is no video in the tree today, but an
-   unconstrained media element lays out at its intrinsic width and forces
-   horizontal overflow, which is a reset's job to prevent rather than a design's. */
+/* An unconstrained media element lays out at its intrinsic width and forces
+   horizontal overflow — a reset's job to prevent, not a design's. */
 img,
 svg,
 video {
@@ -253,24 +364,46 @@ video {
   max-width: 100%;
 }
 
+/* Never removed. The spec names the focus ring as a hard requirement. */
 :focus-visible {
-  outline: 2px solid var(--volt);
-  outline-offset: 3px;
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
 }
 
-/* Every numeral is tabular. This is not styling — a proportional face reflows
-   the clock once a second and fails CLS on its own. */
-.mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-}
+/* --------------------------------------------------------------------------
+   Type primitives
 
-.micro {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: var(--t-micro);
-  letter-spacing: 0.14em;
+   Bebas Neue has no lowercase and no weights: everything it does is size and
+   tracking. Tracking tightens as size grows, which is why this is a ladder of
+   named steps rather than a single class with a font-size override.
+   -------------------------------------------------------------------------- */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+}
+
+/* Prices, hours and deal headlines. Tabular so a column of prices lines up
+   and a countdown does not reflow once a second. */
+.numeric {
+  font-variant-numeric: tabular-nums;
 }
 
 .srOnly {
@@ -285,27 +418,45 @@ video {
   border: 0;
 }
 
-/* Referenced by components that survived the strip. Kept so nothing dangles;
-   the new design owns whether anything still breathes. */
-@keyframes voltBreathe {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(0.9);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
+/* --------------------------------------------------------------------------
+   The marquee bulb strip
+
+   The signature element. A section divider, used everywhere, drawn entirely
+   in CSS — no image asset, and it unlights itself in day mode because the
+   whole recipe lives in tokens.
+   -------------------------------------------------------------------------- */
+
+.bulbs {
+  height: var(--bulb-h);
+  background-color: var(--bulb-bg);
+  background-image: var(--bulb-image);
+  background-size: var(--bulb-size);
+  background-repeat: repeat-x;
+  border-top: 1px solid var(--bulb-border);
+  border-bottom: 1px solid var(--bulb-border);
+}
+
+/* Fremont-style chase. Opt-in per instance, one bulb-pitch per step. */
+.bulbs[data-chase="on"] {
+  animation: bulbChase 1.2s steps(1) infinite;
+}
+
+@keyframes bulbChase {
+  to {
+    background-position: 14px 0;
   }
 }
 
-@keyframes livePulse {
-  0%,
-  100% {
-    opacity: 0.35;
-  }
-  50% {
-    opacity: 1;
+@media (min-width: 1200px) {
+  :root {
+    --bulb-h: 14px;
+    --bulb-size: 16px 14px;
+    --bulb-image: radial-gradient(
+      circle at 7px 7px,
+      #ffc84a 2.6px,
+      rgba(255, 200, 74, 0.18) 3.6px,
+      transparent 4px
+    );
   }
 }
 
@@ -318,28 +469,4 @@ video {
     transition: none !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* --------------------------------------------------------------------------
-   STRIP ARTIFACT — DELETE WHEN THE NEW DESIGN SIZES THESE.
-
-   Three SVGs in the tree declare a `viewBox` and no intrinsic size, because
-   their dimensions lived entirely in the CSS module that the strip emptied:
-
-     - components/SearchBox.tsx     the magnifier   (.icon)
-     - components/Chrome.tsx        the grain field (.grain)
-     - app/pickup/page.tsx          the mall plan   (.mallSvg)
-
-   With nothing sizing them, each lays out at its container's full width — the
-   24px magnifier rendered as a 1280px circle over the homepage. That is not a
-   missing design decision, it is a broken page, and it makes the stripped tree
-   impossible to QA before the new design lands.
-
-   This is a floor, not a style. It carries no art direction and should be
-   removed the moment the new system gives these elements real dimensions.
-   -------------------------------------------------------------------------- */
-
-svg[viewBox]:not([width]) {
-  width: 1.5rem;
-  height: 1.5rem;
 }
