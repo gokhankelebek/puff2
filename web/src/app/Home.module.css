@@ -279,6 +279,11 @@
   flex-direction: column;
   gap: 4px;
   height: 100%;
+  /* .floorCell is a flex container, so without this the card sizes to its
+     content instead of the cell. On desktop that collapsed a 244px cell to an
+     83px card and took the shot box down with it. */
+  width: 100%;
+  min-width: 0;
   padding: 12px;
   border: 1px solid var(--border);
   border-radius: var(--r-card);
@@ -291,12 +296,18 @@
 }
 
 /* Grounds rotate so a grid of unshot products does not read as one flat
-   block. Four cards, four grounds. */
+   block. Four grounds, cycled. */
 .floorCard[data-ground="1"] .floorShot { background: var(--photo-1); }
 .floorCard[data-ground="2"] .floorShot { background: var(--photo-2); }
 .floorCard[data-ground="3"] .floorShot { background: var(--photo-3); }
 .floorCard[data-ground="4"] .floorShot { background: var(--photo-4); }
 
+/* One shot geometry for every department card, here and on /floor. Keep the
+   two in step -- they are the same card rendered in two places.
+
+   The icon is a FRACTION of the box, not a pixel size, so its optical weight
+   is identical at 375 and at 1440. A fixed px icon is a different share of its
+   box at every breakpoint, which is how these drifted apart. */
 .floorShot {
   display: flex;
   align-items: center;
@@ -305,18 +316,11 @@
   max-height: 150px;
   margin-bottom: 8px;
   border-radius: var(--r-thumb);
-  /* The glyph strokes in currentColor. Cyan is the design's label
-     colour and keeps the six marks reading as one set. */
+  /* The mask paints in currentColor; cyan is the design's label colour and
+     keeps the whole set reading as one family. */
   color: var(--cyan);
   overflow: hidden;
-}
-
-.floorShot img,
-.floorShot svg {
-  width: auto;
-  height: 68%;
-  max-height: 92px;
-  object-fit: contain;
+  --dept-icon-h: 48%;
 }
 
 .floorName {
@@ -380,6 +384,9 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
+  /* Square box, so a smaller fraction lands at the same visual size as the
+     4/3 department shots. */
+  --dept-icon-h: 36%;
   margin-bottom: 6px;
   border-radius: var(--r-thumb);
   overflow: hidden;

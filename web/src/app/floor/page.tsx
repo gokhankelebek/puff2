@@ -104,7 +104,7 @@ export default async function FloorPage() {
                 data-ground={(i % 4) + 1}
               >
                 <span className={fl.shot}>
-                  <DepartmentIcon department={department} size={64} />
+                  <DepartmentIcon department={department} />
                 </span>
                 <span className={fl.name}>
                   {DEPARTMENT_LABELS[department]}

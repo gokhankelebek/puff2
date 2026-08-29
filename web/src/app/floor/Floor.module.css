@@ -51,9 +51,10 @@
 .card[data-ground="3"] .shot { background: var(--photo-3); }
 .card[data-ground="4"] .shot { background: var(--photo-4); }
 
-/* Capped rather than purely aspect-driven: at two-up on a wide phone the
-   4/3 box grew to ~280px around a 72px mark, which reads as a missing image
-   rather than as a department card. */
+/* Identical geometry to the homepage's .floorShot -- these are the same card
+   in two places and must not drift. Capped height because at two-up on a wide
+   phone a pure 4/3 box grew to ~280px around a small mark, which reads as a
+   missing image rather than a department card. */
 .shot {
   display: flex;
   align-items: center;
@@ -62,18 +63,9 @@
   max-height: 150px;
   margin-bottom: 8px;
   border-radius: var(--r-thumb);
-  /* The glyph strokes in currentColor. Cyan is the design's label
-     colour and keeps the six marks reading as one set. */
   color: var(--cyan);
   overflow: hidden;
-}
-
-.shot img,
-.shot svg {
-  width: auto;
-  height: 68%;
-  max-height: 96px;
-  object-fit: contain;
+  --dept-icon-h: 48%;
 }
 
 .name {

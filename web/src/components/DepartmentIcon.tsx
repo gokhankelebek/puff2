@@ -15,27 +15,27 @@ import type { Department } from "@/lib/commerce/types";
  * same file reads cyan at 4 a.m. and #0E7C99 at 2 p.m. without a second set of
  * assets, and inherits any colour a call site sets.
  *
- * Masks are 192px so the largest render (64px) stays crisp at 3x. Every icon
- * was trimmed to its own ink and re-fitted into a common box, so a tall
- * lighter and a wide cigar carry the same optical weight in one grid.
+ * Masks are 192px so the largest render stays crisp at 3x. Every icon was
+ * trimmed to its own ink and re-fitted into a common box, so a tall lighter
+ * and a wide cigar carry the same optical weight in one grid.
+ *
+ * Size comes from CSS, via `--dept-icon-h`, and NOT from a pixel prop. The
+ * containers this sits in are fluid — a card is 244px on desktop and about
+ * 160px at 375 — so a fixed 56px icon is a different fraction of its box at
+ * every breakpoint, which is exactly how the sizes drifted apart. Expressing
+ * the height as a percentage of the box keeps one optical weight everywhere.
  *
  * Decorative: the department name is always adjacent in the markup.
  */
 export default function DepartmentIcon({
   department,
-  size = 56,
   className,
 }: {
   department: Department;
-  size?: number;
   className?: string;
 }) {
   return (
-    <span
-      className={`${s.icon} ${className ?? ""}`}
-      style={{ width: size, height: size }}
-      aria-hidden="true"
-    >
+    <span className={`${s.icon} ${className ?? ""}`} aria-hidden="true">
       <span
         className={s.stroke}
         style={{

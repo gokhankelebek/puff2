@@ -2,8 +2,12 @@
 
 .icon {
   position: relative;
-  display: inline-block;
+  display: block;
   flex: none;
+  /* Consumers set --dept-icon-h, usually as a % of the box they put it in.
+     aspect-ratio keeps it square without the width also needing a value. */
+  height: var(--dept-icon-h, 56px);
+  aspect-ratio: 1;
 }
 
 .stroke,
