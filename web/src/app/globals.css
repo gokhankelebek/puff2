@@ -81,18 +81,47 @@
 
   /* The marquee bulb strip — the signature divider, reused everywhere.
      Held in tokens so day mode can unlight it without every call site
-     knowing how a bulb is drawn. */
+     knowing how a bulb is drawn.
+
+     Four layers per bulb, because one flat disc reads as a printed dot and
+     not as a lamp. Top to bottom:
+
+       1. the hot core     a near-white filament centre, offset a hair up
+       2. the envelope     the gold body of the glass
+       3. the bloom        light thrown onto the housing around it
+       4. the socket       a dark rim, so the bulb sits IN the strip
+
+     Bloom is kept under half the tile width on purpose. A background tile is
+     clipped at its own edge, so a halo wider than the pitch gets sliced and
+     leaves a seam between bulbs; the continuous spill along the strip comes
+     from --bulb-glow below instead, which is one shadow over the whole band. */
   --bulb-h: 12px;
   --bulb-bg: var(--surface);
   --bulb-border: var(--border);
   --bulb-size: 14px 12px;
   --bulb-pitch: 14px;
-  --bulb-image: radial-gradient(
-    circle at 6px 6px,
-    #ffc84a 2.2px,
-    rgba(255, 200, 74, 0.18) 3.2px,
-    transparent 3.6px
-  );
+  --bulb-glow: 0 0 16px rgba(255, 190, 60, 0.16);
+  --bulb-inset: inset 0 1px 0 rgba(255, 236, 190, 0.07);
+  --bulb-image:
+    radial-gradient(circle at 6px 5.5px, #fff4d6 0.85px, rgba(255, 244, 214, 0) 1.5px),
+    radial-gradient(
+      circle at 6px 6px,
+      #ffd268 1.9px,
+      #f5b13a 2.6px,
+      rgba(245, 177, 58, 0) 3.1px
+    ),
+    radial-gradient(
+      circle at 6px 6px,
+      rgba(255, 190, 70, 0.28) 3.1px,
+      rgba(255, 170, 40, 0.07) 4.8px,
+      rgba(255, 170, 40, 0) 6px
+    ),
+    radial-gradient(
+      circle at 6px 6px,
+      rgba(0, 0, 0, 0) 2.5px,
+      rgba(0, 0, 0, 0.5) 2.95px,
+      rgba(0, 0, 0, 0) 3.5px
+    );
 
   /* Type */
   --font-display: var(--font-bebas), "Oswald", "Arial Narrow", sans-serif;
@@ -183,17 +212,33 @@
   --glow-panel: none;
   --panel-live-bg: rgba(214, 21, 107, 0.06);
 
-  /* Unlit bulbs: dark ivory with a rim, no burn. */
+  /* Unlit: cold glass in a housing. The tell is a specular highlight on the
+     upper-left of each dome — an unlit bulb is still a shiny object, and
+     without it the strip reads as punched holes rather than as glass. */
   --bulb-bg: #f0e7d4;
   --bulb-border: #d9ceb9;
-  --bulb-size: 16px 14px;
-  --bulb-pitch: 16px;
-  --bulb-image: radial-gradient(
-    circle at 7px 7px,
-    #e4d6b4 2.6px,
-    #d3c39f 3.8px,
-    transparent 4.2px
-  );
+  --bulb-size: 14px 12px;
+  --bulb-pitch: 14px;
+  --bulb-glow: none;
+  --bulb-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  --bulb-image:
+    radial-gradient(
+      circle at 6.5px 5.2px,
+      rgba(255, 255, 255, 0.95) 0.6px,
+      rgba(255, 255, 255, 0) 1.3px
+    ),
+    radial-gradient(
+      circle at 6px 6px,
+      #e7dabb 2px,
+      #d6c6a0 2.8px,
+      rgba(214, 198, 160, 0) 3.3px
+    ),
+    radial-gradient(
+      circle at 6px 6px,
+      rgba(120, 100, 60, 0) 2.8px,
+      rgba(120, 100, 60, 0.2) 3.3px,
+      rgba(120, 100, 60, 0) 3.9px
+    );
 }
 
 /* System preference, when no explicit choice has been made. */
@@ -254,14 +299,28 @@
 
     --bulb-bg: #f0e7d4;
     --bulb-border: #d9ceb9;
-    --bulb-size: 16px 14px;
-    --bulb-pitch: 16px;
-    --bulb-image: radial-gradient(
-      circle at 7px 7px,
-      #e4d6b4 2.6px,
-      #d3c39f 3.8px,
-      transparent 4.2px
-    );
+    --bulb-size: 14px 12px;
+    --bulb-pitch: 14px;
+    --bulb-glow: none;
+    --bulb-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    --bulb-image:
+      radial-gradient(
+        circle at 6.5px 5.2px,
+        rgba(255, 255, 255, 0.95) 0.6px,
+        rgba(255, 255, 255, 0) 1.3px
+      ),
+      radial-gradient(
+        circle at 6px 6px,
+        #e7dabb 2px,
+        #d6c6a0 2.8px,
+        rgba(214, 198, 160, 0) 3.3px
+      ),
+      radial-gradient(
+        circle at 6px 6px,
+        rgba(120, 100, 60, 0) 2.8px,
+        rgba(120, 100, 60, 0.2) 3.3px,
+        rgba(120, 100, 60, 0) 3.9px
+      );
   }
 }
 
@@ -425,18 +484,59 @@ video {
    here, as --bulb-* above, so day mode can unlight it centrally.
    -------------------------------------------------------------------------- */
 
-/* The strip scales up on desktop: taller, wider pitch, bigger lamps. */
+/* The strip scales up on desktop: taller, wider pitch, bigger lamps. Geometry
+   only — the four-layer recipe is unchanged, re-centred on the larger tile. */
 @media (min-width: 1200px) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bulb-h: 14px;
     --bulb-size: 16px 14px;
     --bulb-pitch: 16px;
-    --bulb-image: radial-gradient(
-      circle at 7px 7px,
-      #ffc84a 2.6px,
-      rgba(255, 200, 74, 0.18) 3.6px,
-      transparent 4px
-    );
+    --bulb-image:
+      radial-gradient(circle at 8px 6.4px, #fff4d6 1px, rgba(255, 244, 214, 0) 1.7px),
+      radial-gradient(
+        circle at 8px 7px,
+        #ffd268 2.2px,
+        #f5b13a 3px,
+        rgba(245, 177, 58, 0) 3.6px
+      ),
+      radial-gradient(
+        circle at 8px 7px,
+        rgba(255, 190, 70, 0.28) 3.6px,
+        rgba(255, 170, 40, 0.07) 5.4px,
+        rgba(255, 170, 40, 0) 7px
+      ),
+      radial-gradient(
+        circle at 8px 7px,
+        rgba(0, 0, 0, 0) 2.9px,
+        rgba(0, 0, 0, 0.5) 3.4px,
+        rgba(0, 0, 0, 0) 4px
+      );
+  }
+
+  /* Day scales the same way: same pitch and height as night, so toggling the
+     theme never moves the strip. */
+  :root[data-theme="light"],
+  :root:not([data-theme="dark"]) {
+    --bulb-size: 16px 14px;
+    --bulb-pitch: 16px;
+    --bulb-image:
+      radial-gradient(
+        circle at 7.4px 6.1px,
+        rgba(255, 255, 255, 0.95) 0.7px,
+        rgba(255, 255, 255, 0) 1.5px
+      ),
+      radial-gradient(
+        circle at 7px 7px,
+        #e7dabb 2.3px,
+        #d6c6a0 3.2px,
+        rgba(214, 198, 160, 0) 3.7px
+      ),
+      radial-gradient(
+        circle at 7px 7px,
+        rgba(120, 100, 60, 0) 3.2px,
+        rgba(120, 100, 60, 0.2) 3.75px,
+        rgba(120, 100, 60, 0) 4.4px
+      );
   }
 }
 

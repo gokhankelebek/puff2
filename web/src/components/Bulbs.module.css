@@ -10,6 +10,11 @@
   border-top: 1px solid var(--bulb-border);
   border-bottom: 1px solid var(--bulb-border);
   flex: none;
+  /* The continuous spill along the band, plus a lit top edge on the housing.
+     Per-bulb bloom cannot do this: a background tile is clipped at its own
+     edge, so a halo wider than the pitch is sliced and seams between lamps.
+     One shadow over the whole strip has no tile to be cut by. */
+  box-shadow: var(--bulb-glow, none), var(--bulb-inset, none);
 }
 
 /* steps(1) so each frame is a discrete jump of one bulb pitch — lamps
