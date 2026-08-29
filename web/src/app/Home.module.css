@@ -126,19 +126,19 @@
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   background: var(--photo-1);
-  /* Square on mobile, matching the art, so nothing is cropped away on the
-     screen where the storefront is smallest. */
-  aspect-ratio: 1;
+  /* 4:3 on mobile, matching the photograph, so nothing is cropped away on the
+     screen where the shop is smallest. (Was 1:1 for the square render.) */
+  aspect-ratio: 4 / 3;
 }
 
 .heroImg {
   width: 100%;
   height: 100%;
-  /* The sign carries the logo and the interior carries the shelves; the
-     pavement carries nothing. When the panel goes landscape on desktop and
-     something has to be cropped, it comes off the bottom. */
+  /* The SMOKE SHOP sign over the back counter is the focal point and sits
+     just above centre; the foreground floor carries nothing. Crop off the
+     bottom when the desktop panel is taller than the photograph is. */
   object-fit: cover;
-  object-position: center 38%;
+  object-position: center 42%;
 }
 
 /* --- Hotel picker -------------------------------------------------------- */

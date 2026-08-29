@@ -146,20 +146,24 @@ export default async function HomePage() {
           </div>
 
           <div className={s.heroMedia}>
-            {/* The LCP. srcset because the panel is ~640px on a phone and
-                ~700px on desktop, and the native art is 1254 square — serving
-                the big one to a phone would be 280KB for no visible gain on a
-                connection that is the whole reason this site is built the way
-                it is. */}
+            {/* A photograph of the actual shop, replacing a generated
+                storefront render. A real address with an invented shopfront is
+                a trust problem, not a styling one, so the render is gone
+                rather than moved to another section.
+
+                The LCP. srcset because the panel is ~640px on a phone and
+                ~620px on desktop; the source is 1024 wide, so 1x is covered
+                and 2x is soft. A higher-resolution original would fix that —
+                see docs/OPEN-DECISIONS.md. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={s.heroImg}
-              src="/hero/storefront-1254.webp"
-              srcSet="/hero/storefront-640.webp 640w, /hero/storefront-1254.webp 1254w"
-              sizes="(min-width: 1200px) 700px, 100vw"
-              width={1254}
-              height={1254}
-              alt="The Puff Vegas storefront on the Strip, lit at night — smoke shop, vapes, cigars and cigarettes."
+              src="/hero/interior-1024.webp"
+              srcSet="/hero/interior-640.webp 640w, /hero/interior-1024.webp 1024w"
+              sizes="(min-width: 1200px) 620px, 100vw"
+              width={1024}
+              height={768}
+              alt="Inside Puff Vegas: the SMOKE SHOP sign over the back counter, wall of vapes and cigars, glass cases of pipes."
               fetchPriority="high"
               decoding="async"
             />
