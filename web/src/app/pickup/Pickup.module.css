@@ -73,8 +73,8 @@
   min-height: var(--tap);
   padding: 0 16px;
   border-radius: var(--r-button);
-  /* /pickup's primary action. Was --gold-face, which made it the second
-     primary-action colour on the site.
+  /* /pickup's primary action. It used to be a filled gold button, which made
+     gold the site's second primary-action colour.
      Matches .ctaPrimary on the homepage. */
   background: var(--magenta);
   color: var(--magenta-ink);
