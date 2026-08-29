@@ -43,6 +43,16 @@
     color: var(--text-faint);
   }
 
+  .utilityAddr {
+    color: var(--text-muted);
+    transition: color var(--d-state) ease-out;
+  }
+
+  .utilityAddr:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+
   .utilityPhone {
     margin-left: 10px;
     color: var(--text-muted);
@@ -233,6 +243,17 @@
   font-size: 17px;
   letter-spacing: 0.14em;
   color: var(--gold);
+}
+
+/* The address is the one part of this line that leads somewhere. Underlined
+   on hover only — a permanently underlined address inside a gold hours line
+   reads as a mistake. */
+.footerAddr {
+  color: inherit;
+}
+
+.footerAddr:hover {
+  text-decoration: underline;
 }
 
 .footerLegal {

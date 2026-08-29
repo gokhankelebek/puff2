@@ -109,8 +109,12 @@ export default async function HomePage() {
               We&rsquo;re open.
             </h1>
             <p className={s.heroSub}>
-              Walk in at {SHOP_STREET}, or we&rsquo;ll run it to your hotel and
-              meet you downstairs. {DELIVERY_TERMS_LABEL}.
+              Walk in at{" "}
+              <a className={s.heroAddr} href="/pickup">
+                {SHOP_STREET}
+              </a>
+              , or we&rsquo;ll run it to your hotel and meet you downstairs.{" "}
+              {DELIVERY_TERMS_LABEL}.
             </p>
             <div className={s.heroCtas}>
               <a className={s.ctaPrimary} href="/delivery">

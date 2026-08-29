@@ -46,7 +46,15 @@ export function UtilityBar({ hotel }: { hotel?: string }) {
       <span className={s.utilityDot} aria-hidden="true">
         ·
       </span>
-      <span className={s.utilityAddr}>{SHOP_STREET}</span>
+      {/* Goes to /pickup rather than straight to a maps app. Google's
+          "Grand Bazaar Shops" pin is 85m from the door and outside the mall
+          footprint (docs/LOCATION.md), so a raw map link drops someone on the
+          Boulevard with no idea the shop is upstairs between 610 and 614.
+          /pickup carries that wayfinding AND a Directions button built from
+          the surveyed coordinate. */}
+      <a className={s.utilityAddr} href="/pickup">
+        {SHOP_STREET}
+      </a>
       <a className={s.utilityPhone} href={PHONE_HREF}>
         {PHONE_DISPLAY}
       </a>
@@ -176,7 +184,10 @@ export function Footer() {
   return (
     <footer className={s.footer}>
       <p className={s.footerHours}>
-        Never closed · {SHOP_ADDRESS_LINE.toUpperCase()}
+        Never closed ·{" "}
+        <a className={s.footerAddr} href="/pickup">
+          {SHOP_ADDRESS_LINE.toUpperCase()}
+        </a>
       </p>
       <p className={s.footerLegal}>
         21+ with valid ID, at the counter and at every handover. Nicotine is an

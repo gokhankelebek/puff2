@@ -50,6 +50,21 @@
   text-wrap: pretty;
 }
 
+/* Inline in a sentence, so it is underlined rather than recoloured — a cyan
+   word mid-paragraph reads as an error before it reads as a link. */
+.heroAddr {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-hover);
+  transition: text-decoration-color var(--d-state) ease-out, color var(--d-state) ease-out;
+}
+
+.heroAddr:hover {
+  color: var(--text);
+  text-decoration-color: var(--cyan);
+}
+
 .heroCtas {
   display: flex;
   gap: 12px;
