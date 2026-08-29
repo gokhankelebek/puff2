@@ -1,304 +1,141 @@
-/* ==========================================================================
-   Product detail
-   ========================================================================== */
+/* Product.module.css — STRIPPED FOR REDESIGN.
 
-.wrap {
-  padding: 40px 24px 96px;
-}
+   Every rule body was removed; the selectors remain so the CSS Modules
+   export map is unchanged and `styles.x` still resolves to a real class
+   instead of undefined. The markup is therefore intact and unstyled.
 
-.crumbs {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 32px;
-}
+   32 class names preserved. Original: see git history
+   (commit 'Baseline: copy of puff before presentation strip').
 
-.crumbs a {
-  color: var(--ink-mute);
-  transition: color var(--d-cool) var(--ease-cool);
-}
+   Each rule carries an inert `--stripped` custom property. It is not a
+   style: a rule with an empty body is dropped by the CSS optimizer, which
+   deletes the class from the module's export map and makes `s.tile` come
+   back undefined. One declaration keeps the rule — and the export — alive. */
 
-.crumbs a:hover {
-  color: var(--volt);
-  transition: color var(--d-micro) var(--ease-heat);
-}
-
-/* The warning plate spans the listing. Its floor is expressed as a share of
-   the viewport rather than a fixed pixel height so the 20%-of-area test holds
-   as the listing grows: the photo column is 1:1, so listing height tracks
-   column width, and ~26vw keeps the plate above a quarter of it. */
-.wrap {
-  --warn-min-area: clamp(120px, 12vw, 176px);
-}
-
-/* Two columns: the object, and everything you need to decide. */
-.hero {
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  align-items: start;
-}
-
-.shot {
-  aspect-ratio: 1 / 1;
-  /* The charcoal seamless every SKU is shot on. Consistency across the whole
-     catalogue is what later makes a shelf of edge-to-edge products read as
-     objects on a surface rather than as cards. */
-  background: #101214;
-  border: 1px solid var(--hairline);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.shotPlaceholder {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  text-align: center;
-  line-height: 2;
-}
-
-/* The buy column. The warning plate is the first child, in the upper portion,
-   and `--warn-min-area` gives it a hard floor for the 20%-of-area test. */
-.buy {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.brand {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-
-.title {
-  font-weight: 800;
-  font-size: clamp(2rem, 4.4vw, 3rem);
-  letter-spacing: -0.012em;
-  line-height: 1.02;
-  color: var(--ink-max);
-}
-
-.priceRow {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.price {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
-  font-weight: 600;
-  color: var(--ink-max);
-  line-height: 1;
-}
-
-/* Only ever rendered when it is literally true, with the source named. No
-   permanent fake strikethrough — if everything is on sale, nothing is. */
-.compareAt {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 13px;
-  color: var(--ink-faint);
-  text-decoration: line-through;
-}
-
-/* The line no competitor displays. Arithmetic, not adjectives. */
-.perPuff {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  color: var(--volt);
+.actions {
+  --stripped: 1;
 }
 
 .allIn {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--ink-mute);
+  --stripped: 1;
 }
 
-/* --- Stock confidence ----------------------------------------------------- */
-
-.stock {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 18px;
-  background: var(--surface);
-  border: 1px solid var(--hairline);
+.brand {
+  --stripped: 1;
 }
 
-.stockLine {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  color: var(--ink);
+.buy {
+  --stripped: 1;
 }
 
-.stockVerified {
-  color: var(--live);
-}
-
-.stockOut {
-  color: var(--ink-mute);
-}
-
-/* Provenance is what makes "verified" credible and "expected" honest. */
-.stockNote {
-  font-size: 13px;
-  color: var(--ink-mute);
-  line-height: 1.5;
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.primary {
-  padding: 22px 32px;
-  border: 0;
-  background: var(--volt);
-  color: var(--bg-void);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer;
-  transition:
-    background var(--d-cool) var(--ease-cool),
-    box-shadow var(--d-cool) var(--ease-cool);
-}
-
-.primary:hover {
-  background: var(--volt-lift);
-  box-shadow: 0 0 60px 0 var(--volt-wash);
-  transition:
-    background var(--d-heat) var(--ease-heat),
-    box-shadow var(--d-heat) var(--ease-heat);
-}
-
-.secondary {
-  padding: 18px 32px;
-  border: 1px solid var(--hairline);
-  background: transparent;
-  color: var(--ink);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer;
-  transition:
-    border-color var(--d-cool) var(--ease-cool),
-    color var(--d-cool) var(--ease-cool);
-}
-
-.secondary:hover {
-  border-color: var(--volt);
-  color: var(--volt);
-  transition:
-    border-color var(--d-heat) var(--ease-heat),
-    color var(--d-heat) var(--ease-heat);
+.compareAt {
+  --stripped: 1;
 }
 
 .constraint {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--volt);
+  --stripped: 1;
+}
+
+.crumbs {
+  --stripped: 1;
 }
 
 .desc {
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.6;
-  max-width: 56ch;
+  --stripped: 1;
 }
 
-/* --- Spec strip (cigars) -------------------------------------------------- */
-
-.specs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 18px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 13px;
-  color: var(--amber);
+.hero {
+  --stripped: 1;
 }
 
-/* --- Trust strip ---------------------------------------------------------- */
-
-.trust {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1px;
+.perPuff {
+  --stripped: 1;
 }
 
-.trustCard {
-  background: var(--surface);
-  box-shadow: 0 0 0 1px var(--hairline);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.price {
+  --stripped: 1;
 }
 
-.trustTitle {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-max);
+.priceRow {
+  --stripped: 1;
 }
 
-.trustBody {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--ink-mute);
+.primary {
+  --stripped: 1;
 }
 
-/* See the note in Category.module.css. Cutouts get no plate at all; the 25
-   images whose backdrop could not be removed get one matched to the picture. */
-.shotPlateLight {
-  background: var(--ink-max);
+.secondary {
+  --stripped: 1;
 }
 
-.shotPlateDark {
-  background: var(--surface-lift);
-  box-shadow: inset 0 0 0 1px var(--hairline);
+.shot {
+  --stripped: 1;
 }
 
 .shotImg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 8%;
+  --stripped: 1;
 }
 
 .shotImgCutout {
-  padding: 4%;
+  --stripped: 1;
+}
+
+.shotPlaceholder {
+  --stripped: 1;
+}
+
+.shotPlateDark {
+  --stripped: 1;
+}
+
+.shotPlateLight {
+  --stripped: 1;
+}
+
+.specs {
+  --stripped: 1;
+}
+
+.stock {
+  --stripped: 1;
+}
+
+.stockLine {
+  --stripped: 1;
+}
+
+.stockNote {
+  --stripped: 1;
+}
+
+.stockOut {
+  --stripped: 1;
+}
+
+.stockVerified {
+  --stripped: 1;
+}
+
+.title {
+  --stripped: 1;
+}
+
+.trust {
+  --stripped: 1;
+}
+
+.trustBody {
+  --stripped: 1;
+}
+
+.trustCard {
+  --stripped: 1;
+}
+
+.trustTitle {
+  --stripped: 1;
+}
+
+.wrap {
+  --stripped: 1;
 }

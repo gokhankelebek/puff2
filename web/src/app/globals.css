@@ -1,108 +1,102 @@
 /* ==========================================================================
-   PUFF VEGAS — "The 24"
-   Token layer. Dark-first: the bare :root IS the dark palette.
-   Daylight is the one concession and it is never white.
+   PUFF VEGAS — token layer, STRIPPED FOR REDESIGN
+
+   The "Vegas neon" / "The 24" palette has been removed. What survives here is
+   the *contract*, not the design:
+
+     - every token NAME the components reference, so nothing dangles
+     - the reset, the `.mono` / `.micro` / `.srOnly` utilities
+     - the accessibility floor (focus ring, reduced-motion budget)
+     - the `data-theme` light/dark mechanism
+
+   Every colour below is a neutral placeholder chosen only to keep the stripped
+   site legible while the new design is imported. None of it is a decision.
+   Replace the values; keep the names until the new system says otherwise.
+
+   Removed deliberately, and why:
+     - the brand red / volt / hot ramps      — superseded by the new direction
+     - the flavour swatch palette            — product data, needs re-deriving
+     - the humidor `[data-zone]` shift       — an art-direction call, not structure
+     - the late-band `[data-band]` shift     — same
+   The `data-zone` and `data-band` attributes are STILL emitted by the pages, so
+   both remain available as hooks if the new design wants them.
    ========================================================================== */
 
 :root {
-  /* Ground — the Neon Haze system.
-     Dark blue-violet rather than the near-black we had; the accent returns to
-     a coral at hue 27. That accent is the family we moved away from, which is
-     a call the shop has made deliberately. */
-  --bg-void: #101120;
-  --bg-base: #161826;
-  --surface: #232532;
-  --surface-lift: #2c2f3f;
-  --hairline: color-mix(in srgb, #e9e9ed 16%, transparent);
+  /* Ground */
+  --bg-void: #131313;
+  --bg-base: #1a1a1a;
+  --surface: #242424;
+  --surface-lift: #2e2e2e;
+  --hairline: color-mix(in srgb, #ffffff 16%, transparent);
 
-  /* Ink. The system's neutral ramp starts one step higher than the mockup
-     uses it: neutral-600 measures 3.5:1 on a card, which fails AA for the
-     stock line and the price caption. Every step here clears 4.5:1 on the
-     surface it sits on. */
-  --ink-max: #e9e9ed;
-  --ink: #cfd3e5;
-  --ink-mute: #b2b6ca;
-  --ink-faint: #9397ab;
+  /* Ink — each step still clears 4.5:1 on the surface it sits on, because that
+     was a build criterion here and stays one through the redesign. */
+  --ink-max: #f2f2f2;
+  --ink: #d6d6d6;
+  --ink-mute: #b0b0b0;
+  --ink-faint: #949494;
 
-  /* Accent, at the logo's own hue.
-     The shop's mark is #ce1518 — a true red at 359°, not the coral at hue 27
-     the mockup specified. Close enough that the difference was invisible until
-     the real logo turned up, and worth correcting now that it has: the accent
-     and the wordmark should be one colour family, not two neighbouring ones.
-     The brand red itself measures 3.14:1 on the page and cannot carry text, so
-     the UI uses lightened tints of it and the logo keeps the true value. */
-  --brand: #ce1518;
-  --volt: #ec494b;
-  --volt-lift: #f07577;
-  --volt-wash: #480809;
-  --volt-core: #f9c8c8;
+  /* Accent. Neutral on purpose: a placeholder accent that looks like a choice
+     invites the redesign to inherit it by accident. */
+  --brand: #8c8c8c;
+  --volt: #b8b8b8;
+  --volt-lift: #d0d0d0;
+  --volt-wash: #2b2b2b;
+  --volt-core: #e8e8e8;
+  --hot: #b8b8b8;
+  --hot-lift: #d0d0d0;
+  --hot-wash: #2b2b2b;
+  --accent: var(--volt);
 
-  /* The system has a single accent and its primary button is outlined rather
-     than filled, so there is no second colour to reserve for urgency and no
-     white-on-accent contrast problem to solve. */
-  --hot: #ec494b;
-  --hot-lift: #f07577;
-  --hot-wash: #480809;
-
-  /* Signal. Not in the mockup, but the shelf needs to say "counted" in
-     something that is not the accent, or stock and branding blur together. */
+  /* Signal. Stock state is information, not branding, so it keeps a hue —
+     "counted" has to stay distinguishable from "out" no matter the palette. */
   --live: #4cd4a0;
   --alert: #ff6b61;
 
-  /* The humidor, also ours. Kept as a saturated amber so the cigar room stays
-     a distinguishable place inside the coral system. */
-  --amber: #ffb020;
-  --amber-deep: #3a2a10;
-  --humidor-bg: #12131f;
+  /* Cigar room */
+  --amber: #c9c9c9;
+  --amber-deep: #333333;
+  --humidor-bg: #1a1a1a;
+  --humidor-surface: #242424;
 
-  /* Flavour swatches stay saturated: this is product data, not brand colour,
-     and its only job is separating ten families at thumbnail size. */
-  --flavor-mint: #2ce8c8;
-  --flavor-berry: #ff3d8a;
-  --flavor-tropical: #ff9a1f;
-  --flavor-citrus: #ffd426;
-  --flavor-grape: #a06bff;
-  --flavor-melon: #ff6b6b;
-  --flavor-orchard: #7ed957;
-  --flavor-tobacco: #c98a4b;
-  --flavor-dessert: #ffb9d0;
-  --flavor-unflavored: #8b95a5;
+  /* Flavour swatches. Ten families still have to separate at thumbnail size,
+     so these stay distinct — but they are placeholders, not the new palette. */
+  --flavor-mint: #9fb8b2;
+  --flavor-berry: #b89fae;
+  --flavor-tropical: #b8ac9f;
+  --flavor-citrus: #b8b59f;
+  --flavor-grape: #a89fb8;
+  --flavor-melon: #b8a2a2;
+  --flavor-orchard: #a6b89f;
+  --flavor-tobacco: #b0a89f;
+  --flavor-dessert: #b8aeb4;
+  --flavor-unflavored: #a0a0a0;
 
-  /* The ramp steps the Neon Haze components reference directly. The card is
-     not `--surface`: it is neutral-900 at 60% over the page, which is what
-     makes a grid of them read as glass rather than as tiles. */
-  --neutral-900: #292b31;
-  --neutral-800: #3f424d;
+  /* Ramp + card */
+  --neutral-900: #262626;
+  --neutral-800: #3d3d3d;
   --card-bg: color-mix(in srgb, var(--neutral-900) 60%, transparent);
   --card-border: var(--neutral-800);
-  /* The mockup specifies accent-700 here, which measures 1.95:1 against the
-     card — the hover affordance is effectively invisible in dark mode. The
-     base accent clears the 3:1 that WCAG 1.4.11 asks of a UI boundary. */
   --card-border-hover: var(--volt);
-  --glow: #480809;
-  --cat-ink: #f38e90;
+  --glow: #2b2b2b;
+  --cat-ink: #c4c4c4;
 
-  /* Neon Haze geometry: a 2.8px spacing unit and three radii. The previous
-     system was hard-edged throughout; rounding is part of what makes the
-     mockup read the way it does. */
+  /* Geometry */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 14px;
 
-  /* Type scale */
-  /* Deviation from the handoff, deliberate. The spec says
-     clamp(3.5rem, 11vw, 11rem), but the clock is 11 characters of mono with
-     white-space:nowrap — roughly 6.6em wide. At 375px the 3.5rem floor wins
-     and renders ~370px of text into ~327px of usable width, clipping "PM".
-     A 2.4rem floor is the largest value that fits a 320px viewport, and above
-     ~440px the 11vw term takes over so the intended scale is unchanged. */
+  /* Type scale. The --t-mega floor stays at 2.4rem: the spec'd 3.5rem clipped
+     the clock's last characters at 375px. Keep the floor if the new design
+     keeps a wide single-line hero. */
   --t-mega: clamp(2.4rem, 11vw, 11rem);
   --t-d1: clamp(2.5rem, 6vw, 4.5rem);
   --t-h2: clamp(2rem, 4.4vw, 3.2rem);
   --t-body: 1.0625rem;
   --t-micro: 0.75rem;
 
-  /* Easing — the tick and its subdivisions */
+  /* Motion */
   --ease-heat: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-cool: cubic-bezier(0.16, 1, 0.3, 1);
   --d-micro: 125ms;
@@ -110,163 +104,83 @@
   --d-page: 500ms;
   --d-heat: 320ms;
   --d-cool: 900ms;
-
-  /* Late night, dark. What "late" means depends on the palette, so the shift
-     is expressed as tokens rather than hardcoded into [data-band="late"] —
-     otherwise choosing Day at 2 a.m. would drag the page back to charcoal. */
-  --late-bg-base: #101120;
-  --late-surface: #1c1e2b;
-  --late-surface-lift: #1c1e2b;
-  --late-hairline: color-mix(in srgb, #e9e9ed 12%, transparent);
-  --late-ink-max: #e9e9ed;
-  --late-ink: #b2b6ca;
-  --late-ink-mute: #9397ab;
+  --pace-1: var(--d-micro);
+  --pace-2: var(--d-std);
+  --temp: 0;
 }
 
-/* Daylight — warm bone. Explicit toggle or system preference only.
-   NEVER auto-switched by time of day. */
+/* Light. Explicit toggle or system preference only — never switched by time of
+   day. That rule outlives the palette. */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg-void: #f7f7fa;
-    --bg-base: #f0f0f5;
-    --surface: #e4e4ec;
-    --surface-lift: #d8d8e2;
-    --hairline: color-mix(in srgb, #161826 18%, transparent);
-    --ink-max: #161826;
-    --ink: #3f424d;
-    --ink-mute: #595d6c;
-    /* accent-700 and this step, because accent-600 and neutral-600 both fall
-    under 4.5:1 against a card in daylight. */
-    --ink-faint: #5f6474;
-    --brand: #ce1518;
-    --volt: #981012;
-    --volt-lift: #780d0e;
-    --volt-wash: #fbe5e5;
-    --hot: #981012;
-    --hot-lift: #780d0e;
-    --hot-wash: #fbe5e5;
+    --bg-void: #fafafa;
+    --bg-base: #f2f2f2;
+    --surface: #e6e6e6;
+    --surface-lift: #dadada;
+    --hairline: color-mix(in srgb, #000000 18%, transparent);
+    --ink-max: #141414;
+    --ink: #3d3d3d;
+    --ink-mute: #565656;
+    --ink-faint: #5f5f5f;
+    --brand: #6b6b6b;
+    --volt: #4a4a4a;
+    --volt-lift: #303030;
+    --volt-wash: #e8e8e8;
+    --volt-core: #2a2a2a;
+    --hot: #4a4a4a;
+    --hot-lift: #303030;
+    --hot-wash: #e8e8e8;
     --live: #0a7049;
     --alert: #b3261e;
-    --amber: #875a08;
-    --amber-deep: #efe0c2;
-    --humidor-bg: #efedf2;
-    --humidor-surface: #e2dfe8;
-  --neutral-900: #d8d8e2;
-  --neutral-800: #b6b6c4;
-  --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
-  --card-border: #c8c8d4;
-  --card-border-hover: #981012;
-  --glow: #f8e0e0;
-  --cat-ink: #981012;
-    --neutral-900: #d8d8e2;
-    --neutral-800: #b6b6c4;
+    --amber: #5c5c5c;
+    --amber-deep: #dcdcdc;
+    --humidor-bg: #f0f0f0;
+    --humidor-surface: #e4e4e4;
+    --neutral-900: #dadada;
+    --neutral-800: #b8b8b8;
     --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
-    --card-border: #c8c8d4;
-    --card-border-hover: #981012;
-    --glow: #f8e0e0;
-    --cat-ink: #981012;
-    /* Late night, day palette: warmer and a shade deeper, the same gesture
-       without turning the lights off. */
-    --late-bg-base: #e7e7ee;
-    --late-surface: #dadae4;
-    --late-surface-lift: #d0d0dc;
-    --late-hairline: color-mix(in srgb, #161826 22%, transparent);
-    --late-ink-max: #101120;
-    --late-ink: #343846;
-    --late-ink-mute: #545a69;
+    --card-border: #cacaca;
+    --card-border-hover: #4a4a4a;
+    --glow: #e8e8e8;
+    --cat-ink: #4a4a4a;
   }
 }
 
 :root[data-theme="light"] {
-  --bg-void: #f7f7fa;
-  --bg-base: #f0f0f5;
-  --surface: #e4e4ec;
-  --surface-lift: #d8d8e2;
-  --hairline: color-mix(in srgb, #161826 18%, transparent);
-  --ink-max: #161826;
-  --ink: #3f424d;
-  --ink-mute: #595d6c;
-  /* accent-700 and this step, because accent-600 and neutral-600 both fall
-     under 4.5:1 against a card in daylight. */
-  --ink-faint: #5f6474;
-  --brand: #ce1518;
-  --volt: #981012;
-  --volt-lift: #780d0e;
-  --volt-wash: #fbe5e5;
-  --hot: #981012;
-  --hot-lift: #780d0e;
-  --hot-wash: #fbe5e5;
+  --bg-void: #fafafa;
+  --bg-base: #f2f2f2;
+  --surface: #e6e6e6;
+  --surface-lift: #dadada;
+  --hairline: color-mix(in srgb, #000000 18%, transparent);
+  --ink-max: #141414;
+  --ink: #3d3d3d;
+  --ink-mute: #565656;
+  --ink-faint: #5f5f5f;
+  --brand: #6b6b6b;
+  --volt: #4a4a4a;
+  --volt-lift: #303030;
+  --volt-wash: #e8e8e8;
+  --volt-core: #2a2a2a;
+  --hot: #4a4a4a;
+  --hot-lift: #303030;
+  --hot-wash: #e8e8e8;
   --live: #0a7049;
   --alert: #b3261e;
-  --amber: #875a08;
-  --amber-deep: #efe0c2;
-  --humidor-bg: #efedf2;
-  --humidor-surface: #e2dfe8;
-  --neutral-900: #d8d8e2;
-  --neutral-800: #b6b6c4;
+  --amber: #5c5c5c;
+  --amber-deep: #dcdcdc;
+  --humidor-bg: #f0f0f0;
+  --humidor-surface: #e4e4e4;
+  --neutral-900: #dadada;
+  --neutral-800: #b8b8b8;
   --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
-  --card-border: #c8c8d4;
-  --card-border-hover: #981012;
-  --glow: #f8e0e0;
-  --cat-ink: #981012;
-  /* Late night on the day palette: a shade deeper and cooler, the same
-     gesture without turning the lights off. */
-  --late-bg-base: #e7e7ee;
-  --late-surface: #dadae4;
-  --late-surface-lift: #d0d0dc;
-  --late-hairline: color-mix(in srgb, #161826 22%, transparent);
-  --late-ink-max: #101120;
-  --late-ink: #343846;
-  --late-ink-mute: #545a69;
+  --card-border: #cacaca;
+  --card-border-hover: #4a4a4a;
+  --glow: #e8e8e8;
+  --cat-ink: #4a4a4a;
 }
 
-/* --------------------------------------------------------------------------
-   The humidor.
-
-   Vape culture and cigar culture repel each other visually, and treating that
-   as two brands sharing a logo fails. The model instead is ONE ROOM WITH A
-   HUMIDOR IN THE BACK: structure stays invariant and exactly three things
-   move, all driven from a single `--temp` token. Nothing structural changes,
-   so the eye reads it as the same place, later at night.
-   -------------------------------------------------------------------------- */
-
-:root {
-  --humidor-surface: #1e1a26;
-  --temp: 0;
-  --accent: var(--volt);
-  --pace-1: var(--d-micro);
-  --pace-2: var(--d-std);
-}
-
-[data-zone="humidor"] {
-  --temp: 1;
-  /* 1. the accent rotates cyan → amber */
-  --accent: var(--amber);
-  --bg-base: var(--humidor-bg);
-  --surface: var(--humidor-surface);
-  --hairline: var(--amber-deep);
-  /* 2. the pace roughly doubles — deliberate purchases are slower */
-  --pace-1: 240ms;
-  --pace-2: 480ms;
-}
-
-/* Late night — a whole-palette shift, not an overlay, so contrast holds.
-   Ember does NOT dim: it is the only thing that gets relatively brighter at 2am. */
-[data-band="late"] {
-  --bg-base: var(--late-bg-base);
-  --surface: var(--late-surface);
-  --surface-lift: var(--late-surface-lift);
-  --hairline: var(--late-hairline);
-  --ink-max: var(--late-ink-max);
-  --ink: var(--late-ink);
-  --ink-mute: var(--late-ink-mute);
-}
-
-/* Repaint the whole palette as one move when the day/night control is used.
-   Only a handful of elements declare a colour transition of their own, so
-   without this the page half-animates and half-snaps, which reads as a
-   rendering fault. Set for ~320ms by the toggle, never during normal browsing,
-   and never for anyone who asked for reduced motion. */
+/* Repaint the palette as one move when the day/night control is used, so the
+   page does not half-animate and half-snap. Set for ~320ms by the toggle only. */
 :root[data-theme-anim] *,
 :root[data-theme-anim] *::before,
 :root[data-theme-anim] *::after {
@@ -302,14 +216,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Nothing in this system is rounded. It is a timetable, not an app. */
 button,
 input,
 select,
 textarea {
   font: inherit;
   color: inherit;
-  border-radius: 0;
 }
 
 h1,
@@ -331,8 +243,12 @@ ul {
   list-style: none;
 }
 
+/* `video` belongs here too. The stripped modules no longer size the hero
+   video, and without a cap it lays out at its intrinsic 1280px and forces
+   horizontal overflow on every viewport narrower than that. */
 img,
-svg {
+svg,
+video {
   display: block;
   max-width: 100%;
 }
@@ -342,8 +258,8 @@ svg {
   outline-offset: 3px;
 }
 
-/* Every numeral in the system is tabular. Non-negotiable — it is what keeps
-   the clock from reflowing the header once a second. */
+/* Every numeral is tabular. This is not styling — a proportional face reflows
+   the clock once a second and fails CLS on its own. */
 .mono {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
@@ -369,10 +285,8 @@ svg {
   border: 0;
 }
 
-/* --------------------------------------------------------------------------
-   Keyframes — the only two ambient animations in the system
-   -------------------------------------------------------------------------- */
-
+/* Referenced by components that survived the strip. Kept so nothing dangles;
+   the new design owns whether anything still breathes. */
 @keyframes voltBreathe {
   0%,
   100% {
@@ -404,4 +318,28 @@ svg {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* --------------------------------------------------------------------------
+   STRIP ARTIFACT — DELETE WHEN THE NEW DESIGN SIZES THESE.
+
+   Three SVGs in the tree declare a `viewBox` and no intrinsic size, because
+   their dimensions lived entirely in the CSS module that the strip emptied:
+
+     - components/SearchBox.tsx     the magnifier   (.icon)
+     - components/Chrome.tsx        the grain field (.grain)
+     - app/pickup/page.tsx          the mall plan   (.mallSvg)
+
+   With nothing sizing them, each lays out at its container's full width — the
+   24px magnifier rendered as a 1280px circle over the homepage. That is not a
+   missing design decision, it is a broken page, and it makes the stripped tree
+   impossible to QA before the new design lands.
+
+   This is a floor, not a style. It carries no art direction and should be
+   removed the moment the new system gives these elements real dimensions.
+   -------------------------------------------------------------------------- */
+
+svg[viewBox]:not([width]) {
+  width: 1.5rem;
+  height: 1.5rem;
 }

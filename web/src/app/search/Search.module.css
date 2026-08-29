@@ -1,73 +1,53 @@
+/* Search.module.css — STRIPPED FOR REDESIGN.
+
+   Every rule body was removed; the selectors remain so the CSS Modules
+   export map is unchanged and `styles.x` still resolves to a real class
+   instead of undefined. The markup is therefore intact and unstyled.
+
+   10 class names preserved. Original: see git history
+   (commit 'Baseline: copy of puff before presentation strip').
+
+   Each rule carries an inert `--stripped` custom property. It is not a
+   style: a rule with an empty body is dropped by the CSS optimizer, which
+   deletes the class from the module's export map and makes `s.tile` come
+   back undefined. One declaration keeps the rule — and the export — alive. */
+
 .empty {
-  padding: 40px 0 64px;
-  max-width: 58ch;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.emptyLine {
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-  color: var(--ink-max);
-}
-
-.emptyNote {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink-mute);
+  --stripped: 1;
 }
 
 .emptyActions {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 8px;
+  --stripped: 1;
+}
+
+.emptyLine {
+  --stripped: 1;
 }
 
 .emptyLink {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
+  --stripped: 1;
+}
+
+.emptyNote {
+  --stripped: 1;
 }
 
 .group {
-  margin-top: 8px;
-  padding-bottom: 28px;
-}
-
-.groupHead {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-}
-
-.groupTitle {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-max);
+  --stripped: 1;
 }
 
 .groupCount {
-  color: var(--ink-faint);
+  --stripped: 1;
+}
+
+.groupHead {
+  --stripped: 1;
 }
 
 .groupMore {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
+  --stripped: 1;
 }
 
-.groupMore:hover {
-  color: var(--ink-max);
+.groupTitle {
+  --stripped: 1;
 }

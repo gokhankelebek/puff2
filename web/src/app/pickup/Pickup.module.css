@@ -1,295 +1,153 @@
-.h2 {
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--ink-max);
-  margin-bottom: 12px;
-}
+/* Pickup.module.css — STRIPPED FOR REDESIGN.
 
-/* --- Address ------------------------------------------------------------- */
+   Every rule body was removed; the selectors remain so the CSS Modules
+   export map is unchanged and `styles.x` still resolves to a real class
+   instead of undefined. The markup is therefore intact and unstyled.
+
+   35 class names preserved. Original: see git history
+   (commit 'Baseline: copy of puff before presentation strip').
+
+   Each rule carries an inert `--stripped` custom property. It is not a
+   style: a rule with an empty body is dropped by the CSS optimizer, which
+   deletes the class from the module's export map and makes `s.tile` come
+   back undefined. One declaration keeps the rule — and the export — alive. */
 
 .addr {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 10px;
-  margin-top: 40px;
+  --stripped: 1;
 }
 
 .addrBlock {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 22px;
+  --stripped: 1;
 }
 
 .addrLabel {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
-  margin-bottom: 10px;
+  --stripped: 1;
 }
 
 .addrLine {
-  font-size: 17px;
-  line-height: 1.45;
-  color: var(--ink-max);
-}
-
-.phone {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 20px;
-  font-variant-numeric: tabular-nums;
-  color: var(--volt-lift);
+  --stripped: 1;
 }
 
 .addrNote {
-  margin-top: 10px;
-  max-width: 46ch;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--ink-mute);
+  --stripped: 1;
 }
 
-/* --- The bridge ---------------------------------------------------------- */
-
 .bridge {
-  margin-top: 40px;
-  padding: 24px;
-  border-radius: var(--radius-lg);
-  border-left: 2px solid var(--volt);
-  background: var(--surface);
+  --stripped: 1;
 }
 
 .bridgeBody {
-  max-width: 66ch;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--ink-mute);
-  margin-bottom: 10px;
+  --stripped: 1;
 }
 
-.bridgeBody strong {
-  color: var(--ink-max);
-  font-weight: 600;
+.h2 {
+  --stripped: 1;
 }
 
-/* --- Walking times ------------------------------------------------------- */
-
-.walks,
-.shoot,
 .mall {
-  margin-top: 40px;
-}
-
-/* --- Where you are standing ---------------------------------------------- */
-
-.origins {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.origin {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  min-height: 44px;
-  padding: 14px 16px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-  color: var(--ink);
-  transition:
-    border-color var(--d-cool) var(--ease-cool),
-    color var(--d-cool) var(--ease-cool);
-}
-
-.origin:hover {
-  border-color: var(--card-border-hover);
-  color: var(--ink-max);
-}
-
-.origin[aria-current="page"] {
-  border-color: var(--volt);
-  color: var(--ink-max);
-}
-
-.originLead {
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.originNote {
-  font-size: 13px;
-  line-height: 1.45;
-  color: var(--ink-mute);
-}
-
-/* --- Mall directory schematic -------------------------------------------- */
-
-.mallLead {
-  max-width: 62ch;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--ink-mute);
-  margin-bottom: 16px;
-}
-
-.mallSvg {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  height: auto;
-  margin-top: 16px;
+  --stripped: 1;
 }
 
 .mallBlvd {
-  fill: var(--surface);
-  stroke: var(--card-border);
+  --stripped: 1;
 }
 
 .mallCell {
-  fill: var(--card-bg);
-  stroke: var(--card-border);
-}
-
-.mallUs {
-  fill: var(--glow);
-  stroke: var(--volt);
-}
-
-.mallType {
-  fill: var(--ink-max);
-  font-size: 13px;
-  font-family: var(--font-display), system-ui, sans-serif;
+  --stripped: 1;
 }
 
 .mallHint {
-  fill: var(--ink-faint);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  --stripped: 1;
 }
 
-.walkList {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 8px;
+.mallLead {
+  --stripped: 1;
 }
 
-.walk {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 14px;
-  min-height: 44px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-  color: var(--ink);
-  transition:
-    border-color var(--d-cool) var(--ease-cool),
-    color var(--d-cool) var(--ease-cool);
+.mallSvg {
+  --stripped: 1;
 }
 
-a.walk:hover {
-  border-color: var(--card-border-hover);
-  color: var(--ink-max);
-  transition:
-    border-color var(--d-micro) var(--ease-heat),
-    color var(--d-micro) var(--ease-heat);
+.mallType {
+  --stripped: 1;
 }
 
-.walkMin {
-  flex: none;
-  font-size: 15px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  color: var(--volt-lift);
+.mallUs {
+  --stripped: 1;
 }
 
-.walkPlace {
-  flex: 1;
-  font-size: 14px;
-  color: var(--ink);
+.origin {
+  --stripped: 1;
 }
 
-.walkTag {
-  flex: none;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+.originLead {
+  --stripped: 1;
 }
 
-.walkMaps {
-  flex: none;
-  margin-left: auto;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
+.originNote {
+  --stripped: 1;
 }
 
-.walkNote {
-  margin-top: 14px;
-  max-width: 62ch;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--ink-faint);
+.origins {
+  --stripped: 1;
 }
 
-/* --- The night shoot ----------------------------------------------------- */
-
-.photos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+.phone {
+  --stripped: 1;
 }
 
 .photo {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* Deliberately empty and obviously so — a labelled gap reads as honest, a
-   stock photograph of a different street reads as a lie. */
-.photoCell {
-  aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-  border: 1px dashed var(--card-border);
-  background: var(--neutral-900);
-}
-
-.photoNo {
-  font-size: 13px;
-  letter-spacing: 0.2em;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-faint);
+  --stripped: 1;
 }
 
 .photoCap {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+  --stripped: 1;
 }
 
-@media (max-width: 640px) {
-  .addrBlock,
-  .bridge {
-    padding: 18px;
-  }
+.photoCell {
+  --stripped: 1;
+}
+
+.photoNo {
+  --stripped: 1;
+}
+
+.photos {
+  --stripped: 1;
+}
+
+.shoot {
+  --stripped: 1;
+}
+
+.walk {
+  --stripped: 1;
+}
+
+.walkList {
+  --stripped: 1;
+}
+
+.walkMaps {
+  --stripped: 1;
+}
+
+.walkMin {
+  --stripped: 1;
+}
+
+.walkNote {
+  --stripped: 1;
+}
+
+.walkPlace {
+  --stripped: 1;
+}
+
+.walkTag {
+  --stripped: 1;
+}
+
+.walks {
+  --stripped: 1;
 }

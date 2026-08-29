@@ -1,171 +1,61 @@
-.wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 16px 0 0;
-  border-bottom: 1px solid var(--hairline);
-  background: var(--bg-void);
-  overflow: hidden;
-}
+/* Marquee.module.css — STRIPPED FOR REDESIGN.
 
-/* The checkbox itself is never seen; the label is the control. Kept in the
-   accessibility tree and focusable so it can be reached by keyboard. */
-.toggle {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
+   Every rule body was removed; the selectors remain so the CSS Modules
+   export map is unchanged and `styles.x` still resolves to a real class
+   instead of undefined. The markup is therefore intact and unstyled.
 
-.viewport {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  /* Fade both ends so items enter and leave rather than being clipped by a
-     hard edge, which is what makes a ticker look cheap. */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 48px,
-    #000 calc(100% - 48px),
-    transparent 100%
-  );
-}
+   12 class names preserved. Original: see git history
+   (commit 'Baseline: copy of puff before presentation strip').
 
-.track {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  width: max-content;
-  animation: slide 46s linear infinite;
-}
+   Each rule carries an inert `--stripped` custom property. It is not a
+   style: a rule with an empty body is dropped by the CSS optimizer, which
+   deletes the class from the module's export map and makes `s.tile` come
+   back undefined. One declaration keeps the rule — and the export — alive. */
 
-/* Hover and focus pause it for pointer and keyboard; the label covers touch,
-   where neither of those exists. */
-.wrap:hover .track,
-.wrap:focus-within .track,
-.toggle:checked ~ .viewport .track {
-  animation-play-state: paused;
-}
-
-@keyframes slide {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* Exactly half, because the list is rendered twice. */
-    transform: translateX(-50%);
-  }
-}
-
-.item {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 9px 0;
-  margin-right: 26px;
-  white-space: nowrap;
+.bulb {
+  --stripped: 1;
 }
 
 .hit {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  color: inherit;
+  --stripped: 1;
 }
 
-.hit:hover .place {
-  color: var(--ink-max);
-}
-
-/* A bulb, echoing the VEGAS lettering in the logo. */
-.bulb {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--volt);
-  align-self: center;
-  margin-right: 4px;
-  flex: none;
+.item {
+  --stripped: 1;
 }
 
 .min {
-  font-size: 12px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  color: var(--volt-lift);
-}
-
-.place {
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
+  --stripped: 1;
 }
 
 .pause {
-  flex: none;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  cursor: pointer;
-  padding: 6px 2px;
+  --stripped: 1;
 }
 
-.pause:hover {
-  color: var(--ink);
-}
-
-.toggle:focus-visible ~ .pause {
-  outline: 2px solid var(--volt);
-  outline-offset: 2px;
-}
-
-/* The label shows the action available, so it flips with the state. */
 .pauseOff {
-  display: none;
+  --stripped: 1;
 }
 
-.toggle:checked ~ .pause .pauseOn {
-  display: none;
+.pauseOn {
+  --stripped: 1;
 }
 
-.toggle:checked ~ .pause .pauseOff {
-  display: inline;
+.place {
+  --stripped: 1;
 }
 
-/* Someone who has asked the system for less motion gets a static list, and the
-   control disappears because there is nothing left to pause. */
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-  }
-
-  .viewport {
-    overflow-x: auto;
-  }
-
-  .pause {
-    display: none;
-  }
+.toggle {
+  --stripped: 1;
 }
 
-@media (max-width: 767px) {
-  .item {
-    margin-right: 18px;
-  }
+.track {
+  --stripped: 1;
+}
 
-  .viewport {
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 24px,
-      #000 calc(100% - 24px),
-      transparent 100%
-    );
-  }
+.viewport {
+  --stripped: 1;
+}
+
+.wrap {
+  --stripped: 1;
 }

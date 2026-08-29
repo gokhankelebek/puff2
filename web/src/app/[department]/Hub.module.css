@@ -1,145 +1,69 @@
-/* Flavour and brand indexes — destination pages, not filters.
-   Filtered `?flavor=` views stay on the department PLP and are noindexed.
-   These URLs are the ones that may rank. */
+/* Hub.module.css — STRIPPED FOR REDESIGN.
 
-.grid {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 10px;
-}
+   Every rule body was removed; the selectors remain so the CSS Modules
+   export map is unchanged and `styles.x` still resolves to a real class
+   instead of undefined. The markup is therefore intact and unstyled.
 
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 14px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-  color: var(--ink);
-  transition:
-    border-color var(--d-cool) var(--ease-cool),
-    background var(--d-cool) var(--ease-cool);
-}
+   14 class names preserved. Original: see git history
+   (commit 'Baseline: copy of puff before presentation strip').
 
-.card:hover {
-  border-color: var(--card-border-hover);
-  background: color-mix(in srgb, var(--glow) 30%, transparent);
-  transition:
-    border-color var(--d-micro) var(--ease-heat),
-    background var(--d-micro) var(--ease-heat);
-}
-
-.shot {
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    radial-gradient(
-      160px 110px at 50% 40%,
-      color-mix(in srgb, var(--wash, var(--glow)) 55%, transparent),
-      transparent 70%
-    ),
-    var(--neutral-900);
-}
-
-.img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 8%;
-}
-
-.swatch {
-  width: 100%;
-  height: 8px;
-  border-radius: 2px;
-}
-
-.name {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--ink-max);
-}
-
-.count {
-  display: block;
-  margin-top: 2px;
-  font-variant-numeric: tabular-nums;
-  font-size: 12px;
-  color: var(--ink-faint);
-}
-
-.letters {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.letterBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.letter {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.brandRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+   Each rule carries an inert `--stripped` custom property. It is not a
+   style: a rule with an empty body is dropped by the CSS optimizer, which
+   deletes the class from the module's export map and makes `s.tile` come
+   back undefined. One declaration keeps the rule — and the export — alive. */
 
 .brand {
-  padding: 9px 14px;
-  border-radius: var(--radius-sm);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--ink-mute);
-  transition:
-    color var(--d-cool) var(--ease-cool),
-    box-shadow var(--d-cool) var(--ease-cool);
-}
-
-.brand:hover {
-  color: var(--ink-max);
-  box-shadow: inset 0 0 0 1px var(--accent);
-  transition:
-    color var(--d-micro) var(--ease-heat),
-    box-shadow var(--d-micro) var(--ease-heat);
+  --stripped: 1;
 }
 
 .brandCount {
-  font-weight: 400;
-  color: var(--ink-faint);
+  --stripped: 1;
+}
+
+.brandRow {
+  --stripped: 1;
+}
+
+.card {
+  --stripped: 1;
+}
+
+.count {
+  --stripped: 1;
 }
 
 .elsewhere {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  margin: -8px 0 24px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  --stripped: 1;
 }
 
-.elsewhere a {
-  color: var(--accent);
+.grid {
+  --stripped: 1;
 }
 
-.elsewhere a:hover {
-  color: var(--volt-lift);
+.img {
+  --stripped: 1;
+}
+
+.letter {
+  --stripped: 1;
+}
+
+.letterBlock {
+  --stripped: 1;
+}
+
+.letters {
+  --stripped: 1;
+}
+
+.name {
+  --stripped: 1;
+}
+
+.shot {
+  --stripped: 1;
+}
+
+.swatch {
+  --stripped: 1;
 }

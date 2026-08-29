@@ -1,455 +1,193 @@
-.h2 {
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--ink-max);
-  margin-bottom: 12px;
-}
+/* Delivery.module.css — STRIPPED FOR REDESIGN.
 
-/* --- The three constants -------------------------------------------------- */
+   Every rule body was removed; the selectors remain so the CSS Modules
+   export map is unchanged and `styles.x` still resolves to a real class
+   instead of undefined. The markup is therefore intact and unstyled.
 
-.facts {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  margin-top: 8px;
-}
+   45 class names preserved. Original: see git history
+   (commit 'Baseline: copy of puff before presentation strip').
 
-.fact {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 20px;
-}
+   Each rule carries an inert `--stripped` custom property. It is not a
+   style: a rule with an empty body is dropped by the CSS optimizer, which
+   deletes the class from the module's export map and makes `s.tile` come
+   back undefined. One declaration keeps the rule — and the export — alive. */
 
-.factFigure {
-  display: block;
-  font-size: clamp(1.5rem, 3.2vw, 2rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
-  color: var(--volt-lift);
-}
-
-.factLabel {
-  display: block;
-  margin-top: 6px;
-  font-size: 13px;
-  color: var(--ink-mute);
-}
-
-.rateNote {
-  max-width: 62ch;
-  margin-top: 14px;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink-mute);
-}
-
-/* --- Name search ---------------------------------------------------------- */
-
-.find {
-  margin-top: 28px;
-  max-width: 36rem;
-}
-
-.findLabel {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
-  margin-bottom: 8px;
-}
-
-.findRow {
-  display: flex;
-  gap: 8px;
-}
-
-.findInput {
-  flex: 1;
-  min-width: 0;
-  min-height: 44px;
-  padding: 0 14px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-  color: var(--ink-max);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 16px;
-}
-
-.findInput::placeholder {
-  color: var(--ink-faint);
-}
-
-.findInput:focus {
-  outline: none;
-  border-color: var(--volt);
-}
-
-.findGo {
-  flex: none;
-  min-height: 44px;
-  padding: 0 18px;
-  border: 1px solid var(--hot);
-  border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--hot);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.findGo:hover {
-  background: var(--hot-wash);
-  border-color: var(--hot-lift);
-  color: var(--hot-lift);
-}
-
-.miss {
-  max-width: 62ch;
-  margin-top: 12px;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink-mute);
-}
-
-/* --- Hotel picker --------------------------------------------------------- */
-
-.pick,
-.chosen,
-.how,
-.cant,
-.id {
-  margin-top: 40px;
-}
-
-.pickNote {
-  max-width: 62ch;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink-mute);
-  margin-bottom: 16px;
-}
-
-.inline {
-  color: var(--volt-lift);
+.actions {
+  --stripped: 1;
 }
 
 .allHotels {
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-  padding: 4px 14px 12px;
-  margin-bottom: 18px;
+  --stripped: 1;
 }
 
 .allSummary {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--ink-max);
-  list-style: none;
-}
-
-.allSummary::-webkit-details-marker {
-  display: none;
-}
-
-.allSummary::marker {
-  content: "";
-}
-
-.allSummary::before {
-  content: "";
-  width: 0.45em;
-  height: 0.45em;
-  margin-right: 10px;
-  border-right: 2px solid var(--ink-faint);
-  border-bottom: 2px solid var(--ink-faint);
-  transform: rotate(-45deg);
-  transition: transform var(--d-cool) var(--ease-cool);
-}
-
-.allHotels[open] .allSummary::before {
-  transform: rotate(45deg);
-}
-
-.chosenFacts {
-  margin-top: 8px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
-}
-
-.hotels {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.hotel {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 13px 14px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-  font-size: 14px;
-  color: var(--ink);
-  /* 44px min target: this is a one-handed task at 2am. */
-  min-height: 44px;
-  transition:
-    border-color var(--d-cool) var(--ease-cool),
-    color var(--d-cool) var(--ease-cool);
-}
-
-.hotelFee {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.hotel:hover {
-  border-color: var(--card-border-hover);
-  color: var(--ink-max);
-  transition:
-    border-color var(--d-micro) var(--ease-heat),
-    color var(--d-micro) var(--ease-heat);
-}
-
-/* --- Chosen hotel --------------------------------------------------------- */
-
-.chosen {
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  background: var(--card-bg);
-  padding: 24px;
-}
-
-.chosenHead {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-}
-
-.chosenLabel {
-  flex: 1 0 100%;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
-}
-
-.chosenName {
-  font-size: clamp(1.4rem, 3.4vw, 2rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--ink-max);
-}
-
-/* These three are plain text links, which on a phone rendered 15-20px tall —
-   under the 24x24 WCAG 2.5.8 asks for, let alone the 44px a thumb wants. The
-   call link matters most: it is a primary action, used one-handed, at 2am. */
-.change {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 2px;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.change:hover {
-  color: var(--ink);
-}
-
-.towers {
-  margin-top: 20px;
-  padding-top: 18px;
-  border-top: 1px solid var(--hairline);
-}
-
-.towerAsk {
-  font-size: 14px;
-  color: var(--ink);
-  margin-bottom: 10px;
-}
-
-.towerList {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tower {
-  display: inline-block;
-  padding: 10px 14px;
-  min-height: 44px;
-  border: 1px solid var(--card-border);
-  border-radius: 999px;
-  font-size: 13px;
-  color: var(--ink);
-  transition: all var(--d-cool) var(--ease-cool);
-}
-
-.tower:hover {
-  border-color: var(--card-border-hover);
-  color: var(--ink-max);
-  transition: all var(--d-micro) var(--ease-heat);
-}
-
-.meet {
-  margin-top: 20px;
-  max-width: 62ch;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink-mute);
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 22px;
+  --stripped: 1;
 }
 
 .callLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 2px;
-  font-size: 13px;
-  color: var(--ink-mute);
+  --stripped: 1;
 }
-
-.callLink:hover {
-  color: var(--ink-max);
-}
-
-.walkLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 2px;
-  font-size: 13px;
-  color: var(--volt-lift);
-}
-
-.walkLink:hover {
-  color: var(--ink-max);
-}
-
-.priceNote {
-  margin-top: 18px;
-  max-width: 62ch;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--ink-faint);
-}
-
-/* --- How it works --------------------------------------------------------- */
-
-.steps {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 10px;
-}
-
-.step {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 20px;
-}
-
-.stepNo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--glow);
-  color: var(--volt-lift);
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
-  margin-bottom: 10px;
-}
-
-.stepBody {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--ink-mute);
-}
-
-/* --- Constraints and ID --------------------------------------------------- */
 
 .cant {
-  border-left: 2px solid var(--volt);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  padding: 22px;
+  --stripped: 1;
 }
 
 .cantBody {
-  max-width: 66ch;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--ink-mute);
-  margin-bottom: 12px;
-}
-
-.cantBody strong {
-  color: var(--ink-max);
-  font-weight: 600;
+  --stripped: 1;
 }
 
 .cantLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--volt-lift);
+  --stripped: 1;
+}
+
+.change {
+  --stripped: 1;
+}
+
+.chosen {
+  --stripped: 1;
+}
+
+.chosenFacts {
+  --stripped: 1;
+}
+
+.chosenHead {
+  --stripped: 1;
+}
+
+.chosenLabel {
+  --stripped: 1;
+}
+
+.chosenName {
+  --stripped: 1;
+}
+
+.fact {
+  --stripped: 1;
+}
+
+.factFigure {
+  --stripped: 1;
+}
+
+.factLabel {
+  --stripped: 1;
+}
+
+.facts {
+  --stripped: 1;
+}
+
+.find {
+  --stripped: 1;
+}
+
+.findGo {
+  --stripped: 1;
+}
+
+.findInput {
+  --stripped: 1;
+}
+
+.findLabel {
+  --stripped: 1;
+}
+
+.findRow {
+  --stripped: 1;
+}
+
+.h2 {
+  --stripped: 1;
+}
+
+.hotel {
+  --stripped: 1;
+}
+
+.hotelFee {
+  --stripped: 1;
+}
+
+.hotels {
+  --stripped: 1;
+}
+
+.how {
+  --stripped: 1;
+}
+
+.id {
+  --stripped: 1;
 }
 
 .idBody {
-  max-width: 66ch;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--ink-mute);
+  --stripped: 1;
 }
 
-@media (max-width: 640px) {
-  .chosen {
-    padding: 18px;
-  }
-  .hotels {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
+.inline {
+  --stripped: 1;
+}
+
+.meet {
+  --stripped: 1;
+}
+
+.miss {
+  --stripped: 1;
+}
+
+.pick {
+  --stripped: 1;
+}
+
+.pickNote {
+  --stripped: 1;
+}
+
+.priceNote {
+  --stripped: 1;
+}
+
+.rateNote {
+  --stripped: 1;
+}
+
+.step {
+  --stripped: 1;
+}
+
+.stepBody {
+  --stripped: 1;
+}
+
+.stepNo {
+  --stripped: 1;
+}
+
+.steps {
+  --stripped: 1;
+}
+
+.tower {
+  --stripped: 1;
+}
+
+.towerAsk {
+  --stripped: 1;
+}
+
+.towerList {
+  --stripped: 1;
+}
+
+.towers {
+  --stripped: 1;
+}
+
+.walkLink {
+  --stripped: 1;
 }

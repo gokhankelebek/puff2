@@ -1,158 +1,69 @@
-.wrap {
-  position: relative;
-  flex: 1 1 260px;
-  min-width: 0;
-  max-width: 420px;
+/* SearchBox.module.css — STRIPPED FOR REDESIGN.
+
+   Every rule body was removed; the selectors remain so the CSS Modules
+   export map is unchanged and `styles.x` still resolves to a real class
+   instead of undefined. The markup is therefore intact and unstyled.
+
+   14 class names preserved. Original: see git history
+   (commit 'Baseline: copy of puff before presentation strip').
+
+   Each rule carries an inert `--stripped` custom property. It is not a
+   style: a rule with an empty body is dropped by the CSS optimizer, which
+   deletes the class from the module's export map and makes `s.tile` come
+   back undefined. One declaration keeps the rule — and the export — alive. */
+
+.all {
+  --stripped: 1;
 }
 
 .form {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px;
-  height: 40px;
-  border: 1px solid var(--card-border);
-  border-radius: 999px;
-  background: var(--card-bg);
-  transition: border-color var(--d-cool) var(--ease-cool);
-}
-
-.form:focus-within {
-  border-color: var(--volt);
-  transition: border-color var(--d-micro) var(--ease-heat);
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  flex: none;
-  fill: none;
-  stroke: var(--ink-faint);
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-.input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  background: none;
-  color: var(--ink-max);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 14px;
-}
-
-.input::placeholder {
-  color: var(--ink-faint);
-}
-
-.input:focus {
-  outline: none;
-}
-
-/* Safari draws its own clear button on type=search and it lands on top of the
-   border radius. */
-.input::-webkit-search-decoration,
-.input::-webkit-search-cancel-button {
-  appearance: none;
-}
-
-/* --- The dropdown --------------------------------------------------------- */
-
-.menu {
-  position: absolute;
-  z-index: 60;
-  top: calc(100% + 6px);
-  left: 0;
-  right: 0;
-  list-style: none;
-  padding: 6px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
-  max-height: 70vh;
-  overflow-y: auto;
+  --stripped: 1;
 }
 
 .hit {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 7px 8px;
-  border-radius: var(--radius-sm);
+  --stripped: 1;
 }
 
-/* Hover and keyboard share one state, so arrowing down looks identical to
-   pointing at it. */
 .hitActive {
-  background: color-mix(in srgb, var(--glow) 55%, transparent);
-}
-
-.thumb {
-  flex: none;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  background: var(--neutral-900);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.thumbImg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 3px;
-}
-
-.hitText {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.hitTitle {
-  font-size: 13px;
-  color: var(--ink-max);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  --stripped: 1;
 }
 
 .hitBrand {
-  font-size: 11px;
-  color: var(--ink-faint);
+  --stripped: 1;
 }
 
 .hitPrice {
-  flex: none;
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-mute);
+  --stripped: 1;
 }
 
-.all {
-  display: block;
-  padding: 9px 8px 6px;
-  margin-top: 4px;
-  border-top: 1px solid var(--hairline);
-  font-size: 12px;
-  color: var(--volt-lift);
+.hitText {
+  --stripped: 1;
 }
 
-/* The header carries the mark, six nav links, the phone number and the
-   day/night control. Adding the search to that row overflows long before the
-   mobile breakpoint — at 1010px it squeezed the nav into three lines and made
-   the header 175px tall — so the box drops to its own row from 1180px down,
-   not 767px. */
-@media (max-width: 1180px) {
-  .wrap {
-    flex: 1 0 100%;
-    max-width: none;
-    order: 10;
-  }
+.hitTitle {
+  --stripped: 1;
+}
+
+.icon {
+  --stripped: 1;
+}
+
+.input {
+  --stripped: 1;
+}
+
+.menu {
+  --stripped: 1;
+}
+
+.thumb {
+  --stripped: 1;
+}
+
+.thumbImg {
+  --stripped: 1;
+}
+
+.wrap {
+  --stripped: 1;
 }
