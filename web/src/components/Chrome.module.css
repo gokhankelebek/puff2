@@ -41,7 +41,13 @@
   font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  /* Deliberately NOT --gold. Gold is the bulb colour: it belongs to the logo's
+     VEGAS and the marquee strip, which sit 60px apart and read as one lit sign.
+     Spending it on running text three more times in the same 400px made it
+     read as emphasis-in-general rather than as light. This line is the
+     brightest thing in a bar of --text-muted and --text-faint, so it still
+     lands first — it just does it with weight and tracking. */
+  color: var(--text);
   white-space: nowrap;
 }
 

@@ -26,7 +26,9 @@
   font-size: 14px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  /* Sits between the wordmark's gold VEGAS and the bulb strip below it — three
+     golds inside 120px. See Chrome.module.css .utilityHours. */
+  color: var(--text-muted);
 }
 
 .title {

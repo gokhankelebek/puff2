@@ -19,7 +19,7 @@ import {
   DELIVERY_TERMS_LABEL,
   HOTELS,
 } from "@/lib/hotels";
-import { SHOP_STREET } from "@/lib/shop";
+import { SHOP_MALL, SHOP_STREET } from "@/lib/shop";
 import DepartmentIcon from "@/components/DepartmentIcon";
 
 /**
@@ -96,7 +96,7 @@ export default async function HomePage() {
       <main className={s.main}>
         <section className={s.hero} aria-labelledby="hero-title">
           <div className={s.heroCopy}>
-            <p className={s.eyebrow}>Open 24 hours · Center Strip</p>
+            <p className={s.eyebrow}>Center Strip · {SHOP_MALL}</p>
             <h1 className={s.heroTitle} id="hero-title">
               {heroHour}
               <br />

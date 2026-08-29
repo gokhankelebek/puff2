@@ -26,7 +26,8 @@
   font-size: 15px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  /* See Chrome.module.css .utilityHours — gold is reserved for the sign. */
+  color: var(--text-muted);
 }
 
 .heroTitle {
