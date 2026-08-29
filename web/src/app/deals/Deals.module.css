@@ -188,13 +188,22 @@
   min-height: var(--tap);
   padding: 0 22px;
   border-radius: var(--r-button);
-  background: var(--gold-face);
-  color: #17111f;
+  /* The signup CTA. Sits inside [data-island="lit"], which re-declares the
+     magenta tokens and --glow-cta, so it lights the same as the homepage.
+     Matches .ctaPrimary on the homepage. */
+  background: var(--magenta);
+  color: var(--magenta-ink);
   font-family: var(--font-display);
   line-height: 0.92;
   font-size: 17px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  box-shadow: var(--glow-cta);
+  transition: filter var(--d-state) ease-out;
+}
+
+.join:hover {
+  filter: brightness(1.08);
 }
 
 .signupLegal { font-size: 12px; color: var(--text-dim); }
