@@ -85,11 +85,12 @@ export function AgeBanner({ affirmed }: { affirmed: boolean }) {
     <aside className={s.ageBanner} aria-label="Age verification">
       <span className={s.ageLabel}>21+ only</span>
       <p className={s.ageCopy}>ID at the door, every time.</p>
-      <form action="/api/age" method="POST">
-        <button className={s.ageAffirm} type="submit">
-          I&rsquo;m 21 or older
-        </button>
-      </form>
+      {/* Links to the gate rather than affirming inline: the design replaces
+          a one-tap "I'm 21" with a real date of birth, and that needs a page.
+          Still a plain link, so it works with scripting off. */}
+      <a className={s.ageAffirm} href="/age">
+        Verify my age
+      </a>
     </aside>
   );
 }

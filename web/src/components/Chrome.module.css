@@ -175,6 +175,9 @@
 }
 
 .ageAffirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: var(--tap);
   padding: 0 18px;
   border: 0;

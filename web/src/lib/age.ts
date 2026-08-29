@@ -72,3 +72,47 @@ export async function verifyAffirmation(
   }
   return diff === 0;
 }
+
+/**
+ * Is this date of birth 21 or over, today?
+ *
+ * Evaluated on the SERVER against the server's date. A client-side check is
+ * worth nothing here — the whole point is that the shop can say it asked.
+ *
+ * Returns `null` for a date that does not exist (2 Feb 30, month 13, a
+ * four-digit day) so the caller can tell "you typed something impossible"
+ * apart from "you are too young". They are different messages: one is a
+ * correction, the other is a dead end.
+ */
+export function ageFromDob(
+  month: number,
+  day: number,
+  year: number,
+  today: Date = new Date(),
+): number | null {
+  if (!Number.isInteger(month) || month < 1 || month > 12) return null;
+  if (!Number.isInteger(day) || day < 1 || day > 31) return null;
+  if (!Number.isInteger(year) || year < 1900 || year > today.getFullYear()) {
+    return null;
+  }
+
+  // Round-trip through Date to reject the impossible ones — 31 Feb becomes
+  // 2 or 3 March, and the components no longer match what was typed.
+  const dob = new Date(Date.UTC(year, month - 1, day));
+  if (
+    dob.getUTCFullYear() !== year ||
+    dob.getUTCMonth() !== month - 1 ||
+    dob.getUTCDate() !== day
+  ) {
+    return null;
+  }
+
+  let age = today.getUTCFullYear() - year;
+  const beforeBirthday =
+    today.getUTCMonth() < month - 1 ||
+    (today.getUTCMonth() === month - 1 && today.getUTCDate() < day);
+  if (beforeBirthday) age -= 1;
+  return age;
+}
+
+export const LEGAL_AGE = 21;

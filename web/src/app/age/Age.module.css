@@ -1,0 +1,124 @@
+/* 4a — Age gate. Centred on the midnight ground; 480px card on desktop. */
+
+.wrap {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px var(--gutter);
+  background: var(--bg);
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+}
+
+.lockup { display: flex; justify-content: center; }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 9vw, 2.625rem);
+  line-height: 0.95;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.body {
+  margin-inline: auto;
+  max-width: 42ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.form { display: flex; flex-direction: column; gap: 14px; }
+
+.fields {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.fieldLabel {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.input {
+  width: 68px;
+  min-height: var(--tap);
+  padding: 0 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-thumb);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  transition: border-color var(--d-state) ease-out;
+}
+
+.input:focus { border-color: var(--cyan); }
+
+/* Not colour alone: the field also gets a message under it. */
+.input[aria-invalid="true"] { border-color: var(--magenta); }
+
+.fieldYear .input { width: 104px; }
+
+.slash {
+  padding-bottom: 10px;
+  font-size: 20px;
+  color: var(--text-faint);
+}
+
+.error {
+  font-size: 13px;
+  color: var(--magenta-text);
+}
+
+.enter {
+  min-height: 52px;
+  border: 0;
+  border-radius: var(--r-button);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: var(--glow-cta);
+  cursor: pointer;
+  transition: filter var(--d-state) ease-out;
+}
+
+.enter:hover { filter: brightness(1.08); }
+
+.legal {
+  font-size: 12px;
+  line-height: 1.5;
+  /* The legal floor — nothing dimmer carries body copy. */
+  color: var(--text-dim);
+}

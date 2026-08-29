@@ -222,3 +222,46 @@
   /* PageNicotineWarning and the grid share the results column. */
   .wrap > :global(*):nth-child(3) { grid-area: warn; }
 }
+
+/* --- Filter sheet entry -------------------------------------------------- */
+
+.filterBar {
+  display: contents;
+}
+
+.filterLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: border-color var(--d-state) ease-out;
+}
+
+.filterLink:hover { border-color: var(--border-hover); }
+
+/* The count is the design's magenta badge — it is the only thing on the bar
+   that says a filter is currently doing something. */
+.filterCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--r-pill);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}

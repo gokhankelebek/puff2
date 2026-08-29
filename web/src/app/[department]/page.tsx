@@ -6,6 +6,7 @@ import { AgeBanner, BottomNav, Footer, Header, UtilityBar } from "@/components/C
 import { EmptyResults, ProductTiles } from "@/components/ProductTiles";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
 import Bulbs from "@/components/Bulbs";
+import { activeFilterCount, applyFilters } from "@/lib/filters";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
   commerce,
@@ -67,10 +68,10 @@ export default async function CategoryPage({
 
   // Filtering happens on the server from the URL, so it works with JS off and
   // every filtered view is shareable.
-  const items = all
-    .filter((p) => (sp.flavor ? p.flavorFamily === sp.flavor : true))
-    .filter((p) => (sp.nic ? String(p.nicotineMg ?? "") === sp.nic : true))
-    .sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0));
+  const items = applyFilters(all, sp).sort(
+    (a, b) => (b.popularity ?? 0) - (a.popularity ?? 0),
+  );
+  const filterCount = activeFilterCount(sp);
 
   /* Stock is a claim with provenance. If nothing was counted, say nothing —
      an invented freshness line is worse than an absent one. */
@@ -99,8 +100,15 @@ export default async function CategoryPage({
             <span>{DEPARTMENT_LABELS[department]}</span>
           </nav>
           <h1 className={s.title}>{DEPARTMENT_LABELS[department]}</h1>
+          {/* Two numbers, and they are not the same number: the filter sheet
+              promises how many MATCH, this page leads with how many are on
+              the shelf. When some matches are out of stock those differ, and
+              saying only the second makes the sheet's button look like a lie.
+              So both are shown whenever they disagree. */}
           <p className={s.count}>
-            {inStock} on the shelf right now
+            {items.length !== inStock
+              ? `${items.length} ${items.length === 1 ? "result" : "results"} · ${inStock} on the shelf right now`
+              : `${inStock} on the shelf right now`}
             {syncMins !== null ? ` · stock updated ${syncMins} min ago` : ""}
           </p>
         </div>
@@ -125,10 +133,18 @@ export default async function CategoryPage({
             components/PageNicotineWarning. */}
         <PageNicotineWarning products={items} />
 
-        {hasFlavors && <Facets department={department} search={sp} products={all} />}
+        <div className={s.filterBar}>
+          <a className={s.filterLink} href={`/${department}/filters`}>
+            Filters
+            {filterCount > 0 ? (
+              <span className={s.filterCount}>{filterCount}</span>
+            ) : null}
+          </a>
+          {hasFlavors && <Facets department={department} search={sp} products={all} />}
+        </div>
 
         {items.length === 0 ? (
-          <EmptyResults clearHref={`/${department}`} filtered={Boolean(sp.flavor || sp.nic)} />
+          <EmptyResults clearHref={`/${department}`} filtered={filterCount > 0} />
         ) : (
           <ProductTiles items={items} />
         )}
