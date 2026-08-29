@@ -3,15 +3,18 @@
 .main { display: flex; flex-direction: column; }
 
 .mapBand {
-  display: flex;
-  align-items: flex-end;
-  min-height: 210px;
-  padding: 14px var(--gutter);
-  background: var(--photo-2);
+  /* The SVG fills the band and letterboxes itself; the note sits over it in
+     the corner rather than in flow, so the map keeps the full height. */
+  position: relative;
+  height: 210px;
+  /* No background: [data-island="lit"] paints --bg-alt, dark in both themes. */
   border-bottom: 1px solid var(--border);
 }
 
 .mapNote {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 10px;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -181,5 +184,5 @@
   .main { max-width: 1360px; margin: 0 auto; width: 100%; }
   .head, .inside, .legal { padding-inline: 40px; }
   .hoursCard { margin-inline: 40px; }
-  .mapBand { min-height: 300px; padding-inline: 40px; }
+  .mapBand { height: 320px; }
 }

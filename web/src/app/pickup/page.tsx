@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import g from "./Pickup.module.css";
 import Bulbs from "@/components/Bulbs";
+import StripMap from "@/components/StripMap";
 import {
   AgeBanner,
   BottomNav,
@@ -50,10 +51,11 @@ export default async function PickupPage() {
       <Bulbs />
 
       <main className={g.main}>
-        {/* Photography and a dark-theme map tile are both still to be
-            supplied. A labelled band is honest scaffolding. */}
-        <div className={g.mapBand} aria-hidden="true">
-          <span className={g.mapNote}>Map — Strip corridor, dark theme</span>
+        {/* data-island="lit" so the map stays a night map in day mode; it is
+            the same sign language as the delivery band. See StripMap.tsx. */}
+        <div className={g.mapBand} data-island="lit">
+          <StripMap />
+          <span className={g.mapNote}>Schematic · not to scale</span>
         </div>
 
         <section className={g.head}>
