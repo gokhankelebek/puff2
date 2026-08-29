@@ -52,6 +52,13 @@ These come from the shop owner and are not up for re-litigation:
 
 ## Where things stand
 
+> **This tree is mid-redesign.** It is a copy of `~/puff` with the presentation
+> layer stripped: the site builds and every route serves, but it is deliberately
+> unstyled while a new design is brought in. The inventory and everything behind
+> the commerce adapter are untouched. The `origin` remote was removed on purpose —
+> `puff2026.git` is the old site's public repo and must not receive this work.
+> Revert point: the commit *"Baseline: copy of puff before presentation strip"*.
+
 **Built and working:** homepage with Pick-Up / Delivery · six department pages · product
 pages · catalogue search (server + typeahead sharing one scorer) · age gate ·
 day/night toggle · `/pickup` walk-in · `/delivery` hotel picker with

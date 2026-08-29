@@ -117,21 +117,43 @@ already caught real regressions here; treat them as build criteria, not a later 
 
 ## Design tokens (`src/app/globals.css`)
 
-Palette is **"Vegas neon"** — the deliberate escape from the earlier generic look.
+> **Stripped for the redesign.** The "Vegas neon" palette described here has been
+> removed — see the commit *"Strip the presentation layer, keep structure and
+> inventory"*. `git show 3bacdef:web/src/app/globals.css` has the original if you
+> need to recover a value.
 
-| Token | Value | Note |
-|---|---|---|
-| ground | `#161826` / `#232532` | |
-| ink | `#e9e9ed` → `#9397ab` | |
-| `--brand` | `#ce1518` | the true logo red |
-| `--volt` / `--volt-lift` | `#ec494b` / `#f07577` | lightened tints at the logo's hue (359°) |
-| `--card-bg`, `--glow`, `--cat-ink` | | |
-| radii | 4 / 8 / 14 | |
+What survives in `globals.css` is the **contract**, not the design:
 
-Flavour chips are saturated by design decision, not accident.
+| Survives | Why |
+|---|---|
+| Every token *name* | So nothing in the components dangles while the new system is written |
+| The reset, `.mono` / `.micro` / `.srOnly` | `.mono` is load-bearing: a proportional face reflows the clock once a second and fails CLS on its own |
+| `data-theme` light/dark + the pre-paint script | The mechanism is orthogonal to the palette |
+| The accessibility floor | Focus ring and the `prefers-reduced-motion` budget stay build criteria |
 
-Logo assets: `public/brand/logo{,-full,-mark,-mark-sm,-sm}.webp`. The wordmark in
-`components/Chrome.tsx` renders the real mark.
+Every colour value is now a neutral placeholder and none of it is a decision.
+Removed as art direction: the brand red / volt / hot ramps, the flavour swatch
+palette, the humidor `[data-zone]` shift and the late-band `[data-band]` shift.
+**The pages still emit `data-zone` and `data-band`**, so both remain available
+as hooks if the new design wants them.
+
+All 12 CSS modules are emptied the same way — selectors kept, bodies gone. Each
+rule carries an inert `--stripped: 1` declaration, which is not a style: a rule
+with an empty body is dropped by the CSS optimizer, and dropping the rule
+deletes the class from the module's export map, so `s.tile` comes back
+`undefined`. One declaration keeps the export alive.
+
+`NicotineWarning.module.css` is **not** stripped. 21 CFR 1143.3(b)(2)'s
+20 %-of-advertisement test makes that component's format a regulatory question,
+not a design one — see [COMPLIANCE.md](COMPLIANCE.md).
+
+There is one fenced block at the end of `globals.css` marked
+**STRIP ARTIFACT — DELETE WHEN THE NEW DESIGN SIZES THESE**. It gives a fallback
+size to three `viewBox`-only SVGs that the stripped modules used to size (the
+search magnifier, the grain field, the mall plan); without it the 24px magnifier
+lays out at its container's full width. Delete it once the new system sizes them.
+
+Logo assets: `public/brand/logo{,-full,-mark,-mark-sm,-sm}.webp`.
 
 > Watch for non-ASCII homoglyphs in hex values — a Cyrillic `а` in `#8а93a1`
 > shipped once. A non-ASCII grep over CSS is a cheap guard.
