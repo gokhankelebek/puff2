@@ -37,19 +37,35 @@
   color: var(--text);
 }
 
+/* An author `display` beats the `hidden` attribute's UA rule, so without this
+   the trigger stayed on screen while the field was open, pushed it onto a
+   second row and shoved it past the right edge. */
+.trigger[hidden] {
+  display: none;
+}
+
 /* Collapsed, the field itself is not in the way at all. */
 .wrap {
   display: none;
 }
 
+/* Expanded, it grows along the header toward the logo rather than covering
+   the page. The logo stays put, so you can still see where you are — which is
+   the difference between a search field opening and the site navigating.
+
+   `position: static` is load-bearing: it lets .menu below resolve against the
+   HEADER instead of this box, so the results run the full width of the screen
+   rather than starting where the field does. */
 .wrap[data-expanded] {
   display: flex;
-  flex-direction: column;
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  padding: 12px var(--gutter) 0;
-  background: var(--bg);
+  flex: 1;
+  min-width: 0;
+  position: static;
+}
+
+.wrap[data-expanded] .form {
+  flex: 1;
+  min-width: 0;
 }
 
 .form {
@@ -99,17 +115,31 @@
   cursor: pointer;
 }
 
-/* Expanded, the results are the rest of the screen rather than a dropdown. */
+/* Anchored to the header, so it spans the full width under it. */
 .menu {
-  flex: 1;
-  min-height: 0;
+  position: absolute;
+  z-index: 60;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: calc(100dvh - 100% - 12px);
   overflow-y: auto;
-  padding: 8px 0 24px;
+  padding: 6px var(--gutter) 20px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.75);
   -webkit-overflow-scrolling: touch;
 }
 
 .prompt {
-  padding: 20px 2px;
+  position: absolute;
+  z-index: 60;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 16px var(--gutter) 20px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
   font-size: 13px;
   line-height: 1.55;
   color: var(--text-dim);
@@ -235,6 +265,10 @@
     position: absolute;
     z-index: 40;
     top: calc(100% + 8px);
+    /* `left: auto` matters. The mobile rule sets left AND right to 0; with a
+       fixed width that box is over-constrained, and in LTR `left` wins — the
+       dropdown anchored to the field's left edge and ran 80px off the screen. */
+    left: auto;
     right: 0;
     width: 360px;
     flex: none;

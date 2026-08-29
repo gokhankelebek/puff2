@@ -95,6 +95,7 @@ export default function SearchBox() {
       <button
         className={s.trigger}
         type="button"
+        hidden={expanded}
         onClick={() => setExpanded(true)}
         aria-expanded={expanded}
       >
@@ -142,12 +143,6 @@ export default function SearchBox() {
           Cancel
         </button>
       </form>
-
-      {expanded && q.trim().length < 2 && (
-        <p className={s.prompt}>
-          Two letters is enough — brand, flavour or device.
-        </p>
-      )}
 
       {expanded && q.trim().length >= 2 && hits.length === 0 && (
         <p className={s.prompt}>

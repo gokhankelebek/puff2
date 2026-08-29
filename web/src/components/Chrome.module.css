@@ -79,6 +79,10 @@
   gap: 12px;
   padding: 14px var(--gutter);
   background: var(--bg);
+  /* The expanded search field anchors its results to this box, so they run
+     the full width of the screen rather than the width of the field. */
+  position: relative;
+  z-index: 30;
 }
 
 .brand {
@@ -92,6 +96,13 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
+}
+
+/* While the field is up it takes the rest of the row. :has keeps the state
+   inside SearchBox instead of lifting it into Chrome for a layout change. */
+.header:has([data-expanded]) .headerActions {
+  flex: 1;
 }
 
 .searchPill {
@@ -284,8 +295,15 @@
 
 /* The live control everywhere JavaScript is running; the plain link only
    where it is not. data-js is set pre-paint by INIT_SCRIPT, so this swap
-   never flashes. */
+   never flashes.
+
+   `display: contents` rather than `block`: this element only exists to hold
+   the component, and as a real box it broke the layout — a block at
+   flex: 0 1 auto with min-width: auto sat 287px wide inside a 201px row and
+   pushed the field's Cancel button off the screen. Dissolving it makes the
+   trigger and the field direct flex children of .headerActions, which is
+   what the sizing rules assume. */
 .headerSearch { display: none; }
 
-:global(html[data-js="1"]) .headerSearch { display: block; }
+:global(html[data-js="1"]) .headerSearch { display: contents; }
 :global(html[data-js="1"]) .searchPill { display: none; }
