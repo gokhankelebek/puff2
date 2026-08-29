@@ -4,15 +4,25 @@
 
 .main { display: flex; flex-direction: column; padding-bottom: 24px; }
 
+/* The one action on an empty result: ask a human. Given a real button, not a
+   text link, because it is the only thing on the page that can still help. */
 .cta {
-  display: block;
-  padding: 16px var(--gutter) 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 20px;
+  border: 1px solid var(--magenta);
+  border-radius: var(--r-button);
+  color: var(--magenta-text);
   font-family: var(--font-display);
   font-size: 15px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--cyan);
+  transition: background-color var(--d-state) ease-out;
 }
+
+.cta:hover { background: var(--magenta-tint); }
 
 /* --- One department's results -------------------------------------------- */
 
@@ -41,16 +51,14 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* A subtitle, not a link. It was styled as the latter — uppercase, cyan and
+   nowrap — which pushed "175 products behind the counter" off the screen. */
 .shelfNote {
-  font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  white-space: nowrap;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
-
-.shelfNote:hover { text-decoration: underline; }
 
 /* Result ROWS, not cards: the design uses a 52 px thumb and a single line of
    stock, because searching is a lookup and a grid slows a lookup down. */
@@ -119,4 +127,211 @@
 @media (min-width: 1200px) {
   .main { max-width: 1360px; margin: 0 auto; width: 100%; }
   .shelfHead, .tileLink, .cta { padding-inline: 40px; }
+}
+
+/* --- The search bar ------------------------------------------------------ */
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px var(--gutter) 4px;
+}
+
+.form {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* Cyan focus border, per 4e. */
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 16px; /* iOS zooms the page below 16px on focus. */
+}
+
+.input::placeholder { color: var(--text-faint); }
+
+.input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px var(--cyan);
+}
+
+.go {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cancel {
+  flex: none;
+  font-size: 13px;
+  color: var(--cyan);
+}
+
+.cancel:hover { text-decoration: underline; }
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Approximate-results notice — never styled as an error, because it is not
+   one; it is the search being honest about what it did. */
+.approx {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+/* --- Popular searches ---------------------------------------------------- */
+
+.popular { padding: 20px var(--gutter) 28px; }
+
+.popularTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.popularRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.popularChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: border-color var(--d-state) ease-out, color var(--d-state) ease-out;
+}
+
+.popularChip:hover { border-color: var(--border-hover); color: var(--text); }
+
+@media (min-width: 1200px) {
+  .searchBar, .popular { padding-inline: 40px; }
+  .form { max-width: 620px; }
+}
+
+/* --- Department groups --------------------------------------------------- */
+
+.group { padding-top: 18px; }
+
+.groupHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 var(--gutter) 8px;
+}
+
+.groupTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 21px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.groupCount {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.groupMore {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+.groupMore:hover { text-decoration: underline; }
+
+/* --- Nothing found ------------------------------------------------------- */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px var(--gutter) 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+}
+
+.emptyLine {
+  font-family: var(--font-display);
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+
+.emptyLine strong { color: var(--magenta-text); font-weight: 400; }
+
+.emptyNote {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.emptyLink {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+@media (min-width: 1200px) {
+  .groupHead { padding-inline: 40px; }
+  .empty { margin-inline: 40px; }
 }

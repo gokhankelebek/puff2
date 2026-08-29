@@ -4,6 +4,7 @@ import {
   DELIVERY_TERMS_LABEL,
 } from "@/lib/hotels";
 import ThemeToggle from "./ThemeToggle";
+import SearchBox from "./SearchBox";
 import { headers } from "next/headers";
 import { PATH_HEADER } from "@/lib/age-shared";
 import { SHOP_ADDRESS_LINE, SHOP_STREET } from "@/lib/shop";
@@ -110,6 +111,13 @@ export function Header() {
         <Wordmark />
       </a>
       <div className={s.headerActions}>
+        {/* Two controls, one job. The typeahead is desktop-only: on a phone a
+            240px input in the header competes with the page for the keyboard,
+            and /search gives it the whole screen. Both are real GET forms or
+            links, so neither needs JavaScript to work. */}
+        <div className={s.headerSearch}>
+          <SearchBox />
+        </div>
         <a className={s.searchPill} href="/search">
           Search
         </a>

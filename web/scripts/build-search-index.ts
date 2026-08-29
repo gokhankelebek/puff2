@@ -25,6 +25,7 @@ type Model = {
   publishable: boolean;
   priceCents: number | null;
   flavors: { value: string; family: string | null }[];
+  stock: number;
 };
 
 const catalog: Model[] = JSON.parse(
@@ -94,6 +95,10 @@ const docs = catalog
       nf: allFlavors.size,
       price: m.priceCents as number,
       ...(images[m.slug] ? { img: images[m.slug].src } : {}),
+      /* Mirrors stockFor() in the adapter. Search ranks by this, so if the
+         two ever disagree the results will quietly contradict the badges on
+         the cards they link to. Same thresholds, deliberately. */
+      st: m.stock <= 0 ? "o" : m.stock <= 2 ? "l" : "i",
     };
   })
   .sort((a, b) => a.slug.localeCompare(b.slug));

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import s from "../Home.module.css";
-import r from "./Search.module.css";
+/* One stylesheet. This page previously imported `s` from Home.module.css
+   while every s.* class it used lived here, so all of them resolved to
+   undefined and the page rendered unstyled. */
+import s from "./Search.module.css";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
 import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
@@ -14,7 +16,7 @@ import {
   type Department,
   type Product,
 } from "@/lib/commerce";
-import { searchDocs, toDoc } from "@/lib/search";
+import { search, toDoc } from "@/lib/search";
 
 /* A results page is a dead end for crawlers and there are unbounded queries. */
 export const metadata: Metadata = {
@@ -36,7 +38,8 @@ export default async function SearchPage({
      never disagree about what matches. Hits stay in score order — grouping
      below must not re-sort them alphabetically. */
   const bySlug = new Map(all.map((p) => [p.slug, p]));
-  const hits = searchDocs(all.map(toDoc), q, 120)
+  const result = search(all.map(toDoc), q, 120);
+  const hits = result.docs
     .map((d) => bySlug.get(d.slug))
     .filter((p): p is Product => Boolean(p));
   const groups = groupByDepartment(hits);
@@ -47,33 +50,74 @@ export default async function SearchPage({
       <Header />
 
       <main className={s.main}>
+        <section className={s.searchBar}>
+          {/* A real GET form. The header links here, and until now there was
+              nothing to type into — you could only search by arriving with a
+              ?q= already in the URL. */}
+          <form className={s.form} action="/search" method="get" role="search">
+            <label className={s.srOnly} htmlFor="q">
+              Search the shop
+            </label>
+            <input
+              className={s.input}
+              id="q"
+              name="q"
+              type="search"
+              defaultValue={q}
+              placeholder="Brand, flavour or device"
+              autoComplete="off"
+              autoFocus={!q}
+              enterKeyHint="search"
+            />
+            <button className={s.go} type="submit">
+              Search
+            </button>
+          </form>
+          {q ? (
+            <a className={s.cancel} href="/search">
+              Clear
+            </a>
+          ) : null}
+        </section>
+
         <section className={s.shelfHead}>
           <div>
-            <span className={s.shelfIndex}>Search</span>
-            <h1 className={s.shelfTitle}>
-              {q ? `“${q}”` : "Search the shop"}
-            </h1>
+            <h1 className={s.shelfTitle}>{q ? `“${q}”` : "Search the shop"}</h1>
             <p className={s.shelfNote}>
               {q
                 ? `${hits.length} ${hits.length === 1 ? "product" : "products"} on the wall.`
-                : "Brand, flavour or device — 175 products behind the counter."}
+                : `Brand, flavour or device — ${all.length} products behind the counter.`}
             </p>
+            {/* Said plainly. Someone who typed a brand we do not carry needs to
+                know that is what happened, not be handed lookalikes as if they
+                were matches. */}
+            {result.relaxed && hits.length > 0 ? (
+              <p className={s.approx}>
+                Nothing matched exactly. These are the closest things on the
+                shelf.
+              </p>
+            ) : null}
           </div>
         </section>
 
         {hits.length > 0 && <PageNicotineWarning products={hits} />}
 
         {q && hits.length === 0 ? (
-          <Empty q={q} />
+          <>
+            <Empty q={q} />
+            <Popular />
+          </>
+        ) : !q ? (
+          <Popular />
         ) : (
           groups.map((g) => (
-            <section key={g.department} className={r.group} aria-label={DEPARTMENT_LABELS[g.department]}>
-              <div className={r.groupHead}>
-                <h2 className={r.groupTitle}>
+            <section key={g.department} className={s.group} aria-label={DEPARTMENT_LABELS[g.department]}>
+              <div className={s.groupHead}>
+                <h2 className={s.groupTitle}>
                   {DEPARTMENT_LABELS[g.department]}
-                  <span className={r.groupCount}> · {g.items.length}</span>
+                  <span className={s.groupCount}> · {g.items.length}</span>
                 </h2>
-                <a className={r.groupMore} href={`/${g.department}`}>
+                <a className={s.groupMore} href={`/${g.department}`}>
                   See all in {DEPARTMENT_LABELS[g.department]} →
                 </a>
               </div>
@@ -107,22 +151,55 @@ function groupByDepartment(hits: Product[]): { department: Department; items: Pr
 
 /* A dead end is the worst outcome for a shop that answers its phone, so the
    empty state hands over to a person rather than apologising. */
+/**
+ * The empty state, and the popular-search chips the design asks for.
+ *
+ * Two of these are real, known gaps rather than search failures: the shop
+ * does not carry Elf Bar (see docs/OPEN-DECISIONS.md) and has no lighters
+ * listed, though the floor page advertises them. Telling someone "nothing
+ * matched" when the honest answer is "we don't stock that" wastes their time
+ * at 4 a.m., so the copy points at the one thing that always works — asking.
+ */
+const POPULAR = ["Geek Bar", "Lost Mary", "Raz", "Zyn", "Blue Razz", "30k"];
+
 function Empty({ q }: { q: string }) {
   return (
-    <div className={r.empty}>
-      <p className={r.emptyLine}>
+    <div className={s.empty}>
+      <p className={s.emptyLine}>
         Nothing on the wall matches <strong>{q}</strong>.
       </p>
-      <p className={r.emptyNote}>Text us. We&rsquo;ll look.</p>
-      <div className={r.emptyActions}>
-        <a className={s.cta} href="sms:+17026137799">
+      <p className={s.emptyNote}>
+        We may still have it behind the counter — the site only lists what we
+        can confirm is in stock. Text us and we&rsquo;ll look.
+      </p>
+      <div className={s.emptyActions}>
+        <a className={s.cta} href={`sms:+17026137799?&body=${encodeURIComponent(`Do you have ${q}?`)}`}>
           Text us about it
         </a>
-        <a className={r.emptyLink} href="/vape">
-          Browse everything →
+        <a className={s.emptyLink} href="/floor">
+          Browse the floor →
         </a>
       </div>
     </div>
+  );
+}
+
+function Popular() {
+  return (
+    <section className={s.popular} aria-labelledby="popular-title">
+      <h2 className={s.popularTitle} id="popular-title">
+        Searched a lot tonight
+      </h2>
+      <ul className={s.popularRow}>
+        {POPULAR.map((term) => (
+          <li key={term}>
+            <a className={s.popularChip} href={`/search?q=${encodeURIComponent(term)}`}>
+              {term}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import s from "./SearchBox.module.css";
-import { searchDocs } from "@/lib/search";
+import { search } from "@/lib/search";
 import { SEARCH_DOCS } from "@/lib/search-index";
 
 /**
@@ -16,7 +16,7 @@ import { SEARCH_DOCS } from "@/lib/search-index";
  * Suggestions come from the in-memory index, so there is no debounce and no
  * spinner: the list is already there before the keystroke finishes.
  */
-export default function SearchBox({ compact = false }: { compact?: boolean }) {
+export default function SearchBox() {
   const docs = SEARCH_DOCS;
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
@@ -24,8 +24,10 @@ export default function SearchBox({ compact = false }: { compact?: boolean }) {
   const listId = useId();
   const box = useRef<HTMLDivElement>(null);
 
+  /* Same two-pass search the results page runs, so the dropdown can never
+     disagree with the page it leads to — including when it relaxes. */
   const hits = useMemo(
-    () => (q.trim().length < 2 ? [] : searchDocs(docs, q, 7)),
+    () => (q.trim().length < 2 ? [] : search(docs, q, 7).docs),
     [docs, q],
   );
 
@@ -56,7 +58,7 @@ export default function SearchBox({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className={`${s.wrap} ${compact ? s.compact : ""}`} ref={box}>
+    <div className={s.wrap} ref={box}>
       <form className={s.form} action="/search" method="get" role="search">
         <svg className={s.icon} viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
@@ -104,8 +106,18 @@ export default function SearchBox({ compact = false }: { compact?: boolean }) {
                   <span className={s.hitTitle}>{h.title}</span>
                   {h.brand && <span className={s.hitBrand}>{h.brand}</span>}
                 </span>
-                <span className={s.hitPrice}>
-                  ${(h.price / 100).toFixed(2)}
+                <span className={s.hitMeta}>
+                  <span className={s.hitPrice}>
+                    ${(h.price / 100).toFixed(2)}
+                  </span>
+                  {/* Said in the dropdown, not after the tap. Finding the
+                      thing and then discovering it is gone is the worst
+                      order to learn it in. */}
+                  {h.st === "o" ? (
+                    <span className={s.hitOut}>Out</span>
+                  ) : h.st === "l" ? (
+                    <span className={s.hitLow}>Low</span>
+                  ) : null}
                 </span>
               </a>
             </li>

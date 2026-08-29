@@ -307,3 +307,11 @@
   border-radius: var(--r-pill);
   background: var(--green);
 }
+
+/* The typeahead replaces the pill from the desktop breakpoint up. */
+.headerSearch { display: none; }
+
+@media (min-width: 1200px) {
+  .headerSearch { display: block; }
+  .searchPill { display: none; }
+}
