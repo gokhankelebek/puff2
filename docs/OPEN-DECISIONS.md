@@ -71,24 +71,22 @@ Also unresolved: `Twisted Hemp` and `The Hemp Doctor` classify as `hemp` by
 name inference but are plausibly wrap brands. They fail closed, so the cost is
 a missing listing rather than a wrong one — but the shop should confirm.
 
-## The homepage hero 🔴
+## The homepage hero ✅
 
-Both files came from a **third-party YouTube compilation** ("The Fountains of
-Bellagio", `dG0pQgTDB60`), pulled via `yt-dlp` by `scripts/cut-hero-video.py`.
+Settled. Both halves of this are now closed.
 
-1. **Weight — ✅ settled.** `public/hero/puff-night.mp4` has been deleted. The
-   autoplaying 7.3 MB loop was by far the heaviest asset on a site whose whole
-   thesis is a cold Strip connection at 3 a.m. on a phone. The poster already
-   carried the LCP, so nothing load-bearing was lost.
-2. **Rights — 🔴 still open, and deleting the video did not fix it.**
-   `public/hero/puff-night.webp` is a **still frame from that same footage** and
-   is now the entire hero. It remains someone else's copyrighted material used
-   as commercial advertising, with Bellagio and Caesars signage identifiable in
-   it. Needs either a licence or replacement with footage the shop owns — a
-   night shoot of this block would also serve the `/pickup` placeholders.
+**Weight** — the autoplaying 7.3 MB loop was removed during the redesign.
 
-   Nothing is deployed yet (puffvegas.us still serves Ecwid), so there is no
-   live exposure — but this must be resolved before launch, not at launch.
+**Rights** — also resolved, and not by argument. The hero is now the shop's own
+storefront (`public/hero/storefront-*.webp`), supplied by the owner. The still
+frame from the unlicensed YouTube compilation, `puff-night.webp`, became
+orphaned when the hero was rebuilt and has been deleted. Nothing on the site
+uses third-party footage any more.
+
+One thing to confirm with the owner: the storefront image reads as a render or
+mockup rather than a photograph. It is theirs either way, so there is no rights
+question — but `/pickup` still carries labelled placeholders for a real night
+shoot, and if that shoot happens the hero should probably use it too.
 
 ## Needs counsel 🔴
 

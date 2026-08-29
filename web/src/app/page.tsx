@@ -147,8 +147,24 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className={s.heroMedia} aria-hidden="true">
-            <span className={s.photoNote}>The shop at 4 AM</span>
+          <div className={s.heroMedia}>
+            {/* The LCP. srcset because the panel is ~640px on a phone and
+                ~700px on desktop, and the native art is 1254 square — serving
+                the big one to a phone would be 280KB for no visible gain on a
+                connection that is the whole reason this site is built the way
+                it is. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className={s.heroImg}
+              src="/hero/storefront-1254.webp"
+              srcSet="/hero/storefront-640.webp 640w, /hero/storefront-1254.webp 1254w"
+              sizes="(min-width: 1200px) 700px, 100vw"
+              width={1254}
+              height={1254}
+              alt="The Puff Vegas storefront on the Strip, lit at night — smoke shop, vapes, cigars and cigarettes."
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         </section>
 

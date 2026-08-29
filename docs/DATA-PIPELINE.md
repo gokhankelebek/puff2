@@ -107,21 +107,16 @@ Guards learned the hard way, all now in the script:
 
 ## Homepage hero
 
-**The video is gone.** `public/hero/puff-night.mp4` was removed during the
-redesign — it was cut from a third-party YouTube compilation, was never
-licensed, and at 7.3 MB was the heaviest asset on the site. That closes the
-*weight* half of the hero open decision outright.
+`public/hero/storefront-{640,1254}.webp` — the shop's own storefront, supplied
+by the owner. Native art is 1254 square; the two widths are served by `srcset`
+because the panel is roughly 640px on a phone and 700px on desktop, and the
+large file is 280KB. Nothing above 1254 exists on purpose: the source has no
+more detail and upscaling only inflates the download.
 
-`public/hero/puff-night.webp` is still the hero image and still the LCP.
-
-> 🔴 **The poster is a still frame from that same unlicensed footage**, so the
-> *rights* half of the decision is NOT closed by deleting the mp4. See
-> [OPEN-DECISIONS.md](OPEN-DECISIONS.md).
-
-`scripts/cut-hero-video.py` (venv `web/.venv-hero`, needs `yt-dlp` + `pillow`)
-is retained but is not part of any current build path — it produced both files
-and can regenerate the poster if the source is ever replaced with footage the
-shop owns. Delete it along with the poster if the hero is re-shot.
+The earlier hero is gone. `puff-night.mp4` was removed for weight, and
+`puff-night.webp` — a still from the same unlicensed third-party compilation —
+was deleted once the hero rebuild orphaned it. `scripts/cut-hero-video.py`
+remains but is on no build path and produces nothing the site uses.
 
 ## Search
 
