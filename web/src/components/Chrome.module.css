@@ -15,45 +15,76 @@
 
 /* --- Utility bar --------------------------------------------------------- */
 
+/* On mobile this carries two things and no more: that the shop is open, and
+   where it is. The phone, the hotel picker and the 21+ note are desktop-only —
+   at 375px they turn one legible line into four illegible ones.
+
+   It is the reason the address reaches a phone at all. The header at that
+   width is already the logo and the search control, and the person most
+   likely to need directions is the one holding a phone on the Boulevard.
+
+   data-island="lit" keeps it dark in both themes: this is the sign band. */
 .utility {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 var(--gutter);
+  font-size: 12px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.utilityHours {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.utilityDot {
+  color: var(--text-faint);
+}
+
+.utilityAddr {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--d-state) ease-out;
+}
+
+.utilityAddr:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* Desktop adds the rest of the line. */
+.utilityPhone,
+.utilityRight,
+.utilityAge {
   display: none;
 }
 
 @media (min-width: 1200px) {
   .utility {
-    display: flex;
-    align-items: center;
     gap: 10px;
-    padding: 0 40px;
     height: 38px;
-    font-size: 12px;
-    color: var(--text-muted);
-    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
   }
 
   .utilityHours {
-    font-family: var(--font-display);
     font-size: 14px;
     letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .utilityDot {
-    color: var(--text-faint);
-  }
-
-  .utilityAddr {
-    color: var(--text-muted);
-    transition: color var(--d-state) ease-out;
-  }
-
-  .utilityAddr:hover {
-    color: var(--text);
-    text-decoration: underline;
   }
 
   .utilityPhone {
+    display: inline;
     margin-left: 10px;
     color: var(--text-muted);
   }
@@ -64,6 +95,7 @@
 
   /* Pushes the right-hand pair over without a spacer element. */
   .utilityRight {
+    display: inline;
     margin-left: auto;
   }
 
@@ -76,6 +108,7 @@
   }
 
   .utilityAge {
+    display: inline;
     color: var(--text-faint);
   }
 }
