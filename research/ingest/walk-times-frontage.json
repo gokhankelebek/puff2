@@ -1,0 +1,62 @@
+[
+ {
+  "place": "Ole Red",
+  "metres": 18,
+  "min": 0.2,
+  "publish": 1
+ },
+ {
+  "place": "Horseshoe",
+  "metres": 82,
+  "min": 1.1,
+  "publish": 2
+ },
+ {
+  "place": "Paris",
+  "metres": 390,
+  "min": 5.2,
+  "publish": 6
+ },
+ {
+  "place": "The Cromwell",
+  "metres": 379,
+  "min": 5.0,
+  "publish": 6
+ },
+ {
+  "place": "Caesars Palace",
+  "metres": 477,
+  "min": 6.4,
+  "publish": 7
+ },
+ {
+  "place": "Flamingo",
+  "metres": 424,
+  "min": 5.7,
+  "publish": 6
+ },
+ {
+  "place": "Bellagio",
+  "metres": 653,
+  "min": 8.7,
+  "publish": 9
+ },
+ {
+  "place": "The Cosmopolitan",
+  "metres": 558,
+  "min": 7.5,
+  "publish": 8
+ },
+ {
+  "place": "The LINQ",
+  "metres": 562,
+  "min": 7.5,
+  "publish": 8
+ },
+ {
+  "place": "Planet Hollywood",
+  "metres": 776,
+  "min": 10.4,
+  "publish": 11
+ }
+]

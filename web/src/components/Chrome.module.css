@@ -1,0 +1,289 @@
+/* ==========================================================================
+   The constants — byte-identical on every page, in every band, in both themes.
+   The clock, the delivery/ETA module, the wordmark, the grain.
+   They carry the coherence the way a magazine keeps its folio.
+   ========================================================================== */
+
+/* --- Film grain ---------------------------------------------------------- */
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.035;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* --- Wordmark ------------------------------------------------------------ */
+
+/* The "on air" light. It runs permanently, because the store is permanently
+   open. The only element that animates without being touched. */
+/* --- Age banner ---------------------------------------------------------- */
+
+.ageBanner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 48px;
+  padding: 0 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.ageLabel {
+  flex: none;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-max);
+}
+
+.ageCopy {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: var(--ink-mute);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ageAffirm {
+  flex: none;
+  padding: 9px 16px;
+  border: 0;
+  background: var(--ink-max);
+  color: var(--bg-void);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--d-std) var(--ease-cool);
+}
+
+.ageAffirm:hover {
+  background: var(--volt-lift);
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 20px 24px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.wordmark {
+  display: block;
+  width: auto;
+  /* The mark is the only red on the page that is the true brand red rather
+     than the lightened UI accent, so it is never tinted or filtered. */
+}
+
+.brand {
+  font-size: 28px;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  gap: 22px;
+  /* Never let the links stack. When the row runs out of space the search box
+     drops to its own line instead — see SearchBox.module.css. */
+  flex-wrap: nowrap;
+}
+
+.navLink {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color var(--d-cool) var(--ease-cool);
+}
+
+.navLink:hover {
+  color: var(--volt);
+  transition: color var(--d-micro) var(--ease-heat);
+}
+
+.phone {
+  flex: none;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--ink-max);
+  transition: color var(--d-cool) var(--ease-cool);
+}
+
+.phone:hover {
+  color: var(--volt);
+  transition: color var(--d-micro) var(--ease-heat);
+}
+
+/* --- Status module ------------------------------------------------------- */
+
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.statusCell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.statusLabel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.statusClock {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink-max);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.statusOpen {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  /* Cyan, not the signal green. Green is reserved for stock confidence — if
+     OPEN and "counted 22 min ago" are the same colour, neither means much. */
+  color: var(--volt);
+  line-height: 1;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--volt);
+  flex: none;
+  animation: livePulse 2s steps(2, end) infinite;
+}
+
+.statusValue {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.statusBand {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--volt);
+  line-height: 1;
+}
+
+/* --- Mobile department switcher ------------------------------------------
+   A persistent bottom tab bar, NOT a hamburger. The mental model is
+   "which store am I in" — switching departments swaps the whole browse
+   grammar, so it has to be visible at all times, in the thumb arc.
+   -------------------------------------------------------------------------- */
+
+.tabBar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* The wide nav wraps to three lines at 390px and shoves the phone number
+     off the header. Below the breakpoint the departments move to the tab bar. */
+  .nav {
+    display: none;
+  }
+
+  /* At 375px the status strip stacks into three rows and runs to 540px — half
+     a phone screen of clock before any merchandise. It is a strip, not a
+     stage: one line, smaller figures, labels dropped to their values. */
+  .status {
+    gap: 6px 20px;
+    padding: 12px 16px;
+    align-items: baseline;
+  }
+
+  .statusLabel {
+    display: none;
+  }
+
+  .statusClock {
+    font-size: 24px;
+  }
+
+  .header {
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  .tabBar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: var(--surface);
+    border-top: 1px solid var(--hairline);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    /* 56px + label keeps every target well over the 44px thumb minimum. */
+    min-height: 60px;
+    padding: 10px 4px;
+    color: var(--ink-mute);
+    transition: color var(--d-cool) var(--ease-cool);
+  }
+
+  .tab:active,
+  .tab:hover {
+    color: var(--volt);
+    transition: color var(--d-micro) var(--ease-heat);
+  }
+
+  .tabLabel {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Clear the fixed bar so the footer is never trapped underneath it. */
+  .tabSpacer {
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+}

@@ -1,0 +1,1254 @@
+/* ==========================================================================
+   Homepage — hero stage + shelf
+   ========================================================================== */
+
+/* --- Stage: video/image + two doors -------------------------------------- */
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  min-height: min(88dvh, 920px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--bg-void);
+}
+
+.stageMedia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.stageVideo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  pointer-events: none;
+}
+
+.stageVeil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--bg-void) 92%, transparent) 0%,
+    color-mix(in srgb, var(--bg-void) 42%, transparent) 42%,
+    color-mix(in srgb, var(--bg-void) 18%, transparent) 100%
+  );
+}
+
+.stageInner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 28px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stageCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stageKicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-max);
+}
+
+.stagePlace {
+  margin: 0;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--t-h2);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.02;
+  color: var(--ink-max);
+}
+
+.stageWhere {
+  margin: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.doors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.door {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  min-width: min(100%, 200px);
+  padding: 18px 36px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.doorPickup {
+  border: 1px solid var(--ink-max);
+  background: transparent;
+  color: var(--ink-max);
+  transition:
+    background var(--d-cool) var(--ease-cool),
+    border-color var(--d-cool) var(--ease-cool);
+}
+
+.doorPickup:hover {
+  background: color-mix(in srgb, var(--ink-max) 10%, transparent);
+  transition: background var(--d-heat) var(--ease-heat);
+}
+
+.doorDelivery {
+  border: 1px solid var(--hot);
+  background: transparent;
+  color: var(--hot);
+  transition:
+    background var(--d-cool) var(--ease-cool),
+    color var(--d-cool) var(--ease-cool);
+}
+
+.doorDelivery:hover {
+  background: var(--hot-wash);
+  color: var(--hot-lift);
+  transition:
+    background var(--d-heat) var(--ease-heat),
+    color var(--d-heat) var(--ease-heat);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stageVideo {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    min-height: min(78dvh, 720px);
+  }
+  .stageInner {
+    padding: 20px 12px 28px;
+  }
+  .door {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 0;
+    padding: 18px 12px;
+    font-size: 13px;
+  }
+}
+
+/* --- Unused clock-hero leftovers ----------------------------------------- */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 118px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 24px;
+  background: var(--bg-void);
+  overflow: hidden;
+}
+
+/* The single ambient effect permitted in this viewport. That is the whole
+   motion budget here — no smoke layer, no canvas. */
+.wash {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 40vh;
+  background: radial-gradient(
+    120% 100% at 20% 0%,
+    var(--volt-wash) 0%,
+    rgba(42, 17, 8, 0) 62%
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.heroRow {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.heroClock {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: var(--t-mega);
+  color: var(--ink-max);
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.heroOpen {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  /* Bone, not green. "Live-green appears exclusively in the status module" —
+     and the status module is not on this page. The word OPEN already says
+     open; it does not need a colour to say it twice. The only thing that
+     glows here is the ember dot. */
+  color: var(--ink-max);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.heroDot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--volt);
+  flex: none;
+  animation: livePulse 2s steps(2, end) infinite;
+}
+
+.heroAddress {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.heroRight {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cta {
+  display: inline-block;
+  padding: 26px 40px;
+  /* Outlined, not filled — this is `.btn-primary` in the Neon Haze system,
+     which is also what keeps it legible: the accent measures 4.59:1 as text on
+     the page but only ~3.3:1 behind white, so a filled version of the same
+     colour would fail. */
+  border: 1px solid var(--hot);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--hot);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  /* Thermal easing: cool slow on the base rule... */
+  transition:
+    background var(--d-cool) var(--ease-cool),
+    box-shadow var(--d-cool) var(--ease-cool);
+}
+
+.cta:hover {
+  background: var(--hot-wash);
+  border-color: var(--hot-lift);
+  color: var(--hot-lift);
+  /* ...heat fast in the hover rule. The asymmetry is the whole trick. */
+  transition:
+    background var(--d-heat) var(--ease-heat),
+    box-shadow var(--d-heat) var(--ease-heat);
+}
+
+.ctaNote {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+.ctaGhost {
+  display: inline-block;
+  padding: 26px 40px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--ink-max);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--d-cool) var(--ease-cool),
+    color var(--d-cool) var(--ease-cool);
+}
+
+.ctaGhost:hover {
+  border-color: var(--card-border-hover);
+  color: var(--ink-max);
+  transition:
+    border-color var(--d-micro) var(--ease-heat),
+    color var(--d-micro) var(--ease-heat);
+}
+
+/* --- Bands --------------------------------------------------------------- */
+
+.band {
+  background: var(--bg-base);
+  padding: 56px 24px;
+  border-top: 1px solid var(--hairline);
+}
+
+.bandHead {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.bandIndex {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--volt);
+}
+
+.bandTitle {
+  font-weight: 800;
+  font-size: var(--t-h2);
+  letter-spacing: -0.012em;
+  line-height: 1;
+  color: var(--ink-max);
+}
+
+.bandCaption {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-left: auto;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  letter-spacing: -0.012em;
+  line-height: 1.05;
+  color: var(--ink-max);
+}
+
+.copy {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Walking-time table. Walking minutes, never driving minutes, never miles —
+   a Strip block can be a 12-minute walk. */
+.walkRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+}
+
+.walkRow:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.walkFrom {
+  color: var(--ink);
+}
+
+.walkTime {
+  color: var(--ink-max);
+  white-space: nowrap;
+}
+
+/* The only cedar element on the page. Quarantined — see the invariants. */
+.humidorCard {
+  background: var(--humidor-bg);
+  border: 1px solid var(--amber-deep);
+}
+
+.humidorKicker {
+  color: var(--amber);
+}
+
+.humidorTitle {
+  font-family: var(--font-humidor), ui-serif, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink-max);
+}
+
+.humidorMeta {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+.humidorLink {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  transition: color var(--d-cool) var(--ease-cool);
+}
+
+.humidorLink:hover {
+  color: var(--ink-max);
+  transition: color var(--d-micro) var(--ease-heat);
+}
+
+/* --- Product tiles ------------------------------------------------------- */
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+}
+
+.tileImage {
+  aspect-ratio: 1 / 1;
+  background: #101214;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.tilePlaceholder {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 0 12px;
+  line-height: 1.8;
+}
+
+.tileInfo {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tileName {
+  font-size: 16px;
+  color: var(--ink-max);
+  line-height: 1.25;
+}
+
+.tilePrice {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 16px;
+  color: var(--ink-max);
+}
+
+/* The third line is where stock confidence, $/1k puffs, or a constraint goes. */
+.tileMeta {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.metaVerified {
+  color: var(--live);
+}
+
+.metaEmber {
+  color: var(--volt);
+}
+
+/* --- Late-night hotel picker --------------------------------------------- */
+
+.field {
+  border: 1px solid var(--volt);
+  background: var(--bg-void);
+  padding: 16px 18px;
+  font-size: 17px;
+  color: var(--ink-max);
+  width: 100%;
+}
+
+.field::placeholder {
+  color: var(--ink-faint);
+}
+
+.suggest {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border: 1px solid var(--hairline);
+  border-top: 0;
+  background: var(--surface);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background var(--d-cool) var(--ease-cool);
+}
+
+.suggest:hover {
+  background: var(--surface-lift);
+  transition: background var(--d-micro) var(--ease-heat);
+}
+
+.suggestName {
+  color: var(--ink-max);
+  font-size: 15px;
+}
+
+.suggestEta {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+.ctaFull {
+  width: 100%;
+  padding: 20px;
+}
+
+/* --- The hours (04:00–06:00) --------------------------------------------- */
+
+.hoursBand {
+  background: var(--bg-void);
+  padding: 96px 24px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.hoursLine {
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  letter-spacing: -0.012em;
+  color: var(--ink-mute);
+  line-height: 1;
+}
+
+.hoursActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.outline {
+  padding: 18px 32px;
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color var(--d-cool) var(--ease-cool),
+    color var(--d-cool) var(--ease-cool);
+}
+
+.outline:hover {
+  border-color: var(--volt);
+  color: var(--volt);
+  transition:
+    border-color var(--d-heat) var(--ease-heat),
+    color var(--d-heat) var(--ease-heat);
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding: 56px 24px 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background: var(--bg-void);
+}
+
+.commitment {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: clamp(0.65rem, 1.4vw, 0.8rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.footerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* --- Three-photo night sequence (daytime wayfinding) ---------------------- */
+
+.photoSeq {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+}
+
+.photoCell {
+  aspect-ratio: 3 / 4;
+  background: #0d0b09;
+  box-shadow: 0 0 0 1px var(--hairline);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+
+.photoLabel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* --- Footer rule cards ---------------------------------------------------- */
+
+.rules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+}
+
+.ruleCard {
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--hairline);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ruleTitle {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--volt);
+}
+
+.ruleBody {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.ruleBody code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.92em;
+  color: var(--ink-max);
+}
+
+/* --- The hours (04:00–06:00) --------------------------------------------- */
+
+.hoursClock {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 9vw, 6rem);
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+.hoursAddress {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ==========================================================================
+   THE SHELF — the homepage product wall.
+
+   Replaces the clock stage. Same visual grammar as the category grid on
+   purpose: a dark cell washed with the product's flavour family, the cutout
+   floating on it, name and price beneath. A shopper should not be able to tell
+   where the homepage ends and a department begins, because in a shop they do
+   not.
+   ========================================================================== */
+
+.main {
+  padding: 0 24px 24px;
+}
+
+.shelfHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 40px 0 28px;
+}
+
+.shelfIndex {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+/* Large, but a fraction of the clock it replaces — the headline is the wall
+   of product underneath, not this. */
+.shelfTitle {
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  color: var(--ink-max);
+}
+
+.shelfNote {
+  margin-top: 12px;
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-mute);
+}
+
+.shelfActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* --- The grid: the Neon Haze catalog card -------------------------------
+
+   Faithful to the mockup's spec — auto-fill at 160px, 12px gutters, a 1px
+   border that turns accent on hover, and a translucent neutral-900 card rather
+   than a solid surface.
+
+   The part that gives the system its name is the shot: a radial accent glow
+   sitting behind the product, not a flat cell. Ours takes the glow's geometry
+   from the mockup but its HUE from the product's flavour family where there is
+   one, falling back to the accent otherwise — the mockup had no real
+   merchandise to colour it with, and ten families that separate at thumbnail
+   size are worth more than ten identical coral halos. */
+
+.shelf {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.tile {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  overflow: hidden;
+  transition: border-color var(--d-cool) var(--ease-cool);
+}
+
+.tile:hover {
+  border-color: var(--card-border-hover);
+  transition: border-color var(--d-micro) var(--ease-heat);
+}
+
+.tileLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tileShot {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(
+      180px 120px at 50% 35%,
+      color-mix(in srgb, var(--wash, var(--glow)) 55%, transparent),
+      transparent 70%
+    ),
+    var(--neutral-900);
+}
+
+.tileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10%;
+}
+
+.tileImgCutout {
+  padding: 6%;
+}
+
+.tilePlateLight {
+  background: var(--ink-max);
+}
+
+.tilePlateDark {
+  background: var(--surface-lift);
+}
+
+.tileMeta {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.tileName {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink-max);
+}
+
+.tileBrand {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.tileFoot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.tilePrice {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 16px;
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-max);
+}
+
+.tileCat {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cat-ink);
+  white-space: nowrap;
+}
+
+/* Stock is ours, not the mockup's — it is the single most useful thing on a
+   24-hour shop's tile and worth the extra line. */
+.tileStock {
+  display: block;
+  padding: 0 14px 12px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+}
+
+/* --- Departments and brands ---------------------------------------------- */
+
+.deptRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.deptRow {
+  display: grid;
+  /* auto-FIT, not auto-fill. The mockup uses auto-fill because its category
+     list is open-ended; ours is exactly six departments, and auto-fill leaves
+     three empty columns at desktop width. */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 0;
+}
+
+/* The mockup's category button, with a product photograph where its stroke
+   icon was. Same frame: translucent card, 1px border, accent on hover. */
+.deptLink {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  color: var(--ink);
+  text-align: left;
+  transition:
+    border-color var(--d-cool) var(--ease-cool),
+    background var(--d-cool) var(--ease-cool);
+}
+
+.deptLink:hover {
+  border-color: var(--card-border-hover);
+  background: color-mix(in srgb, var(--glow) 30%, transparent);
+  transition:
+    border-color var(--d-micro) var(--ease-heat),
+    background var(--d-micro) var(--ease-heat);
+}
+
+.deptShot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      160px 110px at 50% 40%,
+      color-mix(in srgb, var(--wash, var(--glow)) 55%, transparent),
+      transparent 70%
+    ),
+    var(--neutral-900);
+}
+
+.deptImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8%;
+}
+
+.deptText {
+  margin-top: auto;
+}
+
+/* --- The room strip -------------------------------------------------------
+
+   A shop notice, not a card and not a banner: it sits in the flow between the
+   shelf and the brands, marked by an ember rule down its left edge so it reads
+   as the shop telling you something rather than as another thing to buy. */
+
+.roomStrip {
+  margin-top: 40px;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border-left: 2px solid var(--volt);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.roomKicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--volt);
+}
+
+/* Set larger than body copy. It is one sentence and it is the most useful
+   sentence on the page, so it is allowed to be read rather than scanned. */
+.roomCopy {
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.9vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--ink-max);
+}
+
+.roomLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+}
+
+.roomLink {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color var(--d-cool) var(--ease-cool);
+}
+
+.roomLink:hover {
+  color: var(--volt-lift);
+  transition: color var(--d-micro) var(--ease-heat);
+}
+
+/* Brand recognition does more work than any product name here: a visitor
+   scanning for "the shop that has Geek Bar" finds it in one pass. */
+.brands {
+  padding: 44px 0 8px;
+}
+
+.brandsLabel {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+}
+
+.brandList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.brand {
+  display: inline-block;
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-mute);
+  transition:
+    color var(--d-cool) var(--ease-cool),
+    box-shadow var(--d-cool) var(--ease-cool);
+}
+
+a.brand:hover {
+  color: var(--ink-max);
+  box-shadow: inset 0 0 0 1px var(--accent);
+  transition:
+    color var(--d-micro) var(--ease-heat),
+    box-shadow var(--d-micro) var(--ease-heat);
+}
+
+/* --- Footer --------------------------------------------------------------- */
+
+.footerCols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 36px 32px;
+}
+
+.footerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footerLabel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-max);
+  margin-bottom: 4px;
+}
+
+.footerLine {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-mute);
+}
+
+.footerLink {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 0 12px 16px;
+  }
+  /* Same reason as the status strip: the point of this page is that you can
+     see the stock. A full-height headline and a 100px button push the first
+     product below the fold on a phone. */
+  .shelfHead {
+    padding: 20px 0 16px;
+    gap: 14px;
+  }
+  .shelfTitle {
+    font-size: 1.9rem;
+  }
+  .shelfNote {
+    font-size: 14px;
+  }
+  .cta,
+  .ctaGhost {
+    padding: 16px 24px;
+    font-size: 13px;
+    width: 100%;
+  }
+  .roomStrip {
+    margin-top: 28px;
+    padding: 18px 0 18px 16px;
+  }
+  .shelf {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .shelfActions {
+    width: 100%;
+  }
+}
+
+/* --- Shop by category, and the stats band --------------------------------
+   Both are Neon Haze sections. The counts and the totals are real catalogue
+   numbers rather than the mockup's round "300+". */
+
+.cats {
+  margin-top: 28px;
+}
+
+.sectionLabel {
+  display: block;
+  font-family: var(--font-mono), system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+
+.deptName {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink-max);
+}
+
+.deptCount {
+  display: block;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.stat {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 0 1px var(--hairline);
+  padding: 22px;
+}
+
+.statFigure {
+  display: block;
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--volt-lift);
+}
+
+.statLabel {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-mute);
+}

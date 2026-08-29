@@ -1,0 +1,407 @@
+/* ==========================================================================
+   PUFF VEGAS — "The 24"
+   Token layer. Dark-first: the bare :root IS the dark palette.
+   Daylight is the one concession and it is never white.
+   ========================================================================== */
+
+:root {
+  /* Ground — the Neon Haze system.
+     Dark blue-violet rather than the near-black we had; the accent returns to
+     a coral at hue 27. That accent is the family we moved away from, which is
+     a call the shop has made deliberately. */
+  --bg-void: #101120;
+  --bg-base: #161826;
+  --surface: #232532;
+  --surface-lift: #2c2f3f;
+  --hairline: color-mix(in srgb, #e9e9ed 16%, transparent);
+
+  /* Ink. The system's neutral ramp starts one step higher than the mockup
+     uses it: neutral-600 measures 3.5:1 on a card, which fails AA for the
+     stock line and the price caption. Every step here clears 4.5:1 on the
+     surface it sits on. */
+  --ink-max: #e9e9ed;
+  --ink: #cfd3e5;
+  --ink-mute: #b2b6ca;
+  --ink-faint: #9397ab;
+
+  /* Accent, at the logo's own hue.
+     The shop's mark is #ce1518 — a true red at 359°, not the coral at hue 27
+     the mockup specified. Close enough that the difference was invisible until
+     the real logo turned up, and worth correcting now that it has: the accent
+     and the wordmark should be one colour family, not two neighbouring ones.
+     The brand red itself measures 3.14:1 on the page and cannot carry text, so
+     the UI uses lightened tints of it and the logo keeps the true value. */
+  --brand: #ce1518;
+  --volt: #ec494b;
+  --volt-lift: #f07577;
+  --volt-wash: #480809;
+  --volt-core: #f9c8c8;
+
+  /* The system has a single accent and its primary button is outlined rather
+     than filled, so there is no second colour to reserve for urgency and no
+     white-on-accent contrast problem to solve. */
+  --hot: #ec494b;
+  --hot-lift: #f07577;
+  --hot-wash: #480809;
+
+  /* Signal. Not in the mockup, but the shelf needs to say "counted" in
+     something that is not the accent, or stock and branding blur together. */
+  --live: #4cd4a0;
+  --alert: #ff6b61;
+
+  /* The humidor, also ours. Kept as a saturated amber so the cigar room stays
+     a distinguishable place inside the coral system. */
+  --amber: #ffb020;
+  --amber-deep: #3a2a10;
+  --humidor-bg: #12131f;
+
+  /* Flavour swatches stay saturated: this is product data, not brand colour,
+     and its only job is separating ten families at thumbnail size. */
+  --flavor-mint: #2ce8c8;
+  --flavor-berry: #ff3d8a;
+  --flavor-tropical: #ff9a1f;
+  --flavor-citrus: #ffd426;
+  --flavor-grape: #a06bff;
+  --flavor-melon: #ff6b6b;
+  --flavor-orchard: #7ed957;
+  --flavor-tobacco: #c98a4b;
+  --flavor-dessert: #ffb9d0;
+  --flavor-unflavored: #8b95a5;
+
+  /* The ramp steps the Neon Haze components reference directly. The card is
+     not `--surface`: it is neutral-900 at 60% over the page, which is what
+     makes a grid of them read as glass rather than as tiles. */
+  --neutral-900: #292b31;
+  --neutral-800: #3f424d;
+  --card-bg: color-mix(in srgb, var(--neutral-900) 60%, transparent);
+  --card-border: var(--neutral-800);
+  /* The mockup specifies accent-700 here, which measures 1.95:1 against the
+     card — the hover affordance is effectively invisible in dark mode. The
+     base accent clears the 3:1 that WCAG 1.4.11 asks of a UI boundary. */
+  --card-border-hover: var(--volt);
+  --glow: #480809;
+  --cat-ink: #f38e90;
+
+  /* Neon Haze geometry: a 2.8px spacing unit and three radii. The previous
+     system was hard-edged throughout; rounding is part of what makes the
+     mockup read the way it does. */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  /* Type scale */
+  /* Deviation from the handoff, deliberate. The spec says
+     clamp(3.5rem, 11vw, 11rem), but the clock is 11 characters of mono with
+     white-space:nowrap — roughly 6.6em wide. At 375px the 3.5rem floor wins
+     and renders ~370px of text into ~327px of usable width, clipping "PM".
+     A 2.4rem floor is the largest value that fits a 320px viewport, and above
+     ~440px the 11vw term takes over so the intended scale is unchanged. */
+  --t-mega: clamp(2.4rem, 11vw, 11rem);
+  --t-d1: clamp(2.5rem, 6vw, 4.5rem);
+  --t-h2: clamp(2rem, 4.4vw, 3.2rem);
+  --t-body: 1.0625rem;
+  --t-micro: 0.75rem;
+
+  /* Easing — the tick and its subdivisions */
+  --ease-heat: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-cool: cubic-bezier(0.16, 1, 0.3, 1);
+  --d-micro: 125ms;
+  --d-std: 250ms;
+  --d-page: 500ms;
+  --d-heat: 320ms;
+  --d-cool: 900ms;
+
+  /* Late night, dark. What "late" means depends on the palette, so the shift
+     is expressed as tokens rather than hardcoded into [data-band="late"] —
+     otherwise choosing Day at 2 a.m. would drag the page back to charcoal. */
+  --late-bg-base: #101120;
+  --late-surface: #1c1e2b;
+  --late-surface-lift: #1c1e2b;
+  --late-hairline: color-mix(in srgb, #e9e9ed 12%, transparent);
+  --late-ink-max: #e9e9ed;
+  --late-ink: #b2b6ca;
+  --late-ink-mute: #9397ab;
+}
+
+/* Daylight — warm bone. Explicit toggle or system preference only.
+   NEVER auto-switched by time of day. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg-void: #f7f7fa;
+    --bg-base: #f0f0f5;
+    --surface: #e4e4ec;
+    --surface-lift: #d8d8e2;
+    --hairline: color-mix(in srgb, #161826 18%, transparent);
+    --ink-max: #161826;
+    --ink: #3f424d;
+    --ink-mute: #595d6c;
+    /* accent-700 and this step, because accent-600 and neutral-600 both fall
+    under 4.5:1 against a card in daylight. */
+    --ink-faint: #5f6474;
+    --brand: #ce1518;
+    --volt: #981012;
+    --volt-lift: #780d0e;
+    --volt-wash: #fbe5e5;
+    --hot: #981012;
+    --hot-lift: #780d0e;
+    --hot-wash: #fbe5e5;
+    --live: #0a7049;
+    --alert: #b3261e;
+    --amber: #875a08;
+    --amber-deep: #efe0c2;
+    --humidor-bg: #efedf2;
+    --humidor-surface: #e2dfe8;
+  --neutral-900: #d8d8e2;
+  --neutral-800: #b6b6c4;
+  --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
+  --card-border: #c8c8d4;
+  --card-border-hover: #981012;
+  --glow: #f8e0e0;
+  --cat-ink: #981012;
+    --neutral-900: #d8d8e2;
+    --neutral-800: #b6b6c4;
+    --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
+    --card-border: #c8c8d4;
+    --card-border-hover: #981012;
+    --glow: #f8e0e0;
+    --cat-ink: #981012;
+    /* Late night, day palette: warmer and a shade deeper, the same gesture
+       without turning the lights off. */
+    --late-bg-base: #e7e7ee;
+    --late-surface: #dadae4;
+    --late-surface-lift: #d0d0dc;
+    --late-hairline: color-mix(in srgb, #161826 22%, transparent);
+    --late-ink-max: #101120;
+    --late-ink: #343846;
+    --late-ink-mute: #545a69;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg-void: #f7f7fa;
+  --bg-base: #f0f0f5;
+  --surface: #e4e4ec;
+  --surface-lift: #d8d8e2;
+  --hairline: color-mix(in srgb, #161826 18%, transparent);
+  --ink-max: #161826;
+  --ink: #3f424d;
+  --ink-mute: #595d6c;
+  /* accent-700 and this step, because accent-600 and neutral-600 both fall
+     under 4.5:1 against a card in daylight. */
+  --ink-faint: #5f6474;
+  --brand: #ce1518;
+  --volt: #981012;
+  --volt-lift: #780d0e;
+  --volt-wash: #fbe5e5;
+  --hot: #981012;
+  --hot-lift: #780d0e;
+  --hot-wash: #fbe5e5;
+  --live: #0a7049;
+  --alert: #b3261e;
+  --amber: #875a08;
+  --amber-deep: #efe0c2;
+  --humidor-bg: #efedf2;
+  --humidor-surface: #e2dfe8;
+  --neutral-900: #d8d8e2;
+  --neutral-800: #b6b6c4;
+  --card-bg: color-mix(in srgb, #ffffff 70%, transparent);
+  --card-border: #c8c8d4;
+  --card-border-hover: #981012;
+  --glow: #f8e0e0;
+  --cat-ink: #981012;
+  /* Late night on the day palette: a shade deeper and cooler, the same
+     gesture without turning the lights off. */
+  --late-bg-base: #e7e7ee;
+  --late-surface: #dadae4;
+  --late-surface-lift: #d0d0dc;
+  --late-hairline: color-mix(in srgb, #161826 22%, transparent);
+  --late-ink-max: #101120;
+  --late-ink: #343846;
+  --late-ink-mute: #545a69;
+}
+
+/* --------------------------------------------------------------------------
+   The humidor.
+
+   Vape culture and cigar culture repel each other visually, and treating that
+   as two brands sharing a logo fails. The model instead is ONE ROOM WITH A
+   HUMIDOR IN THE BACK: structure stays invariant and exactly three things
+   move, all driven from a single `--temp` token. Nothing structural changes,
+   so the eye reads it as the same place, later at night.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --humidor-surface: #1e1a26;
+  --temp: 0;
+  --accent: var(--volt);
+  --pace-1: var(--d-micro);
+  --pace-2: var(--d-std);
+}
+
+[data-zone="humidor"] {
+  --temp: 1;
+  /* 1. the accent rotates cyan → amber */
+  --accent: var(--amber);
+  --bg-base: var(--humidor-bg);
+  --surface: var(--humidor-surface);
+  --hairline: var(--amber-deep);
+  /* 2. the pace roughly doubles — deliberate purchases are slower */
+  --pace-1: 240ms;
+  --pace-2: 480ms;
+}
+
+/* Late night — a whole-palette shift, not an overlay, so contrast holds.
+   Ember does NOT dim: it is the only thing that gets relatively brighter at 2am. */
+[data-band="late"] {
+  --bg-base: var(--late-bg-base);
+  --surface: var(--late-surface);
+  --surface-lift: var(--late-surface-lift);
+  --hairline: var(--late-hairline);
+  --ink-max: var(--late-ink-max);
+  --ink: var(--late-ink);
+  --ink-mute: var(--late-ink-mute);
+}
+
+/* Repaint the whole palette as one move when the day/night control is used.
+   Only a handful of elements declare a colour transition of their own, so
+   without this the page half-animates and half-snaps, which reads as a
+   rendering fault. Set for ~320ms by the toggle, never during normal browsing,
+   and never for anyone who asked for reduced motion. */
+:root[data-theme-anim] *,
+:root[data-theme-anim] *::before,
+:root[data-theme-anim] *::after {
+  transition:
+    background-color 260ms var(--ease-cool),
+    border-color 260ms var(--ease-cool),
+    box-shadow 260ms var(--ease-cool),
+    color 260ms var(--ease-cool) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-void);
+  color: var(--ink);
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Nothing in this system is rounded. It is a timetable, not an app. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  border-radius: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--volt);
+  outline-offset: 3px;
+}
+
+/* Every numeral in the system is tabular. Non-negotiable — it is what keeps
+   the clock from reflowing the header once a second. */
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.micro {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Keyframes — the only two ambient animations in the system
+   -------------------------------------------------------------------------- */
+
+@keyframes voltBreathe {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes livePulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Motion budget is enforced, not aspirational. Everything degrades. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

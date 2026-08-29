@@ -1,0 +1,79 @@
+/* ==========================================================================
+   The FDA nicotine warning — 21 CFR 1143.3(b)(2)
+
+   The rule applies to "Internet Web pages" explicitly, and it is prescriptive
+   in a way almost nothing else in web design is:
+
+     (i)   at least 20 percent of the area of the advertisement
+     (ii)  at least 12-point type
+     (iii) Helvetica or Arial BOLD, black-on-white or white-on-black
+     (iv)  capitalised and punctuated exactly as written
+     (v)   centred in the warning area
+     (vi)  rectangular border, not less than 3mm nor more than 4mm
+
+   Two consequences the design has to absorb rather than fight:
+
+   1. It cannot use the brand typeface. The regulation names Helvetica and
+      Arial. So this is the one element on the site that is deliberately NOT
+      in Barlow — and that is precisely what lets it read as an applied
+      placard rather than a broken component. It is a regulatory object that
+      the brand has placed, like a shipping label on a crate.
+
+   2. It is stark white in a dark-first system. Rather than apologise for
+      that, the plate is treated as the brightest thing on the page after the
+      clock — an instrument label, squared off, no radius, consistent with a
+      timetable that is full of applied signage.
+   ========================================================================== */
+
+.plate {
+  /* Black-on-white is the variant chosen: on a near-black ground it reads as
+     an object placed ON the page, which is the intent. */
+  background: #ffffff;
+  color: #000000;
+
+  /* (vi) 3–4mm. 1mm ≈ 3.78px, so this lands at ~12px — deliberately heavy. */
+  border: 3.2mm solid #000000;
+  border-radius: 0;
+
+  /* (iii) The regulation names the faces. Do not "improve" this. */
+  font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+  font-weight: 700;
+
+  /* (ii) floor is 12pt ≈ 16px. Sized so the text still fills the plate —
+     an oversized box with small centred text reads as a rendering bug. */
+  font-size: clamp(1rem, 2vw, 1.55rem);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+
+  /* (v) centred in the warning area. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: clamp(0.75rem, 1.8vw, 1.25rem);
+
+  /* (i) The area test. `--warn-min-area` is set by the consuming layout to a
+     share of the listing it sits in; see ProductHero. A min-height is the
+     only reliable way to guarantee a floor without measuring at runtime. */
+  min-height: var(--warn-min-area, 128px);
+}
+
+/* Sits in the UPPER PORTION of the listing — (the regulation's words). The
+   consuming grid puts it first in source and first visually; this guards
+   against anyone reordering it with flex later. */
+.plate {
+  order: -1;
+}
+
+.text {
+  margin: 0;
+  max-width: 40ch;
+}
+
+/* Cigarettes carry FCLAA Surgeon General warnings enforced by the FTC, not
+   the FDA nicotine statement. Different text, same physical treatment so the
+   page reads consistently. */
+.surgeon {
+  font-size: clamp(0.875rem, 1.7vw, 1.15rem);
+}

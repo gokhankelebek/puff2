@@ -1,0 +1,59 @@
+/* A two-cell segmented control, built to read like the other labelled cells
+   in the status bar rather than like a widget bolted on: mono, uppercase,
+   tracked out, hairline-boxed.
+
+   Hidden until the head script sets `data-js`. With scripting off the buttons
+   would be inert, and an inert control is worse than no control — the palette
+   still follows `prefers-color-scheme` in that case. */
+.wrap {
+  display: none;
+}
+
+:global(html[data-js="1"]) .wrap {
+  display: inline-flex;
+  flex: none;
+  align-items: stretch;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.opt {
+  appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 6px 10px;
+  transition:
+    color var(--d-cool) var(--ease-cool),
+    background-color var(--d-cool) var(--ease-cool);
+}
+
+.opt:hover {
+  color: var(--ink);
+  transition:
+    color var(--d-micro) var(--ease-heat),
+    background-color var(--d-micro) var(--ease-heat);
+}
+
+/* The selected cell, not a checkbox: state is carried by aria-pressed, so the
+   style hangs off the same attribute a screen reader reads. */
+.opt[aria-pressed="true"] {
+  color: var(--ink-max);
+  background: var(--surface-lift);
+}
+
+.opt:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+  .opt {
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+}

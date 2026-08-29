@@ -1,0 +1,73 @@
+.empty {
+  padding: 40px 0 64px;
+  max-width: 58ch;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.emptyLine {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--ink-max);
+}
+
+.emptyNote {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-mute);
+}
+
+.emptyActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.emptyLink {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--volt-lift);
+}
+
+.group {
+  margin-top: 8px;
+  padding-bottom: 28px;
+}
+
+.groupHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.groupTitle {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-max);
+}
+
+.groupCount {
+  color: var(--ink-faint);
+}
+
+.groupMore {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--volt-lift);
+}
+
+.groupMore:hover {
+  color: var(--ink-max);
+}

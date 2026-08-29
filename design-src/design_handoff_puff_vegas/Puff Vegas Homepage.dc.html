@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400..700&family=Newsreader:opsz,wght@6..72,400..600&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #08090A; }
+  * { box-sizing: border-box; }
+  a { color: #FF5A1F; text-decoration: none; }
+  a:hover { color: #FF7A45; }
+  @keyframes emberBreathe { 0%, 100% { opacity: .5; transform: scale(.9); } 50% { opacity: 1; transform: scale(1); } }
+  @keyframes livePulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+</style>
+</helmet>
+
+<div style="background:#08090A; color:#C7CCD1; font-family:Archivo, system-ui, sans-serif; font-size:17px; line-height:1.55; position:relative; overflow:hidden">
+
+  <div style="position:fixed; inset:0; pointer-events:none; z-index:20; opacity:.035; mix-blend-mode:screen; background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>&quot;)"></div>
+
+  <div style="height:48px; display:flex; align-items:center; gap:20px; padding:0 24px; background:#14171A; border-bottom:1px solid #2A2F35; position:relative; z-index:6">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#F4F2ED; flex:none">21+ only</div>
+    <div style="font-size:14px; color:#838B93; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">We check ID in store and at the door, every time.</div>
+    <button type="button" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#08090A; background:#F4F2ED; border:0; padding:9px 16px; cursor:pointer; flex:none; transition:background 250ms cubic-bezier(.16,1,.3,1)" style-hover="background:#FF7A45">I'm 21 or older</button>
+  </div>
+
+  <header style="display:flex; align-items:center; gap:28px; padding:20px 24px; border-bottom:1px solid #2A2F35; position:relative; z-index:6; flex-wrap:wrap">
+    <div style="display:flex; align-items:center; gap:7px; flex:none">
+      <span style="font-size:28px; font-weight:800; font-stretch:118%; letter-spacing:-.028em; color:#F4F2ED; line-height:.9">PUFF</span>
+      <span style="width:7px; height:7px; border-radius:50%; background:#FF5A1F; animation:emberBreathe 4s ease-in-out infinite; margin-bottom:4px"></span>
+    </div>
+    <nav style="display:flex; gap:22px; flex:1; flex-wrap:wrap">
+      <a href="#vape" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#C7CCD1; transition:color 125ms cubic-bezier(.7,0,.84,0)" style-hover="color:#FF5A1F">Vape</a>
+      <a href="#cigars" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#C7CCD1; transition:color 125ms cubic-bezier(.7,0,.84,0)" style-hover="color:#FF5A1F">Cigars</a>
+      <a href="#hookah" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#C7CCD1; transition:color 125ms cubic-bezier(.7,0,.84,0)" style-hover="color:#FF5A1F">Hookah</a>
+      <a href="#glass" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#C7CCD1; transition:color 125ms cubic-bezier(.7,0,.84,0)" style-hover="color:#FF5A1F">Glass</a>
+      <a href="#accessories" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#C7CCD1; transition:color 125ms cubic-bezier(.7,0,.84,0)" style-hover="color:#FF5A1F">Accessories</a>
+    </nav>
+    <a href="tel:+17025550137" style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:.06em; color:#F4F2ED; font-variant-numeric:tabular-nums; flex:none" style-hover="color:#FF5A1F">(702) 555-0137</a>
+  </header>
+
+  <section style="min-height:calc(100vh - 118px); display:flex; flex-direction:column; justify-content:center; padding:56px 24px; background:#08090A; position:relative; z-index:5; border-bottom:1px solid #2A2F35">
+    <div style="position:absolute; left:0; right:0; top:0; height:40vh; pointer-events:none; background:radial-gradient(120% 100% at 20% 0%, #2A1108 0%, rgba(42,17,8,0) 62%); opacity:.55"></div>
+    <div style="position:relative; display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:40px; width:100%">
+      <div style="display:flex; flex-direction:column; gap:18px; min-width:0">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:clamp(3.5rem,11vw,11rem); font-weight:500; color:#F4F2ED; letter-spacing:-.03em; line-height:.9; font-variant-numeric:tabular-nums; white-space:nowrap">{{ clock }}</div>
+        <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap">
+          <div style="display:flex; align-items:center; gap:12px">
+            <span style="width:11px; height:11px; border-radius:50%; background:#2BE08C; animation:livePulse 2s steps(2, end) infinite"></span>
+            <span style="font-family:'JetBrains Mono', monospace; font-size:clamp(2rem,6vw,4.5rem); font-weight:600; color:#2BE08C; letter-spacing:.02em; line-height:1">OPEN</span>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:clamp(.7rem,1.5vw,.85rem); letter-spacing:.14em; text-transform:uppercase; color:#838B93">3649 s las vegas blvd · grand bazaar · next to ole red</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px; flex:none">
+        <button type="button" style="background:#FF5A1F; color:#08090A; border:0; padding:26px 40px; font-family:'JetBrains Mono', monospace; font-size:15px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; transition:background 320ms cubic-bezier(.7,0,.84,0), box-shadow 320ms cubic-bezier(.7,0,.84,0)" style-hover="background:#FF7A45; box-shadow:0 0 60px 0 #2A1108">Deliver to me</button>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66; text-align:center; font-variant-numeric:tabular-nums">≈ {{ eta }} min to strip hotels</div>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding:26px 24px; background:#0E1012; border-bottom:1px solid #2A2F35; position:relative; z-index:5">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66; margin-bottom:8px">Below the fold · hour-band merchandising</div>
+    <div style="font-size:15px; color:#838B93; max-width:74ch; text-wrap:pretty">The hero never changes. Everything under it does. The band is computed server-side from Pacific time — never from the device clock, which lies for a traveller who hasn't changed timezones. Right now the site is serving <span style="font-family:'JetBrains Mono', monospace; color:#FF5A1F; text-transform:uppercase">{{ bandName }}</span>. All four states follow.</div>
+  </div>
+
+  <section style="padding:56px 24px; background:#0E1012; border-bottom:1px solid #2A2F35; position:relative; z-index:5">
+    <div style="display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:32px">
+      <span style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:.14em; color:#FF5A1F; font-variant-numeric:tabular-nums">06:00 — 16:00</span>
+      <h2 style="margin:0; font-size:clamp(2rem,4.4vw,3rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#F4F2ED; line-height:1">Daytime</h2>
+      <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#838B93">Walk-in first · wayfinding · cigars promoted</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; align-items:start">
+      <div style="background:#14171A; border:1px solid #2A2F35; padding:28px; display:flex; flex-direction:column; gap:20px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66">Walk here</div>
+        <div style="font-size:clamp(1.5rem,2.6vw,2rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#F4F2ED; line-height:1.05">Grand Bazaar Shops, next to Ole Red.</div>
+        <div style="display:flex; flex-direction:column; gap:0">
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-top:1px solid #2A2F35; font-family:'JetBrains Mono', monospace; font-size:13px; font-variant-numeric:tabular-nums"><span style="color:#C7CCD1">Bellagio fountains</span><span style="color:#F4F2ED">6 min walk</span></div>
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-top:1px solid #2A2F35; font-family:'JetBrains Mono', monospace; font-size:13px; font-variant-numeric:tabular-nums"><span style="color:#C7CCD1">Caesars Palace</span><span style="color:#F4F2ED">8 min walk</span></div>
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-top:1px solid #2A2F35; font-family:'JetBrains Mono', monospace; font-size:13px; font-variant-numeric:tabular-nums"><span style="color:#C7CCD1">Paris / Flamingo</span><span style="color:#F4F2ED">4 min walk</span></div>
+          <div style="display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-top:1px solid #2A2F35; border-bottom:1px solid #2A2F35; font-family:'JetBrains Mono', monospace; font-size:13px; font-variant-numeric:tabular-nums"><span style="color:#C7CCD1">Harrah's (via skybridge)</span><span style="color:#F4F2ED">9 min walk</span></div>
+        </div>
+        <a href="#directions" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase">Finding us, step by step →</a>
+      </div>
+
+      <div style="background:#14171A; border:1px solid #2A2F35; padding:28px; display:flex; flex-direction:column; gap:18px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66">The three-photo night sequence</div>
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px">
+          <div style="aspect-ratio:3/4; background:#101214; border:1px solid #2A2F35; display:flex; align-items:flex-end; padding:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#575E66">01 ole red</div>
+          <div style="aspect-ratio:3/4; background:#101214; border:1px solid #2A2F35; display:flex; align-items:flex-end; padding:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#575E66">02 the turn</div>
+          <div style="aspect-ratio:3/4; background:#101214; border:1px solid #2A2F35; display:flex; align-items:flex-end; padding:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#575E66">03 the door</div>
+        </div>
+        <div style="font-size:15px; color:#838B93; text-wrap:pretty">Placeholder for the night wayfinding shoot. Documentary, available light only — Strip signage is the source.</div>
+      </div>
+
+      <div style="background:#150F0A; border:1px solid #3B2A1E; padding:28px; display:flex; flex-direction:column; gap:16px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#C08A4A">The humidor · daytime errand</div>
+        <div style="font-family:Newsreader, Georgia, serif; font-size:clamp(1.5rem,2.6vw,2rem); color:#F4F2ED; line-height:1.15">Casa Fuente closed. The Strip's humidor is still open.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:13px; color:#C08A4A; font-variant-numeric:tabular-nums">Humidor: 70°F / 69% RH · checked 6:00 am</div>
+        <div style="font-size:15px; color:#C7CCD1; text-wrap:pretty">Singles from $8.50. Deliberate purchases happen in daylight, so cigars lead the page until 4 pm.</div>
+        <a href="#cigars" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#C08A4A" style-hover="color:#D9A469">Enter the humidor →</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px; background:#0E1012; border-bottom:1px solid #2A2F35; position:relative; z-index:5">
+    <div style="display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:32px">
+      <span style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:.14em; color:#FF5A1F; font-variant-numeric:tabular-nums">16:00 — 23:00</span>
+      <h2 style="margin:0; font-size:clamp(2rem,4.4vw,3rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#F4F2ED; line-height:1">Evening</h2>
+      <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#838B93">Hookah · party packs · before you go out</span>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:24px">
+      <div style="background:#14171A; border:1px solid #2A2F35; padding:32px; display:flex; flex-wrap:wrap; gap:32px; align-items:center; justify-content:space-between">
+        <div style="display:flex; flex-direction:column; gap:12px; max-width:52ch">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66">Buying for the group</div>
+          <div style="font-size:clamp(1.6rem,3.2vw,2.4rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#F4F2ED; line-height:1.05">One order, eight people, before the table at 10.</div>
+          <div style="font-size:16px; color:#C7CCD1; text-wrap:pretty">Party packs are priced per head with the total shown up front, because the phone is being passed around a group and nobody wants to do arithmetic.</div>
+        </div>
+        <button type="button" style="background:#FF5A1F; color:#08090A; border:0; padding:20px 32px; font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; flex:none; transition:background 320ms cubic-bezier(.7,0,.84,0)" style-hover="background:#FF7A45">Build a pack</button>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1px">
+        <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:0; display:flex; flex-direction:column">
+          <div style="aspect-ratio:1/1; background:#101214; display:flex; align-items:flex-end; padding:12px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#575E66">product · charcoal seamless</div>
+          <div style="padding:16px; display:flex; flex-direction:column; gap:6px">
+            <div style="font-size:17px; color:#F4F2ED">Cigar party pack · 8</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:17px; color:#F4F2ED; font-variant-numeric:tabular-nums">$168.00</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#838B93">$21 per head · cutter + lights in</div>
+          </div>
+        </div>
+        <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:0; display:flex; flex-direction:column">
+          <div style="aspect-ratio:1/1; background:#101214; display:flex; align-items:flex-end; padding:12px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#575E66">product · charcoal seamless</div>
+          <div style="padding:16px; display:flex; flex-direction:column; gap:6px">
+            <div style="font-size:17px; color:#F4F2ED">Al Fakher Crown Bar</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:17px; color:#F4F2ED; font-variant-numeric:tabular-nums">$44.99</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#2BE08C">✓ on the shelf · counted 22 min ago</div>
+          </div>
+        </div>
+        <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:0; display:flex; flex-direction:column">
+          <div style="aspect-ratio:1/1; background:#101214; display:flex; align-items:flex-end; padding:12px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#575E66">product · charcoal seamless</div>
+          <div style="padding:16px; display:flex; flex-direction:column; gap:6px">
+            <div style="font-size:17px; color:#F4F2ED">Hookah, full setup</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:17px; color:#F4F2ED; font-variant-numeric:tabular-nums">$129.00</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#838B93">in-store only · fire code</div>
+          </div>
+        </div>
+        <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:0; display:flex; flex-direction:column">
+          <div style="aspect-ratio:1/1; background:#101214; display:flex; align-items:flex-end; padding:12px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#575E66">product · charcoal seamless</div>
+          <div style="padding:16px; display:flex; flex-direction:column; gap:6px">
+            <div style="font-size:17px; color:#F4F2ED">Nicotine pouches · 20 SKUs</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:17px; color:#F4F2ED; font-variant-numeric:tabular-nums">from $6.99</div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#FF5A1F">won't set off the sensor</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#1C2024; border:1px solid #2A2F35; padding:24px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between">
+        <div style="font-size:16px; color:#C7CCD1; max-width:60ch; text-wrap:pretty">You can't smoke a hookah in your hotel room — fire code, and the resorts run sensors that detect tobacco vape at $250–1,000 a room. Here's what actually works instead.</div>
+        <a href="#hookah" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; flex:none">E-hookah & pouches →</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px; background:#0B0C0D; border-bottom:1px solid #2A2F35; position:relative; z-index:5">
+    <div style="display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:14px">
+      <span style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:.14em; color:#FF5A1F; font-variant-numeric:tabular-nums">23:00 — 04:00</span>
+      <h2 style="margin:0; font-size:clamp(2rem,4.4vw,3rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#E4E2DD; line-height:1">Late night</h2>
+      <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#6F767D">Page dims 8% · delivery outranks directions</span>
+    </div>
+    <div style="font-size:15px; color:#6F767D; max-width:70ch; margin-bottom:32px; text-wrap:pretty">Copy shifts to second person and short sentences. The grid reorders to what actually sells at 2 a.m. The delivery form comes first, above the directions.</div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px; align-items:start">
+      <div style="background:#121517; border:1px solid #262B30; padding:28px; display:flex; flex-direction:column; gap:20px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#6F767D">We drive to you</div>
+        <div style="font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#E4E2DD; line-height:1.05">Where are you?</div>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="background:#0B0C0D; border:1px solid #FF5A1F; padding:18px; font-family:'JetBrains Mono', monospace; font-size:15px; color:#E4E2DD">Bellagio<span style="color:#575E66">|</span></div>
+          <div style="background:#121517; border:1px solid #262B30; padding:14px 18px; font-size:15px; color:#9AA2A9; display:flex; justify-content:space-between; gap:12px"><span>Bellagio · Hotel</span><span style="font-family:'JetBrains Mono', monospace; font-size:12px; color:#6F767D">≈ 12 min</span></div>
+          <div style="background:#121517; border:1px solid #262B30; padding:14px 18px; font-size:15px; color:#9AA2A9; display:flex; justify-content:space-between; gap:12px"><span>Bellagio Spa Tower</span><span style="font-family:'JetBrains Mono', monospace; font-size:12px; color:#6F767D">≈ 14 min</span></div>
+        </div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#6F767D; text-wrap:pretty">Hotels, not street addresses. We'll pick the meet point next — you'll never type a room number.</div>
+        <button type="button" style="background:#FF5A1F; color:#08090A; border:0; padding:20px 28px; font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; transition:background 320ms cubic-bezier(.7,0,.84,0)" style-hover="background:#FF7A45">Continue</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#6F767D">What we sell most at 2 a.m.</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:1px">
+          <div style="box-shadow:0 0 0 1px #262B30; background:#121517; display:flex; flex-direction:column">
+            <div style="aspect-ratio:1/1; background:#0E1012"></div>
+            <div style="padding:14px; display:flex; flex-direction:column; gap:5px">
+              <div style="font-size:15px; color:#E4E2DD">Geek Bar Burj 80K</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:15px; color:#E4E2DD; font-variant-numeric:tabular-nums">$49.99</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#6F767D; font-variant-numeric:tabular-nums">$0.62 / 1k puffs</div>
+            </div>
+          </div>
+          <div style="box-shadow:0 0 0 1px #262B30; background:#121517; display:flex; flex-direction:column">
+            <div style="aspect-ratio:1/1; background:#0E1012"></div>
+            <div style="padding:14px; display:flex; flex-direction:column; gap:5px">
+              <div style="font-size:15px; color:#E4E2DD">Marlboro Gold</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:15px; color:#E4E2DD; font-variant-numeric:tabular-nums">$13.75</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#6F767D">pack</div>
+            </div>
+          </div>
+          <div style="box-shadow:0 0 0 1px #262B30; background:#121517; display:flex; flex-direction:column">
+            <div style="aspect-ratio:1/1; background:#0E1012"></div>
+            <div style="padding:14px; display:flex; flex-direction:column; gap:5px">
+              <div style="font-size:15px; color:#E4E2DD">Zyn · 6mg</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:15px; color:#E4E2DD; font-variant-numeric:tabular-nums">$8.49</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#6F767D">won't set off the sensor</div>
+            </div>
+          </div>
+          <div style="box-shadow:0 0 0 1px #262B30; background:#121517; display:flex; flex-direction:column">
+            <div style="aspect-ratio:1/1; background:#0E1012"></div>
+            <div style="padding:14px; display:flex; flex-direction:column; gap:5px">
+              <div style="font-size:15px; color:#E4E2DD">Bic lighter</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:15px; color:#E4E2DD; font-variant-numeric:tabular-nums">$2.50</div>
+              <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#6F767D">nobody remembers one</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#121517; border:1px solid #262B30; padding:20px; display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between">
+          <div style="font-size:15px; color:#9AA2A9; max-width:44ch; text-wrap:pretty">Don't know what it's called? Send us a photo. Someone is at the counter right now.</div>
+          <a href="sms:+17025550137" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; flex:none">Text us a photo →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:96px 24px; background:#08090A; border-bottom:1px solid #2A2F35; position:relative; z-index:5">
+    <div style="display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:56px">
+      <span style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:.14em; color:#575E66; font-variant-numeric:tabular-nums">04:00 — 06:00</span>
+      <h2 style="margin:0; font-size:clamp(2rem,4.4vw,3rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#838B93; line-height:1">The hours</h2>
+      <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66">Stripped · near-monochrome · the screenshot that goes on social</span>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:36px; padding:64px 0">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:clamp(2.6rem,8vw,7rem); font-weight:500; color:#838B93; letter-spacing:-.03em; line-height:.9; font-variant-numeric:tabular-nums">04:41:08</div>
+      <div style="font-size:clamp(2rem,5vw,3.6rem); font-weight:700; font-stretch:112%; letter-spacing:-.028em; color:#F4F2ED; line-height:1">Still here.</div>
+      <div style="display:flex; align-items:center; gap:10px">
+        <span style="width:7px; height:7px; border-radius:50%; background:#FF5A1F; animation:emberBreathe 4s ease-in-out infinite"></span>
+        <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66">3649 s las vegas blvd</span>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center">
+        <a href="tel:+17025550137" style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C7CCD1; border:1px solid #2A2F35; padding:16px 26px; transition:border-color 900ms cubic-bezier(.16,1,.3,1), color 900ms cubic-bezier(.16,1,.3,1)" style-hover="border-color:#FF5A1F; color:#FF5A1F; transition:border-color 320ms cubic-bezier(.7,0,.84,0), color 320ms cubic-bezier(.7,0,.84,0)">Call</a>
+        <a href="#deliver" style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#C7CCD1; border:1px solid #2A2F35; padding:16px 26px; transition:border-color 900ms cubic-bezier(.16,1,.3,1), color 900ms cubic-bezier(.16,1,.3,1)" style-hover="border-color:#FF5A1F; color:#FF5A1F; transition:border-color 320ms cubic-bezier(.7,0,.84,0), color 320ms cubic-bezier(.7,0,.84,0)">Deliver to me</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px; background:#0E1012; position:relative; z-index:5">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1px">
+      <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:26px; display:flex; flex-direction:column; gap:10px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#FF5A1F">The tick</div>
+        <div style="font-size:15px; color:#C7CCD1; text-wrap:pretty">Seconds advance on <span style="font-family:'JetBrains Mono', monospace">steps(1)</span> — a mechanical snap, no easing. Micro 125ms, standard 250ms, page 500ms. Nothing on this page moves at a duration that isn't a subdivision of one second.</div>
+      </div>
+      <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:26px; display:flex; flex-direction:column; gap:10px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#FF5A1F">No layout shift</div>
+        <div style="font-size:15px; color:#C7CCD1; text-wrap:pretty">The clock is server-rendered into a fixed character count with tabular figures, so its width can never change and it hydrates after paint. A ticking element that reflows the header once a second fails CLS on its own.</div>
+      </div>
+      <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:26px; display:flex; flex-direction:column; gap:10px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#FF5A1F">The age banner</div>
+        <div style="font-size:15px; color:#C7CCD1; text-wrap:pretty">48px, in the document flow, server-rendered in the first byte, a form POST so it survives JS being off. It never overlays, never locks scroll, and never hides the phone number.</div>
+      </div>
+      <div style="box-shadow:0 0 0 1px #2A2F35; background:#14171A; padding:26px; display:flex; flex-direction:column; gap:10px">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#FF5A1F">Above the fold</div>
+        <div style="font-size:15px; color:#C7CCD1; text-wrap:pretty">A time, a status, an address and one button. The hero image is a fact, and the fact is the sales pitch.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; padding-top:28px; border-top:1px solid #2A2F35; display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between">
+      <div style="display:flex; align-items:center; gap:7px">
+        <span style="font-size:22px; font-weight:800; font-stretch:118%; letter-spacing:-.028em; color:#F4F2ED; line-height:.9">PUFF</span>
+        <span style="width:6px; height:6px; border-radius:50%; background:#FF5A1F; animation:emberBreathe 4s ease-in-out infinite; margin-bottom:3px"></span>
+      </div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#575E66">Free delivery to strip hotels · no minimum · cash at your door · open now</div>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;clockFormat&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;12-hour&quot;,&quot;24-hour&quot;],&quot;default&quot;:&quot;12-hour&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Clock&quot;},&quot;hourBand&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Live&quot;,&quot;Daytime&quot;,&quot;Evening&quot;,&quot;Late night&quot;,&quot;The hours&quot;],&quot;default&quot;:&quot;Live&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Clock&quot;},&quot;deliveryEta&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:14,&quot;min&quot;:5,&quot;max&quot;:45,&quot;unit&quot;:&quot;min&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Delivery&quot;}}">
+class Component extends DCLogic {
+  state = { now: new Date() };
+
+  componentDidMount() {
+    const step = () => {
+      this.setState({ now: new Date() });
+      this._t = setTimeout(step, 1000 - new Date().getMilliseconds());
+    };
+    this._t = setTimeout(step, 1000 - new Date().getMilliseconds());
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  vegasParts() {
+    const f = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Los_Angeles', hour12: false,
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+    const p = {};
+    for (const part of f.formatToParts(this.state.now)) p[part.type] = part.value;
+    return { h: parseInt(p.hour, 10) % 24, m: p.minute, s: p.second };
+  }
+
+  band(h) {
+    if (h >= 6 && h < 16) return 'Daytime';
+    if (h >= 16 && h < 23) return 'Evening';
+    if (h >= 23 || h < 4) return 'Late night';
+    return 'The hours';
+  }
+
+  renderVals() {
+    const { h, m, s } = this.vegasParts();
+    const h12 = h % 12 === 0 ? 12 : h % 12;
+    const clock = (this.props.clockFormat ?? '12-hour') === '24-hour'
+      ? String(h).padStart(2, '0') + ':' + m + ':' + s
+      : String(h12).padStart(2, '0') + ':' + m + ':' + s + ' ' + (h < 12 ? 'AM' : 'PM');
+    const forced = this.props.hourBand ?? 'Live';
+    return {
+      clock,
+      eta: String(this.props.deliveryEta ?? 14).padStart(2, '0'),
+      bandName: forced === 'Live' ? this.band(h) : forced
+    };
+  }
+}
+
+</script>
+</body>
+</html>

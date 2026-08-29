@@ -1,0 +1,18 @@
+# Products still without a photograph.
+#
+# Paste a vendor image URL after the ~~ on any line, then re-run:
+#   npx tsx scripts/fetch-images.ts
+#
+# Or skip the URLs entirely and drop files into research/ingest/images/
+# named <slug>.jpg — that path takes priority over everything else.
+#
+# 3 products, grouped by brand.
+
+# ── Butane (1)
+Butane ~~ <url>
+
+# ── Mpb (1)
+Mpb Hookah bowl ~~ <url>
+
+# ── Vape (1)
+Vape-Juice ~~ <url>

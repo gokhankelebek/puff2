@@ -1,0 +1,171 @@
+.wrap {
+  margin-top: 28px;
+}
+
+.caption {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.caption span:first-child {
+  text-align: right;
+  padding-right: 4px;
+}
+
+.caption span:last-child {
+  padding-left: 4px;
+}
+
+.captionRail {
+  display: block;
+}
+
+.list {
+  list-style: none;
+}
+
+.pole {
+  padding: 10px 0 8px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.row[data-center="true"] {
+  margin: 7px 0;
+}
+
+.cellWest,
+.cellEast {
+  display: flex;
+  min-width: 0;
+}
+
+.cellWest {
+  justify-content: flex-end;
+}
+
+.cellEast {
+  justify-content: flex-start;
+}
+
+.rail {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--card-border);
+}
+
+.dot {
+  position: relative;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+
+.row[data-current="true"] .dot,
+.row[data-here="true"] .dot {
+  background: var(--volt);
+  box-shadow: 0 0 0 4px var(--glow);
+}
+
+.stop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  font-size: 14px;
+  color: var(--ink);
+  transition:
+    border-color var(--d-cool) var(--ease-cool),
+    color var(--d-cool) var(--ease-cool);
+}
+
+.cellWest .stop {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.stop:hover {
+  border-color: var(--card-border-hover);
+  color: var(--ink-max);
+  transition:
+    border-color var(--d-micro) var(--ease-heat),
+    color var(--d-micro) var(--ease-heat);
+}
+
+.stop[aria-current="true"] {
+  border-color: var(--volt);
+  color: var(--ink-max);
+}
+
+.here {
+  border-color: var(--volt);
+  color: var(--volt-lift);
+}
+
+.stopName {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stopFee {
+  flex: none;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.stop[aria-current="true"] .stopFee,
+.here .stopFee {
+  color: var(--volt-lift);
+}
+
+@media (max-width: 520px) {
+  .stop {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .stopFee {
+    font-size: 10px;
+  }
+}

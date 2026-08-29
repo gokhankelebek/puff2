@@ -1,0 +1,6 @@
+.DS_Store
+.claude/
+
+# POS export: supply cost, on-hand, suppliers. This GitHub repo is public.
+research/lightspeed-product-export.csv
+research/lightspeed-models.json

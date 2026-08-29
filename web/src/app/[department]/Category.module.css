@@ -1,0 +1,606 @@
+/* ==========================================================================
+   Category — four archetypes, one route
+   ========================================================================== */
+
+.wrap {
+  padding: 32px 24px 96px;
+  background: var(--bg-base);
+  min-height: 60vh;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: var(--t-h2);
+  letter-spacing: -0.012em;
+  line-height: 1;
+  color: var(--ink-max);
+}
+
+.count {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-left: auto;
+}
+
+.note {
+  max-width: 52ch;
+  margin: -8px 0 24px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-mute);
+}
+
+.hubs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: -8px 0 24px;
+}
+
+.hubLink {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hubLink:hover {
+  color: var(--volt-lift);
+}
+
+/* --- Facets: horizontally-scrolling chip rows, NOT a left rail ------------
+   A left rail costs a third of a 375px screen and a filter drawer costs a tap
+   plus a mode. Chips keep every facet visible and one-handed. Each chip is a
+   LINK, so filtering works with JavaScript disabled and the state is
+   shareable.
+   -------------------------------------------------------------------------- */
+
+.facets {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.facetRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* Bleed to the page edge so the row visibly continues off-screen. */
+  margin: 0 -24px;
+  padding: 2px 24px;
+}
+
+.facetRow::-webkit-scrollbar {
+  display: none;
+}
+
+.facetLabel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  flex: none;
+  width: 68px;
+}
+
+.chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    border-color var(--d-cool) var(--ease-cool),
+    color var(--d-cool) var(--ease-cool);
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--ink-max);
+  transition:
+    border-color var(--d-heat) var(--ease-heat),
+    color var(--d-heat) var(--ease-heat);
+}
+
+.chipOn {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-void);
+}
+
+.chipOn:hover {
+  color: var(--bg-void);
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  flex: none;
+}
+
+/* Nicotine strength as a permanent segmented control — the second-most-used
+   filter after flavour, so it never hides in a drawer. */
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--hairline);
+  flex: none;
+}
+
+.segment {
+  padding: 9px 15px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-right: 1px solid var(--hairline);
+  transition: background var(--d-cool) var(--ease-cool);
+}
+
+.segment:last-child {
+  border-right: 0;
+}
+
+.segment:hover {
+  background: var(--surface-lift);
+  transition: background var(--d-micro) var(--ease-heat);
+}
+
+.segmentOn {
+  background: var(--accent);
+  color: var(--bg-void);
+}
+
+.clear {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  flex: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.clear:hover {
+  color: var(--accent);
+}
+
+/* --- Archetype: Chip & Swatch (vape) --------------------------------------
+   Dense 2-up on mobile. Vape shoppers scan hundreds of near-identical SKUs by
+   recognition — the swatch and the flavour name do the work, not the photo.
+   -------------------------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+.tile {
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--hairline);
+  display: flex;
+  flex-direction: column;
+  transition: background var(--d-cool) var(--ease-cool);
+}
+
+.tile:hover {
+  background: var(--surface-lift);
+  transition: background var(--d-micro) var(--ease-heat);
+}
+
+.tileShot {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  min-height: 0;
+  /* Until the photography exists, the cell still has to read as an OBJECT.
+     A wall of identical grey squares reads as a dashboard; a wall of
+     colour-washed cells with a silhouette in each reads as a shelf. The wash
+     is the flavour family at low alpha, which is what a real vape wall
+     actually looks like from three feet away. */
+  background:
+    radial-gradient(120% 90% at 50% 12%, var(--wash, transparent) 0%, transparent 68%),
+    #0d0b09;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  color: var(--ink-faint);
+}
+
+/* The brand, set as type, large. Disposables are bought by brand recognition
+   and this is the closest thing to packaging we have before the shoot. */
+.tileBrand {
+  font-weight: 800;
+  font-size: clamp(0.95rem, 2.6vw, 1.35rem);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-align: center;
+  padding: 0 10px;
+}
+
+.tileGlyph {
+  opacity: 0.9;
+}
+
+.tileShotLabel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+  line-height: 1.9;
+}
+
+/* The colour-coded flavour band. Sits on the shot, full width, so a column of
+   tiles reads as a colour sequence before any text is processed. */
+.band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+}
+
+.tileBody {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.tileFlavor {
+  /* 17px — the flavour is what is being chosen, so it outranks the hardware. */
+  font-size: 17px;
+  line-height: 1.2;
+  color: var(--ink-max);
+}
+
+.tileModel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.tileFoot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.tilePrice {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+  color: var(--ink-max);
+}
+
+.tilePerPuff {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 10px;
+  color: var(--volt);
+  white-space: nowrap;
+}
+
+.tileStock {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+}
+
+.stockVerified {
+  color: var(--live);
+}
+
+/* Sold-out stays in the grid, greyed. A full grid reads as a deep shop; a
+   thinned one reads as a shop that has given up. */
+.tileOut {
+  opacity: 0.55;
+}
+
+/* --- Archetype: Spec Table (cigars) ---------------------------------------
+   A list, not a grid. Cigar buyers read specs and compare; a grid of brown
+   cylinders tells them nothing. The thumbnail is so the stick is recognisable
+   next to the name — ring gauge still lives in the spec strip.
+   -------------------------------------------------------------------------- */
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--hairline);
+  transition: background var(--d-cool) var(--ease-cool);
+}
+
+.row:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.rowBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.rowName {
+  font-family: var(--font-humidor), ui-serif, Georgia, serif;
+  font-size: 20px;
+  color: var(--ink-max);
+  line-height: 1.2;
+}
+
+/* The inline spec strip — the whole reason this archetype exists. */
+.rowSpecs {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  color: var(--amber);
+}
+
+.rowPrice {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 17px;
+  color: var(--ink-max);
+  flex: none;
+  white-space: nowrap;
+}
+
+.rowSingle {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Humidor reading — two numbers that answer the only real objection to buying
+   cigars from a shop that also sells disposables. */
+.humidorBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+/* --- Archetype: Gallery (glass, hookah) -----------------------------------
+   Bought with the eyes. Images large, chrome minimal, four filters maximum.
+   -------------------------------------------------------------------------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.galleryCell {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.galleryShot {
+  aspect-ratio: 3 / 4;
+  /* aspect-ratio is a suggestion that yields to content which will not fit, so
+     a single oversized image can stretch its cell taller than the rest of the
+     row. Contain it and the row stays even. */
+  overflow: hidden;
+  min-height: 0;
+  background:
+    radial-gradient(110% 80% at 50% 15%, rgba(192, 138, 74, 0.09) 0%, transparent 70%),
+    #0d0b09;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--ink-faint);
+  border: 1px solid var(--hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+/* --- Archetype: Utility list (accessories, cigarettes) --------------------
+   Nobody browses these. Optimise for scanning speed, not delight — but the
+   pack or pouch still has to be recognisable, so each row carries a thumb.
+   -------------------------------------------------------------------------- */
+
+.utility {
+  display: flex;
+  flex-direction: column;
+}
+
+.utilityRow {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-top: 1px solid var(--hairline);
+  font-size: 15px;
+  min-height: 44px;
+}
+
+.utilityRow:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.utilityName {
+  min-width: 0;
+  color: var(--ink-max);
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 0;
+  border-radius: var(--radius-sm);
+  background: var(--neutral-900);
+  color: var(--ink-faint);
+}
+
+.row .thumb {
+  width: 80px;
+  height: 80px;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10%;
+}
+
+.thumbImgCutout {
+  padding: 6%;
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+  .row .thumb {
+    width: 64px;
+    height: 64px;
+  }
+  .rowPrice {
+    grid-column: 2;
+  }
+}
+
+/* --- Empty state ----------------------------------------------------------
+   Never dead-ends. A blank result is a lost customer; a blank result with a
+   text link is a conversation.
+   -------------------------------------------------------------------------- */
+
+.empty {
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  max-width: 46ch;
+}
+
+.emptyLine {
+  font-size: 19px;
+  color: var(--ink-max);
+}
+
+.emptyLink {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Real product photography.
+
+   The backgrounds are gone. `scripts/cutout-images.py` lifts the product off
+   its white studio backdrop — connectivity-based, so a white cigarette pack
+   survives while the white paper behind it does not — and despills the edge so
+   nothing wears a pale halo on the charcoal. 147 of 172 came out clean and
+   render straight onto the page with no container at all.
+
+   The rest keep whatever backdrop they arrived with, because a half-erased
+   product looks far worse than an honest plate. Those get one, sized to the
+   image and rounded, so it reads as a deliberate photo card rather than a
+   failed cutout. Which plate depends on the picture: white behind a shot that
+   is already black looks exactly as broken as no plate behind a white one. */
+.tilePlateLight {
+  background: var(--ink-max);
+  border-radius: 3px;
+}
+
+.tilePlateDark {
+  background: var(--surface-lift);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.tileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10%;
+}
+
+/* A cutout has no edges of its own, so it can breathe wider than a plated
+   photograph and still sit inside the cell. */
+.tileImgCutout {
+  padding: 6%;
+}

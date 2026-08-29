@@ -1,0 +1,295 @@
+.h2 {
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink-max);
+  margin-bottom: 12px;
+}
+
+/* --- Address ------------------------------------------------------------- */
+
+.addr {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.addrBlock {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.addrLabel {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--volt-lift);
+  margin-bottom: 10px;
+}
+
+.addrLine {
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--ink-max);
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+  color: var(--volt-lift);
+}
+
+.addrNote {
+  margin-top: 10px;
+  max-width: 46ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-mute);
+}
+
+/* --- The bridge ---------------------------------------------------------- */
+
+.bridge {
+  margin-top: 40px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border-left: 2px solid var(--volt);
+  background: var(--surface);
+}
+
+.bridgeBody {
+  max-width: 66ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-mute);
+  margin-bottom: 10px;
+}
+
+.bridgeBody strong {
+  color: var(--ink-max);
+  font-weight: 600;
+}
+
+/* --- Walking times ------------------------------------------------------- */
+
+.walks,
+.shoot,
+.mall {
+  margin-top: 40px;
+}
+
+/* --- Where you are standing ---------------------------------------------- */
+
+.origins {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.origin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 14px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  color: var(--ink);
+  transition:
+    border-color var(--d-cool) var(--ease-cool),
+    color var(--d-cool) var(--ease-cool);
+}
+
+.origin:hover {
+  border-color: var(--card-border-hover);
+  color: var(--ink-max);
+}
+
+.origin[aria-current="page"] {
+  border-color: var(--volt);
+  color: var(--ink-max);
+}
+
+.originLead {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.originNote {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-mute);
+}
+
+/* --- Mall directory schematic -------------------------------------------- */
+
+.mallLead {
+  max-width: 62ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-mute);
+  margin-bottom: 16px;
+}
+
+.mallSvg {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin-top: 16px;
+}
+
+.mallBlvd {
+  fill: var(--surface);
+  stroke: var(--card-border);
+}
+
+.mallCell {
+  fill: var(--card-bg);
+  stroke: var(--card-border);
+}
+
+.mallUs {
+  fill: var(--glow);
+  stroke: var(--volt);
+}
+
+.mallType {
+  fill: var(--ink-max);
+  font-size: 13px;
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.mallHint {
+  fill: var(--ink-faint);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.walkList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 8px;
+}
+
+.walk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  min-height: 44px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  color: var(--ink);
+  transition:
+    border-color var(--d-cool) var(--ease-cool),
+    color var(--d-cool) var(--ease-cool);
+}
+
+a.walk:hover {
+  border-color: var(--card-border-hover);
+  color: var(--ink-max);
+  transition:
+    border-color var(--d-micro) var(--ease-heat),
+    color var(--d-micro) var(--ease-heat);
+}
+
+.walkMin {
+  flex: none;
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--volt-lift);
+}
+
+.walkPlace {
+  flex: 1;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.walkTag {
+  flex: none;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.walkMaps {
+  flex: none;
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--volt-lift);
+}
+
+.walkNote {
+  margin-top: 14px;
+  max-width: 62ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+
+/* --- The night shoot ----------------------------------------------------- */
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Deliberately empty and obviously so — a labelled gap reads as honest, a
+   stock photograph of a different street reads as a lie. */
+.photoCell {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--card-border);
+  background: var(--neutral-900);
+}
+
+.photoNo {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+}
+
+.photoCap {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 640px) {
+  .addrBlock,
+  .bridge {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,16 @@
+# Sourced 2026-08-20 from brand and distributor product pages for the last
+# products with no storefront photograph. See vendor-image.py.
+#
+# Spaceman and Pyne Pod were re-sourced 2026-08-21: the first pair came off
+# Element Vape's CDN and carried a visible "ELEMENT VAPE" watermark baked into
+# the picture. Check any new URL for one before adding it here.
+#
+# Spaceman was re-sourced a second time. Its stand-in was a SMOK marketing
+# banner — the only art reachable while the network was filtering vape hosts —
+# which segments into the devices plus a floating spec panel. This is a plain
+# single-device shot on white.
+Spaceman Sp40000 Puff ~~ https://vapecityusa.com/media/catalog/product/s/p/spaceman-sp40000-disposable-vape.webp
+Pyne Pod 20k Zero Nic ~~ https://vapordna.com/cdn/shop/files/pyne-pod-boost-pro-20000-mango-pineapple_7178560e-904d-451a-ba32-2644cc594461.png?v=1756922407
+Cocous Charcoal Burner ~~ https://www.hookahmerch.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-06-at-10.21.30-PM-1.jpeg
+Backwoods 5pk ~~ https://www.smokersoutletonline.com/media/catalog/product/cache/d96018f1bd7da5790c4528edbaf493c2/b/a/backwoods-cigars_1.jpg
+Java Drew Estate Maduro Cigar ~~ https://craftcity.com/cdn/shop/files/Java-Maduro-by-Drew-Estate.jpg?v=1711680395
