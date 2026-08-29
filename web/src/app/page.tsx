@@ -68,7 +68,14 @@ export default async function HomePage() {
   const all = await commerce.getProducts();
   const rail = buildShelf(all).slice(0, RAIL_SIZE);
 
+  /* On the shelf, not merely listed. This counted every product in the
+     department and labelled the result "in stock", so the homepage claimed 74
+     vape in stock while /floor — which filters out the "out" tier — said 68.
+     Inventory credibility is the thing this site differentiates on; it cannot
+     be the thing the homepage is loosest about. Same predicate as
+     app/floor/page.tsx. */
   const counts = all.reduce<Partial<Record<Department, number>>>((acc, p) => {
+    if (p.stock.tier === "out") return acc;
     acc[p.department] = (acc[p.department] ?? 0) + 1;
     return acc;
   }, {});

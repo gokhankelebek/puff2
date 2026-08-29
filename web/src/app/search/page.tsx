@@ -164,6 +164,10 @@ function groupByDepartment(hits: Product[]): { department: Department; items: Pr
  * matched" when the honest answer is "we don't stock that" wastes their time
  * at 4 a.m., so the copy points at the one thing that always works — asking.
  */
+/* Hand-picked, not measured. The heading used to say "Searched a lot
+   tonight", which claimed live search behaviour this list has never been
+   connected to — invented social proof, the same defect as a generated
+   storefront. If search logging lands, the heading can make the claim again. */
 const POPULAR = ["Geek Bar", "Lost Mary", "Raz", "Zyn", "Blue Razz", "30k"];
 
 function Empty({ q }: { q: string }) {
@@ -192,7 +196,7 @@ function Popular() {
   return (
     <section className={s.popular} aria-labelledby="popular-title">
       <h2 className={s.popularTitle} id="popular-title">
-        Searched a lot tonight
+        Start here
       </h2>
       <ul className={s.popularRow}>
         {POPULAR.map((term) => (

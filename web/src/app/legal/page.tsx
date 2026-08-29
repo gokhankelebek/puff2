@@ -61,7 +61,7 @@ export default async function LegalPage() {
           <p className={k.body}>
             Nothing we sell may be bought by anyone under {LEGAL_AGE}. We check
             photo ID at the counter, and the runner checks it again at your
-            door — a delivery is refused and returned if the ID does not match
+            handoff — a delivery is refused and returned if the ID does not match
             the order or is not produced. The date of birth this site asks for
             is a first filter, not a substitute for either check.
           </p>
@@ -73,7 +73,7 @@ export default async function LegalPage() {
             No mail, no courier, no freight — not to any address, in Nevada or
             out of it. Delivery means one of our own runners bringing an order
             to a local address, inside Clark County, and taking payment at the
-            door. The PACT Act makes remote sale and shipment of tobacco and
+            handoff. The PACT Act makes remote sale and shipment of tobacco and
             vapor products a materially different business, and we are not in
             it.
           </p>

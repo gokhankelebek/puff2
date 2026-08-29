@@ -131,7 +131,7 @@ export default async function TrackPage() {
                 <dd>{formatMoney({ cents: totals.feeCents, currency: "USD" })}</dd>
               </div>
               <div className={`${t.row} ${t.due}`}>
-                <dt>Due at the door</dt>
+                <dt>Due at handoff</dt>
                 <dd>{formatMoney({ cents: totals.totalCents, currency: "USD" })}</dd>
               </div>
             </dl>

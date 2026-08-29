@@ -197,7 +197,7 @@ export default async function OrderSheet() {
               <dd>
                 {formatMoney({ cents: totals.feeCents, currency: "USD" })}
               </dd>
-              <dt className={o.dueLabel}>Due at the door</dt>
+              <dt className={o.dueLabel}>Due at handoff</dt>
               <dd className={o.dueValue}>
                 {formatMoney({ cents: totals.totalCents, currency: "USD" })}
               </dd>
@@ -229,7 +229,7 @@ export default async function OrderSheet() {
               order store behind the site yet, so nothing here creates a
               record on its own. */}
           Opens a text to {PHONE_DISPLAY} with your order in it. We reply to
-          confirm, and the runner checks ID at the door.{" "}
+          confirm, and the runner checks ID at handoff.{" "}
           {DELIVERY_STRIP_FEE_LABEL} flat, 21+ only.
         </p>
       </div>

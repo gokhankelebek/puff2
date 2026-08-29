@@ -105,3 +105,65 @@ shoot, and if that shoot happens the hero should probably use it too.
   [LOCATION.md](LOCATION.md).
 - **459 `unknown`-class models** need classification rules (or a decision that
   they stay off).
+
+## Raised by an outside audit, 2026-08-29
+
+Four findings from that audit were verified against the repo and fixed the
+same day: the homepage overstated stock, "at the door" contradicted the
+valet/rideshare meet point, "Searched a lot tonight" claimed search data that
+does not exist, and `/legal` was orphaned. What follows is what was NOT acted
+on, and why.
+
+### Needs Nevada counsel, not an engineer
+
+- **The "testing bar" on `/pickup`.** The page advertises "Try a flavour
+  before you commit to a 25,000-puff device." FDA rules bar free sampling of
+  e-liquid and its components by tobacco retailers. If the operation is
+  structured compliantly this copy may be fine; if it is not, the copy is
+  advertising the violation. **Nobody should guess at this.** The wording is
+  still live and should be reviewed before launch.
+- **Age verification.** `/age` takes a self-entered date of birth. Nevada
+  requires electronic-network tobacco sellers to verify age through an
+  independent third-party service. A self-declared birthday is a declaration,
+  not verification. The site already calls it "the first of two" checks, with
+  ID at handoff as the second, so the operational flow may or may not fall
+  under that provision — which is exactly why it needs a lawyer.
+- **Warning placement.** The nicotine warning renders on category and product
+  pages, but FDA has specific size, contrast and placement rules for covered
+  tobacco advertising, and `/vape/brands` does not currently carry it.
+
+### Product decisions, for the owner
+
+- **`80–120 days for a pack-a-day smoker`** (`lib/commerce/types.ts`). It is a
+  cigarette-equivalence claim the product does not need; `$0.88 / 1k puffs` is
+  arithmetic and carries no such implication. Removing it costs nothing.
+- **Nicotine pouches have no department.** `pouch` exists as a regulatory
+  class and Zyn is in the search chips, but there is no browse path.
+- **"Brands" in the nav goes to vape brands only.** Either rename it or build
+  the cross-department page.
+- **"The Floor" as the shop nav label.** Deliberate branding; the audit's
+  point that first-time visitors read "Shop" faster still stands.
+- **Delivered-price breakdown.** A product page says "about $57.93 delivered"
+  for a $35 item without showing the tax and fee that make it up.
+
+### Before the domain switch
+
+- The redesign must land on the existing production domain with the old URLs
+  redirected, not as a separate site. `puffvegas.us` still publishes
+  "Daily 10:00 AM — 7:00 PM" while this site says 24/7; hours and suite
+  numbers disagree across directories. That is an SEO, Maps and trust problem
+  at once.
+
+### Unverified here
+
+Animation quality, real-device responsive behaviour, keyboard and screen
+reader paths, HTTP headers and Core Web Vitals. The browser pane used during
+the rebuild does not repaint reliably, so nothing motion- or timing-dependent
+was ever confirmed by eye.
+
+### Hero photograph resolution — accepted
+
+`public/hero/interior-*.webp` comes from a 1024x768 original; no
+higher-resolution version exists. 1x is covered, 2x is soft. Accepted by the
+owner on 2026-08-29. If a better original ever turns up, re-run the two webp
+derivatives from `research/photos/interior-2023-03-11.jpg`.

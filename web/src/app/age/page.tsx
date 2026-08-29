@@ -127,7 +127,7 @@ export default async function AgeGate({
 
         <p className={a.legal}>
           {LEGAL_AGE}+ only. Nicotine is an addictive chemical. We do not ship —
-          local delivery only, and ID is checked at the door. Hemp products sold
+          local delivery only, and ID is checked at handoff. Hemp products sold
           in compliance with Nevada law.
         </p>
       </div>

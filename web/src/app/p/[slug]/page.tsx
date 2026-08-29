@@ -191,10 +191,10 @@ export default async function ProductPage({
               </article>
               <article className={s.trustCard}>
                 <span className={s.trustTitle}>21+</span>
-                <p className={s.trustBody}>ID at the door. Have it out.</p>
+                <p className={s.trustBody}>ID at handoff. Have it out.</p>
               </article>
               <article className={s.trustCard}>
-                <span className={s.trustTitle}>Pay at the door</span>
+                <span className={s.trustTitle}>Pay at handoff</span>
                 <p className={s.trustBody}>Cash or card. Change to $100.</p>
               </article>
             </>
@@ -206,7 +206,7 @@ export default async function ProductPage({
               </article>
               <article className={s.trustCard}>
                 <span className={s.trustTitle}>21+</span>
-                <p className={s.trustBody}>ID at the door. Have it out.</p>
+                <p className={s.trustBody}>ID at handoff. Have it out.</p>
               </article>
             </>
           )}

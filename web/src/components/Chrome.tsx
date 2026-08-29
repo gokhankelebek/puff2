@@ -91,7 +91,7 @@ export function AgeBanner({ affirmed }: { affirmed: boolean }) {
   return (
     <aside className={s.ageBanner} aria-label="Age verification">
       <span className={s.ageLabel}>21+ only</span>
-      <p className={s.ageCopy}>ID at the door, every time.</p>
+      <p className={s.ageCopy}>ID at handoff, every time.</p>
       {/* Links to the gate rather than affirming inline: the design replaces
           a one-tap "I'm 21" with a real date of birth, and that needs a page.
           Still a plain link, so it works with scripting off. */}
@@ -193,6 +193,14 @@ export function Footer() {
         21+ with valid ID, at the counter and at every handover. Nicotine is an
         addictive chemical. We do not ship — local delivery only. Hemp products
         sold in compliance with Nevada law.
+      </p>
+      {/* /legal has existed since the rebuild with nothing linking to it —
+          reachable only by typing the URL. For a tobacco retailer that is the
+          one page that must not be orphaned. */}
+      <p className={s.footerLinks}>
+        <a className={s.footerLink} href="/legal">
+          Age, ID and the law
+        </a>
       </p>
       <div className={s.footerSwitch}>
         <ThemeToggle />

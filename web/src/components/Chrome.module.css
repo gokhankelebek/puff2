@@ -311,6 +311,17 @@
   text-decoration: underline;
 }
 
+.footerLinks {
+  margin-top: 2px;
+}
+
+.footerLink {
+  font-size: 12px;
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .footerLegal {
   font-size: 12px;
   line-height: 1.5;

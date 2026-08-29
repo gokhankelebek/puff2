@@ -71,7 +71,7 @@ export default async function DeliveryPage({
           <p className={d.heroSub}>
             We run to Strip hotels around the clock from {SHOP_STREET}. One
             price, whatever you order and wherever you are on the Boulevard.
-            You pay the runner at the door.
+            You pay the runner at handoff.
           </p>
         </section>
 
@@ -183,7 +183,7 @@ export default async function DeliveryPage({
             Local delivery only, inside Clark County, by our own runners. We do
             not mail tobacco, vapor or hemp products to any address — the PACT
             Act makes that a different business and we are not in it. 21+ with
-            valid ID at the door, every order, no exceptions.
+            valid ID at handoff, every order, no exceptions.
           </p>
         </section>
       </main>
