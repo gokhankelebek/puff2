@@ -1,0 +1,29 @@
+/* Two stacked mask layers, painted by CSS. See DepartmentIcon.tsx. */
+
+.icon {
+  position: relative;
+  display: inline-block;
+  flex: none;
+}
+
+.stroke,
+.accent {
+  position: absolute;
+  inset: 0;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+/* Inherits whatever the card sets, so the icon follows the theme for free. */
+.stroke {
+  background-color: currentColor;
+}
+
+/* The one accent, always the brand magenta — it marks the working part. */
+.accent {
+  background-color: var(--magenta);
+}

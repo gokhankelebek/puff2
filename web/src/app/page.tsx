@@ -19,7 +19,7 @@ import {
   HOTELS,
 } from "@/lib/hotels";
 import { SHOP_STREET } from "@/lib/shop";
-import { DepartmentGlyph } from "@/components/Icons";
+import DepartmentIcon from "@/components/DepartmentIcon";
 
 /**
  * Which departments lead the rail.
@@ -174,7 +174,7 @@ export default async function HomePage() {
                     data-ground={(i % 4) + 1}
                   >
                     <span className={s.floorShot}>
-                      <DepartmentGlyph department={department} size={56} />
+                      <DepartmentIcon department={department} size={56} />
                     </span>
                     <span className={s.floorName}>
                       {DEPARTMENT_LABELS[department]}
@@ -215,7 +215,7 @@ export default async function HomePage() {
                         decoding="async"
                       />
                     ) : (
-                      <DepartmentGlyph department={p.department} size={48} />
+                      <DepartmentIcon department={p.department} size={48} />
                     )}
                   </span>
                   <span className={s.railName}>{p.title}</span>

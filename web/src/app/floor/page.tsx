@@ -10,7 +10,7 @@ import {
   Header,
   UtilityBar,
 } from "@/components/Chrome";
-import { DepartmentGlyph } from "@/components/Icons";
+import DepartmentIcon from "@/components/DepartmentIcon";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
   commerce,
@@ -104,7 +104,7 @@ export default async function FloorPage() {
                 data-ground={(i % 4) + 1}
               >
                 <span className={fl.shot}>
-                  <DepartmentGlyph department={department} size={64} />
+                  <DepartmentIcon department={department} size={64} />
                 </span>
                 <span className={fl.name}>
                   {DEPARTMENT_LABELS[department]}
