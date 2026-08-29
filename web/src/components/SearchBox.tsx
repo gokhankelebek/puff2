@@ -95,7 +95,7 @@ export default function SearchBox() {
       <button
         className={s.trigger}
         type="button"
-        hidden={expanded}
+        data-collapsed={expanded || undefined}
         onClick={() => setExpanded(true)}
         aria-expanded={expanded}
       >
@@ -138,6 +138,7 @@ export default function SearchBox() {
           onClick={() => {
             setExpanded(false);
             setOpen(false);
+            setQ("");
           }}
         >
           Cancel
@@ -153,8 +154,12 @@ export default function SearchBox() {
         </p>
       )}
 
-      {(open || expanded) && hits.length > 0 && (
-        <ul className={s.menu} id={listId} role="listbox">
+      <ul
+        className={s.menu}
+        id={listId}
+        role="listbox"
+        data-open={(open || expanded) && hits.length > 0 ? "" : undefined}
+      >
           {hits.map((h, i) => (
             <li key={h.slug}>
               <a
@@ -190,13 +195,14 @@ export default function SearchBox() {
               </a>
             </li>
           ))}
+        {hits.length > 0 && (
           <li>
             <a className={s.all} href={`/search?q=${encodeURIComponent(q)}`}>
               See all results for “{q}” →
             </a>
           </li>
-        </ul>
-      )}
+        )}
+      </ul>
       </div>
     </>
   );

@@ -10,6 +10,15 @@
    CSS does the moving; there is no second component and no second form.
    ========================================================================== */
 
+/* One pair of durations for the whole morph. The field opens a touch slower
+   than the pill collapses, so the pill is out of the way before the field
+   arrives rather than the two crossing over each other. */
+.trigger,
+.wrap {
+  --d-expand: 300ms;
+  --d-collapse: 220ms;
+}
+
 /* --- Mobile: trigger, then a panel over the page ------------------------- */
 
 .trigger {
@@ -26,10 +35,19 @@
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transition: border-color var(--d-state) ease-out, color var(--d-state) ease-out;
+  overflow: hidden;
+  /* Sized generously so the collapse has somewhere to travel from. */
+  max-width: 200px;
+  transition:
+    max-width var(--d-collapse) var(--ease-out),
+    opacity 140ms linear,
+    padding var(--d-collapse) var(--ease-out),
+    border-width 140ms linear,
+    color var(--d-state) ease-out;
 }
 
 .trigger:hover {
@@ -37,30 +55,72 @@
   color: var(--text);
 }
 
-/* An author `display` beats the `hidden` attribute's UA rule, so without this
-   the trigger stayed on screen while the field was open, pushed it onto a
-   second row and shoved it past the right edge. */
-.trigger[hidden] {
-  display: none;
+/* Collapsed rather than removed. The pill gives its width to the field beside
+   it, which is what makes the two read as one control changing shape instead
+   of one element swapping for another. */
+/* The pill gets out of the way as the field arrives. max-width and padding
+   are px values on a plain inline-flex box, so unlike flex-grow they animate
+   without argument. */
+.trigger[data-collapsed] {
+  max-width: 0;
+  padding: 0;
+  opacity: 0;
+  /* Width, not just colour: a transparent 1px border each side still measures
+     2px, so the pill never quite reached zero. */
+  border-width: 0;
+  pointer-events: none;
 }
 
-/* Collapsed, the field itself is not in the way at all. */
+/* The morph.
+
+   Two things this deliberately does NOT use, both learned the hard way:
+
+   - display: none with @starting-style / transition-behavior: allow-discrete.
+     That is the modern answer to animating in and out of display:none, and
+     Lightning CSS strips both out of this build entirely — the compiled CSS
+     contains neither, so it would have shipped as no animation at all.
+   - transitioning flex-grow to widen the box. The field sits behind a
+     `display: contents` wrapper inside a header that is itself flexing, and
+     the grow factor will not animate there.
+
+   So layout is not animated. Collapsed, the field is taken out of the flow
+   with position: absolute at zero width, which keeps it off the row without
+   display:none — and an element that is always displayed can transition in
+   BOTH directions with nothing exotic. The motion is opacity and a short
+   slide; the width change underneath it is instant and invisible behind the
+   fade. */
 .wrap {
-  display: none;
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 0;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateX(14px);
+  transition:
+    opacity 170ms linear,
+    transform var(--d-collapse) var(--ease-out),
+    visibility 0s linear var(--d-collapse);
 }
 
-/* Expanded, it grows along the header toward the logo rather than covering
-   the page. The logo stays put, so you can still see where you are — which is
-   the difference between a search field opening and the site navigating.
-
-   `position: static` is load-bearing: it lets .menu below resolve against the
-   HEADER instead of this box, so the results run the full width of the screen
-   rather than starting where the field does. */
 .wrap[data-expanded] {
-  display: flex;
-  flex: 1;
-  min-width: 0;
+  /* Static so the results panel anchors to the HEADER and spans the screen,
+     rather than starting where the field does. */
   position: static;
+  flex: 1 1 auto;
+  width: auto;
+  opacity: 1;
+  visibility: visible;
+  overflow: visible;
+  pointer-events: auto;
+  transform: none;
+  transition:
+    opacity 220ms linear 40ms,
+    transform var(--d-expand) var(--ease-out),
+    visibility 0s linear;
 }
 
 .wrap[data-expanded] .form {
@@ -115,7 +175,11 @@
   cursor: pointer;
 }
 
-/* Anchored to the header, so it spans the full width under it. */
+/* Anchored to the header, so it spans the full width under it.
+
+   Always mounted, opened by an attribute. React unmounting it meant it could
+   only ever animate IN — on close it vanished while the field was still
+   shrinking, which is the part that read as cheap. */
 .menu {
   position: absolute;
   z-index: 60;
@@ -129,6 +193,23 @@
   border-bottom: 1px solid var(--border);
   box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.75);
   -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition:
+    opacity 180ms linear,
+    transform 240ms var(--ease-out);
+}
+
+/* Follows the field rather than racing it: the delay is roughly the time the
+   box takes to finish opening. */
+.menu[data-open] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition:
+    opacity 200ms linear 90ms,
+    transform 280ms var(--ease-out) 90ms;
 }
 
 .prompt {
@@ -250,8 +331,15 @@
     display: none;
   }
 
+  /* Desktop has no morph — the field is simply there. */
   .wrap {
     display: block;
+    flex: 0 0 auto;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    transition: none;
     position: relative;
     inset: auto;
     z-index: auto;
