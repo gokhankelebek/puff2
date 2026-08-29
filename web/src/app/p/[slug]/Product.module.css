@@ -1,141 +1,266 @@
-/* Product.module.css — STRIPPED FOR REDESIGN.
+/* ==========================================================================
+   4d — Product page. Decide on one item.
+   ========================================================================== */
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
-
-   32 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
-
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
-
-.actions {
-  --stripped: 1;
-}
-
-.allIn {
-  --stripped: 1;
-}
-
-.brand {
-  --stripped: 1;
-}
-
-.buy {
-  --stripped: 1;
-}
-
-.compareAt {
-  --stripped: 1;
-}
-
-.constraint {
-  --stripped: 1;
-}
+.wrap { display: flex; flex-direction: column; }
 
 .crumbs {
-  --stripped: 1;
+  padding: 12px var(--gutter) 0;
+  font-size: 12px;
+  color: var(--text-faint);
 }
 
-.desc {
-  --stripped: 1;
-}
+.crumbs a:hover { color: var(--cyan); }
 
-.hero {
-  --stripped: 1;
-}
+/* --- The shot ------------------------------------------------------------ */
 
-.perPuff {
-  --stripped: 1;
-}
-
-.price {
-  --stripped: 1;
-}
-
-.priceRow {
-  --stripped: 1;
-}
-
-.primary {
-  --stripped: 1;
-}
-
-.secondary {
-  --stripped: 1;
-}
+.hero { display: flex; flex-direction: column; }
 
 .shot {
-  --stripped: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  margin: 14px var(--gutter) 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--photo-1);
+  overflow: hidden;
 }
 
-.shotImg {
-  --stripped: 1;
-}
+.shotImg { max-height: 100%; width: auto; object-fit: contain; }
 
-.shotImgCutout {
-  --stripped: 1;
-}
+/* Background removed — sits straight on the card with no plate. */
+.shotImgCutout { mix-blend-mode: normal; }
+
+.shotPlateLight { background: #f2efe9; }
+.shotPlateDark { background: #14101d; }
 
 .shotPlaceholder {
-  --stripped: 1;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
-.shotPlateDark {
-  --stripped: 1;
-}
+/* --- Identity ------------------------------------------------------------ */
 
-.shotPlateLight {
-  --stripped: 1;
-}
-
-.specs {
-  --stripped: 1;
-}
-
-.stock {
-  --stripped: 1;
-}
-
-.stockLine {
-  --stripped: 1;
-}
-
-.stockNote {
-  --stripped: 1;
-}
-
-.stockOut {
-  --stripped: 1;
-}
-
-.stockVerified {
-  --stripped: 1;
+.brand {
+  display: block;
+  padding: 18px var(--gutter) 0;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
 }
 
 .title {
-  --stripped: 1;
+  padding: 6px var(--gutter) 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 10vw, 2.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text);
 }
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px var(--gutter) 0;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 34px;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Only ever rendered when it is literally the manufacturer's list price. */
+.compareAt {
+  font-size: 14px;
+  color: var(--text-faint);
+  text-decoration: line-through;
+}
+
+.perPuff { font-size: 12px; color: var(--text-faint); }
+
+/* --- Stock --------------------------------------------------------------- */
+
+.stock { padding: 12px var(--gutter) 0; }
+
+.stockLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* The dot is drawn by the tier class so a state cannot lose its colour. */
+.stockVerified { color: var(--green); }
+.stockVerified::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: var(--r-pill);
+  background: var(--green);
+}
+
+.stockOut { color: var(--text-disabled); }
+
+.stockNote {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* --- Specs --------------------------------------------------------------- */
+
+.specs {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0 18px;
+  margin: 18px var(--gutter) 0;
+  padding: 4px 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.specs dt {
+  padding: 10px 0;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.specs dd {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--text);
+  border-bottom: 1px solid var(--hairline);
+  font-variant-numeric: tabular-nums;
+}
+
+.desc {
+  padding: 16px var(--gutter) 0;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --- Buy ----------------------------------------------------------------- */
+
+.buy { padding: 20px var(--gutter) 0; }
+
+.actions { display: flex; gap: 12px; }
+
+/* Add-to-delivery is 1.4 to hold-it's 1 — delivery is the action the
+   business wants, and the design sizes the targets to say so. */
+.primary {
+  flex: 1.4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border-radius: var(--r-button);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: var(--glow-cta);
+}
+
+.secondary {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-button);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.secondary:hover { border-color: var(--border-hover); }
+
+.constraint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--magenta-text);
+}
+
+.allIn {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Trust --------------------------------------------------------------- */
 
 .trust {
-  --stripped: 1;
-}
-
-.trustBody {
-  --stripped: 1;
+  display: grid;
+  gap: 10px;
+  padding: 20px var(--gutter) 28px;
 }
 
 .trustCard {
-  --stripped: 1;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
 }
 
 .trustTitle {
-  --stripped: 1;
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.wrap {
-  --stripped: 1;
+.trustBody {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+@media (min-width: 1200px) {
+  .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
+    column-gap: 48px;
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px 48px;
+    align-items: start;
+  }
+
+  .crumbs { grid-column: 1 / -1; padding-inline: 0; }
+  .hero { grid-column: 1; position: sticky; top: 24px; }
+  .shot { height: 460px; margin-inline: 0; }
+
+  .brand, .title, .priceRow, .stock, .desc, .buy { grid-column: 2; padding-inline: 0; }
+  .specs, .trust { grid-column: 2; margin-inline: 0; padding-inline: 0; }
+  .trust { grid-template-columns: repeat(2, 1fr); }
 }

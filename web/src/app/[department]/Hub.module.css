@@ -1,69 +1,138 @@
-/* Hub.module.css — STRIPPED FOR REDESIGN.
+/* ==========================================================================
+   4f — Brands (A–Z rows) and the flavour hub.
+   ========================================================================== */
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
+/* --- Brands, A–Z --------------------------------------------------------- */
 
-   14 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
+.letters { padding: 0 var(--gutter) 24px; }
 
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
+.letterBlock { margin-top: 20px; }
+
+/* Gold letter headers, per the design. Sticky so the letter you are under
+   stays visible while a long section scrolls. */
+.letter {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 8px 0;
+  background: var(--bg);
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border-bottom: 1px solid var(--border);
+}
+
+/* .brandRow is the CONTAINER for a letter's brands; .brand is each row. */
+.brandRow {
+  display: flex;
+  flex-direction: column;
+}
 
 .brand {
-  --stripped: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: var(--tap);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hairline);
+  transition: color var(--d-state) ease-out;
+}
+
+.brandName {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.brand:hover .brandName {
+  color: var(--cyan);
 }
 
 .brandCount {
-  --stripped: 1;
+  font-size: 12px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
 }
 
-.brandRow {
-  --stripped: 1;
-}
-
-.card {
-  --stripped: 1;
-}
-
-.count {
-  --stripped: 1;
+/* Cyan when the brand is deep — the count is the reason to tap it. */
+.brand[data-deep="true"] .brandCount {
+  color: var(--cyan);
 }
 
 .elsewhere {
-  --stripped: 1;
+  margin: 16px var(--gutter) 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--text-muted);
 }
+
+/* --- Flavour hub --------------------------------------------------------- */
 
 .grid {
-  --stripped: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0 var(--gutter) 24px;
 }
 
-.img {
-  --stripped: 1;
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  transition: border-color var(--d-state) ease-out;
 }
 
-.letter {
-  --stripped: 1;
+.card:hover { border-color: var(--border-hover); }
+
+.shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 6px;
+  border-radius: var(--r-thumb);
+  background: var(--photo-4);
+  overflow: hidden;
 }
 
-.letterBlock {
-  --stripped: 1;
-}
+.img { width: 100%; height: 100%; object-fit: contain; }
 
-.letters {
-  --stripped: 1;
+/* The family's own hue, straight from the product-data swatch tokens. */
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--r-pill);
+  flex: none;
 }
 
 .name {
-  --stripped: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.shot {
-  --stripped: 1;
+.count {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
 }
 
-.swatch {
-  --stripped: 1;
+@media (min-width: 1200px) {
+  .letters, .grid { padding-inline: 40px; }
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .elsewhere { margin-inline: 40px; }
+  .letter { background: var(--bg); }
 }

@@ -128,7 +128,7 @@ export default async function CategoryPage({
         {hasFlavors && <Facets department={department} search={sp} products={all} />}
 
         {items.length === 0 ? (
-          <EmptyResults clearHref={`/${department}`} />
+          <EmptyResults clearHref={`/${department}`} filtered={Boolean(sp.flavor || sp.nic)} />
         ) : (
           <ProductTiles items={items} />
         )}

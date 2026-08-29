@@ -94,17 +94,34 @@ export function ProductTiles({ items }: { items: Product[] }) {
   );
 }
 
-export function EmptyResults({ clearHref }: { clearHref: string }) {
+/**
+ * The empty shelf.
+ *
+ * `filtered` matters: offering "clear filters" when no filter is set sends
+ * the customer to the page they are already on and implies they did something
+ * wrong. An empty department is a different fact from an over-filtered one,
+ * and it says so.
+ */
+export function EmptyResults({
+  clearHref,
+  filtered = false,
+}: {
+  clearHref: string;
+  filtered?: boolean;
+}) {
   return (
     <div className={s.empty}>
       <p className={s.emptyTitle}>Nothing on this shelf</p>
       <p className={s.emptyBody}>
-        We order twice a week, and the floor turns over fast. Clear the filters
-        or text the shop and we&rsquo;ll tell you what came in.
+        {filtered
+          ? "Nothing matches that combination right now. We order twice a week and the floor turns over fast — widen the filters, or text the shop and we'll tell you what came in."
+          : "Nothing here is listed yet. We order twice a week — text the shop and we'll tell you what's actually in the case."}
       </p>
-      <a className={s.emptyLink} href={clearHref}>
-        Clear filters →
-      </a>
+      {filtered ? (
+        <a className={s.emptyLink} href={clearHref}>
+          Clear filters →
+        </a>
+      ) : null}
     </div>
   );
 }

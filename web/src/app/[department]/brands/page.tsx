@@ -102,9 +102,12 @@ export default async function BrandIndexPage({
                     key={name}
                     className={h.brand}
                     href={`/${department}/brands/${slugifyBrand(name)}`}
+                    /* A deep brand is worth going into for its own sake, so
+                       the design gives its count the cyan treatment. */
+                    data-deep={n >= 3 ? "true" : undefined}
                   >
-                    {name}
-                    <span className={h.brandCount}> · {n}</span>
+                    <span className={h.brandName}>{name}</span>
+                    <span className={h.brandCount}>{n}</span>
                   </a>
                 ))}
               </div>
