@@ -25,7 +25,7 @@ import {
 } from "@/lib/commerce";
 import {
   TAX_RATE,
-  DELIVERY_BAND_FEE_CENTS,
+  DELIVERY_FEE_CENTS,
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_MINIMUM_LABEL,
 } from "@/lib/hotels";
@@ -258,12 +258,14 @@ function StockBlock({ product }: { product: Product }) {
  * buys the trust position outright — fee surprise is the single most
  * documented delivery failure in this market.
  *
- * 8.375% Clark County sales tax plus the published Strip delivery fee.
- * If the item is under the $30 floor, the line still shows the one-item
- * total so the gap is visible — they add something else, or pick up.
+ * 8.375% Clark County sales tax plus the flat $20 Strip delivery fee.
+ *
+ * There is no merchandise floor any more, so this figure is now the whole
+ * truth for a single item rather than a number the customer still has to
+ * clear a minimum to act on.
  */
 function allInEstimate(product: Product): string {
   const withTax = Math.round(product.price.cents * (1 + TAX_RATE));
-  const delivered = withTax + DELIVERY_BAND_FEE_CENTS;
+  const delivered = withTax + DELIVERY_FEE_CENTS;
   return `$${(delivered / 100).toFixed(2)}`;
 }

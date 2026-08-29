@@ -119,6 +119,17 @@ const CATEGORY_MAP: Record<string, Mapping> = {
   Drinks: { cls: "accessory" },
 
   // --- Grey inventory. Firewalled. ----------------------------------------
+  /* ── Do not "fix" the CBD FX rows into `hemp`. ─────────────────────────
+     Eight SKUs whose NAMES read as ordinary CBD — "Cbd Fx Gummies", "Cbd Fx
+     Cream", "Hemp Trailz 7g Flower" — carry `product_category: THCA` in the
+     POS. Category beats name inference here and they land in `restricted`.
+
+     That is the right outcome, not a bug. CBDfx and Hemp Trailz both sell a
+     hemp line AND an intoxicating line, the shop labelled these THCA, and
+     reclassifying them into a lawful-hemp bucket on the strength of a brand
+     name is guessing in the one direction that carries licence risk. If the
+     shop says a given SKU is non-intoxicating, the evidence is a COA — attach
+     it and the model moves, with proof, rather than by inference. */
   THCA: {
     cls: "restricted",
     review:
@@ -284,8 +295,49 @@ function inferFromName(title: string, flavorCount: number): Mapping | null {
         "🔴 COUNSEL before this ever appears on the site.",
     };
   }
-  if (/thca|kratom|delta.?[89]|\b7-?oh\b|mushroom|amanita|\bhhc\b|\bcbd\b/.test(t)) {
+  if (/thca|kratom|delta.?[89]|\b7-?oh\b|mushroom|amanita|\bhhc\b/.test(t)) {
     return { cls: "restricted", review: "Grey inventory matched by name. 🔴 COUNSEL." };
+  }
+
+  /* Non-intoxicating hemp and CBD. This runs AFTER the intoxicant test on
+     purpose: "CBD Delta-8 Gummies" must land in `restricted`, and it only does
+     so because the line above already claimed it.
+
+     Two traps this has to avoid, both real rows in the export:
+
+       - "Hemper Las Vegas Bong" is glass. `\bhemp\b` does not match it —
+         the 'p' is followed by 'e', so there is no word boundary. Do NOT
+         loosen this to a bare substring.
+       - "Billionaire Hemp Wraps", "Graba Leaf Hemp Paper", "High Hemp" are
+         rolling material, not consumables. They arrive with a real category
+         ("Rolling Papers, Cigarillos, Leaf & Wraps", "Leaf") and so never
+         reach name inference at all — but if one ever does, the wrap/paper
+         test below sends it to rollYourOwn rather than to the hemp shelf.
+
+     Landing in `hemp` is not the same as publishing: PUBLISHABLE_CLASSES
+     requires a batch COA on top of the class. See Product.coa. */
+  if (/\bhemp\b|\bcbd\b/.test(t)) {
+    /* Consumable FORMS are tested before rolling material, and the order is
+       load-bearing: "CBD Roll on Cream" is a topical, and a bare /roll/ test
+       claimed it as rolling paper. Match the dose form first, then the
+       material. */
+    const consumable =
+      /cream|balm|lotion|salve|roll[\s-]?on|tincture|dropper|drops?\b|gummies|gummy|\boil\b|capsule|softgel|edible|\bflower\b|\bsmokes?\b/.test(
+        t,
+      );
+    if (!consumable && /\bwraps?\b|\bpapers?\b|\bcones?\b|\brolls?\b|\bleaf\b|\bblunts?\b|\btips?\b/.test(t)) {
+      return {
+        cls: "rollYourOwn",
+        review: "Hemp rolling material, not a consumable. Warning required.",
+      };
+    }
+    return {
+      cls: "hemp",
+      review:
+        "Non-intoxicating hemp/CBD by name. Does NOT publish until a batch " +
+        "COA is attached and delta-9 is confirmed at or below 0.3%. " +
+        "🔴 COUNSEL on Nevada consumable-hemp rules.",
+    };
   }
 
   // --- ENDS. A puff-count plus a flavour range is a disposable. ----------
@@ -449,6 +501,22 @@ type Model = {
   /** Counts of variant values that were not flavours at all. */
   nonFlavorVariants: { hardware: number; packSize: number; other: number };
   imageUrl: string | null;
+  /**
+   * Batch certificate of analysis. `hemp` does not publish without one.
+   *
+   * Lightspeed has nowhere to put this, and per the standing rule we do not
+   * add fields to the POS. It will arrive from a separate shop-owned source
+   * (a sheet, or the lab's portal) and be joined here by batch. Until that
+   * source exists this is always undefined, which is the correct behaviour:
+   * hemp classifies, reports, and stays off the site.
+   */
+  coa?: {
+    batch: string;
+    url: string;
+    testedAt: string;
+    thcDelta9Percent: number;
+    lab?: string;
+  };
 };
 
 const overridesFired = new Set<string>();
@@ -627,10 +695,20 @@ function brandOf(rawTitle: string): string | undefined {
 const PUBLISHABLE_CLASSES = new Set<RegulatoryClass>([
   "ends", "hookah", "cigar", "cigarette", "pouch", "rollYourOwn", "accessory",
 ]);
+
+/* `hemp` is deliberately NOT in the set above.
+   It is a lawful class, but a hemp listing makes a claim the shop cannot
+   support from POS data alone — that the product is at or below 0.3% delta-9.
+   The evidence for that claim is a batch COA, so the COA is the gate. Until
+   the shop attaches one, hemp imports, classifies, and stays off the site.
+   This is the same fail-closed posture as `unknown`, for a different reason:
+   not "we could not tell", but "we can tell, and we cannot yet prove it". */
 for (const m of models) {
   m.brand = brandOf(m.title);
-  m.publishable =
-    PUBLISHABLE_CLASSES.has(m.regulatoryClass) && m.onlineSkus > 0 && m.priceCents !== null;
+  const classOk =
+    PUBLISHABLE_CLASSES.has(m.regulatoryClass) ||
+    (m.regulatoryClass === "hemp" && m.coa != null);
+  m.publishable = classOk && m.onlineSkus > 0 && m.priceCents !== null;
 }
 
 /* ---------------------------------------------------------------------------

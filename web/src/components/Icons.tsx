@@ -1,3 +1,4 @@
+import type { Department } from "@/lib/commerce/types";
 /**
  * The icon system.
  *
@@ -161,16 +162,39 @@ export function IconDelivery({ size = 24, className }: IconProps) {
   );
 }
 
-export const DEPT_MARKS = {
+export function IconHemp({ size = 24, className }: IconProps) {
+  return (
+    <svg {...base(size)} className={className}>
+      {/* A leaf, not a marijuana leaf — five narrow lobes on a stem. The
+          distinction is the whole compliance point of this department. */}
+      <path d="M12 21v-6" />
+      <path d="M12 15c0-3.4 1.6-6.2 3.6-7.6C16.9 6.5 18 6.2 18 6.2s.2 1.2-.4 2.6c-.9 2.2-3.1 4.4-5.6 6.2z" />
+      <path d="M12 15c0-3.4-1.6-6.2-3.6-7.6C7.1 6.5 6 6.2 6 6.2s-.2 1.2.4 2.6c.9 2.2 3.1 4.4 5.6 6.2z" />
+      <path d="M12 13.4c0-3 .7-5.7 1.6-7.5.6-1.2 1.3-2.3 1.3-2.3s-.5 1.6-.6 3.2" />
+      <path d="M12 13.4c0-3-.7-5.7-1.6-7.5C9.8 4.7 9.1 3.6 9.1 3.6s.5 1.6.6 3.2" />
+      <circle cx="12" cy="17.6" r="1.5" fill={EMBER} stroke="none" />
+    </svg>
+  );
+}
+
+/**
+ * The owner's department art. Deliberately PARTIAL over Department.
+ *
+ * These are photographs the shop supplied, so a department only appears here
+ * once its art exists. Hemp has none yet — inventing one would put a stock
+ * image in the one place the site is supposed to be showing the actual shop.
+ * `DepartmentMark` falls back to the drawn glyph instead.
+ */
+export const DEPT_MARKS: Partial<Record<Department, string>> = {
   vape: "/dept/vape.webp",
   cigars: "/dept/cigars.webp",
   cigarettes: "/dept/cigarettes.webp",
   hookah: "/dept/hookah.webp",
   glass: "/dept/glass.webp",
   accessories: "/dept/accessories.webp",
-} as const;
+};
 
-export type DeptMarkId = keyof typeof DEPT_MARKS;
+export type DeptMarkId = Department;
 
 /** The owner's department art — used on the tab bar and the category doors. */
 export function DepartmentMark({
@@ -182,11 +206,17 @@ export function DepartmentMark({
   size?: number;
   className?: string;
 }) {
+  const art = DEPT_MARKS[department];
+  /* No photograph for this department yet — the glyph is the honest stand-in.
+     See DEPT_MARKS. */
+  if (!art) {
+    return <DepartmentGlyph department={department} size={size} className={className} />;
+  }
   return (
     /* eslint-disable-next-line @next/next/no-img-element */
     <img
       className={className}
-      src={DEPT_MARKS[department]}
+      src={art}
       alt=""
       width={size}
       height={size}
@@ -208,7 +238,7 @@ export function DepartmentGlyph({
   size = 44,
   className,
 }: {
-  department: "vape" | "cigars" | "cigarettes" | "hookah" | "glass" | "accessories";
+  department: Department;
   size?: number;
   className?: string;
 }) {
@@ -218,6 +248,7 @@ export function DepartmentGlyph({
     cigarettes: IconCigarettes,
     hookah: IconHookah,
     glass: IconGlass,
+    hemp: IconHemp,
     accessories: IconAccessories,
   } as const;
   const Glyph = map[department];

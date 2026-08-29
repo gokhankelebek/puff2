@@ -45,6 +45,9 @@ type GeneratedModel = {
   flavors: { value: string; family: FlavorFamily | null }[];
   nicotineMg: number[];
   imageUrl: string | null;
+  /** Present only for `hemp`, and only once the shop attaches one. Without it
+   *  the importer never marks a hemp model publishable. */
+  coa?: Product["coa"];
 };
 
 /**
@@ -72,6 +75,11 @@ function departmentFor(m: GeneratedModel): Department {
       return "cigarettes";
     case "hookah":
       return "hookah";
+    /* The one class whose department is decided by the class rather than the
+       category, because Lightspeed has no hemp category to read: these arrive
+       classified by name inference and there is nothing else to go on. */
+    case "hemp":
+      return "hemp";
     default:
       return "accessories";
   }
@@ -116,6 +124,7 @@ function toProduct(m: GeneratedModel): Product {
     department,
     brand: m.brand,
     regulatoryClass: m.regulatoryClass,
+    ...(m.coa ? { coa: m.coa } : {}),
     price: { cents: m.priceCents ?? 0, currency: "USD" },
     // Images come from the pipeline, referenced by OUR path under /p/ — never
     // hotlinked from a vendor CDN. The photography is the most expensive asset

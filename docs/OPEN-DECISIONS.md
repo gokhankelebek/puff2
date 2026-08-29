@@ -24,6 +24,22 @@ has crawl output that can seed a redirect table.
 | **`meet` points in `web/src/lib/hotels.ts`** | Left empty on purpose. Every resort handles outside delivery differently, several change the rule by time of night, and none of it is published anywhere verifiable. Inventing "meet at the north valet" would read as authoritative and strand a driver and a customer at two different doors. The shop should fill these in as it learns each property. |
 | **Night-shoot photography** | `/pickup` has three labelled empty placeholders: *Ole Red from the Boulevard · the turn into Grand Bazaar · our door*. Most people arrive in the dark and the Strip looks nothing like its daytime self. Placeholders are labelled as placeholders rather than filled with stock. |
 
+## Hemp & CBD 🔴
+
+The shop is adding the department; the model is in place and deliberately
+inert. See [COMPLIANCE.md](COMPLIANCE.md#hemp--cbd--hemp-).
+
+Blocked on two human answers:
+
+1. **A COA source.** Nothing publishes without one, and Lightspeed cannot hold
+   it. Where do batch certificates come from — a sheet, the lab's portal, PDFs
+   in a folder? Whatever it is, it needs a batch key to join on.
+2. **Counsel on Nevada consumable-hemp rules**, separately from the COA.
+
+Also unresolved: `Twisted Hemp` and `The Hemp Doctor` classify as `hemp` by
+name inference but are plausibly wrap brands. They fail closed, so the cost is
+a missing listing rather than a wrong one — but the shop should confirm.
+
 ## The homepage hero 🔴
 
 Both files came from a **third-party YouTube compilation** ("The Fountains of

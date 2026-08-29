@@ -31,6 +31,17 @@
  *                 rotating warnings, not the ENDS statement. 🔴 Needs counsel
  *                 before any of these publish.
  *  - `accessory`  glass, lighters, papers, grinders. No nicotine warning.
+ *  - `hemp`       NON-INTOXICATING hemp and CBD: ≤0.3% delta-9 THC by dry
+ *                 weight, the 2018 Farm Bill definition. Topicals, tinctures,
+ *                 gummies, CBD vape. It is a separate class from `restricted`
+ *                 because the legal question is genuinely different — this is
+ *                 lawful hemp, not the SB 356 firewall — but it is NOT an
+ *                 ordinary retail class either: it publishes ONLY with a
+ *                 batch COA on file (see `Product.coa`). No COA, no listing.
+ *                 Anything intoxicating stays `restricted` no matter how it
+ *                 is labelled: delta-8, delta-9 above trace, THCA, HHC, 7-OH.
+ *                 🔴 The class exists so hemp can be modelled honestly; the
+ *                 Nevada consumable-hemp rules still need counsel.
  *  - `restricted` THCA, kratom, mushroom and similar. Not a warning question —
  *                 a firewall question. Nevada SB 356 (2025) is reported to have
  *                 moved several of these to CCB-licensed dispensaries only, and
@@ -49,6 +60,7 @@ export type RegulatoryClass =
   | "rollYourOwn"
   | "smokeless"
   | "accessory"
+  | "hemp"
   | "restricted"
   | "unknown";
 
@@ -184,6 +196,28 @@ export type Product = {
   nicotineStrengths?: number[];
   /** Rough sales rank. Drives the default "Most popular right now" sort. */
   popularity?: number;
+  /**
+   * Certificate of analysis. Required for anything in the `hemp` class and
+   * meaningless everywhere else.
+   *
+   * This is the field that makes `hemp` publishable, and the reason it is a
+   * structured object rather than a link: "COAs on file" is a claim, and a
+   * claim needs a batch it belongs to and a date it was tested. A COA that
+   * cannot be tied back to the tin in someone's hand is decoration.
+   *
+   * `thcDelta9Percent` is the number that decides whether the product is
+   * lawful hemp at all — above 0.3 it is not hemp, it is `restricted`, and
+   * the importer must reclassify rather than publish it.
+   */
+  coa?: {
+    batch: string;
+    /** Our path, not the lab's — same custody rule as images. */
+    url: string;
+    testedAt: string;
+    thcDelta9Percent: number;
+    lab?: string;
+  };
+
   /** Cigars only. */
   vitola?: string;
   wrapper?: string;
@@ -197,6 +231,7 @@ export type Department =
   | "cigarettes"
   | "hookah"
   | "glass"
+  | "hemp"
   | "accessories";
 
 export const DEPARTMENTS: readonly Department[] = [
@@ -205,6 +240,7 @@ export const DEPARTMENTS: readonly Department[] = [
   "cigarettes",
   "hookah",
   "glass",
+  "hemp",
   "accessories",
 ];
 
@@ -214,6 +250,7 @@ export const DEPARTMENT_LABELS: Record<Department, string> = {
   cigarettes: "Cigarettes",
   hookah: "Hookah",
   glass: "Glass",
+  hemp: "Hemp & CBD",
   accessories: "Accessories",
 };
 
@@ -224,6 +261,7 @@ export const DEPARTMENT_TITLES: Record<Department, string> = {
   cigarettes: "Cigarettes",
   hookah: "Hookah",
   glass: "Glass",
+  hemp: "Hemp & CBD",
   accessories: "Accessories",
 };
 
@@ -259,6 +297,11 @@ export function archetypeFor(department: Department): PlpArchetype {
       return "gallery";
     case "cigarettes":
     case "accessories":
+    /* Hemp browses like a pharmacy shelf, not a flavour wall: the deciding
+       facts are form, milligrams and whether a COA exists. A utility list puts
+       all three on one line; a chip-swatch grid would sell it like candy,
+       which is the exact impression this category must not give. */
+    case "hemp":
       return "utility";
   }
 }

@@ -17,6 +17,7 @@ import {
   deliveryFeeForHotel,
   formatDeliveryFee,
   DELIVERY_STRIP_FEE_LABEL,
+  DELIVERY_TERMS_LABEL,
   DELIVERY_MINIMUM_LABEL,
   type Hotel,
 } from "@/lib/hotels";
@@ -25,7 +26,7 @@ import { WALKS, walkForHotelSlug, mapsWalkingUrl } from "@/lib/walks";
 export const metadata: Metadata = {
   title: "Delivery to Strip hotels — 24 hours | Puff Vegas",
   description:
-    "Delivery to Las Vegas Strip hotels, $10 for the first 5 miles, $30 minimum, about 14 minutes. Cash at your door or card on the driver's reader. ID checked on every order, 24 hours a day.",
+    "Delivery to Las Vegas Strip hotels, $20 flat with no minimum, about 14 minutes. Cash at your door or card on the driver's reader. ID checked on every order, 24 hours a day.",
   alternates: { canonical: "/delivery" },
 };
 
@@ -84,7 +85,7 @@ export default async function DeliveryPage({
             <span className={s.shelfIndex}>Delivery</span>
             <h1 className={s.shelfTitle}>We drive to you</h1>
             <p className={s.shelfNote}>
-              {DELIVERY_STRIP_FEE_LABEL} · $30 min · about 14 min. Cash or card.
+              {DELIVERY_TERMS_LABEL} · about 14 min. Cash or card.
               24 hours.
             </p>
           </div>
@@ -101,12 +102,12 @@ export default async function DeliveryPage({
             <span className={d.factLabel}>Strip hotels</span>
           </li>
           <li className={d.fact}>
-            <span className={d.factFigure}>$30</span>
+            <span className={d.factFigure}>None</span>
             <span className={d.factLabel}>Minimum</span>
           </li>
           <li className={d.fact}>
-            <span className={d.factFigure}>$5 / mi</span>
-            <span className={d.factLabel}>After 5 miles</span>
+            <span className={d.factFigure}>24/7</span>
+            <span className={d.factLabel}>Every hour</span>
           </li>
         </ul>
         <HotelSearch value={hotel?.name ?? (unknown ? hotelQuery : undefined)} />
@@ -155,9 +156,9 @@ function stopFacts(stop: (typeof STRIP_LANDMARKS)[number]): {
     return { primary: "Here", secondary: "Walk in · Grand Bazaar" };
   }
   const miles = stop.geo ? formatMiles(metersFromShop(stop.geo)) : null;
-  const fee = stop.geo
-    ? formatDeliveryFee(deliveryFeeCents(metersFromShop(stop.geo)))
-    : DELIVERY_STRIP_FEE_LABEL;
+  /* Every stop prices the same now. The mile figure stays because the diagram
+     is telling you where you are relative to the shop, not what it costs. */
+  const fee = DELIVERY_STRIP_FEE_LABEL;
   const walk = stop.walkPlace
     ? WALKS.find((w) => w.place === stop.walkPlace)
     : undefined;
@@ -325,7 +326,7 @@ function Chosen({
       </div>
 
       <p className={d.priceNote}>
-        {fee} · $30 min. Tax extra. Nothing added at the door.
+        {fee} flat · no minimum. Tax extra. Nothing added at the door.
       </p>
     </section>
   );

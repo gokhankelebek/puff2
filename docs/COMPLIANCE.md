@@ -23,6 +23,40 @@ gap was live: category pages advertised priced ENDS with no warning at all.
 well-defined for a single ad unit and not obviously well-defined for a scrolling
 browse grid. The current component is a good-faith reading; it needs counsel.
 
+## Hemp & CBD — `hemp` 🔴
+
+Added as a department and a `RegulatoryClass` during the Marquee Neon redesign,
+because the design calls for a Hemp & CBD shelf and "COAs on file".
+
+The split is between **lawful, non-intoxicating hemp** (≤0.3 % delta-9 THC by
+dry weight, the 2018 Farm Bill line) and everything intoxicating, which stays
+`restricted` behind the SB 356 firewall no matter how it is labelled —
+delta-8, delta-9 above trace, THCA, HHC, 7-OH.
+
+**`hemp` is classified but not publishable.** It is deliberately absent from
+`PUBLISHABLE_CLASSES`; a hemp model publishes only once `Product.coa` carries a
+batch certificate. The reasoning differs from `unknown`: not *"we could not
+tell"* but *"we can tell, and we cannot yet prove it"*. A hemp listing asserts a
+lab result, so the lab result is the gate.
+
+Currently **4 models classify as `hemp`, 0 publish** — no COA source exists yet.
+Lightspeed has nowhere to hold one and the standing rule forbids adding fields
+there, so it will arrive from a shop-owned source and join by batch.
+
+Two things not to undo:
+
+- Eight SKUs whose names read as plain CBD (`Cbd Fx Gummies`, `Hemp Trailz 7g
+  Flower`, …) carry `product_category: THCA` in the POS and therefore land in
+  `restricted`. Category beats name inference on purpose. Both brands sell a
+  hemp line *and* an intoxicating line, and reclassifying on a brand name is
+  guessing in the direction that costs the licence.
+- The dose-form test runs before the rolling-material test in the importer.
+  Without that ordering `CBD Roll on Cream` matched `/roll/` and imported as
+  rolling paper.
+
+🔴 **Needs counsel** on Nevada's consumable-hemp rules before anything here
+publishes, independently of whether a COA exists.
+
 ## Cigarettes — FCLAA / FTC
 
 The Surgeon General's warning is required, and one of the four rotating warnings

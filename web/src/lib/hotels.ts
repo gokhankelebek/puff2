@@ -246,8 +246,8 @@ export const STRIP_SPINE: SpineStop[] = [
  *
  * Spacing on the diagram is even on purpose. Distances on each node are
  * separate: miles are haversine from the suite pin, walking minutes come
- * only from WALKS (already on the marquee). Delivery fee is the published
- * meter in this file ($10 / first 5 miles, then $5 a mile). Drive time is
+ * only from WALKS (already on the marquee). Delivery is a flat $20 to any
+ * hotel on this list, so no node prices differently. Drive time is
  * still the shop's Strip-wide figure — about 14 minutes — not a per-node
  * guess. The walk-times table is stale (see docs/LOCATION.md); we still
  * show those minutes because they are already live elsewhere, and Bellagio
@@ -334,27 +334,35 @@ export function milesFromMeters(meters: number): number {
 /**
  * Delivery economics — published before the order, not at the door.
  *
- * Same shape the west-valley 24/7 shops run: a merchandise floor, a cheap
- * first band, then a per-mile meter. Every hotel in HOTELS sits inside the
- * first 5 miles from the suite pin (Sahara is 2.2; Mandalay Bay is 1.6), so
- * Strip delivery is the band fee, not a made-up hotel surcharge. Off-Strip
- * is the same function, quoted on the call.
+ * ── This used to be a meter, and deliberately is not any more ──────────────
+ *
+ * The old model was the west-valley shape: a $30 merchandise floor, $10 for
+ * the first 5 miles, then $5 a mile. It priced correctly and it read badly.
+ * Every hotel in HOTELS already sat inside the first band (Sahara 2.2 mi,
+ * Mandalay Bay 1.6), so the meter's variable half never actually varied for
+ * a Strip run — it just made the customer wonder whether it would.
+ *
+ * "$20 flat, no minimum" is now the offer, and it is a headline rather than a
+ * footnote: a single number a guest can accept at 4 a.m. without doing
+ * arithmetic, and no floor to clear before a single item is worth ordering.
+ * Losing the minimum is the substantive half — a $6 lighter is now a real
+ * order instead of a $30 puzzle.
+ *
+ * The distance helpers are kept below because the Boulevard diagram still
+ * prints a mile figure per hotel; they no longer price anything.
  */
-export const DELIVERY_MINIMUM_CENTS = 3000;
-export const DELIVERY_BAND_MILES = 5;
-export const DELIVERY_BAND_FEE_CENTS = 1000;
-export const DELIVERY_PER_MILE_CENTS = 500;
+export const DELIVERY_FEE_CENTS = 2000;
 
-export function deliveryFeeCents(meters: number): number {
-  const extra = milesFromMeters(meters) - DELIVERY_BAND_MILES;
-  if (extra <= 0) return DELIVERY_BAND_FEE_CENTS;
-  return DELIVERY_BAND_FEE_CENTS + Math.round(extra * DELIVERY_PER_MILE_CENTS);
+/** No merchandise floor. Kept as a named zero so call sites read honestly and
+ *  a future floor has one place to come back to. */
+export const DELIVERY_MINIMUM_CENTS = 0;
+
+export function deliveryFeeCents(): number {
+  return DELIVERY_FEE_CENTS;
 }
 
-export function deliveryFeeForHotel(slug: string): number {
-  const hotel = hotelBySlug(slug);
-  if (hotel?.geo) return deliveryFeeCents(metersFromShop(hotel.geo));
-  return DELIVERY_BAND_FEE_CENTS;
+export function deliveryFeeForHotel(_slug?: string): number {
+  return DELIVERY_FEE_CENTS;
 }
 
 export function formatDeliveryFee(cents: number): string {
@@ -362,8 +370,10 @@ export function formatDeliveryFee(cents: number): string {
   return `$${(cents / 100).toFixed(2)}`;
 }
 
-export const DELIVERY_STRIP_FEE_LABEL = formatDeliveryFee(DELIVERY_BAND_FEE_CENTS);
-export const DELIVERY_MINIMUM_LABEL = `$${DELIVERY_MINIMUM_CENTS / 100} min`;
+export const DELIVERY_STRIP_FEE_LABEL = formatDeliveryFee(DELIVERY_FEE_CENTS);
+export const DELIVERY_MINIMUM_LABEL = "no minimum";
+/** The two facts as one phrase — the site says this in a dozen places. */
+export const DELIVERY_TERMS_LABEL = `${DELIVERY_STRIP_FEE_LABEL} flat · no minimum`;
 
 /** Clark County sales tax, applied at 8.375% — same as the product pages. */
 export const TAX_RATE = 0.08375;
