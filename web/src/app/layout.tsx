@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://puffvegas.us"),
   title: "Smoke Shop on the Las Vegas Strip — Open 24 Hours | Puff Vegas",
   description:
-    "Open 24 hours on the Las Vegas Strip, inside Grand Bazaar Shops next to Ole Red. Disposables, cigarettes, premium cigars, hookah and glass. 24/7 delivery, $20 flat to any Strip hotel, no minimum, cash at your door.",
+    "Open 24 hours on the Las Vegas Strip, inside Grand Bazaar Shops next to Ole Red. Disposables, cigarettes, premium cigars, hookah and glass. 24/7 delivery, $20 flat to any Strip hotel, no minimum, meet us downstairs, cash on handover.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
 };

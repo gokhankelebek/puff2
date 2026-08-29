@@ -23,7 +23,7 @@ import { SHOP_STREET } from "@/lib/shop";
 export const metadata: Metadata = {
   title: "Hotel delivery, 24 hours | Puff Vegas",
   description:
-    "Delivery to Las Vegas Strip hotels, $20 flat with no minimum, about 25–40 minutes. Cash or card at your door. ID checked on every order, 24 hours a day.",
+    "Delivery to Las Vegas Strip hotels, $20 flat with no minimum, about 25–40 minutes. Meet the runner at your valet or rideshare pickup. Cash or card on handover, ID checked every time.",
   alternates: { canonical: "/delivery" },
 };
 
@@ -94,10 +94,11 @@ export default async function DeliveryPage({
             <li className={d.step}>
               <span className={d.stepNum}>1</span>
               <span className={d.stepBody}>
-                <span className={d.stepTitle}>Tell us where you are</span>
+                <span className={d.stepTitle}>Tell us which hotel</span>
                 <span className={d.stepNote}>
-                  Hotel, tower and room. We meet at the door, the valet, or the
-                  rideshare pickup — whichever your property allows.
+                  That&rsquo;s all we need. We don&rsquo;t come up to rooms —
+                  the resorts don&rsquo;t allow outside delivery upstairs — so
+                  you meet the runner at your valet stand or rideshare pickup.
                 </span>
               </span>
             </li>
@@ -114,7 +115,7 @@ export default async function DeliveryPage({
             <li className={d.step}>
               <span className={d.stepNum}>3</span>
               <span className={d.stepBody}>
-                <span className={d.stepTitle}>Pay at the door</span>
+                <span className={d.stepTitle}>Pay on handover</span>
                 <span className={d.stepNote}>
                   Cash or card on the runner&rsquo;s reader. No card details on
                   this site, ever. Have your ID out — we check every time.
@@ -148,16 +149,14 @@ export default async function DeliveryPage({
           {hotel ? (
             <div className={d.picked}>
               <p className={d.pickedName}>Delivering to {hotel.name}</p>
-              {hotel.towers?.length ? (
-                <p className={d.pickedNote}>
-                  Towers: {hotel.towers.join(" · ")}
-                </p>
-              ) : null}
-              {/* meet points are deliberately empty until the shop fills them
-                  in per property — inventing "the north valet" would strand a
-                  runner and a customer at two different doors. */}
+              {/* Meet points are deliberately empty in hotels.ts until the
+                  shop fills them in per property. Naming "the north valet"
+                  from a map would strand a runner and a customer at two
+                  different stands, which is the one failure this whole flow
+                  exists to avoid. */}
               <p className={d.pickedNote}>
-                {hotel.meet ?? "We'll confirm the meet point when you text."}
+                {hotel.meet ??
+                  "Valet or rideshare pickup — we'll confirm which when you text."}
               </p>
               <p className={d.pickedTerms}>{DELIVERY_TERMS_LABEL} · 25–40 min</p>
             </div>

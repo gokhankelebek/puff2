@@ -21,13 +21,19 @@ export const DRAFT_MAX_AGE = 60 * 60 * 24 * 2; // 2 days
 export const DRAFT_MAX_LINES = 20;
 export const DRAFT_MAX_QTY = 12;
 
-export type MeetPoint = "door" | "valet" | "rideshare";
+/**
+ * Where the runner hands the order over.
+ *
+ * There is no "room door". The shop does not deliver to hotel rooms — guests
+ * come down and meet the runner at their property's valet stand or rideshare
+ * zone. Removing it from the type rather than just hiding the option means a
+ * stale cookie carrying `door` cannot resurrect a handover we do not do.
+ */
+export type MeetPoint = "valet" | "rideshare";
 
 export type Draft = {
   lines: { slug: string; qty: number }[];
   hotel?: string;
-  tower?: string;
-  room?: string;
   meet?: MeetPoint;
 };
 
@@ -56,12 +62,10 @@ export function parseDraft(raw: string | undefined): Draft {
     return {
       lines,
       hotel: typeof o.hotel === "string" ? o.hotel.slice(0, 60) : undefined,
-      tower: typeof o.tower === "string" ? o.tower.slice(0, 60) : undefined,
-      room: typeof o.room === "string" ? o.room.slice(0, 16) : undefined,
-      meet:
-        o.meet === "door" || o.meet === "valet" || o.meet === "rideshare"
-          ? o.meet
-          : undefined,
+      /* A draft saved before room delivery was dropped may still carry
+         `meet: "door"`. It falls through to undefined here rather than being
+         migrated, which is the safe direction: the sheet then asks again. */
+      meet: o.meet === "valet" || o.meet === "rideshare" ? o.meet : undefined,
     };
   } catch {
     // A malformed cookie is an empty draft, never an error page.
@@ -152,9 +156,7 @@ export function draftToSms(totals: Totals, draft: Draft, hotelName?: string): st
     .join("\n");
   const where = [
     hotelName ?? draft.hotel,
-    draft.tower,
-    draft.room ? `Room ${draft.room}` : undefined,
-    draft.meet ? MEET_LABEL[draft.meet] : undefined,
+    draft.meet ? `Meet at ${MEET_LABEL[draft.meet].toLowerCase()}` : undefined,
   ]
     .filter(Boolean)
     .join(" · ");
@@ -164,7 +166,6 @@ export function draftToSms(totals: Totals, draft: Draft, hotelName?: string): st
 }
 
 export const MEET_LABEL: Record<MeetPoint, string> = {
-  door: "Room door",
   valet: "Valet",
   rideshare: "Rideshare pickup",
 };

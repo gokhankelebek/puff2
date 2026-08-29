@@ -173,7 +173,7 @@ export function Footer() {
         Never closed · {SHOP_ADDRESS_LINE.toUpperCase()}
       </p>
       <p className={s.footerLegal}>
-        21+ with valid ID, at the counter and at your door. Nicotine is an
+        21+ with valid ID, at the counter and at every handover. Nicotine is an
         addictive chemical. We do not ship — local delivery only. Hemp products
         sold in compliance with Nevada law.
       </p>

@@ -49,15 +49,15 @@ export default async function AgeGate({
             <h1 className={a.title}>Sorry — not yet</h1>
             <p className={a.body}>
               You have to be {LEGAL_AGE} to buy anything we sell, in the shop or
-              at your door. Come back when you are.
+              on delivery. Come back when you are.
             </p>
           </>
         ) : (
           <>
             <h1 className={a.title}>Must be {LEGAL_AGE} or older</h1>
             <p className={a.body}>
-              Enter your date of birth. We check ID at the counter and at the
-              door too — this is the first of two.
+              Enter your date of birth. We check ID at the counter and again
+              when a runner hands an order over — this is the first of two.
             </p>
 
             <form className={a.form} action="/api/age" method="POST">

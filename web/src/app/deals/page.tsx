@@ -81,7 +81,7 @@ export default async function DealsPage() {
             <p className={j.featureBody}>
               Everything on the floor, {GRAVEYARD_FROM} AM to {GRAVEYARD_TO} AM,
               in the shop or delivered. No code — we take it off at the counter
-              and at your door.
+              and on delivery.
             </p>
             <p className={j.countdown} data-countdown={minsLeft}>
               {hhmm(minsLeft)} left tonight

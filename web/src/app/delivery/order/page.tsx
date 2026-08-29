@@ -24,15 +24,19 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const MEETS: MeetPoint[] = ["door", "valet", "rideshare"];
+const MEETS: MeetPoint[] = ["valet", "rideshare"];
 
 /**
  * 3b — Delivery sheet. Build and send an order.
  *
  * No cart page, no card entry, and no payment fields anywhere: money changes
- * hands at the door. The whole sheet is form POSTs against /api/draft, so the
- * steppers, the meet-point control and the address fields all work with
- * scripting off.
+ * hands at the handover. The whole sheet is form POSTs against /api/draft, so
+ * the steppers and the meet-point control work with scripting off.
+ *
+ * There is no room number and no tower. The shop does not deliver to hotel
+ * rooms — the guest comes down to their property's valet stand or rideshare
+ * zone — so asking for a room would be collecting data we have no use for and
+ * implying a service we do not run.
  *
  * Sending hands off to SMS rather than creating an order record, because
  * there is no order store behind this site yet. That is stated on the button
@@ -45,7 +49,7 @@ export default async function OrderSheet() {
   const totals = priceDraft(draft, catalog);
 
   const hotel = draft.hotel ? hotelBySlug(draft.hotel) : undefined;
-  const ready = totals.lines.length > 0 && Boolean(hotel) && Boolean(draft.room);
+  const ready = totals.lines.length > 0 && Boolean(hotel);
   const sms = `${PHONE_HREF.replace("tel:", "sms:")}?&body=${encodeURIComponent(
     draftToSms(totals, draft, hotel?.name),
   )}`;
@@ -70,7 +74,7 @@ export default async function OrderSheet() {
             25–35 min{hotel ? ` to ${hotel.name}` : ""}
           </p>
           <p className={o.etaTerms}>
-            {DELIVERY_TERMS_LABEL} · cash or card at the door
+            {DELIVERY_TERMS_LABEL} · cash or card when we hand it over
           </p>
         </section>
       ) : null}
@@ -84,7 +88,7 @@ export default async function OrderSheet() {
           <span className={o.stepNum} data-done={hotel ? "true" : undefined}>
             1
           </span>
-          Where are you?
+          Where do we meet you?
         </h2>
 
         <label className={o.field}>
@@ -109,7 +113,9 @@ export default async function OrderSheet() {
                   type="radio"
                   name="meet"
                   value={m}
-                  defaultChecked={(draft.meet ?? "door") === m}
+                  /* Valet is the default because every property on the list
+                     has one; rideshare zones are not universal. */
+                  defaultChecked={(draft.meet ?? "valet") === m}
                 />
                 <span className={o.meetFace}>{MEET_LABEL[m]}</span>
               </label>
@@ -117,36 +123,11 @@ export default async function OrderSheet() {
           </div>
         </fieldset>
 
-        <div className={o.pair}>
-          <label className={o.field}>
-            <span className={o.fieldLabel}>Tower</span>
-            <select
-              className={o.select}
-              name="tower"
-              defaultValue={draft.tower ?? ""}
-            >
-              <option value="">
-                {hotel?.towers?.length ? "Choose" : "One entrance"}
-              </option>
-              {hotel?.towers?.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className={o.field}>
-            <span className={o.fieldLabel}>Room</span>
-            <input
-              className={o.input}
-              name="room"
-              inputMode="numeric"
-              maxLength={16}
-              placeholder="1204"
-              defaultValue={draft.room ?? ""}
-            />
-          </label>
-        </div>
+
+        <p className={o.meetNote}>
+          We don&rsquo;t come up to rooms — resorts don&rsquo;t allow it. Come
+          down and we&rsquo;ll be at whichever of these your hotel uses.
+        </p>
 
         <button className={o.save} type="submit">
           Save where
@@ -235,11 +216,7 @@ export default async function OrderSheet() {
           </a>
         ) : (
           <span className={o.sendOff} aria-disabled="true">
-            {totals.lines.length === 0
-              ? "Add something first"
-              : !hotel
-                ? "Choose your hotel"
-                : "Add your room number"}
+            {totals.lines.length === 0 ? "Add something first" : "Choose your hotel"}
           </span>
         )}
         {ready ? (

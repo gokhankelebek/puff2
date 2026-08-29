@@ -53,10 +53,8 @@ export async function POST(request: Request) {
       draft = {
         ...draft,
         hotel: String(form.get("hotel") ?? "") || undefined,
-        tower: String(form.get("tower") ?? "") || undefined,
-        room: String(form.get("room") ?? "").slice(0, 16) || undefined,
         meet:
-          meet === "door" || meet === "valet" || meet === "rideshare"
+          meet === "valet" || meet === "rideshare"
             ? (meet as MeetPoint)
             : draft.meet,
       };

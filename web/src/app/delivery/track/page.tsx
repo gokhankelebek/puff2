@@ -35,7 +35,7 @@ const STEPS = [
   { id: "sent", label: "Order sent", note: "We have your text." },
   { id: "packed", label: "Packed", note: "Bagged and checked at the counter." },
   { id: "route", label: "On the way", note: "A runner is walking it over." },
-  { id: "door", label: "At your door", note: "ID out — we check every time." },
+  { id: "meet", label: "At the meet point", note: "ID out — we check every time." },
 ] as const;
 
 export default async function TrackPage() {
@@ -78,8 +78,6 @@ export default async function TrackPage() {
             <p className={t.window}>25–35 min</p>
             <p className={t.where}>
               {hotel?.name ?? "Your hotel"}
-              {draft.tower ? ` · ${draft.tower}` : ""}
-              {draft.room ? ` · Room ${draft.room}` : ""}
               {draft.meet ? ` · ${MEET_LABEL[draft.meet]}` : ""}
             </p>
           </section>
@@ -118,7 +116,7 @@ export default async function TrackPage() {
           <Bulbs />
 
           <section className={t.totals}>
-            <h2 className={t.totalsTitle}>What you owe at the door</h2>
+            <h2 className={t.totalsTitle}>What you owe on handover</h2>
             <dl className={t.list}>
               {totals.lines.map((l) => (
                 <div className={t.row} key={l.product.slug}>

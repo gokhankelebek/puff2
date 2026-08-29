@@ -359,3 +359,11 @@
 }
 
 .trackLink:hover { text-decoration: underline; }
+
+/* Says why there is no room field, right where someone would look for one. */
+.meetNote {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-dim);
+  max-width: 46ch;
+}

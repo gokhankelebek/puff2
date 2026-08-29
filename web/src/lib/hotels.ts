@@ -23,7 +23,16 @@
 export type Hotel = {
   slug: string;
   name: string;
-  /** Towers or wings with their own entrance. Empty when there is one door. */
+  /**
+   * Towers or wings with their own entrance.
+   *
+   * Currently UNUSED. It existed for room delivery, which the shop does not
+   * do — guests meet the runner at valet or rideshare pickup, so the site no
+   * longer asks which tower. The data is kept rather than deleted because it
+   * is real and correct, and because a multi-tower property like Caesars
+   * (six) or Mandalay Bay (three) may well have more than one valet stand. If
+   * runners start ending up at the wrong one, this is the field to bring back.
+   */
   towers?: string[];
   /** Filled in by the shop as it learns each property. */
   meet?: string;
