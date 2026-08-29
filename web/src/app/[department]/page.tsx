@@ -2,13 +2,7 @@ import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import s from "./Category.module.css";
-import {
-  AgeBanner,
-  Grain,
-  Header,
-  StatusModule,
-  TabBar,
-} from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
 import Marquee from "@/components/Marquee";
 import { EmptyResults, ProductTiles } from "@/components/ProductTiles";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
@@ -90,10 +84,9 @@ export default async function CategoryPage({
       data-band={band === "late" ? "late" : undefined}
       data-zone={isHumidor ? "humidor" : undefined}
     >
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
       <Marquee />
 
       <main className={s.wrap}>
@@ -143,7 +136,7 @@ export default async function CategoryPage({
         )}
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

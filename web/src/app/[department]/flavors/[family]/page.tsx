@@ -2,13 +2,7 @@ import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import cat from "../../Category.module.css";
-import {
-  AgeBanner,
-  Grain,
-  Header,
-  StatusModule,
-  TabBar,
-} from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
 import Marquee from "@/components/Marquee";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
 import { EmptyResults, ProductTiles } from "@/components/ProductTiles";
@@ -98,10 +92,9 @@ export default async function FlavorHubPage({
 
   return (
     <div data-band={band === "late" ? "late" : undefined}>
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
       <Marquee />
 
       <main className={cat.wrap}>
@@ -133,7 +126,7 @@ export default async function FlavorHubPage({
         )}
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

@@ -86,6 +86,7 @@
   --bulb-bg: var(--surface);
   --bulb-border: var(--border);
   --bulb-size: 14px 12px;
+  --bulb-pitch: 14px;
   --bulb-image: radial-gradient(
     circle at 6px 6px,
     #ffc84a 2.2px,
@@ -187,6 +188,7 @@
   --bulb-bg: #f0e7d4;
   --bulb-border: #d9ceb9;
   --bulb-size: 16px 14px;
+  --bulb-pitch: 16px;
   --bulb-image: radial-gradient(
     circle at 7px 7px,
     #e4d6b4 2.6px,
@@ -254,6 +256,7 @@
     --bulb-bg: #f0e7d4;
     --bulb-border: #d9ceb9;
     --bulb-size: 16px 14px;
+    --bulb-pitch: 16px;
     --bulb-image: radial-gradient(
       circle at 7px 7px,
       #e4d6b4 2.6px,
@@ -418,39 +421,16 @@ video {
   border: 0;
 }
 
-/* --------------------------------------------------------------------------
-   The marquee bulb strip
-
-   The signature element. A section divider, used everywhere, drawn entirely
-   in CSS — no image asset, and it unlights itself in day mode because the
-   whole recipe lives in tokens.
+/* The marquee bulb strip lives in components/Bulbs.tsx; only its recipe is
+   here, as --bulb-* above, so day mode can unlight it centrally.
    -------------------------------------------------------------------------- */
 
-.bulbs {
-  height: var(--bulb-h);
-  background-color: var(--bulb-bg);
-  background-image: var(--bulb-image);
-  background-size: var(--bulb-size);
-  background-repeat: repeat-x;
-  border-top: 1px solid var(--bulb-border);
-  border-bottom: 1px solid var(--bulb-border);
-}
-
-/* Fremont-style chase. Opt-in per instance, one bulb-pitch per step. */
-.bulbs[data-chase="on"] {
-  animation: bulbChase 1.2s steps(1) infinite;
-}
-
-@keyframes bulbChase {
-  to {
-    background-position: 14px 0;
-  }
-}
-
+/* The strip scales up on desktop: taller, wider pitch, bigger lamps. */
 @media (min-width: 1200px) {
   :root {
     --bulb-h: 14px;
     --bulb-size: 16px 14px;
+    --bulb-pitch: 16px;
     --bulb-image: radial-gradient(
       circle at 7px 7px,
       #ffc84a 2.6px,

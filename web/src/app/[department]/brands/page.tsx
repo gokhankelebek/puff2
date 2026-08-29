@@ -3,13 +3,7 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import cat from "../Category.module.css";
 import h from "../Hub.module.css";
-import {
-  AgeBanner,
-  Grain,
-  Header,
-  StatusModule,
-  TabBar,
-} from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
 import Marquee from "@/components/Marquee";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { hourBand, pacificHour } from "@/lib/time";
@@ -81,10 +75,9 @@ export default async function BrandIndexPage({
 
   return (
     <div data-band={band === "late" ? "late" : undefined}>
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
       <Marquee />
 
       <main className={cat.wrap}>
@@ -126,7 +119,7 @@ export default async function BrandIndexPage({
         </div>
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

@@ -143,11 +143,21 @@ export default function RootLayout({
     /* suppressHydrationWarning: the head script below sets data-theme on this
        element before React hydrates, so the DOM deliberately disagrees with
        the server HTML. */
-    <html lang="en" suppressHydrationWarning>
+    /* The font variables go on <html>, not <body>.
+       globals.css declares --font-body as `var(--font-instrument), ...` on
+       :root, and a var() reference resolves against the element where the
+       custom property is DECLARED. With the classes on <body>, :root could not
+       see --font-instrument, the whole chain fell back, and every face on the
+       site rendered as Times. */
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${display.variable} ${script.variable} ${bodyFace.variable}`}
+    >
       <head>
         <InlineScript html={INIT_SCRIPT} />
       </head>
-      <body className={`${display.variable} ${script.variable} ${bodyFace.variable}`}>
+      <body>
         {children}
         <script
           type="application/ld+json"

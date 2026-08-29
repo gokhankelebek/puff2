@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import s from "../Home.module.css";
 import d from "./Delivery.module.css";
-import { AgeBanner, Grain, Header, StatusModule, TabBar, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
 import BoulevardSpine from "@/components/BoulevardSpine";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { hourBand, pacificHour } from "@/lib/time";
@@ -74,10 +74,9 @@ export default async function DeliveryPage({
 
   return (
     <div data-band={band === "late" ? "late" : undefined}>
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
 
       <main className={s.main}>
         <section className={s.shelfHead}>
@@ -143,7 +142,7 @@ export default async function DeliveryPage({
         </section>
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

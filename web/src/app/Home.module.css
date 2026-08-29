@@ -1,477 +1,505 @@
-/* Home.module.css — STRIPPED FOR REDESIGN.
+/* ==========================================================================
+   Home — 3a (mobile) and 5a (desktop), Marquee Neon.
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
+   Mobile-first: the 390 px reference from the handoff is a reference width,
+   not a fixed one, so everything below is fluid and the desktop layout is one
+   breakpoint at 1200.
+   ========================================================================== */
 
-   117 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
-
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
-
-.band {
-  --stripped: 1;
+.main {
+  display: flex;
+  flex-direction: column;
 }
 
-.bandCaption {
-  --stripped: 1;
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px var(--gutter) 28px;
 }
 
-.bandHead {
-  --stripped: 1;
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
-.bandIndex {
-  --stripped: 1;
+.heroTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  /* 62px at the 390 reference, 108 on desktop — one clamp rather than two
+     rules, so there is no step at the breakpoint. */
+  font-size: clamp(3.25rem, 13vw, 6.75rem);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-top: 10px;
 }
 
-.bandTitle {
-  --stripped: 1;
+.heroSub {
+  margin-top: 12px;
+  max-width: 46ch;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-wrap: pretty;
 }
 
-.brand {
-  --stripped: 1;
+.heroCtas {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
 }
 
-.brandList {
-  --stripped: 1;
+/* The primary is 1.3 to the ghost's 1 — the design gives delivery the
+   larger target because it is the action the business wants. */
+.ctaPrimary {
+  flex: 1.3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 18px;
+  border-radius: var(--r-button);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: var(--glow-cta);
+  transition: filter var(--d-state) ease-out;
 }
 
-.brands {
-  --stripped: 1;
-}
-
-.brandsLabel {
-  --stripped: 1;
-}
-
-.card {
-  --stripped: 1;
-}
-
-.cardTitle {
-  --stripped: 1;
-}
-
-.cats {
-  --stripped: 1;
-}
-
-.cols {
-  --stripped: 1;
-}
-
-.commitment {
-  --stripped: 1;
-}
-
-.copy {
-  --stripped: 1;
-}
-
-.cta {
-  --stripped: 1;
-}
-
-.ctaFull {
-  --stripped: 1;
+.ctaPrimary:hover {
+  filter: brightness(1.08);
 }
 
 .ctaGhost {
-  --stripped: 1;
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-button);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: border-color var(--d-state) ease-out;
+}
+
+.ctaGhost:hover {
+  border-color: var(--border-hover);
+}
+
+/* Photography has not been shot. A labelled block is honest scaffolding; an
+   empty cell reads as a broken image. */
+.heroMedia {
+  display: flex;
+  align-items: flex-end;
+  min-height: 190px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--photo-1);
+}
+
+.photoNote {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* --- Hotel picker -------------------------------------------------------- */
+
+.picker {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+
+.pickerTitle {
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.ctaNote {
-  --stripped: 1;
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
 }
 
-.deptCount {
-  --stripped: 1;
+/* Chips are toggles: the selected state is border + tint + brighter text,
+   never fill-only. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition:
+    border-color var(--d-state) ease-out,
+    background-color var(--d-state) ease-out,
+    color var(--d-state) ease-out;
 }
 
-.deptImg {
-  --stripped: 1;
+.chip:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
 }
 
-.deptLink {
-  --stripped: 1;
+.chip[aria-current="true"] {
+  border-color: var(--magenta);
+  background: var(--magenta-tint);
+  color: var(--magenta-text);
 }
 
-.deptName {
-  --stripped: 1;
+.chipMore {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--cyan);
 }
 
-.deptRow {
-  --stripped: 1;
+.chipMore:hover {
+  text-decoration: underline;
 }
 
-.deptShot {
-  --stripped: 1;
+.pickerNote {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
 }
 
-.deptText {
-  --stripped: 1;
-}
-
-.door {
-  --stripped: 1;
-}
-
-.doorDelivery {
-  --stripped: 1;
-}
-
-.doorPickup {
-  --stripped: 1;
-}
-
-.doors {
-  --stripped: 1;
-}
-
-.field {
-  --stripped: 1;
-}
-
-.footer {
-  --stripped: 1;
-}
-
-.footerCol {
-  --stripped: 1;
-}
-
-.footerCols {
-  --stripped: 1;
-}
-
-.footerLabel {
-  --stripped: 1;
-}
-
-.footerLine {
-  --stripped: 1;
-}
-
-.footerLink {
-  --stripped: 1;
-}
-
-.footerRow {
-  --stripped: 1;
-}
-
-.hero {
-  --stripped: 1;
-}
-
-.heroAddress {
-  --stripped: 1;
-}
-
-.heroClock {
-  --stripped: 1;
-}
-
-.heroDot {
-  --stripped: 1;
-}
-
-.heroLeft {
-  --stripped: 1;
-}
-
-.heroOpen {
-  --stripped: 1;
-}
-
-.heroRight {
-  --stripped: 1;
-}
-
-.heroRow {
-  --stripped: 1;
-}
-
-.hoursActions {
-  --stripped: 1;
-}
-
-.hoursAddress {
-  --stripped: 1;
-}
-
-.hoursBand {
-  --stripped: 1;
-}
-
-.hoursClock {
-  --stripped: 1;
-}
-
-.hoursLine {
-  --stripped: 1;
-}
-
-.humidorCard {
-  --stripped: 1;
-}
-
-.humidorKicker {
-  --stripped: 1;
-}
-
-.humidorLink {
-  --stripped: 1;
-}
-
-.humidorMeta {
-  --stripped: 1;
-}
-
-.humidorTitle {
-  --stripped: 1;
-}
-
-.kicker {
-  --stripped: 1;
-}
-
-.main {
-  --stripped: 1;
-}
-
-.metaEmber {
-  --stripped: 1;
-}
-
-.metaVerified {
-  --stripped: 1;
-}
-
-.outline {
-  --stripped: 1;
-}
-
-.photoCell {
-  --stripped: 1;
-}
-
-.photoLabel {
-  --stripped: 1;
-}
-
-.photoSeq {
-  --stripped: 1;
-}
-
-.roomCopy {
-  --stripped: 1;
-}
-
-.roomKicker {
-  --stripped: 1;
-}
-
-.roomLink {
-  --stripped: 1;
-}
-
-.roomLinks {
-  --stripped: 1;
-}
+/* --- Section heads ------------------------------------------------------- */
 
-.roomStrip {
-  --stripped: 1;
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 var(--gutter);
+  margin-bottom: 14px;
 }
 
-.ruleBody {
-  --stripped: 1;
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 7vw, 2.625rem);
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.ruleCard {
-  --stripped: 1;
+.sectionLink {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  white-space: nowrap;
 }
 
-.ruleTitle {
-  --stripped: 1;
+.sectionLink:hover {
+  text-decoration: underline;
 }
 
-.rules {
-  --stripped: 1;
+.sectionMeta {
+  font-size: 12px;
+  color: var(--text-faint);
+  white-space: nowrap;
 }
 
-.sectionLabel {
-  --stripped: 1;
-}
+/* --- The floor ----------------------------------------------------------- */
 
-.shelf {
-  --stripped: 1;
+.floor {
+  padding: 24px 0;
 }
 
-.shelfActions {
-  --stripped: 1;
+.floorGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0 var(--gutter);
 }
 
-.shelfHead {
-  --stripped: 1;
+.floorCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  transition: border-color var(--d-state) ease-out;
 }
 
-.shelfIndex {
-  --stripped: 1;
+.floorCard:hover {
+  border-color: var(--border-hover);
 }
 
-.shelfNote {
-  --stripped: 1;
-}
+/* Grounds rotate so a grid of unshot products does not read as one flat
+   block. Four cards, four grounds. */
+.floorCard[data-ground="1"] .floorShot { background: var(--photo-1); }
+.floorCard[data-ground="2"] .floorShot { background: var(--photo-2); }
+.floorCard[data-ground="3"] .floorShot { background: var(--photo-3); }
+.floorCard[data-ground="4"] .floorShot { background: var(--photo-4); }
 
-.shelfTitle {
-  --stripped: 1;
+.floorShot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 8px;
+  border-radius: var(--r-thumb);
+  color: var(--text-faint);
 }
 
-.stage {
-  --stripped: 1;
+.floorName {
+  font-family: var(--font-display);
+  font-size: 21px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.stageCopy {
-  --stripped: 1;
+.floorNote {
+  font-size: 12px;
+  color: var(--text-faint);
 }
 
-.stageIdea {
-  --stripped: 1;
-}
+/* --- Moving tonight rail ------------------------------------------------- */
 
-.stageInner {
-  --stripped: 1;
+.rail {
+  padding: 24px 0;
 }
 
-.stageMedia {
-  --stripped: 1;
+/* The last card bleeds deliberately — it is the scroll affordance. */
+.railTrack {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 0 var(--gutter) 6px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
 }
 
-.stageTitle {
-  --stripped: 1;
+.railItem {
+  flex: 0 0 auto;
+  width: 152px;
+  scroll-snap-align: start;
 }
 
-.stageVeil {
-  --stripped: 1;
+.railCard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  transition: border-color var(--d-state) ease-out;
 }
 
-.stat {
-  --stripped: 1;
+.railCard:hover {
+  border-color: var(--border-hover);
 }
 
-.statFigure {
-  --stripped: 1;
-}
+.railCard[data-ground="1"] .railShot { background: var(--photo-1); }
+.railCard[data-ground="2"] .railShot { background: var(--photo-2); }
+.railCard[data-ground="3"] .railShot { background: var(--photo-3); }
+.railCard[data-ground="4"] .railShot { background: var(--photo-4); }
 
-.statLabel {
-  --stripped: 1;
+.railShot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  margin-bottom: 6px;
+  border-radius: var(--r-thumb);
+  overflow: hidden;
+  color: var(--text-faint);
 }
 
-.stats {
-  --stripped: 1;
+.railImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.suggest {
-  --stripped: 1;
+.railName {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--text);
 }
 
-.suggestEta {
-  --stripped: 1;
+.railPrice {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
 }
 
-.suggestName {
-  --stripped: 1;
+/* Stock is the product: every row says which of the three states it is in. */
+.railStock {
+  font-size: 11px;
+  color: var(--text-faint);
 }
 
-.tile {
-  --stripped: 1;
-}
+.railStock[data-tone="in"] { color: var(--green); }
+.railStock[data-tone="low"] { color: var(--magenta); }
+.railStock[data-tone="out"] { color: var(--text-disabled); }
 
-.tileBrand {
-  --stripped: 1;
-}
+/* --- Delivery band ------------------------------------------------------- */
 
-.tileCat {
-  --stripped: 1;
+.deliveryBand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px var(--gutter);
+  padding: 20px;
+  border: 1px solid var(--magenta);
+  border-radius: var(--r-card);
+  background: var(--panel-live-bg);
+  box-shadow: var(--glow-panel);
 }
 
-.tileFoot {
-  --stripped: 1;
+.bandTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.tileImage {
-  --stripped: 1;
+.bandStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
 }
 
-.tileImg {
-  --stripped: 1;
+.bandStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.tileImgCutout {
-  --stripped: 1;
+.bandFigure {
+  font-family: var(--font-display);
+  font-size: 30px;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
 }
 
-.tileInfo {
-  --stripped: 1;
+.bandLabel {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
-.tileLink {
-  --stripped: 1;
-}
+/* --------------------------------------------------------------------------
+   5a — desktop home.
+   -------------------------------------------------------------------------- */
 
-.tileMeta {
-  --stripped: 1;
-}
+@media (min-width: 1200px) {
+  .main {
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+  }
 
-.tileName {
-  --stripped: 1;
-}
+  .hero {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 40px;
+    padding: 44px 40px 48px;
+  }
 
-.tilePlaceholder {
-  --stripped: 1;
-}
+  .heroCopy {
+    width: 620px;
+    flex: none;
+  }
 
-.tilePlateDark {
-  --stripped: 1;
-}
+  .heroMedia {
+    flex: 1;
+    min-height: 460px;
+  }
 
-.tilePlateLight {
-  --stripped: 1;
-}
+  .heroSub {
+    font-size: 19px;
+  }
 
-.tilePrice {
-  --stripped: 1;
-}
+  .sectionHead {
+    padding: 0 40px;
+  }
 
-.tileShot {
-  --stripped: 1;
-}
+  /* 5-across, and never let a card stretch past ~300. */
+  .floorGrid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    padding: 0 40px;
+  }
 
-.tileStock {
-  --stripped: 1;
-}
+  .railTrack {
+    padding: 0 40px 6px;
+    overflow-x: visible;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 
-.tiles {
-  --stripped: 1;
-}
+  .railItem {
+    width: auto;
+  }
 
-.walkFrom {
-  --stripped: 1;
-}
+  .deliveryBand {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    margin: 32px 40px;
+    padding: 32px;
+  }
 
-.walkRow {
-  --stripped: 1;
-}
+  .bandTitle {
+    width: 420px;
+    flex: none;
+  }
 
-.walkTime {
-  --stripped: 1;
-}
+  .bandStats {
+    flex: 1;
+    gap: 32px;
+  }
 
-.wash {
-  --stripped: 1;
+  .deliveryBand .ctaPrimary {
+    flex: none;
+    min-width: 220px;
+  }
 }

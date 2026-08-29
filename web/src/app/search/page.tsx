@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import s from "../Home.module.css";
 import r from "./Search.module.css";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
-import { AgeBanner, Grain, Header, StatusModule, TabBar } from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
 import Marquee from "@/components/Marquee";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { hourBand, pacificHour } from "@/lib/time";
@@ -48,10 +48,9 @@ export default async function SearchPage({
 
   return (
     <div data-band={band === "late" ? "late" : undefined}>
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
       <Marquee />
 
       <main className={s.main}>
@@ -95,7 +94,7 @@ export default async function SearchPage({
         )}
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

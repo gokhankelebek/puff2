@@ -3,15 +3,7 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import s from "./Product.module.css";
 import NicotineWarning from "@/components/NicotineWarning";
-import {
-  AgeBanner,
-  Grain,
-  Header,
-  StatusModule,
-  TabBar,
-  PHONE_DISPLAY,
-  PHONE_HREF,
-} from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
 import Marquee from "@/components/Marquee";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { hourBand, pacificHour } from "@/lib/time";
@@ -66,10 +58,9 @@ export default async function ProductPage({
 
   return (
     <div data-band={band === "late" ? "late" : undefined}>
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
       <Marquee />
 
       <main className={s.wrap}>
@@ -222,7 +213,7 @@ export default async function ProductPage({
         </div>
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

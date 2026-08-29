@@ -3,13 +3,7 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import cat from "../../Category.module.css";
 import h from "../../Hub.module.css";
-import {
-  AgeBanner,
-  Grain,
-  Header,
-  StatusModule,
-  TabBar,
-} from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
 import Marquee from "@/components/Marquee";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
 import { EmptyResults, ProductTiles } from "@/components/ProductTiles";
@@ -90,10 +84,9 @@ export default async function BrandHubPage({
       data-band={band === "late" ? "late" : undefined}
       data-zone={department === "cigars" ? "humidor" : undefined}
     >
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
       <Marquee />
 
       <main className={cat.wrap}>
@@ -135,7 +128,7 @@ export default async function BrandHubPage({
         )}
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

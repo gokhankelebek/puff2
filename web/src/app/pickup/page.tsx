@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import s from "../Home.module.css";
 import g from "./Pickup.module.css";
-import { AgeBanner, Grain, Header, StatusModule, TabBar, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
+import { AgeBanner, Header, StatusModule, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { hourBand, pacificHour } from "@/lib/time";
 import { WALKS, mapsWalkingUrl } from "@/lib/walks";
@@ -56,10 +56,9 @@ export default async function PickupPage({
 
   return (
     <div data-band={band === "late" ? "late" : undefined}>
-      <Grain />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule band={band} />
+      <StatusModule />
 
       <main className={s.main}>
         <section className={s.shelfHead}>
@@ -85,7 +84,7 @@ export default async function PickupPage({
         ))}
       </main>
 
-      <TabBar />
+      <BottomNav />
     </div>
   );
 }

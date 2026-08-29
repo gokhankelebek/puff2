@@ -1,109 +1,306 @@
-/* Chrome.module.css — STRIPPED FOR REDESIGN.
+/* ==========================================================================
+   Chrome — utility bar, header, age banner, bottom nav, footer.
+   ========================================================================== */
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
+/* --- The lockup ---------------------------------------------------------- */
 
-   24 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
-
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
-
-.ageAffirm {
-  --stripped: 1;
+.lockup {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  white-space: nowrap;
 }
 
-.ageBanner {
-  --stripped: 1;
+.lockupPuff {
+  font-family: var(--font-script);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--magenta);
+  /* A token, not a literal: day mode resolves this to `none` and the word
+     becomes flat pigment — an unlit tube. */
+  text-shadow: var(--glow-magenta-text);
 }
 
-.ageCopy {
-  --stripped: 1;
+.lockupVegas {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan-text);
 }
 
-.ageLabel {
-  --stripped: 1;
+.lockup[data-size="lg"] .lockupPuff {
+  font-size: 46px;
+}
+
+.lockup[data-size="lg"] .lockupVegas {
+  font-size: 40px;
+}
+
+/* --- Utility bar --------------------------------------------------------- */
+
+.utility {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .utility {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 40px;
+    height: 38px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .utilityHours {
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .utilityDot {
+    color: var(--text-faint);
+  }
+
+  .utilityPhone {
+    margin-left: 10px;
+    color: var(--text-muted);
+  }
+
+  .utilityPhone:hover {
+    color: var(--text);
+  }
+
+  /* Pushes the right-hand pair over without a spacer element. */
+  .utilityRight {
+    margin-left: auto;
+  }
+
+  .utilityChange {
+    color: var(--cyan);
+  }
+
+  .utilityChange:hover {
+    text-decoration: underline;
+  }
+
+  .utilityAge {
+    color: var(--text-faint);
+  }
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px var(--gutter);
+  background: var(--bg);
 }
 
 .brand {
-  --stripped: 1;
+  display: inline-flex;
+  /* The lockup is the largest tap target in the header; keep it honest. */
+  min-height: var(--tap);
+  align-items: center;
 }
 
-.grain {
-  --stripped: 1;
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.header {
-  --stripped: 1;
+.searchPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: border-color var(--d-state) ease-out, color var(--d-state) ease-out;
 }
 
-.liveDot {
-  --stripped: 1;
+.searchPill:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
 }
 
-.nav {
-  --stripped: 1;
+@media (min-width: 1200px) {
+  .header {
+    padding: 18px 40px;
+  }
 }
 
-.navLink {
-  --stripped: 1;
+/* --- Age banner ---------------------------------------------------------- */
+
+.ageBanner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px var(--gutter);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
-.phone {
-  --stripped: 1;
+.ageLabel {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--magenta);
 }
+
+.ageCopy {
+  flex: 1;
+  min-width: 12ch;
+  font-size: 13px;
+  /* The legal floor. Nothing dimmer than --text-dim carries body copy. */
+  color: var(--text-dim);
+}
+
+.ageAffirm {
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: 0;
+  border-radius: var(--r-button);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: var(--glow-cta);
+  cursor: pointer;
+}
+
+/* --- Bottom nav ---------------------------------------------------------- */
+
+.navSpacer {
+  height: calc(56px + env(safe-area-inset-bottom, 0px));
+}
+
+.bottomNav {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.navItem[aria-current="page"] {
+  color: var(--magenta);
+}
+
+@media (min-width: 1200px) {
+  .navSpacer,
+  .bottomNav {
+    display: none;
+  }
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px var(--gutter) 28px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.footerHours {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+}
+
+.footerLegal {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.footerSwitch {
+  margin-top: 4px;
+}
+
+/* --- Status -------------------------------------------------------------- */
 
 .status {
-  --stripped: 1;
-}
-
-.statusBand {
-  --stripped: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-block: 1px solid var(--border);
 }
 
 .statusCell {
-  --stripped: 1;
-}
-
-.statusClock {
-  --stripped: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px var(--gutter);
+  background: var(--bg);
 }
 
 .statusLabel {
-  --stripped: 1;
-}
-
-.statusOpen {
-  --stripped: 1;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
 .statusValue {
-  --stripped: 1;
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
-.tab {
-  --stripped: 1;
+.statusOpen {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
 }
 
-.tabBar {
-  --stripped: 1;
-}
-
-.tabLabel {
-  --stripped: 1;
-}
-
-.tabMark {
-  --stripped: 1;
-}
-
-.tabSpacer {
-  --stripped: 1;
-}
-
-.wordmark {
-  --stripped: 1;
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--green);
 }

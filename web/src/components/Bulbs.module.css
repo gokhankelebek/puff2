@@ -1,0 +1,25 @@
+/* The strip itself is entirely token-driven; see --bulb-* in globals.css.
+   Day mode swaps every one of those values, so there is no light-mode rule
+   here and there should not be one. */
+.bulbs {
+  height: var(--bulb-h);
+  background-color: var(--bulb-bg);
+  background-image: var(--bulb-image);
+  background-size: var(--bulb-size);
+  background-repeat: repeat-x;
+  border-top: 1px solid var(--bulb-border);
+  border-bottom: 1px solid var(--bulb-border);
+  flex: none;
+}
+
+/* steps(1) so each frame is a discrete jump of one bulb pitch — lamps
+   switching, not a gradient sliding. */
+.bulbs[data-chase="on"] {
+  animation: bulbChase 1.2s steps(1) infinite;
+}
+
+@keyframes bulbChase {
+  to {
+    background-position: var(--bulb-pitch, 14px) 0;
+  }
+}
