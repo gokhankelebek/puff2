@@ -20,7 +20,7 @@
   line-height: 0.92;
   font-size: 24px;
   letter-spacing: 0.1em;
-  color: var(--gold);
+  color: var(--text-muted);
   border-bottom: 1px solid var(--border);
 }
 

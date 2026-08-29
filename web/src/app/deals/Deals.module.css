@@ -46,7 +46,7 @@
   font-size: 14px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--text-muted);
 }
 
 .featureTitle {
@@ -147,7 +147,7 @@
   line-height: 0.92;
   font-size: 21px;
   letter-spacing: 0.04em;
-  color: var(--gold);
+  color: var(--text);
   font-variant-numeric: tabular-nums;
 }
 

@@ -33,7 +33,7 @@
   font-size: 15px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--text);
 }
 
 .pulse {
@@ -126,7 +126,7 @@
   font-size: 30px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--text);
 }
 
 .hoursNote { font-size: 12px; color: var(--text-dim); }

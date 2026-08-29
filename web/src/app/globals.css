@@ -44,6 +44,14 @@
   --cyan: #24e0ff;
   --cyan-tint: rgba(36, 224, 255, 0.12);
   --cyan-text: #cff6ff;
+  /* Gold is the bulb colour. It means "this is lit", not "this is important".
+     It belongs to the sign and nothing else: the wordmark's VEGAS, the marquee
+     strip, and /pickup's live open-now pulse. It had spread onto prices,
+     eyebrows, hours, stat figures, index letters and the shop address until
+     four gold events stacked in the top 400px of the homepage and the colour
+     stopped carrying meaning. Rank text with the display face and size — they
+     are already doing the work. Before reaching for this on type, check
+     whether --text or --text-muted with a size step gets there instead. */
   --gold: #ffc84a;
   /* Lit, so the face and the ink are the same colour. */
   --gold-face: #ffc84a;
