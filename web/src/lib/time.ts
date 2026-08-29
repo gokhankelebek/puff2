@@ -1,23 +1,20 @@
 /**
- * Pacific time is the single source of truth for the clock and the hour band.
+ * The shop clock. Vegas wall time, decided on the SERVER.
  *
- * The band is decided on the SERVER. Never from the device clock — that lies
- * for a traveller who hasn't changed timezones, which is most of this audience.
+ * Never from the device clock — that lies for a traveller who has not changed
+ * timezones, which is most of this audience.
+ *
+ * This replaces the old four-band merchandising system ("daytime / evening /
+ * late / hours"). That was the heart of the previous art direction, where the
+ * thing being sold was the hour and the whole shelf re-ordered itself four
+ * times a day. Marquee Neon does not work that way: it needs exactly two
+ * things from the clock, and nothing else.
  */
 
 export const STORE_TZ = "America/Los_Angeles";
 
-export type HourBand = "daytime" | "evening" | "late" | "hours";
-
-export const BAND_LABEL: Record<HourBand, string> = {
-  daytime: "Daytime",
-  evening: "Evening",
-  late: "Late night",
-  hours: "The hours",
-};
-
-/** Pacific wall-clock hour, 0–23. */
-export function pacificHour(now: Date = new Date()): number {
+/** Vegas wall-clock hour, 0–23. */
+export function vegasHour(now: Date = new Date()): number {
   const h = new Intl.DateTimeFormat("en-US", {
     timeZone: STORE_TZ,
     hour: "2-digit",
@@ -27,32 +24,43 @@ export function pacificHour(now: Date = new Date()): number {
   return Number(h) % 24;
 }
 
-export function hourBand(hour: number): HourBand {
-  if (hour >= 6 && hour < 16) return "daytime";
-  if (hour >= 16 && hour < 23) return "evening";
-  if (hour >= 23 || hour < 4) return "late";
-  return "hours";
+/**
+ * Is it night in the shop's sense — the hours the sign is the whole pitch?
+ *
+ * Drives the hero's "IT'S 4 AM." / "IT'S 2 PM." and the rail heading's
+ * "MOVING TONIGHT" / "MOVING TODAY". One predicate so the page cannot claim
+ * 4 a.m. in the headline while merchandising for noon underneath.
+ */
+export function isNight(hour: number = vegasHour()): boolean {
+  return hour >= 20 || hour < 8;
+}
+
+/** The hero's time-of-day line, e.g. "It's 4 AM." */
+export function hourLabel(hour: number = vegasHour()): string {
+  const h12 = hour % 12 === 0 ? 12 : hour % 12;
+  return `It's ${h12} ${hour < 12 ? "AM" : "PM"}.`;
 }
 
 /**
- * Fixed-width clock string: always exactly 11 characters, `hh:mm:ss AM`.
- *
- * The 2-digit hour is deliberate. A 1-digit hour would change the string's
- * width at 09:59:59 and reflow the header — the clock would fail CLS on its
- * own. Width stability is a correctness requirement here, not a nicety.
+ * The graveyard window, 2–6 AM local. The deal on /deals exists only inside
+ * it, and auto-hides outside it rather than being switched off by hand.
  */
-export function formatClock(now: Date = new Date()): string {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: STORE_TZ,
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true,
-  }).formatToParts(now);
+export const GRAVEYARD_FROM = 2;
+export const GRAVEYARD_TO = 6;
 
-  const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "00";
-  const hh = get("hour").padStart(2, "0");
-  const period = (get("dayPeriod") || "AM").toUpperCase().replace(/\./g, "");
+export function isGraveyard(hour: number = vegasHour()): boolean {
+  return hour >= GRAVEYARD_FROM && hour < GRAVEYARD_TO;
+}
 
-  return `${hh}:${get("minute")}:${get("second")} ${period}`;
+/** Minutes left in the graveyard window, for the countdown. 0 when outside. */
+export function graveyardMinutesLeft(now: Date = new Date()): number {
+  const hour = vegasHour(now);
+  if (!isGraveyard(hour)) return 0;
+  const mins = Number(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: STORE_TZ,
+      minute: "2-digit",
+    }).format(now),
+  );
+  return (GRAVEYARD_TO - hour) * 60 - mins;
 }

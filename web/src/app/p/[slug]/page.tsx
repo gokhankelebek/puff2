@@ -3,10 +3,8 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import s from "./Product.module.css";
 import NicotineWarning from "@/components/NicotineWarning";
-import { AgeBanner, Header, StatusModule, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
-import Marquee from "@/components/Marquee";
+import { AgeBanner, Header, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour } from "@/lib/time";
 import {
   commerce,
   formatMoney,
@@ -50,18 +48,13 @@ export default async function ProductPage({
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
-  const now = new Date();
-  const band = hourBand(pacificHour(now));
-
   const perPuff = pricePerThousandPuffs(product);
   const human = puffsInHumanUnits(product);
 
   return (
-    <div data-band={band === "late" ? "late" : undefined}>
+    <div>
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule />
-      <Marquee />
 
       <main className={s.wrap}>
         <nav className={s.crumbs} aria-label="Breadcrumb">

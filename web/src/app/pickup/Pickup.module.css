@@ -1,153 +1,166 @@
-/* Pickup.module.css — STRIPPED FOR REDESIGN.
+/* 4i — Visit us. */
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
+.main { display: flex; flex-direction: column; }
 
-   35 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
-
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
-
-.addr {
-  --stripped: 1;
+.mapBand {
+  display: flex;
+  align-items: flex-end;
+  min-height: 210px;
+  padding: 14px var(--gutter);
+  background: var(--photo-2);
+  border-bottom: 1px solid var(--border);
 }
 
-.addrBlock {
-  --stripped: 1;
+.mapNote {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
-.addrLabel {
-  --stripped: 1;
+.head { padding: 20px var(--gutter) 24px; }
+
+.openNow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
 }
 
-.addrLine {
-  --stripped: 1;
+.pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--r-pill);
+  background: var(--green);
 }
 
-.addrNote {
-  --stripped: 1;
+.address {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 9vw, 2.375rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.bridge {
-  --stripped: 1;
+.where {
+  margin-top: 12px;
+  max-width: 52ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-wrap: pretty;
 }
 
-.bridgeBody {
-  --stripped: 1;
+.actions { display: flex; gap: 12px; margin-top: 18px; }
+
+.directions {
+  flex: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border-radius: var(--r-button);
+  background: var(--gold);
+  color: #17111f;
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.h2 {
-  --stripped: 1;
+.call {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-button);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.mall {
-  --stripped: 1;
+.call:hover { border-color: var(--border-hover); }
+
+.hoursCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 24px var(--gutter) 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
 }
 
-.mallBlvd {
-  --stripped: 1;
+.hoursLabel {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
-.mallCell {
-  --stripped: 1;
+.hoursValue {
+  font-family: var(--font-display);
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
-.mallHint {
-  --stripped: 1;
+.hoursNote { font-size: 12px; color: var(--text-dim); }
+
+.inside { padding: 24px var(--gutter); }
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 7vw, 2.25rem);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.mallLead {
-  --stripped: 1;
+.insideList { margin-top: 14px; }
+
+.insideRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
 }
 
-.mallSvg {
-  --stripped: 1;
+.insideName {
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.mallType {
-  --stripped: 1;
-}
+.insideNote { font-size: 13px; color: var(--text-muted); }
 
-.mallUs {
-  --stripped: 1;
-}
+.legal { padding: 8px var(--gutter) 28px; }
 
-.origin {
-  --stripped: 1;
-}
+.legalBody { font-size: 12px; line-height: 1.5; color: var(--text-dim); }
 
-.originLead {
-  --stripped: 1;
-}
-
-.originNote {
-  --stripped: 1;
-}
-
-.origins {
-  --stripped: 1;
-}
-
-.phone {
-  --stripped: 1;
-}
-
-.photo {
-  --stripped: 1;
-}
-
-.photoCap {
-  --stripped: 1;
-}
-
-.photoCell {
-  --stripped: 1;
-}
-
-.photoNo {
-  --stripped: 1;
-}
-
-.photos {
-  --stripped: 1;
-}
-
-.shoot {
-  --stripped: 1;
-}
-
-.walk {
-  --stripped: 1;
-}
-
-.walkList {
-  --stripped: 1;
-}
-
-.walkMaps {
-  --stripped: 1;
-}
-
-.walkMin {
-  --stripped: 1;
-}
-
-.walkNote {
-  --stripped: 1;
-}
-
-.walkPlace {
-  --stripped: 1;
-}
-
-.walkTag {
-  --stripped: 1;
-}
-
-.walks {
-  --stripped: 1;
+@media (min-width: 1200px) {
+  .main { max-width: 1360px; margin: 0 auto; width: 100%; }
+  .head, .inside, .legal { padding-inline: 40px; }
+  .hoursCard { margin-inline: 40px; }
+  .mapBand { min-height: 300px; padding-inline: 40px; }
 }

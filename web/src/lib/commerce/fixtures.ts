@@ -220,10 +220,10 @@ const PRODUCTS: Product[] = [
   /* --- more vape, so the swatch grid and the facets are real ------------- */
   ...vapeRange(),
 
-  /* --- cigars, for the spec-table archetype ------------------------------ */
+  /* --- cigars ------------------------------------------------------------ */
   ...cigarRange(),
 
-  /* --- glass + hookah, for the gallery archetype ------------------------- */
+  /* --- glass + hookah ----------------------------------------------------- */
   {
     id: "beaker-14",
     slug: "beaker-bong-14in",

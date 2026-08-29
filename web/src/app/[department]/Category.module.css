@@ -1,245 +1,224 @@
-/* Category.module.css — STRIPPED FOR REDESIGN.
+/* ==========================================================================
+   4b — Category listing (mobile) / 5b — with the filter rail (desktop).
+   One card grammar for every department; character comes from the filters.
+   ========================================================================== */
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
+.wrap { display: flex; flex-direction: column; }
 
-   58 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
+.head { padding: 20px var(--gutter) 14px; }
 
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
-
-.band {
-  --stripped: 1;
+.crumb {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
 }
 
-.chip {
-  --stripped: 1;
+.crumb a:hover { color: var(--cyan); }
+
+.title {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.375rem, 11vw, 3.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.chipOn {
-  --stripped: 1;
-}
-
-.clear {
-  --stripped: 1;
-}
-
+/* The result line carries the stock claim, so it gets real contrast rather
+   than being demoted to fine print. */
 .count {
-  --stripped: 1;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
-.empty {
-  --stripped: 1;
+.hubs { display: flex; gap: 10px; padding: 0 var(--gutter) 14px; }
+
+.hubLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  transition: border-color var(--d-state) ease-out;
 }
 
-.emptyLine {
-  --stripped: 1;
-}
+.hubLink:hover { border-color: var(--border-hover); }
 
-.emptyLink {
-  --stripped: 1;
-}
+/* --- Filter bar ---------------------------------------------------------- */
 
-.facetLabel {
-  --stripped: 1;
+/* Sticky on mobile: this is a surface people scroll a long way, and the
+   design keeps the filters reachable the whole time. */
+.facets {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px var(--gutter);
+  margin-bottom: 16px;
+  background: var(--bg-alt);
+  border-block: 1px solid var(--border);
 }
 
 .facetRow {
-  --stripped: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
 }
 
-.facets {
-  --stripped: 1;
+.facetLabel {
+  flex: none;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
-.gallery {
-  --stripped: 1;
+/* Chips are toggles, and the selected state is border + 12% tint + brighter
+   text. Never fill-only — a filled chip reads as a button you can press
+   again, which is exactly the wrong affordance for a toggle. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: none;
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  white-space: nowrap;
+  color: var(--text-muted);
+  transition:
+    border-color var(--d-state) ease-out,
+    background-color var(--d-state) ease-out,
+    color var(--d-state) ease-out;
 }
 
-.galleryCell {
-  --stripped: 1;
+.chip:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
 }
 
-.galleryMeta {
-  --stripped: 1;
+.chipOn {
+  border-color: var(--magenta);
+  background: var(--magenta-tint);
+  color: var(--magenta-text);
 }
 
-.galleryShot {
-  --stripped: 1;
+/* Flavour swatches are product data, not brand colour: the whole job is
+   separating ten families at thumbnail size. */
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--r-pill);
+  flex: none;
 }
 
-.grid {
-  --stripped: 1;
-}
-
-.head {
-  --stripped: 1;
-}
-
-.hubLink {
-  --stripped: 1;
-}
-
-.hubs {
-  --stripped: 1;
-}
-
-.humidorBar {
-  --stripped: 1;
-}
-
-.list {
-  --stripped: 1;
-}
-
-.note {
-  --stripped: 1;
-}
-
-.row {
-  --stripped: 1;
-}
-
-.rowBody {
-  --stripped: 1;
-}
-
-.rowName {
-  --stripped: 1;
-}
-
-.rowPrice {
-  --stripped: 1;
-}
-
-.rowSingle {
-  --stripped: 1;
-}
-
-.rowSpecs {
-  --stripped: 1;
+/* The nicotine control is one segmented group, not loose chips — the values
+   are mutually exclusive and reading them as a single control says so. */
+.segmented {
+  display: inline-flex;
+  flex: none;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  overflow: hidden;
 }
 
 .segment {
-  --stripped: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 13px;
+  font-size: 13px;
+  white-space: nowrap;
+  color: var(--text-muted);
+  border-right: 1px solid var(--border-strong);
+  transition:
+    background-color var(--d-state) ease-out,
+    color var(--d-state) ease-out;
+}
+
+.segment:last-child {
+  border-right: 0;
+}
+
+.segment:hover {
+  color: var(--text);
 }
 
 .segmentOn {
-  --stripped: 1;
+  background: var(--magenta-tint);
+  color: var(--magenta-text);
 }
 
-.segmented {
-  --stripped: 1;
+.clear {
+  flex: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan);
 }
 
-.stockVerified {
-  --stripped: 1;
+.clear:hover {
+  text-decoration: underline;
 }
 
-.swatch {
-  --stripped: 1;
-}
+/* --------------------------------------------------------------------------
+   5b — desktop: 260 px sticky filter rail beside the results.
+   -------------------------------------------------------------------------- */
 
-.thumb {
-  --stripped: 1;
-}
+@media (min-width: 1200px) {
+  .wrap {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-areas:
+      "head head"
+      "hubs hubs"
+      "warn warn"
+      "rail results";
+    column-gap: 32px;
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px 40px;
+    align-items: start;
+  }
 
-.thumbImg {
-  --stripped: 1;
-}
+  .head { grid-area: head; padding-inline: 0; }
+  .hubs { grid-area: hubs; padding-inline: 0; }
 
-.thumbImgCutout {
-  --stripped: 1;
-}
+  /* The mobile sheet unpacked into an always-open rail that scrolls
+     independently of the results. */
+  .facets {
+    grid-area: rail;
+    position: sticky;
+    top: 20px;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    margin-bottom: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    background: var(--surface);
+  }
 
-.tile {
-  --stripped: 1;
-}
+  .facetRow { flex-wrap: wrap; overflow-x: visible; }
 
-.tileBody {
-  --stripped: 1;
-}
-
-.tileBrand {
-  --stripped: 1;
-}
-
-.tileFlavor {
-  --stripped: 1;
-}
-
-.tileFoot {
-  --stripped: 1;
-}
-
-.tileGlyph {
-  --stripped: 1;
-}
-
-.tileImg {
-  --stripped: 1;
-}
-
-.tileImgCutout {
-  --stripped: 1;
-}
-
-.tileModel {
-  --stripped: 1;
-}
-
-.tileOut {
-  --stripped: 1;
-}
-
-.tilePerPuff {
-  --stripped: 1;
-}
-
-.tilePlateDark {
-  --stripped: 1;
-}
-
-.tilePlateLight {
-  --stripped: 1;
-}
-
-.tilePrice {
-  --stripped: 1;
-}
-
-.tileShot {
-  --stripped: 1;
-}
-
-.tileShotLabel {
-  --stripped: 1;
-}
-
-.tileStock {
-  --stripped: 1;
-}
-
-.title {
-  --stripped: 1;
-}
-
-.utility {
-  --stripped: 1;
-}
-
-.utilityName {
-  --stripped: 1;
-}
-
-.utilityRow {
-  --stripped: 1;
-}
-
-.wrap {
-  --stripped: 1;
+  /* PageNicotineWarning and the grid share the results column. */
+  .wrap > :global(*):nth-child(3) { grid-area: warn; }
 }

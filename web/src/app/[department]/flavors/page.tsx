@@ -3,10 +3,8 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import cat from "../Category.module.css";
 import h from "../Hub.module.css";
-import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
-import Marquee from "@/components/Marquee";
+import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour } from "@/lib/time";
 import {
   commerce,
   DEPARTMENT_LABELS,
@@ -58,16 +56,12 @@ export default async function FlavorIndexPage({
 
   const hds = await headers();
   const affirmed = hds.get(AGE_HEADER) === "1";
-  const now = new Date();
-  const band = hourBand(pacificHour(now));
   const label = DEPARTMENT_LABELS[department];
 
   return (
-    <div data-band={band === "late" ? "late" : undefined}>
+    <div>
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule />
-      <Marquee />
 
       <main className={cat.wrap}>
         <div className={cat.head}>

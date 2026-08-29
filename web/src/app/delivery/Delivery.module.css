@@ -1,193 +1,223 @@
-/* Delivery.module.css — STRIPPED FOR REDESIGN.
+/* 4g — Delivery, explained. */
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
+.main { display: flex; flex-direction: column; }
 
-   45 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
+.hero { padding: 24px var(--gutter) 18px; }
 
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
-
-.actions {
-  --stripped: 1;
+.heroTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 12vw, 5rem);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.allHotels {
-  --stripped: 1;
+.heroSub {
+  margin-top: 14px;
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-wrap: pretty;
 }
 
-.allSummary {
-  --stripped: 1;
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0 var(--gutter) 24px;
 }
 
-.callLink {
-  --stripped: 1;
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
 }
 
-.cant {
-  --stripped: 1;
+.statFigure {
+  font-family: var(--font-display);
+  font-size: 34px;
+  letter-spacing: 0.03em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
 }
 
-.cantBody {
-  --stripped: 1;
+.statLabel {
+  font-size: 11px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
-.cantLink {
-  --stripped: 1;
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 7vw, 2.375rem);
+  line-height: 0.95;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.change {
-  --stripped: 1;
-}
-
-.chosen {
-  --stripped: 1;
-}
-
-.chosenFacts {
-  --stripped: 1;
-}
-
-.chosenHead {
-  --stripped: 1;
-}
-
-.chosenLabel {
-  --stripped: 1;
-}
-
-.chosenName {
-  --stripped: 1;
-}
-
-.fact {
-  --stripped: 1;
-}
-
-.factFigure {
-  --stripped: 1;
-}
-
-.factLabel {
-  --stripped: 1;
-}
-
-.facts {
-  --stripped: 1;
-}
-
-.find {
-  --stripped: 1;
-}
-
-.findGo {
-  --stripped: 1;
-}
-
-.findInput {
-  --stripped: 1;
-}
-
-.findLabel {
-  --stripped: 1;
-}
-
-.findRow {
-  --stripped: 1;
-}
-
-.h2 {
-  --stripped: 1;
-}
-
-.hotel {
-  --stripped: 1;
-}
-
-.hotelFee {
-  --stripped: 1;
-}
-
-.hotels {
-  --stripped: 1;
-}
-
-.how {
-  --stripped: 1;
-}
-
-.id {
-  --stripped: 1;
-}
-
-.idBody {
-  --stripped: 1;
-}
-
-.inline {
-  --stripped: 1;
-}
-
-.meet {
-  --stripped: 1;
-}
-
-.miss {
-  --stripped: 1;
-}
-
-.pick {
-  --stripped: 1;
-}
-
-.pickNote {
-  --stripped: 1;
-}
-
-.priceNote {
-  --stripped: 1;
-}
-
-.rateNote {
-  --stripped: 1;
-}
-
-.step {
-  --stripped: 1;
-}
-
-.stepBody {
-  --stripped: 1;
-}
-
-.stepNo {
-  --stripped: 1;
-}
+.how { padding: 24px var(--gutter); }
 
 .steps {
-  --stripped: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 16px;
 }
 
-.tower {
-  --stripped: 1;
+.step { display: flex; gap: 14px; }
+
+.stepNum {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--magenta);
+  color: var(--magenta);
+  font-family: var(--font-display);
+  font-size: 19px;
 }
 
-.towerAsk {
-  --stripped: 1;
+.stepBody { display: flex; flex-direction: column; gap: 3px; }
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
-.towerList {
-  --stripped: 1;
+.stepNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 50ch;
 }
 
-.towers {
-  --stripped: 1;
+/* The hotel band is the second lit island — neon at any hour. */
+.hotels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px var(--gutter) 28px;
 }
 
-.walkLink {
-  --stripped: 1;
+.chipRow { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition:
+    border-color var(--d-state) ease-out,
+    background-color var(--d-state) ease-out,
+    color var(--d-state) ease-out;
+}
+
+.chip:hover { border-color: var(--border-hover); color: var(--text); }
+
+/* Selected is border + tint + brighter text — never fill-only. */
+.chip[aria-current="true"] {
+  border-color: var(--magenta);
+  background: var(--magenta-tint);
+  color: var(--magenta-text);
+}
+
+.chipMore {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 6px;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.picked {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid var(--magenta);
+  border-radius: var(--r-card);
+  background: var(--panel-live-bg);
+  box-shadow: var(--glow-panel);
+}
+
+.pickedName {
+  font-family: var(--font-display);
+  font-size: 21px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.pickedNote { font-size: 12px; color: var(--text-dim); }
+
+.pickedTerms {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 20px;
+  border-radius: var(--r-button);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: var(--glow-cta);
+}
+
+.ctaNote { font-size: 12px; color: var(--text-dim); }
+
+.legal { padding: 24px var(--gutter) 32px; }
+
+.legalTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.legalBody {
+  margin-top: 8px;
+  max-width: 60ch;
+  font-size: 13px;
+  line-height: 1.55;
+  /* The legal floor. Nothing dimmer carries body copy. */
+  color: var(--text-dim);
+}
+
+@media (min-width: 1200px) {
+  .main { max-width: 1360px; margin: 0 auto; width: 100%; }
+  .hero, .how, .hotels, .legal { padding-inline: 40px; }
+  .stats { grid-template-columns: repeat(4, 1fr); padding-inline: 40px; }
+  .heroSub { font-size: 19px; }
 }

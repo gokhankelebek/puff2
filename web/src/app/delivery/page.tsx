@@ -1,332 +1,197 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import s from "../Home.module.css";
 import d from "./Delivery.module.css";
-import { AgeBanner, Header, StatusModule, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
-import BoulevardSpine from "@/components/BoulevardSpine";
-import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour } from "@/lib/time";
+import Bulbs from "@/components/Bulbs";
 import {
-  HOTELS,
-  HOTEL_SEARCH_HINTS,
-  hotelByQuery,
-  STRIP_LANDMARKS,
-  formatMiles,
-  metersFromShop,
-  deliveryFeeCents,
-  deliveryFeeForHotel,
-  formatDeliveryFee,
+  AgeBanner,
+  BottomNav,
+  Footer,
+  Header,
+  UtilityBar,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+} from "@/components/Chrome";
+import { AGE_HEADER } from "@/lib/age-shared";
+import {
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_TERMS_LABEL,
-  DELIVERY_MINIMUM_LABEL,
-  type Hotel,
+  HOTELS,
+  hotelBySlug,
 } from "@/lib/hotels";
-import { WALKS, walkForHotelSlug, mapsWalkingUrl } from "@/lib/walks";
+import { SHOP_STREET } from "@/lib/shop";
 
 export const metadata: Metadata = {
-  title: "Delivery to Strip hotels — 24 hours | Puff Vegas",
+  title: "Hotel delivery, 24 hours | Puff Vegas",
   description:
-    "Delivery to Las Vegas Strip hotels, $20 flat with no minimum, about 14 minutes. Cash at your door or card on the driver's reader. ID checked on every order, 24 hours a day.",
+    "Delivery to Las Vegas Strip hotels, $20 flat with no minimum, about 25–40 minutes. Cash or card at your door. ID checked on every order, 24 hours a day.",
   alternates: { canonical: "/delivery" },
 };
 
+type Search = { hotel?: string };
+
 /**
- * The page the primary call to action points at.
+ * 4g — Delivery, explained.
  *
- * Every "Deliver to me" button on the site linked here and got a 404, which
- * made the whole design a shop window with a locked door.
+ * Answers every delivery question without a phone call. It is not the order
+ * sheet: the sheet is a separate step, and this page's job is to make the
+ * terms plain enough that starting one feels safe.
  *
- * ── Why there is no cart ───────────────────────────────────────────────────
- *
- * Not an omission. Under the PACT Act, USPS will not carry ENDS at all and UPS,
- * FedEx and DHL have each stopped accepting them, so shipping this catalogue is
- * closed off to a small retailer. What the shop actually does is drive it over
- * and take cash or card at the door — which needs no checkout, and works today.
- * A web checkout waits on Square's written position on web-originated,
- * door-paid orders, which is still open.
- *
- * So the order is placed by text or phone, with the message pre-filled from
- * whatever the customer picked here. That is one tap on the device every one of
- * these visitors is holding, and it puts a person on the other end — which for
- * a shop that answers in minutes is a feature rather than a fallback.
- *
- * ── Why the picker is a spine and a name field, not a map ──────────────────
- *
- * `/delivery?hotel=bellagio` is server-rendered, works with scripting off,
- * survives a slow hydration, and can be sent to someone. Same reasoning as the
- * category facets and the age gate's form POST. The Boulevard spine is the
- * view; the stops are still those links. A typed name hits the same query
- * through a GET form — aliases like Bally's resolve on the server.
+ * The hotel choice is a link, not client state, so a chosen hotel is a
+ * shareable URL and the page works with scripting off.
  */
 export default async function DeliveryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ hotel?: string; tower?: string }>;
+  searchParams: Promise<Search>;
 }) {
-  const { hotel: hotelQuery, tower } = await searchParams;
+  const sp = await searchParams;
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
-  const now = new Date();
-  const band = hourBand(pacificHour(now));
-  const hotel = hotelByQuery(hotelQuery);
-  const unknown = Boolean(hotelQuery?.trim() && !hotel);
+  const hotel = sp.hotel ? hotelBySlug(sp.hotel) : undefined;
+  const featured = HOTELS.slice(0, 8);
+  const more = Math.max(0, HOTELS.length - featured.length);
 
   return (
-    <div data-band={band === "late" ? "late" : undefined}>
+    <>
+      <UtilityBar hotel={hotel?.name} />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule />
+      <Bulbs />
 
-      <main className={s.main}>
-        <section className={s.shelfHead}>
-          <div>
-            <span className={s.shelfIndex}>Delivery</span>
-            <h1 className={s.shelfTitle}>We drive to you</h1>
-            <p className={s.shelfNote}>
-              {DELIVERY_TERMS_LABEL} · about 14 min. Cash or card.
-              24 hours.
-            </p>
-          </div>
-          <div className={s.shelfActions}>
-            <a className={s.ctaGhost} href="/pickup">
-              Pick-Up instead
-            </a>
-          </div>
+      <main className={d.main}>
+        <section className={d.hero}>
+          <h1 className={d.heroTitle}>
+            {DELIVERY_STRIP_FEE_LABEL} flat.
+            <br />
+            No minimum.
+            <br />
+            Any hour.
+          </h1>
+          <p className={d.heroSub}>
+            We run to Strip hotels around the clock from {SHOP_STREET}. One
+            price, whatever you order and wherever you are on the Boulevard.
+            You pay the runner at the door.
+          </p>
         </section>
 
-        <ul className={d.facts}>
-          <li className={d.fact}>
-            <span className={d.factFigure}>{DELIVERY_STRIP_FEE_LABEL}</span>
-            <span className={d.factLabel}>Strip hotels</span>
+        <ul className={d.stats}>
+          <li className={d.stat}>
+            <span className={d.statFigure}>25–40</span>
+            <span className={d.statLabel}>Minutes, typical</span>
           </li>
-          <li className={d.fact}>
-            <span className={d.factFigure}>None</span>
-            <span className={d.factLabel}>Minimum</span>
-          </li>
-          <li className={d.fact}>
-            <span className={d.factFigure}>24/7</span>
-            <span className={d.factLabel}>Every hour</span>
+          <li className={d.stat}>
+            <span className={d.statFigure}>{HOTELS.length}</span>
+            <span className={d.statLabel}>Strip hotels served</span>
           </li>
         </ul>
-        <HotelSearch value={hotel?.name ?? (unknown ? hotelQuery : undefined)} />
 
-        {unknown ? (
-          <p className={d.miss} role="status">
-            We don&rsquo;t have that name. Pick below or{" "}
-            <a className={d.inline} href={PHONE_HREF}>
-              call {PHONE_DISPLAY}.
-            </a>
-          </p>
-        ) : null}
+        <Bulbs />
 
-        {hotel ? <Chosen hotel={hotel} tower={tower} /> : null}
-
-        <BoulevardSpine selected={hotel?.slug} />
-
-        <HotelList />
-
-        {/* Said before an order is built. Cigarettes stay pickup-only —
-            NRS 370.585 is unsettled on delivery. See docs/COMPLIANCE.md. */}
-        <section className={d.cant} aria-label="What we cannot deliver">
-          <h2 className={d.h2}>Before you text</h2>
-          <p className={d.cantBody}>
-            <strong>Cigarettes:</strong> pickup only —{" "}
-            <a className={d.inline} href="/cigarettes">
-              hold at the counter.
-            </a>
-          </p>
-          <p className={d.cantBody}>
-            <strong>21+ with ID</strong> at the door. Have it out.
-          </p>
-        </section>
-      </main>
-
-      <BottomNav />
-    </div>
-  );
-}
-
-function stopFacts(stop: (typeof STRIP_LANDMARKS)[number]): {
-  primary: string;
-  secondary: string;
-} {
-  if (stop.here) {
-    return { primary: "Here", secondary: "Walk in · Grand Bazaar" };
-  }
-  const miles = stop.geo ? formatMiles(metersFromShop(stop.geo)) : null;
-  /* Every stop prices the same now. The mile figure stays because the diagram
-     is telling you where you are relative to the shop, not what it costs. */
-  const fee = DELIVERY_STRIP_FEE_LABEL;
-  const walk = stop.walkPlace
-    ? WALKS.find((w) => w.place === stop.walkPlace)
-    : undefined;
-  if (walk) {
-    return {
-      primary: `${walk.minutes} min walk`,
-      secondary: [miles, walk.bridge ? "over the bridge" : null, `${fee} delivered`]
-        .filter(Boolean)
-        .join(" · "),
-    };
-  }
-  return {
-    primary: fee,
-    secondary: [miles, DELIVERY_MINIMUM_LABEL].filter(Boolean).join(" · "),
-  };
-}
-
-function HotelSearch({ value }: { value?: string }) {
-  return (
-    <form className={d.find} method="get" action="/delivery" role="search">
-      <label className={d.findLabel} htmlFor="hotel-query">
-        Where are you staying?
-      </label>
-      <div className={d.findRow}>
-        <input
-          id="hotel-query"
-          className={d.findInput}
-          type="text"
-          name="hotel"
-          list="hotel-names"
-          autoComplete="off"
-          spellCheck={false}
-          defaultValue={value}
-          placeholder="Bellagio, Bally's, Cosmo…"
-        />
-        <button className={d.findGo} type="submit">
-          Find
-        </button>
-      </div>
-      <datalist id="hotel-names">
-        {HOTELS.map((h) => (
-          <option key={h.slug} value={h.name} />
-        ))}
-        {HOTEL_SEARCH_HINTS.map((hint) => (
-          <option key={hint} value={hint} />
-        ))}
-      </datalist>
-    </form>
-  );
-}
-
-function HotelList() {
-  return (
-    <section className={d.pick} aria-label="All Strip hotels">
-      <details className={d.allHotels}>
-        <summary className={d.allSummary}>All Strip hotels</summary>
-        <ul className={d.hotels}>
-          {HOTELS.map((hotel) => (
-            <li key={hotel.slug}>
-              <a className={d.hotel} href={`/delivery?hotel=${hotel.slug}`}>
-                <span>{hotel.name}</span>
-                <span className={d.hotelFee}>
-                  {formatDeliveryFee(deliveryFeeForHotel(hotel.slug))} · {DELIVERY_MINIMUM_LABEL}
+        <section className={d.how}>
+          <h2 className={d.sectionTitle}>How it works</h2>
+          <ol className={d.steps}>
+            <li className={d.step}>
+              <span className={d.stepNum}>1</span>
+              <span className={d.stepBody}>
+                <span className={d.stepTitle}>Tell us where you are</span>
+                <span className={d.stepNote}>
+                  Hotel, tower and room. We meet at the door, the valet, or the
+                  rideshare pickup — whichever your property allows.
                 </span>
-              </a>
+              </span>
             </li>
-          ))}
-        </ul>
-      </details>
-      <p className={d.pickNote}>
-        Somewhere else?{" "}
-        <a className={d.inline} href={PHONE_HREF}>Call {PHONE_DISPLAY}</a>. Same meter.
-      </p>
-    </section>
-  );
-}
+            <li className={d.step}>
+              <span className={d.stepNum}>2</span>
+              <span className={d.stepBody}>
+                <span className={d.stepTitle}>Pick your items</span>
+                <span className={d.stepNote}>
+                  Anything on the floor that can leave the building. Some items
+                  are in-store only and say so on their page.
+                </span>
+              </span>
+            </li>
+            <li className={d.step}>
+              <span className={d.stepNum}>3</span>
+              <span className={d.stepBody}>
+                <span className={d.stepTitle}>Pay at the door</span>
+                <span className={d.stepNote}>
+                  Cash or card on the runner&rsquo;s reader. No card details on
+                  this site, ever. Have your ID out — we check every time.
+                </span>
+              </span>
+            </li>
+          </ol>
+        </section>
 
-function Chosen({
-  hotel,
-  tower,
-}: {
-  hotel: Hotel;
-  tower?: string;
-}) {
-  const where = tower ? `${hotel.name}, ${tower}` : hotel.name;
-  const stop = STRIP_LANDMARKS.find((n) => n.hotel === hotel.slug);
-  const facts = stop ? stopFacts(stop) : null;
-  const fee = formatDeliveryFee(deliveryFeeForHotel(hotel.slug));
-  const miles = formatMiles(metersFromShop(hotel.geo));
-  const factLine = facts
-    ? stop?.walkPlace
-      ? `${facts.primary} · ${facts.secondary} · ${DELIVERY_MINIMUM_LABEL}`
-      : `${facts.primary} · ${facts.secondary}`
-    : `${fee} · ${miles} · ${DELIVERY_MINIMUM_LABEL}`;
+        <Bulbs />
 
-  const walk = walkForHotelSlug(hotel.slug);
-
-  /* iOS wants `sms:number&body=`, Android wants `sms:number?body=`. The
-     `?&` form is the one both accept. */
-  const sms = `sms:+17026137799?&body=${encodeURIComponent(
-    `Delivery to ${where}. ${fee} fee, ${DELIVERY_MINIMUM_LABEL}. I'd like: `,
-  )}`;
-
-  return (
-    <section className={d.chosen} id="chosen" aria-label={`Delivery to ${hotel.name}`}>
-      <div className={d.chosenHead}>
-        <span className={d.chosenLabel}>Delivering to</span>
-        <h2 className={d.chosenName}>{where}</h2>
-        <a className={d.change} href="/delivery">
-          Change hotel
-        </a>
-      </div>
-      <p className={d.chosenFacts}>{factLine}</p>
-
-      {hotel.towers && !tower && (
-        <div className={d.towers}>
-          <p className={d.towerAsk}>Which tower?</p>
-          <ul className={d.towerList}>
-            {hotel.towers.map((t) => (
-              <li key={t}>
+        <section className={d.hotels} data-island="lit">
+          <h2 className={d.sectionTitle}>Hotels we run to</h2>
+          <ul className={d.chipRow}>
+            {featured.map((x) => (
+              <li key={x.slug}>
                 <a
-                  className={d.tower}
-                  href={`/delivery?hotel=${hotel.slug}&tower=${encodeURIComponent(t)}`}
+                  className={d.chip}
+                  href={`/delivery?hotel=${encodeURIComponent(x.slug)}`}
+                  aria-current={hotel?.slug === x.slug ? "true" : undefined}
                 >
-                  {t}
+                  {x.name}
                 </a>
               </li>
             ))}
             <li>
-              <a className={d.tower} href={`/delivery?hotel=${hotel.slug}&tower=${encodeURIComponent("Not sure")}`}>
-                Not sure
-              </a>
+              <span className={d.chipMore}>+ {more} more</span>
             </li>
           </ul>
-        </div>
-      )}
 
-      <p className={d.meet}>
-        {hotel.meet
-          ? hotel.meet
-          : "Driver texts when close. Usually lobby or valet."}
-      </p>
+          {hotel ? (
+            <div className={d.picked}>
+              <p className={d.pickedName}>Delivering to {hotel.name}</p>
+              {hotel.towers?.length ? (
+                <p className={d.pickedNote}>
+                  Towers: {hotel.towers.join(" · ")}
+                </p>
+              ) : null}
+              {/* meet points are deliberately empty until the shop fills them
+                  in per property — inventing "the north valet" would strand a
+                  runner and a customer at two different doors. */}
+              <p className={d.pickedNote}>
+                {hotel.meet ?? "We'll confirm the meet point when you text."}
+              </p>
+              <p className={d.pickedTerms}>{DELIVERY_TERMS_LABEL} · 25–40 min</p>
+            </div>
+          ) : (
+            <p className={d.pickedNote}>
+              Pick your hotel and we&rsquo;ll show the meet point and the
+              current run time.
+            </p>
+          )}
 
-      <div className={d.actions}>
-        <a className={s.cta} href={sms}>
-          Text us the order
-        </a>
-        {walk ? (
-          <a
-            className={d.walkLink}
-            href={mapsWalkingUrl(walk.place)}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Walk from here · {walk.minutes} min
+          <a className={d.cta} href={PHONE_HREF}>
+            Start a delivery
           </a>
-        ) : (
-          <a className={d.walkLink} href="/pickup">
-            Pick-Up instead
-          </a>
-        )}
-        <a className={d.callLink} href={PHONE_HREF}>
-          or call {PHONE_DISPLAY}
-        </a>
-      </div>
+          <p className={d.ctaNote}>
+            Text or call {PHONE_DISPLAY}. No account, no card on file.
+          </p>
+        </section>
 
-      <p className={d.priceNote}>
-        {fee} flat · no minimum. Tax extra. Nothing added at the door.
-      </p>
-    </section>
+        <Bulbs />
+
+        <section className={d.legal}>
+          <h2 className={d.legalTitle}>We do not ship</h2>
+          <p className={d.legalBody}>
+            Local delivery only, inside Clark County, by our own runners. We do
+            not mail tobacco, vapor or hemp products to any address — the PACT
+            Act makes that a different business and we are not in it. 21+ with
+            valid ID at the door, every order, no exceptions.
+          </p>
+        </section>
+      </main>
+
+      <Bulbs />
+      <Footer />
+      <BottomNav />
+    </>
   );
 }

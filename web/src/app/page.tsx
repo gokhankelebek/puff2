@@ -2,15 +2,9 @@ import { headers } from "next/headers";
 import s from "./Home.module.css";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
 import Bulbs from "@/components/Bulbs";
-import {
-  AgeBanner,
-  BottomNav,
-  Footer,
-  Header,
-  UtilityBar,
-} from "@/components/Chrome";
+import { AgeBanner, BottomNav, Footer, Header, UtilityBar } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour, type HourBand } from "@/lib/time";
+import { hourLabel, isNight, vegasHour } from "@/lib/time";
 import {
   commerce,
   formatMoney,
@@ -28,18 +22,14 @@ import { SHOP_STREET } from "@/lib/shop";
 import { DepartmentMark } from "@/components/Icons";
 
 /**
- * Which departments lead the shelf, by hour.
+ * Which departments lead the rail.
  *
- * Survives from the previous design because it was never art direction: a
- * 4 a.m. arrival and a 2 p.m. arrival want different things off the same
- * shelf, and that is a merchandising fact rather than a visual one.
+ * A flat order, not the old four-band system that re-sorted the whole shelf
+ * by time of day. That was the previous art direction's whole thesis -- the
+ * hour as the product -- and it is not this one. Marquee Neon asks the clock
+ * two questions (is it night, is it graveyard) and nothing more.
  */
-const SHELF_ORDER: Record<HourBand, Department[]> = {
-  hours: ["vape", "cigarettes", "accessories", "cigars"],
-  daytime: ["cigars", "vape", "accessories", "hookah"],
-  evening: ["hookah", "vape", "cigars", "accessories"],
-  late: ["vape", "accessories", "hookah", "cigarettes"],
-};
+const RAIL_ORDER: Department[] = ["vape", "glass", "cigars", "accessories"];
 
 /** The rail bleeds its last card off-screen as a scroll affordance, so an
  *  even count would sit flush and read as the end of the list. */
@@ -62,10 +52,9 @@ const FLOOR: { department: Department; note: string }[] = [
 export default async function HomePage() {
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
-
-  const band = hourBand(pacificHour(new Date()));
+  const hour = vegasHour();
   const all = await commerce.getProducts();
-  const rail = buildShelf(all, band).slice(0, RAIL_SIZE);
+  const rail = buildShelf(all).slice(0, RAIL_SIZE);
 
   const counts = all.reduce<Partial<Record<Department, number>>>((acc, p) => {
     acc[p.department] = (acc[p.department] ?? 0) + 1;
@@ -74,11 +63,10 @@ export default async function HomePage() {
 
   const departmentCount = new Set(all.map((p) => p.department)).size;
 
-  /* Day and night say the same thing about the shop and a different thing
-     about the hour. Both are driven by the same clock that decides the shelf
-     order, so the page cannot claim 4 a.m. while merchandising for noon. */
-  const night = band === "late" || band === "hours";
-  const heroHour = night ? "It's 4 AM." : "It's 2 PM.";
+  /* One clock, read once: the headline and the rail heading cannot disagree
+     about what time it is. */
+  const night = isNight(hour);
+  const heroHour = hourLabel(hour);
   const railHeading = night ? "Moving tonight" : "Moving today";
 
   /* Five names, then the count of everything else. HOTELS is the real list,
@@ -295,8 +283,8 @@ function StockNote({ product: p }: { product: Product }) {
  * The shelf: the leading departments for this hour, interleaved so no single
  * department owns the top of the rail, and out-of-stock last.
  */
-function buildShelf(all: Product[], band: HourBand): Product[] {
-  const order = SHELF_ORDER[band];
+function buildShelf(all: Product[]): Product[] {
+  const order = RAIL_ORDER;
   const byDept = new Map<Department, Product[]>();
 
   for (const p of all) {

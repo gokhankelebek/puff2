@@ -254,16 +254,6 @@ export const DEPARTMENT_LABELS: Record<Department, string> = {
   accessories: "Accessories",
 };
 
-/** Page titles. Cigars get the room name, not the category name. */
-export const DEPARTMENT_TITLES: Record<Department, string> = {
-  vape: "Vape",
-  cigars: "The humidor",
-  cigarettes: "Cigarettes",
-  hookah: "Hookah",
-  glass: "Glass",
-  hemp: "Hemp & CBD",
-  accessories: "Accessories",
-};
 
 export function isDepartment(v: string): v is Department {
   return (DEPARTMENTS as readonly string[]).includes(v);
@@ -277,34 +267,16 @@ export type CommerceAdapter = {
   }): Promise<Product[]>;
 };
 
-/**
- * Which browse grammar a department uses.
+/*
+ * The four PLP archetypes were removed with "The 24".
  *
- * One taxonomy serves none of these shoppers. Forcing them together produces
- * a cigar buyer filtering by "flavour" and a vape buyer filtering by "ring
- * gauge", and both leave.
+ * That design gave every department its own tile grammar -- a chip-swatch grid
+ * for vape, a spec table for cigars, a gallery for glass, a utility list for
+ * cigarettes -- on the argument that one taxonomy serves no shopper. Marquee
+ * Neon makes the opposite call: one 2-up product card everywhere, with stock
+ * as the thing that varies. Department character comes from the filter set,
+ * not from a different card per shelf.
  */
-export type PlpArchetype = "chip-swatch" | "spec-table" | "gallery" | "utility";
-
-export function archetypeFor(department: Department): PlpArchetype {
-  switch (department) {
-    case "vape":
-      return "chip-swatch";
-    case "cigars":
-      return "spec-table";
-    case "hookah":
-    case "glass":
-      return "gallery";
-    case "cigarettes":
-    case "accessories":
-    /* Hemp browses like a pharmacy shelf, not a flavour wall: the deciding
-       facts are form, milligrams and whether a COA exists. A utility list puts
-       all three on one line; a chip-swatch grid would sell it like candy,
-       which is the exact impression this category must not give. */
-    case "hemp":
-      return "utility";
-  }
-}
 
 /* ---------------------------------------------------------------------------
    Derived helpers. Pure, so they are trivially testable.

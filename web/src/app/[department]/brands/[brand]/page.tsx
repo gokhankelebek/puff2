@@ -3,14 +3,11 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import cat from "../../Category.module.css";
 import h from "../../Hub.module.css";
-import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
-import Marquee from "@/components/Marquee";
+import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
 import { EmptyResults, ProductTiles } from "@/components/ProductTiles";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour } from "@/lib/time";
 import {
-  archetypeFor,
   commerce,
   DEPARTMENT_LABELS,
   DEPARTMENTS,
@@ -75,19 +72,13 @@ export default async function BrandHubPage({
 
   const hds = await headers();
   const affirmed = hds.get(AGE_HEADER) === "1";
-  const now = new Date();
-  const band = hourBand(pacificHour(now));
   const label = DEPARTMENT_LABELS[department];
 
   return (
     <div
-      data-band={band === "late" ? "late" : undefined}
-      data-zone={department === "cigars" ? "humidor" : undefined}
     >
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule />
-      <Marquee />
 
       <main className={cat.wrap}>
         <div className={cat.head}>
@@ -121,10 +112,9 @@ export default async function BrandHubPage({
         {items.length === 0 ? (
           <EmptyResults
             clearHref={`/${department}/brands`}
-            clearLabel="All brands →"
           />
         ) : (
-          <ProductTiles items={items} archetype={archetypeFor(department)} />
+          <ProductTiles items={items} />
         )}
       </main>
 

@@ -3,10 +3,8 @@ import { headers } from "next/headers";
 import s from "../Home.module.css";
 import r from "./Search.module.css";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
-import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
-import Marquee from "@/components/Marquee";
+import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour } from "@/lib/time";
 import {
   commerce,
   DEPARTMENT_LABELS,
@@ -33,9 +31,6 @@ export default async function SearchPage({
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
-  const now = new Date();
-  const band = hourBand(pacificHour(now));
-
   const all = await commerce.getProducts();
   /* The same scorer the typeahead runs, so the dropdown and this page can
      never disagree about what matches. Hits stay in score order — grouping
@@ -47,11 +42,9 @@ export default async function SearchPage({
   const groups = groupByDepartment(hits);
 
   return (
-    <div data-band={band === "late" ? "late" : undefined}>
+    <div>
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule />
-      <Marquee />
 
       <main className={s.main}>
         <section className={s.shelfHead}>

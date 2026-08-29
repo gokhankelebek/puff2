@@ -1,220 +1,136 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import s from "../Home.module.css";
 import g from "./Pickup.module.css";
-import { AgeBanner, Header, StatusModule, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
+import Bulbs from "@/components/Bulbs";
+import {
+  AgeBanner,
+  BottomNav,
+  Footer,
+  Header,
+  UtilityBar,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+} from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour } from "@/lib/time";
-import { WALKS, mapsWalkingUrl } from "@/lib/walks";
+import {
+  SHOP_ADDRESS_FULL,
+  SHOP_GEO,
+  SHOP_MALL,
+  SHOP_STREET,
+  SHOP_SUITE,
+} from "@/lib/shop";
 
 export const metadata: Metadata = {
-  title: "Pick-Up — Grand Bazaar Shops, next to Ole Red | Puff Vegas",
+  title: "Visit us — open 24 hours on the Strip | Puff Vegas",
   description:
-    "Walk in to Puff Vegas at Grand Bazaar Shops, Las Vegas Blvd at Flamingo, next to Ole Red. Suite 611-613. Open 24 hours.",
+    "Walk in 24 hours a day at 3649 S Las Vegas Blvd, suite 611-613, inside Grand Bazaar Shops next to Ole Red. Walk-in humidor, glass gallery and testing bar.",
   alternates: { canonical: "/pickup" },
 };
 
-type Origin = "west" | "east" | "mall";
-
-function parseOrigin(raw?: string): Origin | undefined {
-  if (raw === "west" || raw === "east" || raw === "mall") return raw;
-  return undefined;
-}
+const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${SHOP_GEO.lat},${SHOP_GEO.lng}`;
 
 /**
- * Walk-in. Not delivery.
+ * 4i — Visit us. The walk-in half.
  *
- * Landmarks before the street number. The Flamingo pedestrian bridge is the
- * whole problem for anyone west of the Blvd. `?from=west|east|mall` is a
- * link, not a script.
+ * The old page carried a walking-times table to a dozen hotels and a
+ * schematic of the mall drawn as a transit diagram. Both were "The 24" — and
+ * the times were stale on purpose, which is not a thing to keep. What
+ * survives is the part a customer actually needs at 3 a.m.: where the door
+ * is, that it is open, and how to get walking directions to it.
  */
-export default async function PickupPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ from?: string }>;
-}) {
-  const { from: fromRaw } = await searchParams;
-  const origin = parseOrigin(fromRaw);
+export default async function PickupPage() {
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
-  const now = new Date();
-  const band = hourBand(pacificHour(now));
-  const maps = mapsWalkingUrl();
-
-  const order: Array<"addr" | "bridge" | "mall" | "walks"> =
-    origin === "west"
-      ? ["bridge", "mall", "walks", "addr"]
-      : ["mall", "walks", "bridge", "addr"];
-
-  const blocks = {
-    addr: <Address />,
-    bridge: <Bridge />,
-    mall: <MallDiagram />,
-    walks: <Walks />,
-  };
-
   return (
-    <div data-band={band === "late" ? "late" : undefined}>
+    <>
+      <UtilityBar />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule />
+      <Bulbs />
 
-      <main className={s.main}>
-        <section className={s.shelfHead}>
-          <div>
-            <span className={s.shelfIndex}>Pick-Up</span>
-            <h1 className={s.shelfTitle}>Next to Ole Red</h1>
-            <p className={s.shelfNote}>Ole Red, Grand Bazaar. Suite 611–613.</p>
-          </div>
-          <div className={s.shelfActions}>
-            <a className={s.cta} href={maps} target="_blank" rel="noreferrer">
-              Open in Maps
+      <main className={g.main}>
+        {/* Photography and a dark-theme map tile are both still to be
+            supplied. A labelled band is honest scaffolding. */}
+        <div className={g.mapBand} aria-hidden="true">
+          <span className={g.mapNote}>Map — Strip corridor, dark theme</span>
+        </div>
+
+        <section className={g.head}>
+          <p className={g.openNow}>
+            <span className={g.pulse} aria-hidden="true" />
+            Open now — and always
+          </p>
+          <h1 className={g.address}>
+            {SHOP_STREET}
+            <br />
+            {SHOP_SUITE}
+          </h1>
+          <p className={g.where}>
+            Inside {SHOP_MALL}, next to Ole Red. Take the escalator to the
+            second level and follow the 600 numbers — we are on the south side,
+            between 610 and 614.
+          </p>
+
+          <div className={g.actions}>
+            <a
+              className={g.directions}
+              href={DIRECTIONS_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Directions
             </a>
-            <a className={s.ctaGhost} href="/delivery">
-              Delivery instead
+            <a className={g.call} href={PHONE_HREF}>
+              Call {PHONE_DISPLAY}
             </a>
           </div>
         </section>
 
-        <OriginPicker current={origin} />
+        <Bulbs />
 
-        {order.map((key) => (
-          <div key={key}>{blocks[key]}</div>
-        ))}
+        <section className={g.hoursCard}>
+          <p className={g.hoursLabel}>Hours</p>
+          <p className={g.hoursValue}>24 hours · 7 days</p>
+          <p className={g.hoursNote}>
+            Every day of the year, including the ones everything else is shut.
+          </p>
+        </section>
+
+        <section className={g.inside}>
+          <h2 className={g.sectionTitle}>What&rsquo;s inside</h2>
+          <ul className={g.insideList}>
+            <li className={g.insideRow}>
+              <span className={g.insideName}>Walk-in humidor</span>
+              <span className={g.insideNote}>
+                Singles and boxes, kept at 70°F and 69% RH.
+              </span>
+            </li>
+            <li className={g.insideRow}>
+              <span className={g.insideName}>Glass gallery</span>
+              <span className={g.insideNote}>
+                Blown in Vegas, one-offs included. Ask to handle anything.
+              </span>
+            </li>
+            <li className={g.insideRow}>
+              <span className={g.insideName}>Testing bar</span>
+              <span className={g.insideNote}>
+                Try a flavour before you commit to a 25,000-puff device.
+              </span>
+            </li>
+          </ul>
+        </section>
+
+        <section className={g.legal}>
+          <p className={g.legalBody}>
+            21+ with valid ID at the counter, every time. {SHOP_ADDRESS_FULL}.
+          </p>
+        </section>
       </main>
 
+      <Bulbs />
+      <Footer />
       <BottomNav />
-    </div>
-  );
-}
-
-function OriginPicker({ current }: { current?: Origin }) {
-  const origins: { id: Origin; lead: string; note: string }[] = [
-    { id: "west", lead: "West of Blvd", note: "Use the Flamingo bridge" },
-    { id: "east", lead: "This side", note: "Horseshoe, Paris, Flamingo" },
-    { id: "mall", lead: "In the mall", note: "Past Ole Red → 600s" },
-  ];
-
-  return (
-    <nav className={g.origins} aria-label="Where are you walking from?">
-      {origins.map((o) => (
-        <a
-          key={o.id}
-          className={g.origin}
-          href={`/pickup?from=${o.id}`}
-          aria-current={current === o.id ? "page" : undefined}
-        >
-          <span className={g.originLead}>{o.lead}</span>
-          <span className={g.originNote}>{o.note}</span>
-        </a>
-      ))}
-    </nav>
-  );
-}
-
-function Address() {
-  return (
-    <section className={g.addr} aria-label="Address">
-      <div className={g.addrBlock}>
-        <span className={g.addrLabel}>Address</span>
-        <p className={g.addrLine}>3649 S Las Vegas Blvd, Ste 611-613</p>
-        <p className={g.addrLine}>Las Vegas, NV 89109</p>
-        <p className={g.addrNote}>Grand Bazaar Shops, at Flamingo.</p>
-      </div>
-      <div className={g.addrBlock}>
-        <span className={g.addrLabel}>Lost?</span>
-        <p className={g.addrLine}>
-          <a className={g.phone} href={PHONE_HREF}>
-            {PHONE_DISPLAY}
-          </a>
-        </p>
-        <p className={g.addrNote}>Call. We&rsquo;ll talk you in.</p>
-      </div>
-    </section>
-  );
-}
-
-function Bridge() {
-  return (
-    <section className={g.bridge} aria-label="Crossing Las Vegas Boulevard">
-      <h2 className={g.h2}>West side?</h2>
-      <p className={g.bridgeBody}>
-        You can&rsquo;t cross the Blvd here. Take the{" "}
-        <strong>Flamingo pedestrian bridge.</strong>
-      </p>
-    </section>
-  );
-}
-
-function MallDiagram() {
-  return (
-    <section className={g.mall} aria-label="Inside Grand Bazaar Shops">
-      <h2 className={g.h2}>Inside the mall</h2>
-      <svg
-        className={g.mallSvg}
-        viewBox="0 0 320 280"
-        role="img"
-        aria-labelledby="mall-title"
-        aria-describedby="mall-desc"
-      >
-        <title id="mall-title">Grand Bazaar Shops, schematic</title>
-        <desc id="mall-desc">
-          Las Vegas Boulevard on the west. Ole Red at the north-west corner.
-          Suites 600 along the south edge. Puff Vegas at 611-613.
-        </desc>
-        <rect className={g.mallBlvd} x="0" y="0" width="52" height="280" rx="4" />
-        <text className={g.mallType} x="26" y="140" textAnchor="middle" transform="rotate(-90 26 140)">
-          Las Vegas Blvd
-        </text>
-        <rect className={g.mallCell} x="64" y="12" width="120" height="64" rx="6" />
-        <text className={g.mallType} x="124" y="42" textAnchor="middle">
-          Ole Red
-        </text>
-        <text className={g.mallHint} x="124" y="60" textAnchor="middle">
-          neon guitar
-        </text>
-        <rect className={g.mallCell} x="64" y="88" width="244" height="124" rx="6" />
-        <text className={g.mallHint} x="186" y="152" textAnchor="middle">
-          Grand Bazaar Shops
-        </text>
-        <rect className={g.mallCell} x="64" y="224" width="244" height="44" rx="6" />
-        <text className={g.mallHint} x="130" y="250" textAnchor="middle">
-          600s
-        </text>
-        <rect className={g.mallUs} x="176" y="224" width="132" height="44" rx="6" />
-        <text className={g.mallType} x="242" y="244" textAnchor="middle">
-          611–613
-        </text>
-        <text className={g.mallHint} x="242" y="258" textAnchor="middle">
-          us
-        </text>
-      </svg>
-    </section>
-  );
-}
-
-function Walks() {
-  return (
-    <section className={g.walks} id="walks" aria-label="Walking times">
-      <h2 className={g.h2}>On foot from</h2>
-      <ul className={g.walkList}>
-        {WALKS.map((w) => (
-          <li key={w.place}>
-            <a
-              className={g.walk}
-              href={mapsWalkingUrl(w.place)}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className={g.walkMin}>{w.minutes} min</span>
-              <span className={g.walkPlace}>{w.place}</span>
-              {w.bridge && <span className={g.walkTag}>via the bridge</span>}
-              <span className={g.walkMaps}>Maps</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
+    </>
   );
 }

@@ -2,17 +2,15 @@ import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import s from "./Category.module.css";
-import { AgeBanner, Header, StatusModule, BottomNav } from "@/components/Chrome";
-import Marquee from "@/components/Marquee";
+import { AgeBanner, BottomNav, Footer, Header, UtilityBar } from "@/components/Chrome";
 import { EmptyResults, ProductTiles } from "@/components/ProductTiles";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
+import Bulbs from "@/components/Bulbs";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourBand, pacificHour } from "@/lib/time";
 import {
   commerce,
-  archetypeFor,
   DEPARTMENTS,
-  DEPARTMENT_TITLES,
+  DEPARTMENT_LABELS,
   FLAVOR_FAMILIES,
   isDepartment,
   NICOTINE_STRENGTHS,
@@ -39,7 +37,7 @@ export async function generateMetadata({
   const filtered = Boolean(sp.flavor || sp.nic);
 
   return {
-    title: `${DEPARTMENT_TITLES[department]} — open 24 hours on the Strip | Puff Vegas`,
+    title: `${DEPARTMENT_LABELS[department]} — open 24 hours on the Strip | Puff Vegas`,
     // Faceted views canonicalise to the clean URL and are noindexed. Blocking
     // them in robots.txt instead would be wrong: a blocked URL cannot pass or
     // consolidate signals, so Google's own guidance warns against using
@@ -63,12 +61,7 @@ export default async function CategoryPage({
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
-  const now = new Date();
-  const band = hourBand(pacificHour(now));
-
   const all = await commerce.getProducts({ department });
-  const archetype = archetypeFor(department);
-  const isHumidor = department === "cigars";
   const hasFlavors = all.some((p) => p.flavorFamily);
   const hasBrands = all.some((p) => p.brand);
 
@@ -79,65 +72,72 @@ export default async function CategoryPage({
     .filter((p) => (sp.nic ? String(p.nicotineMg ?? "") === sp.nic : true))
     .sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0));
 
+  /* Stock is a claim with provenance. If nothing was counted, say nothing —
+     an invented freshness line is worse than an absent one. */
+  const counted = items
+    .map((p) => p.stock.countedAt)
+    .filter((x): x is Date => x instanceof Date)
+    .sort((a, b) => a.getTime() - b.getTime())
+    .at(-1);
+  const syncMins = counted
+    ? Math.max(0, Math.round((Date.now() - counted.getTime()) / 60000))
+    : null;
+
+  const inStock = items.filter((p) => p.stock.tier !== "out").length;
+
   return (
-    <div
-      data-band={band === "late" ? "late" : undefined}
-      data-zone={isHumidor ? "humidor" : undefined}
-    >
+    <>
+      <UtilityBar />
       <AgeBanner affirmed={affirmed} />
       <Header />
-      <StatusModule />
-      <Marquee />
+      <Bulbs />
 
       <main className={s.wrap}>
         <div className={s.head}>
-          <h1 className={s.title}>{DEPARTMENT_TITLES[department]}</h1>
-          <span className={s.count}>
-            {items.length} {items.length === 1 ? "item" : "items"}
-          </span>
+          <nav className={s.crumb} aria-label="Breadcrumb">
+            <a href="/">Home</a> <span aria-hidden="true">/</span>{" "}
+            <span>{DEPARTMENT_LABELS[department]}</span>
+          </nav>
+          <h1 className={s.title}>{DEPARTMENT_LABELS[department]}</h1>
+          <p className={s.count}>
+            {inStock} on the shelf right now
+            {syncMins !== null ? ` · stock updated ${syncMins} min ago` : ""}
+          </p>
         </div>
 
         {(hasFlavors || hasBrands) && (
           <nav className={s.hubs} aria-label="Browse this department">
-            {hasFlavors && (
-              <a className={s.hubLink} href={`/${department}/flavors`}>
-                By flavour →
-              </a>
-            )}
             {hasBrands && (
               <a className={s.hubLink} href={`/${department}/brands`}>
                 By brand →
+              </a>
+            )}
+            {hasFlavors && (
+              <a className={s.hubLink} href={`/${department}/flavors`}>
+                By flavour →
               </a>
             )}
           </nav>
         )}
 
         {/* A browse grid of priced, pictured products is advertising, and
-            21 CFR 1143.3(a) attaches to the advertisement. Until now the
-            warning lived only on the product page, so /vape listed 73 ENDS
-            products carrying none. See components/PageNicotineWarning. */}
+            21 CFR 1143.3(a) attaches to the advertisement. See
+            components/PageNicotineWarning. */}
         <PageNicotineWarning products={items} />
 
-        {archetype === "chip-swatch" && (
-          <Facets department={department} search={sp} products={all} />
-        )}
-
-        {isHumidor && (
-          <p className={s.humidorBar}>
-            <span>70°F / 69% RH</span>
-            <span>Singles from $8.50</span>
-          </p>
-        )}
+        {hasFlavors && <Facets department={department} search={sp} products={all} />}
 
         {items.length === 0 ? (
           <EmptyResults clearHref={`/${department}`} />
         ) : (
-          <ProductTiles items={items} archetype={archetype} />
+          <ProductTiles items={items} />
         )}
       </main>
 
+      <Bulbs />
+      <Footer />
       <BottomNav />
-    </div>
+    </>
   );
 }
 
