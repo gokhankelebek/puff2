@@ -57,7 +57,15 @@
 /* --- Filter bar ---------------------------------------------------------- */
 
 /* Sticky on mobile: this is a surface people scroll a long way, and the
-   design keeps the filters reachable the whole time. */
+   design keeps the filters reachable the whole time.
+
+   --surface, NOT --bg-alt. The handoff assigns bg-alt to "bottom nav, filter
+   bar" and holds it dark in day mode, but that token's job in day mode is the
+   sign band -- the utility bar and the bottom nav, which are site chrome and
+   deliberately never switch. The filter bar is not chrome: it belongs to the
+   listing it sits above, and a dark strip cutting through a paper page reads
+   as a rendering fault rather than as a decision. This also matches the
+   desktop filter rail below, which was already on --surface. */
 .facets {
   position: sticky;
   top: 0;
@@ -67,7 +75,7 @@
   gap: 10px;
   padding: 12px var(--gutter);
   margin-bottom: 16px;
-  background: var(--bg-alt);
+  background: var(--surface);
   border-block: 1px solid var(--border);
 }
 
