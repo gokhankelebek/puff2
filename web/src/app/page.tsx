@@ -207,6 +207,11 @@ export default async function HomePage() {
 
         <Bulbs />
 
+        {/* 21 CFR 1143.3(a) attaches to the ADVERTISEMENT, and the priced
+            grid below is one. It sits directly above that grid rather than at
+            the top of the page — see components/NicotineWarning.module.css. */}
+        <PageNicotineWarning products={rail} />
+
         <section className={s.rail} aria-labelledby="rail-title">
           <div className={s.sectionHead}>
             <h2 className={s.sectionTitle} id="rail-title">
@@ -271,9 +276,6 @@ export default async function HomePage() {
           </a>
         </section>
 
-        {/* 21 CFR 1143.3(a) attaches to the ADVERTISEMENT, and a priced grid of
-            ENDS listings is one. See docs/COMPLIANCE.md. */}
-        <PageNicotineWarning products={rail} />
       </main>
 
       <Bulbs />

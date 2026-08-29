@@ -218,12 +218,30 @@
   border: 0;
 }
 
-/* Approximate-results notice — never styled as an error, because it is not
-   one; it is the search being honest about what it did. */
+/* Approximate-results notice. Never styled as an error, because it is not one
+   — it is the search being honest about what it did.
+
+   Cyan, not gold. Gold has exactly one job in this system and it is prices;
+   spending it on a system message put the notice in the identical token as the
+   three prices directly beneath it, which dilutes the only colour a shopper is
+   trained to scan for. */
 .approx {
-  margin-top: 6px;
-  font-size: 12px;
-  color: var(--gold);
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 2px solid var(--cyan);
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+.approxLead {
+  display: block;
+  font-family: var(--font-display);
+  line-height: 0.92;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
 }
 
 /* --- Popular searches ---------------------------------------------------- */

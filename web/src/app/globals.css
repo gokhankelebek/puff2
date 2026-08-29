@@ -45,6 +45,8 @@
   --cyan-tint: rgba(36, 224, 255, 0.12);
   --cyan-text: #cff6ff;
   --gold: #ffc84a;
+  /* Lit, so the face and the ink are the same colour. */
+  --gold-face: #ffc84a;
   --green: #7ff0c0;
 
   /* Photo placeholder grounds — rotated per card so a grid of unshot
@@ -175,7 +177,11 @@
   --bg-alt: #17111f;
   --surface: #ffffff;
   --border: #e2d8c6;
-  --border-strong: #d9ceb9;
+  /* Was #D9CEB9 — 1.39:1 on paper, so outlined buttons had no visible edge
+     and nine hotel chips were effectively borderless. This clears the 3:1 that
+     WCAG 1.4.11 asks of a UI boundary (3.01 on paper, 3.36 on a card), which
+     this project treats as a build criterion rather than a target. */
+  --border-strong: #9c8a68;
   --border-hover: #c9bca2;
   --hairline: #e6ddcd;
 
@@ -195,7 +201,17 @@
   --cyan: #0e7c99;
   --cyan-tint: rgba(14, 124, 153, 0.1);
   --cyan-text: #0a5e75;
-  --gold: #8a5d06;
+  /* Unlit gold, not brown. #8A5D06 had dropped so far in chroma that every
+     price, eyebrow and hours line read as olive mud.
+
+     This is the most lift available while still clearing AA on the WORSE of
+     the two grounds it lands on — 4.52:1 on paper, 5.04:1 on a white card.
+     The reviewers wanted it brighter still; #A8720A measures 3.71:1 on paper,
+     and this project treats 4.5 as a build criterion rather than a target. */
+  --gold: #96650a;
+  /* Gold as a FILLED surface needs the opposite move — light enough for dark
+     text to sit on it. The Directions button was #17111F on #8A5D06 at 3.18:1. */
+  --gold-face: #c89a2e;
   --green: #0e7a55;
 
   --photo-1: #ede4d3;
@@ -245,15 +261,15 @@
     ),
     radial-gradient(
       circle at 6px 6px,
-      #e7dabb 2px,
-      #d6c6a0 2.8px,
-      rgba(214, 198, 160, 0) 3.3px
+      #d8c8a2 2px,
+      #b8a47a 2.8px,
+      rgba(184, 164, 122, 0) 3.3px
     ),
     radial-gradient(
       circle at 6px 6px,
-      rgba(120, 100, 60, 0) 2.8px,
-      rgba(120, 100, 60, 0.2) 3.3px,
-      rgba(120, 100, 60, 0) 3.9px
+      rgba(90, 74, 40, 0) 2.8px,
+      rgba(90, 74, 40, 0.4) 3.3px,
+      rgba(90, 74, 40, 0) 3.9px
     );
 }
 
@@ -266,7 +282,11 @@
     --bg-alt: #17111f;
     --surface: #ffffff;
     --border: #e2d8c6;
-    --border-strong: #d9ceb9;
+    /* Was #D9CEB9 — 1.39:1 on paper, so outlined buttons had no visible edge
+     and nine hotel chips were effectively borderless. This clears the 3:1 that
+     WCAG 1.4.11 asks of a UI boundary (3.01 on paper, 3.36 on a card), which
+     this project treats as a build criterion rather than a target. */
+  --border-strong: #9c8a68;
     --border-hover: #c9bca2;
     --hairline: #e6ddcd;
 
@@ -285,7 +305,17 @@
     --cyan: #0e7c99;
     --cyan-tint: rgba(14, 124, 153, 0.1);
     --cyan-text: #0a5e75;
-    --gold: #8a5d06;
+    /* Unlit gold, not brown. #8A5D06 had dropped so far in chroma that every
+     price, eyebrow and hours line read as olive mud.
+
+     This is the most lift available while still clearing AA on the WORSE of
+     the two grounds it lands on — 4.52:1 on paper, 5.04:1 on a white card.
+     The reviewers wanted it brighter still; #A8720A measures 3.71:1 on paper,
+     and this project treats 4.5 as a build criterion rather than a target. */
+  --gold: #96650a;
+  /* Gold as a FILLED surface needs the opposite move — light enough for dark
+     text to sit on it. The Directions button was #17111F on #8A5D06 at 3.18:1. */
+  --gold-face: #c89a2e;
     --green: #0e7a55;
 
     --photo-1: #ede4d3;
@@ -337,9 +367,9 @@
       ),
       radial-gradient(
         circle at 6px 6px,
-        rgba(120, 100, 60, 0) 2.8px,
-        rgba(120, 100, 60, 0.2) 3.3px,
-        rgba(120, 100, 60, 0) 3.9px
+        rgba(90, 74, 40, 0) 2.8px,
+        rgba(90, 74, 40, 0.4) 3.3px,
+        rgba(90, 74, 40, 0) 3.9px
       );
   }
 }
@@ -362,6 +392,8 @@
   --cyan: #24e0ff;
   --cyan-text: #cff6ff;
   --gold: #ffc84a;
+  /* Lit, so the face and the ink are the same colour. */
+  --gold-face: #ffc84a;
   --green: #7ff0c0;
   --glow-magenta-text: 0 0 10px rgba(255, 46, 136, 0.85), 0 0 26px rgba(255, 46, 136, 0.45);
   --glow-cyan-text: 0 0 10px rgba(36, 224, 255, 0.7), 0 0 26px rgba(36, 224, 255, 0.35);

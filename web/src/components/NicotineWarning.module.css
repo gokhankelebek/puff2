@@ -59,11 +59,52 @@
   min-height: var(--warn-min-area, 128px);
 }
 
-/* Sits in the UPPER PORTION of the listing — (the regulation's words). The
-   consuming grid puts it first in source and first visually; this guards
-   against anyone reordering it with flex later. */
-.plate {
-  order: -1;
+/* The regulation's words are "upper portion of the ADVERTISEMENT", and the
+   advertisement is the listing — not the masthead above it.
+ *
+ * This used to be `order: -1`, which in a flex page hoisted the plate above
+ * everything including the page's own H1. On /floor that put two plates,
+ * stacked edge to edge into a 256px striped block, before the page said its
+ * own name; on /search it pushed the search field below a regulatory notice.
+ * Placement is now DOM order, and every consuming page puts the plate
+ * immediately above the listing it belongs to — which is what the rule asks
+ * for and what the page can live with. */
+
+/* --------------------------------------------------------------------------
+   The mat.
+
+   The plate itself is fixed by 21 CFR 1143.3(b)(2) — Arial bold, black on
+   white, a 3-4mm border, centred, minimum area. None of that is negotiable and
+   none of it is touched. What IS ours is what the plate is mounted on, and
+   giving it a ground is the difference between a placard hung on the sign and
+   a hole punched through it.
+   -------------------------------------------------------------------------- */
+
+.mat {
+  display: flex;
+  flex-direction: column;
+  /* Two plates on a mixed page were touching, fusing into one striped block
+     with a 24px black seam. */
+  gap: 14px;
+  /* Inset to the page gutter. Full-bleed was the single thing on these pages
+     that broke the grid. */
+  padding: 18px var(--gutter);
+  background: var(--bg-alt);
+  border-block: 1px solid var(--border);
+}
+
+@media (min-width: 1200px) {
+  .mat {
+    padding: 22px 40px;
+    /* Never wider than a comfortable reading measure — at 1360px the plate
+       became a billboard. */
+    align-items: center;
+  }
+
+  .mat > * {
+    width: 100%;
+    max-width: 760px;
+  }
 }
 
 .text {

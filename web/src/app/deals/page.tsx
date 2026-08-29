@@ -104,6 +104,8 @@ export default async function DealsPage() {
 
         <Bulbs />
 
+        <PageNicotineWarning products={deals} />
+
         <section className={j.list} aria-labelledby="moving">
           <h2 className={j.sectionTitle} id="moving">
             Moving this week
@@ -114,8 +116,6 @@ export default async function DealsPage() {
             ))}
           </ul>
         </section>
-
-        <PageNicotineWarning products={deals} />
 
         <Bulbs />
 

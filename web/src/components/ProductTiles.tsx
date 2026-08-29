@@ -31,9 +31,19 @@ function stockTone(p: Product): "in" | "low" | "out" {
  * question ("does it come in the blue one"), so a multi-flavour model leads
  * with the count in cyan rather than repeating its stock tier.
  */
+/**
+ * Colour here is a SIGNAL, so it is spent only on exceptions.
+ *
+ * It used to paint the flavour count cyan, which put the reserved label colour
+ * on 59 of 74 vape cards — the state that appears on four cards in five was
+ * the loudest thing in the column, so nothing signalled. Now: the default is
+ * quiet, magenta means "nearly gone", dim means "not here", and green is
+ * reserved for stock someone actually counted.
+ */
 function stockNote(p: Product): { text: string; tone: "in" | "low" | "out" | "range" } {
   const flavors = p.flavors?.length ?? 0;
   if (p.stock.tier !== "out" && flavors > 1) {
+    /* A flavour count is a fact about the model, not a stock state. */
     return { text: `${flavors} flavors in`, tone: "range" };
   }
   if (p.stock.tier === "low" && typeof p.stock.remaining === "number") {

@@ -1,4 +1,5 @@
 import NicotineWarning from "./NicotineWarning";
+import s from "./NicotineWarning.module.css";
 import type { Product, RegulatoryClass } from "@/lib/commerce";
 
 /**
@@ -43,10 +44,10 @@ export default function PageNicotineWarning({
   if (!shown.length) return null;
 
   return (
-    <>
+    <div className={s.mat}>
       {ORDER.filter((c) => shown.includes(c)).map((c) => (
         <NicotineWarning key={c} regulatoryClass={c} />
       ))}
-    </>
+    </div>
   );
 }

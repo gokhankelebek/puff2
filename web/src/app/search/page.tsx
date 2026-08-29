@@ -93,8 +93,9 @@ export default async function SearchPage({
                 were matches. */}
             {result.relaxed && hits.length > 0 ? (
               <p className={s.approx}>
-                Nothing matched exactly. These are the closest things on the
-                shelf.
+                <span className={s.approxLead}>Closest on the shelf</span>
+                Nothing matched “{q}” exactly, so these are the nearest things
+                we stock.
               </p>
             ) : null}
           </div>

@@ -186,7 +186,7 @@
   min-height: var(--tap);
   padding: 0 22px;
   border-radius: var(--r-button);
-  background: var(--gold);
+  background: var(--gold-face);
   color: #17111f;
   font-family: var(--font-display);
   line-height: 0.92;

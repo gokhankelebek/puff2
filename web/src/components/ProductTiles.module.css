@@ -73,13 +73,26 @@
   color: var(--text-faint);
 }
 
+/* Two lines reserved, always. Card contents were top-aligned while the grid
+   rows stretched, so a two-line name pushed its price, stock note and CTA down
+   relative to the card beside it — about 40% of adjacent pairs were misaligned
+   by up to 35px, and gold on a wandering baseline is the loudest thing in the
+   grid. The ragged edge belongs on the name, not on the price. */
 .name {
   font-size: 13px;
   line-height: 1.35;
   color: var(--text);
+  min-height: calc(2 * 1.35em);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .price {
+  /* Pushes price, stock and CTA to the foot of the card so they share a
+     baseline across the row regardless of name length. */
+  margin-top: auto;
   font-family: var(--font-display);
   line-height: 0.92;
   font-size: 19px;
@@ -93,10 +106,13 @@
   color: var(--text-faint);
 }
 
-.stock[data-tone="in"] { color: var(--green); }
+/* Quiet by default. `in` only goes green for stock that was actually counted
+   — with the current feed that is none, which is the honest outcome. */
+.stock[data-tone="in"] { color: var(--text-faint); }
+.stock[data-tone="range"] { color: var(--text-faint); }
 .stock[data-tone="low"] { color: var(--magenta); }
 .stock[data-tone="out"] { color: var(--text-disabled); }
-.stock[data-tone="range"] { color: var(--cyan); }
+.stock[data-verified] { color: var(--green); }
 
 .add {
   display: inline-flex;
