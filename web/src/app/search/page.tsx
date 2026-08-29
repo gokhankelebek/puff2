@@ -230,16 +230,24 @@ function Hit({ product: p }: { product: Product }) {
             />
           )}
         </div>
+        {/* Column 2 is what the thing is; column 3 is what it costs and
+            whether you can have it. The price used to sit at the right edge
+            of column 2, which is 1fr — so a wide stock label squeezed that
+            column and dragged the price left with it. Across 74 results that
+            put prices on four different axes, 42px apart. Now the price is
+            right-aligned in the LAST column, so its right edge is the row's
+            right edge and every row shares it, whatever the stock note says
+            — and those run from "Out" to "On the shelf · 12 minutes ago". */}
         <div className={s.tileMeta}>
           <span className={s.tileName}>{p.title}</span>
           {p.brand && <span className={s.tileBrand}>{p.brand}</span>}
-          <span className={s.tileFoot}>
-            <span className={s.tilePrice}>{formatMoney(p.price)}</span>
-            <span className={s.tileCat}>{p.department}</span>
-          </span>
+          <span className={s.tileCat}>{p.department}</span>
         </div>
-        <span className={s.tileStock}>
-          {p.inStoreOnly ? p.inStoreReason : stockLabel(p.stock)}
+        <span className={s.tileFoot}>
+          <span className={s.tilePrice}>{formatMoney(p.price)}</span>
+          <span className={s.tileStock}>
+            {p.inStoreOnly ? p.inStoreReason : stockLabel(p.stock)}
+          </span>
         </span>
       </a>
     </li>

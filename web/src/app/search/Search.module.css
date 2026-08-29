@@ -68,7 +68,7 @@
 
 .tileLink {
   display: grid;
-  grid-template-columns: 52px minmax(0, 1fr) max-content;
+  grid-template-columns: 52px minmax(0, 1fr) minmax(0, max-content);
   align-items: center;
   gap: 12px;
   padding: 10px var(--gutter);
@@ -127,6 +127,11 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 2px;
+  text-align: right;
+  /* stockLabel can return "On the shelf · 12 minutes ago". Without a bound
+     that column eats the product name; with one it wraps to a second line
+     and the price axis holds. */
+  max-width: 140px;
 }
 
 .tilePrice {
@@ -138,7 +143,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-.tileStock { font-size: 11px; color: var(--green); }
+.tileStock { font-size: 11px; line-height: 1.3; color: var(--green); }
 
 @media (min-width: 1200px) {
   .main { max-width: 1360px; margin: 0 auto; width: 100%; }
