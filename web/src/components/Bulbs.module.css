@@ -17,14 +17,35 @@
   box-shadow: var(--bulb-glow, none), var(--bulb-inset, none);
 }
 
-/* steps(1) so each frame is a discrete jump of one bulb pitch — lamps
-   switching, not a gradient sliding. */
-.bulbs[data-chase="on"] {
-  animation: bulbChase 1.2s steps(1) infinite;
+/* The chase.
+
+   It rides on its own layer rather than moving the strip, and that is not a
+   detail — the bulbs are a uniform repeating pattern, so shifting them by
+   exactly one pitch produces an identical image. Nothing would appear to
+   happen. The run needs a period LONGER than one bulb, so this overlay draws
+   one hot lamp every three and moves that.
+
+   steps(3) over a three-pitch travel means one whole bulb per step: lamps
+   switching on and off, not a highlight sliding between them. The global
+   prefers-reduced-motion rule stops it, like every other animation here. */
+.bulbs {
+  position: relative;
+}
+
+.bulbs[data-chase="on"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--bulb-chase, none);
+  background-size: calc(var(--bulb-pitch, 14px) * 3) 100%;
+  background-repeat: repeat-x;
+  animation: bulbChase 1.05s steps(3) infinite;
+  animation-play-state: var(--bulb-chase-play, running);
 }
 
 @keyframes bulbChase {
   to {
-    background-position: var(--bulb-pitch, 14px) 0;
+    background-position: calc(var(--bulb-pitch, 14px) * 3) 0;
   }
 }

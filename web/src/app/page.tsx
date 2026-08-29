@@ -247,7 +247,10 @@ export default async function HomePage() {
           </ul>
         </section>
 
-        <Bulbs />
+        {/* The one strip that runs. A single chasing divider above the
+            delivery band reads as a sign; every divider running would read as
+            a fairground. */}
+        <Bulbs chase />
 
         <section className={s.deliveryBand} data-island="lit" aria-labelledby="band-title">
           <h2 className={s.bandTitle} id="band-title">

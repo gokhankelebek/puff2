@@ -102,6 +102,18 @@
   --bulb-pitch: 14px;
   --bulb-glow: 0 0 16px rgba(255, 190, 60, 0.16);
   --bulb-inset: inset 0 1px 0 rgba(255, 236, 190, 0.07);
+  /* The lamp the chase rides on: the same bulb, run hotter. Drawn on its own
+     layer at three times the pitch so the run has a period longer than one
+     bulb — shifting a uniform strip by exactly one pitch is a no-op. */
+  --bulb-chase-play: running;
+  --bulb-chase:
+    radial-gradient(
+      circle at 6px 6px,
+      rgba(255, 252, 240, 0.95) 1.5px,
+      rgba(255, 226, 150, 0.55) 2.5px,
+      rgba(255, 190, 70, 0.22) 4px,
+      rgba(255, 190, 70, 0) 6px
+    );
   --bulb-image:
     radial-gradient(circle at 6px 5.5px, #fff4d6 0.85px, rgba(255, 244, 214, 0) 1.5px),
     radial-gradient(
@@ -220,6 +232,10 @@
   --bulb-size: 14px 12px;
   --bulb-pitch: 14px;
   --bulb-glow: none;
+  /* An unlit sign does not chase. Paused as well as blank: a running
+     animation on an invisible layer is work every frame for nothing. */
+  --bulb-chase: none;
+  --bulb-chase-play: paused;
   --bulb-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   --bulb-image:
     radial-gradient(
@@ -302,6 +318,10 @@
     --bulb-size: 14px 12px;
     --bulb-pitch: 14px;
     --bulb-glow: none;
+    /* An unlit sign does not chase. Paused as well as blank: a running
+       animation on an invisible layer is work every frame for nothing. */
+    --bulb-chase: none;
+    --bulb-chase-play: paused;
     --bulb-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
     --bulb-image:
       radial-gradient(
@@ -510,6 +530,14 @@ video {
         rgba(0, 0, 0, 0) 2.9px,
         rgba(0, 0, 0, 0.5) 3.4px,
         rgba(0, 0, 0, 0) 4px
+      );
+    --bulb-chase:
+      radial-gradient(
+        circle at 8px 7px,
+        rgba(255, 252, 240, 0.95) 1.7px,
+        rgba(255, 226, 150, 0.55) 2.9px,
+        rgba(255, 190, 70, 0.22) 4.6px,
+        rgba(255, 190, 70, 0) 7px
       );
   }
 
