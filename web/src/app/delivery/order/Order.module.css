@@ -264,7 +264,7 @@
   line-height: 0.92;
   font-size: 21px;
   letter-spacing: 0.04em;
-  color: var(--gold);
+  color: var(--text);
   font-variant-numeric: tabular-nums;
 }
 
@@ -305,7 +305,7 @@
   line-height: 0.92;
   font-size: 26px !important;
   letter-spacing: 0.04em;
-  color: var(--gold) !important;
+  color: var(--text) !important;
 }
 
 .taxNote { font-size: 12px; color: var(--text-dim); }

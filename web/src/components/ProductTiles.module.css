@@ -76,8 +76,9 @@
 /* Two lines reserved, always. Card contents were top-aligned while the grid
    rows stretched, so a two-line name pushed its price, stock note and CTA down
    relative to the card beside it — about 40% of adjacent pairs were misaligned
-   by up to 35px, and gold on a wandering baseline is the loudest thing in the
-   grid. The ragged edge belongs on the name, not on the price. */
+   by up to 35px, and a 19px display-face price on a wandering baseline is the
+   loudest thing in the grid. The ragged edge belongs on the name, not on the
+   price. */
 .name {
   font-size: 13px;
   line-height: 1.35;
@@ -92,12 +93,18 @@
 .price {
   /* Pushes price, stock and CTA to the foot of the card so they share a
      baseline across the row regardless of name length. */
+  /* Money is --text, never --gold. Gold is the bulb colour and belongs to the
+     sign: the wordmark's VEGAS and the marquee strip. It had drifted onto
+     prices, eyebrows, hours and stat figures until it read as "important in
+     general" rather than "lit". The price needs no help from hue — 19px of
+     display face against a 13px body-face name is already the widest gap on
+     the card. */
   margin-top: auto;
   font-family: var(--font-display);
   line-height: 0.92;
   font-size: 19px;
   letter-spacing: 0.05em;
-  color: var(--gold);
+  color: var(--text);
   font-variant-numeric: tabular-nums;
 }
 

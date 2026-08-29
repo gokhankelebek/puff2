@@ -234,7 +234,7 @@
   line-height: 0.92;
   font-size: 26px;
   letter-spacing: 0.04em;
-  color: var(--gold);
+  color: var(--text);
 }
 
 .fine { margin-top: 12px; font-size: 12px; color: var(--text-dim); }
