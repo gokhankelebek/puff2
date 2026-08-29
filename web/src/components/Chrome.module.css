@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 36px;
+  min-height: 30px;
   padding: 0 var(--gutter);
   font-size: 12px;
   color: var(--text-muted);
@@ -127,7 +127,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 14px var(--gutter);
+  /* 14px put this row at 80px and the whole chrome above the hero at 130.
+     10px takes the row to ~64 and the chrome to ~108, which buys the hero
+     22px without touching the logo or the search field. */
+  padding: 10px var(--gutter);
   background: var(--bg);
   /* The expanded search field anchors its results to this box, so they run
      the full width of the screen rather than the width of the field. */
@@ -178,7 +181,14 @@
 
 @media (min-width: 1200px) {
   .header {
-    padding: 18px 40px;
+    /* 18px put this row at 80px, and the review was right that the slack is
+       here rather than in the logo or the search field — both are the size
+       they need to be. 10px takes the row to 64.
+
+       The utility bar above is deliberately NOT trimmed. Its 38px is set by
+       .utilityAddr's 36px minimum, which is the address tap target; six
+       pixels of chrome is not worth weakening it. */
+    padding: 10px 40px;
   }
 }
 

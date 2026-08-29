@@ -107,9 +107,11 @@ export default async function HomePage() {
               <a className={s.heroAddr} href="/pickup">
                 {SHOP_STREET}
               </a>
-              , or we&rsquo;ll run it to your hotel and meet you downstairs.{" "}
-              {DELIVERY_TERMS_LABEL}.
+              , or we&rsquo;ll run it to your hotel and meet you downstairs.
             </p>
+            {/* The flat fee and the missing minimum are the offer, and they
+                were the tail of a grey sentence. Own line, own weight. */}
+            <p className={s.heroTerms}>{DELIVERY_TERMS_LABEL}</p>
             <div className={s.heroCtas}>
               <a className={s.ctaPrimary} href="/delivery">
                 Deliver to my hotel
@@ -140,7 +142,7 @@ export default async function HomePage() {
                 </li>
               </ul>
               <p className={s.pickerNote}>
-                Typical hotel run: 25–40 min · {DELIVERY_TERMS_LABEL}
+                Typical hotel run: 25–40 min
               </p>
             </div>
           </div>
