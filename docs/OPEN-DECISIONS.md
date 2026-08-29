@@ -24,6 +24,37 @@ has crawl output that can seed a redirect table.
 | **`meet` points in `web/src/lib/hotels.ts`** | Left empty on purpose. Every resort handles outside delivery differently, several change the rule by time of night, and none of it is published anywhere verifiable. Inventing "meet at the north valet" would read as authoritative and strand a driver and a customer at two different doors. The shop should fill these in as it learns each property. |
 | **Night-shoot photography** | `/pickup` has three labelled empty placeholders: *Ole Red from the Boulevard · the turn into Grand Bazaar · our door*. Most people arrive in the dark and the Strip looks nothing like its daytime self. Placeholders are labelled as placeholders rather than filled with stock. |
 
+## Ordering has no back end 🔴
+
+The Marquee Neon handoff specifies an order lifecycle: **SEND THE RUNNER**
+creates an order, `/delivery/track` shows a live arrival time, a status list
+advancing `received → packed → en_route → delivered`, and a named runner with
+a tenure and a Text button.
+
+There is no order store, no dispatch system and no runner roster behind this
+site. An order is a text message to the shop.
+
+What was built instead, and why:
+
+- **`/delivery/order` (3b)** is real. The draft lives in a cookie, every
+  stepper and field is a form POST, and it prices from the catalogue rather
+  than the cookie so a tampered draft cannot change what anything costs.
+  Sending opens a pre-filled SMS — which is the shop's actual process today.
+- **`/delivery/track` (4h)** shows only what is genuinely known: the order that
+  was sent, where it is going, and the one step that has actually happened. It
+  shows a 25–35 minute *window*, not a clock time, and it does not invent a
+  runner. A page rendering "ARRIVING 4:52 AM" and "Marco, 3 years" out of
+  nothing would be a convincing lie told to someone standing in a hotel
+  corridor.
+
+The layout is the design's and the remaining three steps are already in the
+markup. They light up the moment there is a feed.
+
+**Needs a decision:** is the shop getting an order system, or is SMS the real
+process? If SMS is the answer, 4h should probably be cut rather than kept as a
+receipt — it is the one screen in the bundle that cannot be honest without a
+back end.
+
 ## Hemp & CBD 🔴
 
 The shop is adding the department; the model is in place and deliberately

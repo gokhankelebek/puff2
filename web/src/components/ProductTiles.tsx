@@ -80,11 +80,20 @@ export function ProductTiles({ items }: { items: Product[] }) {
                 </span>
               </a>
 
-              {/* Out-of-stock is never quick-addable. */}
+              {/* Out-of-stock is never quick-addable.
+
+                  A form POST rather than a link: adding to the draft changes
+                  state, and a GET that mutates gets fetched by every crawler
+                  and link-prefetcher that touches the page. */}
               {out ? null : (
-                <a className={s.add} href={`/delivery?add=${encodeURIComponent(p.slug)}`}>
-                  Add to delivery
-                </a>
+                <form className={s.addForm} action="/api/draft" method="POST">
+                  <input type="hidden" name="action" value="add" />
+                  <input type="hidden" name="slug" value={p.slug} />
+                  <input type="hidden" name="next" value="/delivery/order" />
+                  <button className={s.add} type="submit">
+                    Add to delivery
+                  </button>
+                </form>
               )}
             </article>
           </li>

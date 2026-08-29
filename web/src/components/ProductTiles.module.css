@@ -162,3 +162,14 @@
     padding: 0;
   }
 }
+
+.addForm { display: flex; }
+
+/* .add is a <button> now, so it needs the box a link got for free. */
+.add {
+  flex: 1;
+  border-width: 1px;
+  border-style: solid;
+  background: none;
+  cursor: pointer;
+}
