@@ -157,7 +157,7 @@ export async function BottomNav() {
   return (
     <>
       <div className={s.navSpacer} aria-hidden="true" />
-      <nav className={s.bottomNav} aria-label="Sections">
+      <nav className={s.bottomNav} data-island="lit" aria-label="Sections">
         {NAV.map(({ label, href }) => {
           const here = path === href || path.startsWith(`${href}/`);
           return (

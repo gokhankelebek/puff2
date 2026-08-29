@@ -264,6 +264,12 @@
   height: 40px;
   flex: none;
   border-radius: 6px;
+  /* Deliberately a literal, not a token. The catalogue is shot on white, and
+     object-fit: contain letterboxes each shot inside this 40px chip, so the
+     plate has to stay light or every thumb becomes a white block floating on
+     a dark rectangle. No token expresses that: the menu is a lit island, which
+     drives every surface token to its night value, and --photo-1 is not
+     re-declared there so it would flip with the page theme. Leave it. */
   background: #f4f1ea;
   overflow: hidden;
 }

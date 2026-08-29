@@ -145,8 +145,9 @@ export default function SearchBox() {
         </button>
       </form>
 
+      {/* The prompt is a sibling of the menu, same dark surface, same need. */}
       {expanded && q.trim().length >= 2 && hits.length === 0 && (
-        <p className={s.prompt}>
+        <p className={s.prompt} data-island="lit">
           Nothing matches “{q}”.{" "}
           <a className={s.promptLink} href={`/search?q=${encodeURIComponent(q)}`}>
             Search the whole shop →
@@ -154,8 +155,13 @@ export default function SearchBox() {
         </p>
       )}
 
+      {/* data-island="lit": the menu paints --bg-alt, which is dark in BOTH
+          themes. Without it the text tokens stay on the page theme, so day
+          mode drew #17111f titles on a #17111f panel — 1:1, the entire
+          dropdown invisible. */}
       <ul
         className={s.menu}
+        data-island="lit"
         id={listId}
         role="listbox"
         data-open={(open || expanded) && hits.length > 0 ? "" : undefined}
