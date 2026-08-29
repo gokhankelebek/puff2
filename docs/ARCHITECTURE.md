@@ -14,15 +14,39 @@ Runtime dependencies are `next`, `react`, `react-dom`, `csv-parse`. That is the 
 
 | Route | File | Notes |
 |---|---|---|
-| `/` | `src/app/page.tsx` | Hero + Pick-Up / Delivery doors, then the shelf |
+| `/` | `src/app/page.tsx` | Product-first shelf, hour-banded |
 | `/[department]` | `src/app/[department]/page.tsx` | `vape · cigars · cigarettes · hookah · glass · accessories` |
+| `/[department]/brands` | `.../brands/page.tsx` | Brand hub |
+| `/[department]/brands/[brand]` | `.../brands/[brand]/page.tsx` | Slug owned by us — see `src/lib/slugs.ts` |
+| `/[department]/flavors` | `.../flavors/page.tsx` | Flavour hub |
+| `/[department]/flavors/[family]` | `.../flavors/[family]/page.tsx` | Keyed on `FlavorFamily` |
 | `/p/[slug]` | `src/app/p/[slug]/page.tsx` | Product detail |
 | `/search` | `src/app/search/page.tsx` | Real `<form method="get">` |
-| `/pickup` | `src/app/pickup/page.tsx` | Walk-in: mall diagram, bridge, walking times |
 | `/delivery` | `src/app/delivery/page.tsx` | Hotel picker → pre-filled SMS |
-| `/store/directions` | redirect | Permanent redirect to `/pickup` |
+| `/pickup` | `src/app/pickup/page.tsx` | Walk-in and wayfinding. **`/store/directions` 308s here** (`next.config.ts`) |
 | `/api/age` | `src/app/api/age/route.ts` | Age-gate form POST target |
 | `/api/dev/ingest` | `src/app/api/dev/ingest/route.ts` | Dev only |
+
+Redirects live in `next.config.ts`. **Config changes need a dev-server restart** —
+HMR will not pick them up, which is exactly how a stale server can serve a route
+that no longer exists.
+
+### Components worth knowing
+
+| Component | What it is |
+|---|---|
+| `ProductTiles.tsx` | The four PLP archetypes, shared by department, flavour and brand pages. One tile grammar per browse decision — vape is a chip-swatch grid, cigars a spec table, glass a gallery, cigarettes a utility list |
+| `BoulevardSpine.tsx` | Las Vegas Blvd as a transit diagram — north at top, west names left of the rail, east right. Every hotel is a GET link. Native page scroll, no nested map, no Leaflet |
+| `Marquee.tsx` | Walking-distance ticker, CSS-only pause |
+| `NicotineWarning.tsx` / `PageNicotineWarning.tsx` | See [COMPLIANCE.md](COMPLIANCE.md) |
+| `Chrome.tsx` | Header, wordmark, tab bar, status module |
+
+### Slugs are ours
+
+`src/lib/slugs.ts` derives brand slugs from the display name, in one place.
+"Geek Bar" → `/vape/brands/geek-bar`. If the POS spelling changes, existing URLs
+stay put as long as the name the shop uses does. This is the ownership rule from
+[DATA-PIPELINE.md](DATA-PIPELINE.md) made concrete.
 
 `src/middleware.ts` handles the age cookie and sets the `AGE_HEADER` the pages read.
 

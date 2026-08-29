@@ -11,6 +11,10 @@ cd web && npm install && npm run dev
 
 `npx tsc --noEmit` in `web/` is the typecheck. There is no test suite yet.
 
+> **Restart the dev server after touching `next.config.ts`.** HMR does not reload
+> it, so redirects silently don't apply — a server left running for a day will
+> happily serve a route that has since moved.
+
 ---
 
 ## The docs

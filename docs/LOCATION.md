@@ -49,7 +49,7 @@ structured data.
 
 **Ole Red is suite 700**, at the mall's north-west end — 60–70 m away by
 measurement, "at most 100 m" per the owner, and the whole walk is inside Grand
-Bazaar Shops. It remains the right landmark for the directions page: it is the
+Bazaar Shops. It remains the right landmark for `/pickup`: it is the
 most visible thing from the Strip. The copy says to walk in past the neon guitar
 and continue to the 600s. Don't downgrade it to "next door" (implies adjacency)
 or escalate it to "the wrong end" (it isn't).
@@ -59,7 +59,7 @@ or escalate it to "the wrong end" (it isn't).
 ## Walk times
 
 `research/ingest/walk-times.py` → `web/src/lib/walks.ts`, read by both
-`components/Marquee.tsx` and the directions page.
+`components/Marquee.tsx` and `/pickup`.
 
 ### The model
 

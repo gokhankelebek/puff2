@@ -22,7 +22,26 @@ has crawl output that can seed a redirect table.
 | **3 products with no image** | `butane`, `mpb-hookah-bowl`, `vape-juice` — all generic SKUs. Needs a decision on what to even photograph. |
 | **Elf Bar** | Absent from both the POS export and the live site. Deliberate, or a gap in the catalogue? |
 | **`meet` points in `web/src/lib/hotels.ts`** | Left empty on purpose. Every resort handles outside delivery differently, several change the rule by time of night, and none of it is published anywhere verifiable. Inventing "meet at the north valet" would read as authoritative and strand a driver and a customer at two different doors. The shop should fill these in as it learns each property. |
-| **Night-shoot photography** | `/store/directions` has three labelled empty placeholders: *Ole Red from the Boulevard · the turn into Grand Bazaar · our door*. Most people arrive in the dark and the Strip looks nothing like its daytime self. Placeholders are labelled as placeholders rather than filled with stock. |
+| **Night-shoot photography** | `/pickup` has three labelled empty placeholders: *Ole Red from the Boulevard · the turn into Grand Bazaar · our door*. Most people arrive in the dark and the Strip looks nothing like its daytime self. Placeholders are labelled as placeholders rather than filled with stock. |
+
+## The homepage hero 🔴
+
+`public/hero/puff-night.mp4` is cut by `scripts/cut-hero-video.py` from a
+**third-party YouTube compilation** ("The Fountains of Bellagio", `dG0pQgTDB60`)
+via `yt-dlp`. It autoplays as the homepage LCP — the first thing every customer
+sees.
+
+Two separate questions, neither settled:
+
+1. **Rights.** This is not the vendor-product-image question, which *is* settled.
+   It is someone else's copyrighted footage used as commercial advertising, and
+   Bellagio and Caesars signage is identifiable in it. Needs either a licence, or
+   replacement with footage the shop owns — a night shoot of this block would
+   also serve the `/pickup` placeholders.
+2. **Weight.** 7.3 MB, autoplaying. The whole design thesis is a cold Strip
+   connection at 3 a.m. on a phone; this is by far the heaviest asset on the
+   site. The poster carries the LCP, so the video could be gated behind
+   `prefers-reduced-data` / a wider breakpoint without losing the effect.
 
 ## Needs counsel 🔴
 

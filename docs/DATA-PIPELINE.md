@@ -105,6 +105,23 @@ Guards learned the hard way, all now in the script:
 
 ---
 
+## Homepage hero
+
+`scripts/cut-hero-video.py` (venv `web/.venv-hero`, needs `yt-dlp` + `pillow`)
+produces `public/hero/puff-night.mp4` + `.webp`. The `KEEP` list in the script
+selects the night footage of *this* block — Flamingo Rd, Grand Bazaar across the
+lake, the sidewalk view of the fountains. Edit `KEEP` and re-run; never hand-edit
+the mp4.
+
+```bash
+../.venv-hero/bin/python scripts/cut-hero-video.py --probe   # contact sheet
+../.venv-hero/bin/python scripts/cut-hero-video.py           # download + cut
+```
+
+🔴 **Two things unresolved about this asset — see [OPEN-DECISIONS.md](OPEN-DECISIONS.md):**
+its source is a third-party YouTube compilation, and at 7.3 MB it is the heaviest
+thing on the site.
+
 ## Search
 
 `src/lib/search.ts` holds the scorer, shared by the server page and the client
