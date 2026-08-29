@@ -119,7 +119,6 @@ export function Header() {
         <a className={s.searchPill} href="/search">
           Search
         </a>
-        <ThemeToggle />
       </div>
     </header>
   );

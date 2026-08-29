@@ -1,21 +1,115 @@
-/* ThemeToggle.module.css — STRIPPED FOR REDESIGN.
+/* ==========================================================================
+   Day / Night.
 
-   Every rule body was removed; the selectors remain so the CSS Modules
-   export map is unchanged and `styles.x` still resolves to a real class
-   instead of undefined. The markup is therefore intact and unstyled.
+   Kept, rather than dropped for the OS setting alone, because here it is not
+   a reading-comfort preference — it is the brand. The site is a sign, and the
+   whole conceit is that the same sign is lit at 4 a.m. and unlit at 2 p.m.
+   Someone on the sidewalk with their phone in light mode still wants the lit
+   one.
 
-   2 class names preserved. Original: see git history
-   (commit 'Baseline: copy of puff before presentation strip').
+   Built as a segmented control in the site's own chip vocabulary — border,
+   12% tint, brighter text — so it matches the meet-point control, the filter
+   chips and the hotel picker rather than inventing a fourth kind of toggle.
+   ========================================================================== */
 
-   Each rule carries an inert `--stripped` custom property. It is not a
-   style: a rule with an empty body is dropped by the CSS optimizer, which
-   deletes the class from the module's export map and makes `s.tile` come
-   back undefined. One declaration keeps the rule — and the export — alive. */
+/* Hidden until the theme script has run. Without JavaScript there is nothing
+   this control can do, and a dead button is worse than no button. */
+.field {
+  display: none;
+}
 
-.opt {
-  --stripped: 1;
+:global(html[data-js="1"]) .field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
 }
 
 .wrap {
-  --stripped: 1;
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+}
+
+.opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* 36px inside a 44px row: the control is in the footer, where it sits in a
+     column of its own and is not competing for thumb space. */
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  background: none;
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  /* A segmented control is not text. Without this a double-tap on mobile
+     selects the label and leaves it highlighted over the control. */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color var(--d-state) ease-out,
+    background-color var(--d-state) ease-out,
+    border-color var(--d-state) ease-out;
+}
+
+.opt:hover {
+  color: var(--text);
+}
+
+/* The selected half. Border + tint + brighter text, never fill-only — the
+   same rule every other toggle on the site follows. In night mode the glow
+   token is live, so the active half reads as the lit one. */
+.opt[data-on] {
+  border-color: var(--magenta);
+  background: var(--magenta-tint);
+  color: var(--magenta-text);
+  box-shadow: var(--glow-cta);
+}
+
+.opt:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.glyph {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Says which of the two states you are actually in — following the device, or
+   pinned. This is the job a third "System" button normally does; lib/theme.ts
+   explains why there is no third button, and this line is the other half of
+   that decision. */
+.hint {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.reset {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cyan);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.reset:hover {
+  color: var(--text);
 }
