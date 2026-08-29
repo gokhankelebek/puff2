@@ -63,9 +63,11 @@ export default async function HomePage() {
       <Header />
 
       <section className={s.stage} aria-label="Puff Vegas">
-        {/* Poster is LCP. The loop is a local cut of the night Strip
-            (scripts/cut-hero-video.py) — muted, no controls, pointer-events
-            none so the two doors stay real links with scripting off. */}
+        {/* The still is the LCP and now the whole hero: the autoplaying loop
+            that used to sit over it has been removed. It was a 7.3 MB cut of a
+            third-party YouTube compilation, unlicensed, and it was the heaviest
+            asset on a site whose whole thesis is a cold Strip connection at
+            3 a.m. See docs/OPEN-DECISIONS.md. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className={s.stageMedia}
@@ -75,18 +77,6 @@ export default async function HomePage() {
           height={864}
           fetchPriority="high"
         />
-        <video
-          className={s.stageVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/hero/puff-night.webp"
-          aria-hidden="true"
-        >
-          <source src="/hero/puff-night.mp4" type="video/mp4" />
-        </video>
         <div className={s.stageVeil} aria-hidden="true" />
         <div className={s.stageInner}>
           <div className={s.stageCopy}>

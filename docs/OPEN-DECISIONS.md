@@ -26,22 +26,22 @@ has crawl output that can seed a redirect table.
 
 ## The homepage hero 🔴
 
-`public/hero/puff-night.mp4` is cut by `scripts/cut-hero-video.py` from a
-**third-party YouTube compilation** ("The Fountains of Bellagio", `dG0pQgTDB60`)
-via `yt-dlp`. It autoplays as the homepage LCP — the first thing every customer
-sees.
+Both files came from a **third-party YouTube compilation** ("The Fountains of
+Bellagio", `dG0pQgTDB60`), pulled via `yt-dlp` by `scripts/cut-hero-video.py`.
 
-Two separate questions, neither settled:
+1. **Weight — ✅ settled.** `public/hero/puff-night.mp4` has been deleted. The
+   autoplaying 7.3 MB loop was by far the heaviest asset on a site whose whole
+   thesis is a cold Strip connection at 3 a.m. on a phone. The poster already
+   carried the LCP, so nothing load-bearing was lost.
+2. **Rights — 🔴 still open, and deleting the video did not fix it.**
+   `public/hero/puff-night.webp` is a **still frame from that same footage** and
+   is now the entire hero. It remains someone else's copyrighted material used
+   as commercial advertising, with Bellagio and Caesars signage identifiable in
+   it. Needs either a licence or replacement with footage the shop owns — a
+   night shoot of this block would also serve the `/pickup` placeholders.
 
-1. **Rights.** This is not the vendor-product-image question, which *is* settled.
-   It is someone else's copyrighted footage used as commercial advertising, and
-   Bellagio and Caesars signage is identifiable in it. Needs either a licence, or
-   replacement with footage the shop owns — a night shoot of this block would
-   also serve the `/pickup` placeholders.
-2. **Weight.** 7.3 MB, autoplaying. The whole design thesis is a cold Strip
-   connection at 3 a.m. on a phone; this is by far the heaviest asset on the
-   site. The poster carries the LCP, so the video could be gated behind
-   `prefers-reduced-data` / a wider breakpoint without losing the effect.
+   Nothing is deployed yet (puffvegas.us still serves Ecwid), so there is no
+   live exposure — but this must be resolved before launch, not at launch.
 
 ## Needs counsel 🔴
 

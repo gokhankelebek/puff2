@@ -243,9 +243,9 @@ ul {
   list-style: none;
 }
 
-/* `video` belongs here too. The stripped modules no longer size the hero
-   video, and without a cap it lays out at its intrinsic 1280px and forces
-   horizontal overflow on every viewport narrower than that. */
+/* `video` is included on purpose. There is no video in the tree today, but an
+   unconstrained media element lays out at its intrinsic width and forces
+   horizontal overflow, which is a reset's job to prevent rather than a design's. */
 img,
 svg,
 video {

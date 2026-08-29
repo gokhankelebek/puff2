@@ -107,20 +107,21 @@ Guards learned the hard way, all now in the script:
 
 ## Homepage hero
 
+**The video is gone.** `public/hero/puff-night.mp4` was removed during the
+redesign — it was cut from a third-party YouTube compilation, was never
+licensed, and at 7.3 MB was the heaviest asset on the site. That closes the
+*weight* half of the hero open decision outright.
+
+`public/hero/puff-night.webp` is still the hero image and still the LCP.
+
+> 🔴 **The poster is a still frame from that same unlicensed footage**, so the
+> *rights* half of the decision is NOT closed by deleting the mp4. See
+> [OPEN-DECISIONS.md](OPEN-DECISIONS.md).
+
 `scripts/cut-hero-video.py` (venv `web/.venv-hero`, needs `yt-dlp` + `pillow`)
-produces `public/hero/puff-night.mp4` + `.webp`. The `KEEP` list in the script
-selects the night footage of *this* block — Flamingo Rd, Grand Bazaar across the
-lake, the sidewalk view of the fountains. Edit `KEEP` and re-run; never hand-edit
-the mp4.
-
-```bash
-../.venv-hero/bin/python scripts/cut-hero-video.py --probe   # contact sheet
-../.venv-hero/bin/python scripts/cut-hero-video.py           # download + cut
-```
-
-🔴 **Two things unresolved about this asset — see [OPEN-DECISIONS.md](OPEN-DECISIONS.md):**
-its source is a third-party YouTube compilation, and at 7.3 MB it is the heaviest
-thing on the site.
+is retained but is not part of any current build path — it produced both files
+and can regenerate the poster if the source is ever replaced with footage the
+shop owns. Delete it along with the poster if the hero is re-shot.
 
 ## Search
 
