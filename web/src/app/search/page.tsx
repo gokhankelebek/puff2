@@ -5,6 +5,7 @@ import { headers } from "next/headers";
    undefined and the page rendered unstyled. */
 import s from "./Search.module.css";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
+import Bulbs from "@/components/Bulbs";
 import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
@@ -50,6 +51,8 @@ export default async function SearchPage({
       <Header />
 
       <main className={s.main}>
+        <Bulbs />
+
         <section className={s.searchBar}>
           {/* A real GET form. The header links here, and until now there was
               nothing to type into — you could only search by arriving with a

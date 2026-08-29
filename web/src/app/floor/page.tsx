@@ -95,6 +95,8 @@ export default async function FloorPage() {
 
         <PageNicotineWarning products={all} />
 
+        <Bulbs />
+
         <ul className={fl.grid}>
           {stocked.map(({ department, total, onShelf }, i) => (
             <li key={department}>

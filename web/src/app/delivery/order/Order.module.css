@@ -105,10 +105,10 @@
   font-size: 17px;
 }
 
-/* A completed step goes green — the same vocabulary the tracking list uses. */
+/* A completed step goes cyan — the same vocabulary the tracking list uses. */
 .stepNum[data-done="true"] {
-  border-color: var(--green);
-  color: var(--green);
+  border-color: var(--cyan);
+  color: var(--cyan);
 }
 
 .field { display: flex; flex-direction: column; gap: 6px; }

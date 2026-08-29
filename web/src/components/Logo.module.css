@@ -4,9 +4,14 @@
 .lockup {
   position: relative;
   display: block;
-  /* Measured from the source art's ink bounds — 2695x1022. Hard-coded so the
-     box never disagrees with the masks and shifts them out of register. */
-  aspect-ratio: 2695 / 1022;
+  /* Hard-coded so the box never disagrees with the masks and shifts them out
+     of register. Recomposed from the three source regions with real optical
+     spacing rather than the artwork's own: the original butts "puff" against
+     "VEGAS" with about 2px of air, so the lockup read as one crowded word and
+     the magenta/gold split muddied at exactly the joint that should be
+     cleanest. Now 0.11 of cap height between them, and the tagline sits off
+     the VEGAS cap line instead of on it. */
+  aspect-ratio: 3658 / 1000;
   height: var(--logo-h, 34px);
   width: auto;
   flex: none;
@@ -68,7 +73,7 @@
 .compact {
   position: relative;
   display: block;
-  aspect-ratio: 1632 / 400;
+  aspect-ratio: 1660 / 400;
   height: var(--logo-h, 30px);
   width: auto;
   flex: none;

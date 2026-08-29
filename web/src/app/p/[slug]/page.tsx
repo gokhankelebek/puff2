@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import s from "./Product.module.css";
 import NicotineWarning from "@/components/NicotineWarning";
+import Bulbs from "@/components/Bulbs";
 import { AgeBanner, Header, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
@@ -74,6 +75,10 @@ export default async function ProductPage({
             rule worth being conservative about, so the plate now spans the
             listing and the 20% test is met against the larger denominator. */}
         <NicotineWarning regulatoryClass={product.regulatoryClass} />
+
+        {/* Frames the shot as a lit display case — the signature divider was
+            absent from this template entirely. */}
+        <Bulbs />
 
         <div className={s.hero}>
           <div
@@ -174,6 +179,8 @@ export default async function ProductPage({
             {human && <p className={s.allIn}>{product.puffCount?.toLocaleString()} puffs — {human}</p>}
           </div>
         </div>
+
+        <Bulbs />
 
         <div className={s.trust}>
           {product.deliveryEligible ? (

@@ -140,10 +140,12 @@
   min-width: 0;
 }
 
+/* Was 26px — twice the product name, so the loudest element in every row was
+   the one piece of information that never changes. */
 .rowHeadline {
   font-family: var(--font-display);
   line-height: 0.92;
-  font-size: 26px;
+  font-size: 21px;
   letter-spacing: 0.04em;
   color: var(--gold);
   font-variant-numeric: tabular-nums;
@@ -198,7 +200,10 @@
 .signupLegal { font-size: 12px; color: var(--text-dim); }
 
 @media (min-width: 1200px) {
-  .main { max-width: 1360px; margin: 0 auto; width: 100%; }
+  /* Capped. At 1360 each deal row was a 112px photo followed by ~120px of ink
+     and 1030px of empty ground with a hairline ruled all the way across it —
+     three lonely captions pinned to the left margin. */
+  .main { max-width: 880px; margin: 0 auto; width: 100%; }
   .pageTitle, .sectionTitle, .rowLink, .signup { padding-inline: 40px; }
   .feature, .featureOff { margin-inline: 40px; }
 }

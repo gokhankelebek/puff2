@@ -341,7 +341,10 @@
      keeps the whole set reading as one family. */
   color: var(--cyan);
   overflow: hidden;
-  --dept-icon-h: 48%;
+  /* Filling more of the box: at 48% the glyph sat in ~85% empty tint and the
+     card read as a photo slot that failed to load — next to a real storefront
+     photograph, on a page whose whole content is these cards. */
+  --dept-icon-h: 68%;
 }
 
 .floorName {
@@ -371,6 +374,10 @@
   overflow-x: auto;
   padding: 0 var(--gutter) 6px;
   scroll-snap-type: x proximity;
+  /* Without this the snap aligns the first card to the PADDING box, eating
+     the track's gutter — the first card landed at x=0, flush to the screen
+     with its left border clipped, while its own heading sat at x=20. */
+  scroll-padding-inline-start: var(--gutter);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -474,10 +481,13 @@
   color: var(--text);
 }
 
+/* Three across, not flex-wrapped. Wrapping put two on one row and stranded
+   "24/7" alone above ~210px of dead space — inside the most emphatic panel on
+   the page, which is the worst place on the site to leave a hole. */
 .bandStats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 12px;
 }
 
 .bandStat {
@@ -553,6 +563,7 @@
     padding: 0 40px 6px;
     overflow-x: auto;
     scroll-snap-type: x proximity;
+    scroll-padding-inline-start: 40px;
     overscroll-behavior-x: contain;
   }
 

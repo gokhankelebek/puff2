@@ -65,7 +65,7 @@
   border-radius: var(--r-thumb);
   color: var(--cyan);
   overflow: hidden;
-  --dept-icon-h: 48%;
+  --dept-icon-h: 68%;
 }
 
 .name {

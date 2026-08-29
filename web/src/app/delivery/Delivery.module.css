@@ -49,11 +49,14 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Cyan is the system's label colour and it was entirely unused on this page —
+   the flagship lit two of its three tubes. Every letterspaced eyebrow here is
+   a label, so this is where the third one belongs. */
 .statLabel {
   font-size: 11px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: var(--text-faint);
+  color: var(--cyan);
 }
 
 .sectionTitle {

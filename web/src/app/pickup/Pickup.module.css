@@ -20,6 +20,10 @@
 
 .head { padding: 20px var(--gutter) 24px; }
 
+/* Gold, not green. "Open now — and always" is an hours statement, and gold is
+   the hours colour — the footer already does this. The mint green was a fourth
+   hue in a three-tube system, carrying three unrelated meanings across the
+   site, and it is the one colour here that cannot be a neon tube. */
 .openNow {
   display: inline-flex;
   align-items: center;
@@ -29,14 +33,14 @@
   font-size: 15px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--gold);
 }
 
 .pulse {
   width: 9px;
   height: 9px;
   border-radius: var(--r-pill);
-  background: var(--green);
+  background: var(--gold);
 }
 
 .address {
@@ -113,7 +117,7 @@
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-faint);
+  color: var(--cyan);
 }
 
 .hoursValue {

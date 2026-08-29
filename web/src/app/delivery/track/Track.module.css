@@ -116,9 +116,10 @@
   border: 2px solid var(--border-strong);
 }
 
+/* Cyan is the system's state colour and it was otherwise unemployed here. */
 .step[data-state="done"] .dot {
-  background: var(--green);
-  border-color: var(--green);
+  background: var(--cyan);
+  border-color: var(--cyan);
 }
 
 .stepBody { display: flex; flex-direction: column; gap: 2px; }
