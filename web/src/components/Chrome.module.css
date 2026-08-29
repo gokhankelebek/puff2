@@ -282,10 +282,10 @@
   background: var(--green);
 }
 
-/* The typeahead replaces the pill from the desktop breakpoint up. */
+/* The live control everywhere JavaScript is running; the plain link only
+   where it is not. data-js is set pre-paint by INIT_SCRIPT, so this swap
+   never flashes. */
 .headerSearch { display: none; }
 
-@media (min-width: 1200px) {
-  .headerSearch { display: block; }
-  .searchPill { display: none; }
-}
+:global(html[data-js="1"]) .headerSearch { display: block; }
+:global(html[data-js="1"]) .searchPill { display: none; }

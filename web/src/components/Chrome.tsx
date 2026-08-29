@@ -109,10 +109,11 @@ export function Header() {
         <Wordmark />
       </a>
       <div className={s.headerActions}>
-        {/* Two controls, one job. The typeahead is desktop-only: on a phone a
-            240px input in the header competes with the page for the keyboard,
-            and /search gives it the whole screen. Both are real GET forms or
-            links, so neither needs JavaScript to work. */}
+        {/* Two controls for one job, and only ever one of them visible.
+            SearchBox is the live one and needs JavaScript; the plain link is
+            the fallback and is hidden the moment the head script sets
+            data-js, so a phone without JS gets the real search page rather
+            than a dead trigger. */}
         <div className={s.headerSearch}>
           <SearchBox />
         </div>

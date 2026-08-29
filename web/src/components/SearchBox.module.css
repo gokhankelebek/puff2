@@ -1,10 +1,55 @@
-/* The header typeahead. Desktop only — mobile uses the SEARCH pill, which
-   goes to /search where the input has the whole screen to itself. */
+/* ==========================================================================
+   The header typeahead, in two presentations sharing one state.
 
+   Mobile is a pill that expands into a panel over the page. The phone used to
+   navigate to /search just to type, which loses the page behind it for what is
+   usually a two-letter lookup.
+
+   Desktop is the inline field with a dropdown beneath it.
+
+   CSS does the moving; there is no second component and no second form.
+   ========================================================================== */
+
+/* --- Mobile: trigger, then a panel over the page ------------------------- */
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: none;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color var(--d-state) ease-out, color var(--d-state) ease-out;
+}
+
+.trigger:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+/* Collapsed, the field itself is not in the way at all. */
 .wrap {
-  position: relative;
-  width: 240px;
-  flex: none;
+  display: none;
+}
+
+.wrap[data-expanded] {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  padding: 12px var(--gutter) 0;
+  background: var(--bg);
 }
 
 .form {
@@ -44,20 +89,38 @@
 
 .input::placeholder { color: var(--text-faint); }
 
-/* The dropdown. */
+.cancel {
+  flex: none;
+  padding: 0 4px 0 12px;
+  border: 0;
+  background: none;
+  color: var(--cyan);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Expanded, the results are the rest of the screen rather than a dropdown. */
 .menu {
-  position: absolute;
-  z-index: 40;
-  top: calc(100% + 8px);
-  right: 0;
-  width: 360px;
-  max-height: 70vh;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
-  padding: 6px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--bg-alt);
-  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  padding: 8px 0 24px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prompt {
+  padding: 20px 2px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
+
+.promptLink {
+  color: var(--cyan);
+}
+
+.promptLink:hover {
+  text-decoration: underline;
 }
 
 .hit {
@@ -74,18 +137,31 @@
   background: var(--surface);
 }
 
+/* A LIGHT plate, in both themes, and deliberately so.
+
+   These are background-removed cutouts, and a good share of the catalogue is
+   black hardware — a dark Geek Bar on a dark ground at 40px is an empty
+   square. The product cards get away with a dark ground because they are
+   130px+ and the packaging carries colour; a thumbnail this size does not.
+   Reads as a product swatch rather than as part of the page. */
 .thumb {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
+  flex: none;
   border-radius: 6px;
-  background: var(--photo-1);
+  background: #f4f1ea;
   overflow: hidden;
 }
 
-.thumbImg { width: 100%; height: 100%; object-fit: contain; }
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+}
 
 .hitText { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 
@@ -132,4 +208,41 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--cyan);
+}
+
+
+/* --- Desktop: inline field, dropdown beneath ----------------------------- */
+
+@media (min-width: 1200px) {
+  .trigger,
+  .cancel,
+  .prompt {
+    display: none;
+  }
+
+  .wrap {
+    display: block;
+    position: relative;
+    inset: auto;
+    z-index: auto;
+    width: 240px;
+    flex: none;
+    padding: 0;
+    background: none;
+  }
+
+  .menu {
+    position: absolute;
+    z-index: 40;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 360px;
+    flex: none;
+    max-height: 70vh;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    background: var(--bg-alt);
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  }
 }

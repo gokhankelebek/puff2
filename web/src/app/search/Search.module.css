@@ -76,18 +76,31 @@
 
 .tileLink:hover { background: var(--surface); }
 
+/* A LIGHT plate, in both themes, and deliberately so.
+
+   These are background-removed cutouts, and a good share of the catalogue is
+   black hardware — a dark Geek Bar on a dark ground at 40px is an empty
+   square. The product cards get away with a dark ground because they are
+   130px+ and the packaging carries colour; a thumbnail this size does not.
+   Reads as a product swatch rather than as part of the page. */
 .tileShot {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 52px;
   height: 52px;
+  flex: none;
   border-radius: var(--r-thumb);
-  background: var(--photo-1);
+  background: #f4f1ea;
   overflow: hidden;
 }
 
-.tileImg { width: 100%; height: 100%; object-fit: contain; }
+.tileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+}
 .tileImgCutout { object-fit: contain; }
 
 .tileMeta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
