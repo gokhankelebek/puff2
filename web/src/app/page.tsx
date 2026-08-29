@@ -20,6 +20,7 @@ import {
   type Product,
 } from "@/lib/commerce";
 import { brandHref } from "@/lib/slugs";
+import { DepartmentMark } from "@/components/Icons";
 
 const SHELF_ORDER: Record<HourBand, Department[]> = {
   hours: ["vape", "cigarettes", "accessories", "cigars"],
@@ -31,12 +32,12 @@ const SHELF_ORDER: Record<HourBand, Department[]> = {
 const SHELF_SIZE = 18;
 
 const DEPARTMENTS = [
-  ["vape", "Vape", "geek-bar-pulse-x-25k"],
-  ["cigars", "Cigars", "acid-kuba-deluxe"],
-  ["cigarettes", "Cigarettes", "marlboro"],
-  ["hookah", "Hookah", "hookah"],
-  ["glass", "Glass", "glass-bong-size-5"],
-  ["accessories", "Accessories", "zyn-6-nicotine-pouches"],
+  ["vape", "Vape"],
+  ["cigars", "Cigars"],
+  ["cigarettes", "Cigarettes"],
+  ["hookah", "Hookah"],
+  ["glass", "Glass"],
+  ["accessories", "Accessories"],
 ] as const;
 
 export default async function HomePage() {
@@ -89,9 +90,8 @@ export default async function HomePage() {
         <div className={s.stageVeil} aria-hidden="true" />
         <div className={s.stageInner}>
           <div className={s.stageCopy}>
-            <p className={s.stageKicker}>Open 24 hours</p>
-            <p className={s.stagePlace}>Grand Bazaar</p>
-            <p className={s.stageWhere}>Next to Ole Red</p>
+            <p className={s.stageTitle}>Open 24 hours</p>
+            <p className={s.stageIdea}>On the Strip</p>
           </div>
           <div className={s.doors}>
             <a className={`${s.door} ${s.doorPickup}`} href="/pickup">
@@ -123,39 +123,23 @@ export default async function HomePage() {
         <section className={s.cats} aria-label="Shop by category">
           <span className={s.sectionLabel}>Shop by category</span>
           <nav className={s.deptRow}>
-            {DEPARTMENTS.map(([href, label, pick]) => {
-              const hero = heroFor(all, href, pick);
-              return (
-                <a key={href} className={s.deptLink} href={`/${href}`}>
-                  <span
-                    className={s.deptShot}
-                    style={
-                      hero?.flavorFamily
-                        ? ({
-                            "--wash": `var(--flavor-${hero.flavorFamily})`,
-                          } as React.CSSProperties)
-                        : undefined
-                    }
-                  >
-                    {hero?.images[0] && (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        className={s.deptImg}
-                        src={hero.images[0].src}
-                        alt=""
-                        loading="lazy"
-                      />
-                    )}
+            {DEPARTMENTS.map(([href, label]) => (
+              <a key={href} className={s.deptLink} href={`/${href}`}>
+                <span className={s.deptShot}>
+                  <DepartmentMark
+                    department={href}
+                    size={160}
+                    className={s.deptImg}
+                  />
+                </span>
+                <span className={s.deptText}>
+                  <span className={s.deptName}>{label}</span>
+                  <span className={s.deptCount}>
+                    {counts[href] ?? 0} {counts[href] === 1 ? "item" : "items"}
                   </span>
-                  <span className={s.deptText}>
-                    <span className={s.deptName}>{label}</span>
-                    <span className={s.deptCount}>
-                      {counts[href] ?? 0} {counts[href] === 1 ? "item" : "items"}
-                    </span>
-                  </span>
-                </a>
-              );
-            })}
+                </span>
+              </a>
+            ))}
           </nav>
         </section>
 
@@ -213,12 +197,6 @@ function buildShelf(all: Product[], band: HourBand): Product[] {
     if (!placed) break;
   }
   return out;
-}
-
-function heroFor(all: Product[], dept: string, pick: string): Product | undefined {
-  const chosen = all.find((p) => p.slug === pick && p.images.length > 0);
-  if (chosen) return chosen;
-  return all.find((p) => p.department === dept && p.images[0]?.cutout);
 }
 
 function buildBrandWall(all: Product[], limit = 16): string[] {

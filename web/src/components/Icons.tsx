@@ -16,7 +16,8 @@ const base = (size: number) => ({
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.5,
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
   "aria-hidden": true,
 });
@@ -26,9 +27,10 @@ const EMBER = "var(--volt)";
 export function IconDisposables({ size = 24, className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
-      <rect x="8.5" y="2.5" width="7" height="19" rx="1.5" />
-      <path d="M10 2.5v3.5h4V2.5" />
-      <circle cx="12" cy="18.5" r="1.4" fill={EMBER} stroke="none" />
+      {/* Cap and body as two stacked rounds — a disposable, not a letterform. */}
+      <rect x="9.5" y="1.6" width="5" height="4.2" rx="1.4" />
+      <rect x="7.2" y="5.2" width="9.6" height="16.6" rx="2.6" />
+      <circle cx="12" cy="18.6" r="1.7" fill={EMBER} stroke="none" />
     </svg>
   );
 }
@@ -71,9 +73,10 @@ export function IconEliquid({ size = 24, className }: IconProps) {
 export function IconCigarettes({ size = 24, className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
-      <rect x="2.5" y="10" width="19" height="4.5" rx="1" />
-      <path d="M15.5 10v4.5" />
-      <rect x="18.5" y="10" width="3" height="4.5" rx="1" fill={EMBER} stroke="none" />
+      {/* A 2px stroke cannot outline a 3px-tall stick — it collapses. One line. */}
+      <path d="M2.8 12h16.4" />
+      <path d="M7.2 10.2v3.6" />
+      <circle cx="21.2" cy="12" r="1.6" fill={EMBER} stroke="none" />
     </svg>
   );
 }
@@ -81,9 +84,10 @@ export function IconCigarettes({ size = 24, className }: IconProps) {
 export function IconCigars({ size = 24, className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
-      <path d="M3 12.5c0-1.4 1.1-2.5 2.5-2.5h11l3 1.2-3 1.3H5.5A2.5 2.5 0 0 1 3 12.5z" />
-      <path d="M13 10v3.5" />
-      <path d="M16.5 10l3 1.2-3 1.3z" fill={EMBER} stroke="none" />
+      <path d="M2.8 12c0-2 1.5-3.4 3.4-3.4h9.4c.9 0 1.7.4 2.4 1L21.6 12l-3.6 2.4c-.7.6-1.5 1-2.4 1H6.2C4.3 15.4 2.8 14 2.8 12z" />
+      <path d="M8.4 8.6v6.8" />
+      <path d="M10.6 8.6v6.8" />
+      <circle cx="20.8" cy="12" r="1.7" fill={EMBER} stroke="none" />
     </svg>
   );
 }
@@ -91,10 +95,12 @@ export function IconCigars({ size = 24, className }: IconProps) {
 export function IconHookah({ size = 24, className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
-      <path d="M8.5 21.5c0-2.2 1.4-3.4 2.4-4.2.6-.5.6-1.3.6-2V9.5h1v5.8c0 .7 0 1.5.6 2 1 .8 2.4 2 2.4 4.2z" />
-      <path d="M9 9.5h6l-1.2-2.5h-3.6z" />
-      <path d="M15.5 12.5h3" />
-      <rect x="10.2" y="3" width="3.6" height="4" fill={EMBER} stroke="none" />
+      <path d="M8.2 21.5h7.6" />
+      <path d="M9 21.5c0-2.6 1.2-4.2 3-6.4 1.8 2.2 3 3.8 3 6.4" />
+      <path d="M12 15.2V8.4" />
+      <path d="M9.6 8.4h4.8" />
+      <path d="M15.4 13.8c2.8.6 4.4 2.8 3.6 6.4" />
+      <rect x="10" y="2.4" width="4" height="6" rx="0.7" fill={EMBER} stroke="none" />
     </svg>
   );
 }
@@ -112,9 +118,11 @@ export function IconShisha({ size = 24, className }: IconProps) {
 export function IconGlass({ size = 24, className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
-      <path d="M10 2.5h4v9l3.5 8a1.5 1.5 0 0 1-1.4 2H7.9a1.5 1.5 0 0 1-1.4-2l3.5-8z" />
-      <path d="M13 8h4" />
-      <rect x="16.5" y="6" width="3.5" height="4" rx=".8" fill={EMBER} stroke="none" />
+      {/* Straight tube into a wide base — a water pipe, not a vase. */}
+      <path d="M9.2 2.6h5.6v11.2c2.2 1.2 3.4 3.4 3.4 6.6H5.8c0-3.2 1.2-5.4 3.4-6.6V2.6z" />
+      <path d="M5.8 20.4h12.4" />
+      <path d="M14.8 7.2h5" />
+      <circle cx="20.4" cy="7.2" r="1.7" fill={EMBER} stroke="none" />
     </svg>
   );
 }
@@ -133,9 +141,11 @@ export function IconLighters({ size = 24, className }: IconProps) {
 export function IconAccessories({ size = 24, className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
-      <path d="M6 18.5l3-13 3 13 3-13" />
-      <path d="M15 5.5l2.5 4.5" />
-      <circle cx="18" cy="11.5" r="2" fill={EMBER} stroke="none" />
+      {/* Zippo: the one accessory silhouette that still reads at 24px. */}
+      <rect x="7" y="9.2" width="10" height="12.2" rx="1.2" />
+      <path d="M8.4 9.2V6.6h7.2v2.6" />
+      <path d="M12 6.6V4.2c0-1 .8-1.8 1.8-1.8" stroke={EMBER} />
+      <circle cx="14.6" cy="2.4" r="1.5" fill={EMBER} stroke="none" />
     </svg>
   );
 }
@@ -148,6 +158,40 @@ export function IconDelivery({ size = 24, className }: IconProps) {
       <circle cx="17" cy="16.5" r="2" />
       <rect x="19.5" y="8" width="2.5" height="2.5" fill={EMBER} stroke="none" />
     </svg>
+  );
+}
+
+export const DEPT_MARKS = {
+  vape: "/dept/vape.webp",
+  cigars: "/dept/cigars.webp",
+  cigarettes: "/dept/cigarettes.webp",
+  hookah: "/dept/hookah.webp",
+  glass: "/dept/glass.webp",
+  accessories: "/dept/accessories.webp",
+} as const;
+
+export type DeptMarkId = keyof typeof DEPT_MARKS;
+
+/** The owner's department art — used on the tab bar and the category doors. */
+export function DepartmentMark({
+  department,
+  size = 48,
+  className,
+}: {
+  department: DeptMarkId;
+  size?: number;
+  className?: string;
+}) {
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      className={className}
+      src={DEPT_MARKS[department]}
+      alt=""
+      width={size}
+      height={size}
+      decoding="async"
+    />
   );
 }
 

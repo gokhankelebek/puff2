@@ -250,7 +250,7 @@
     bottom: 0;
     z-index: 50;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     background: var(--surface);
     border-top: 1px solid var(--hairline);
     padding-bottom: env(safe-area-inset-bottom, 0);
@@ -261,29 +261,50 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    /* 56px + label keeps every target well over the 44px thumb minimum. */
-    min-height: 60px;
-    padding: 10px 4px;
+    gap: 2px;
+    min-height: 68px;
+    padding: 8px 2px 6px;
     color: var(--ink-mute);
     transition: color var(--d-cool) var(--ease-cool);
   }
 
+  .tabMark {
+    display: block;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    pointer-events: none;
+    opacity: 0.78;
+  }
+
   .tab:active,
-  .tab:hover {
-    color: var(--volt);
+  .tab:hover,
+  .tab[aria-current="page"] {
+    color: var(--ink-max);
     transition: color var(--d-micro) var(--ease-heat);
+  }
+
+  .tab[aria-current="page"] {
+    color: var(--volt);
+  }
+
+  .tab[aria-current="page"] .tabMark {
+    opacity: 1;
   }
 
   .tabLabel {
     font-family: var(--font-mono), ui-monospace, monospace;
     font-size: 9px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
   }
 
   /* Clear the fixed bar so the footer is never trapped underneath it. */
   .tabSpacer {
-    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    height: calc(68px + env(safe-area-inset-bottom, 0px));
   }
 }

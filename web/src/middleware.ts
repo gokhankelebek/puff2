@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { AGE_COOKIE, AGE_HEADER } from "@/lib/age-shared";
+import { AGE_COOKIE, AGE_HEADER, PATH_HEADER } from "@/lib/age-shared";
 import { verifyAffirmation } from "@/lib/age";
 
 /**
@@ -24,6 +24,7 @@ export async function middleware(request: NextRequest) {
 
   const headers = new Headers(request.headers);
   headers.set(AGE_HEADER, affirmed ? "1" : "0");
+  headers.set(PATH_HEADER, request.nextUrl.pathname);
 
   return NextResponse.next({ request: { headers } });
 }

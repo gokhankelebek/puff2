@@ -1,11 +1,4 @@
-import {
-  IconDisposables,
-  IconCigars,
-  IconCigarettes,
-  IconHookah,
-  IconGlass,
-  IconAccessories,
-} from "./Icons";
+import { DepartmentMark } from "./Icons";
 import s from "./Chrome.module.css";
 import { BAND_LABEL, type HourBand } from "@/lib/time";
 import {
@@ -14,6 +7,8 @@ import {
 } from "@/lib/hotels";
 import ThemeToggle from "./ThemeToggle";
 import SearchBox from "./SearchBox";
+import { headers } from "next/headers";
+import { PATH_HEADER } from "@/lib/age-shared";
 
 export const PHONE_DISPLAY = "(702) 613-7799";
 export const PHONE_HREF = "tel:+17026137799";
@@ -111,17 +106,17 @@ export function AgeBanner({ affirmed }: { affirmed: boolean }) {
 }
 
 /* -------------------------------------------------------------------------
-   Header — the department switcher. Five departments, always visible.
+   Header — the department switcher. Six departments, always visible.
    The mental model is "which store am I in".
    ------------------------------------------------------------------------- */
 
 const DEPARTMENTS = [
-  { label: "Vape", href: "/vape", Icon: IconDisposables },
-  { label: "Cigars", href: "/cigars", Icon: IconCigars },
-  { label: "Cigarettes", href: "/cigarettes", Icon: IconCigarettes },
-  { label: "Hookah", href: "/hookah", Icon: IconHookah },
-  { label: "Glass", href: "/glass", Icon: IconGlass },
-  { label: "Accessories", href: "/accessories", Icon: IconAccessories },
+  { id: "vape", label: "Vape", tab: "Vape", href: "/vape" },
+  { id: "cigars", label: "Cigars", tab: "Cigars", href: "/cigars" },
+  { id: "cigarettes", label: "Cigarettes", tab: "Cigs", href: "/cigarettes" },
+  { id: "hookah", label: "Hookah", tab: "Hookah", href: "/hookah" },
+  { id: "glass", label: "Glass", tab: "Glass", href: "/glass" },
+  { id: "accessories", label: "Accessories", tab: "Gear", href: "/accessories" },
 ] as const;
 
 export function Header() {
@@ -185,17 +180,29 @@ export function StatusModule({
    Switching departments swaps the entire browse grammar, so it stays visible.
    ------------------------------------------------------------------------- */
 
-export function TabBar() {
+export async function TabBar() {
+  const h = await headers();
+  const path = h.get(PATH_HEADER) ?? "";
+
   return (
     <>
       <div className={s.tabSpacer} aria-hidden="true" />
       <nav className={s.tabBar} aria-label="Departments">
-        {DEPARTMENTS.map(({ label, href, Icon }) => (
-          <a key={href} className={s.tab} href={href}>
-            <Icon size={22} />
-            <span className={s.tabLabel}>{label}</span>
-          </a>
-        ))}
+        {DEPARTMENTS.map(({ id, label, tab, href }) => {
+          const here = path === href || path.startsWith(`${href}/`);
+          return (
+            <a
+              key={href}
+              className={s.tab}
+              href={href}
+              aria-label={label}
+              aria-current={here ? "page" : undefined}
+            >
+              <DepartmentMark department={id} size={36} className={s.tabMark} />
+              <span className={s.tabLabel}>{tab}</span>
+            </a>
+          );
+        })}
       </nav>
     </>
   );
