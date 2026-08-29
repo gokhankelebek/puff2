@@ -1,0 +1,99 @@
+/* Three alpha masks in register on one canvas, painted by CSS.
+   See Logo.tsx for why the art is masked rather than shown directly. */
+
+.lockup {
+  position: relative;
+  display: block;
+  /* Measured from the source art's ink bounds — 2695x1022. Hard-coded so the
+     box never disagrees with the masks and shifts them out of register. */
+  aspect-ratio: 2695 / 1022;
+  height: var(--logo-h, 34px);
+  width: auto;
+  flex: none;
+}
+
+.layerMark,
+.layerTagline,
+.layerVegas {
+  position: absolute;
+  inset: 0;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.layerMark {
+  mask-image: url(/brand/masks/lockup-mark.png);
+  -webkit-mask-image: url(/brand/masks/lockup-mark.png);
+  background-color: var(--magenta);
+}
+
+.layerTagline {
+  mask-image: url(/brand/masks/lockup-tagline.png);
+  -webkit-mask-image: url(/brand/masks/lockup-tagline.png);
+  background-color: var(--text-muted);
+}
+
+/* Gold, because these are literally marquee bulbs — the same ones the
+   dividers are made of. */
+.layerVegas {
+  mask-image: url(/brand/masks/lockup-vegas.png);
+  -webkit-mask-image: url(/brand/masks/lockup-vegas.png);
+  background-color: var(--gold);
+}
+
+/* The cloud and "puff" alone. */
+.mark {
+  display: block;
+  aspect-ratio: 1307 / 1000;
+  height: var(--logo-h, 34px);
+  width: auto;
+  flex: none;
+  mask-image: url(/brand/masks/mark.png);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: url(/brand/masks/mark.png);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  background-color: var(--magenta);
+}
+
+/* --- Compact: mark + bulb VEGAS, tagline dropped ------------------------- */
+
+.compact {
+  position: relative;
+  display: block;
+  aspect-ratio: 1632 / 400;
+  height: var(--logo-h, 30px);
+  width: auto;
+  flex: none;
+}
+
+.compactMark,
+.compactVegas {
+  position: absolute;
+  inset: 0;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.compactMark {
+  mask-image: url(/brand/masks/compact-mark.png);
+  -webkit-mask-image: url(/brand/masks/compact-mark.png);
+  background-color: var(--magenta);
+}
+
+.compactVegas {
+  mask-image: url(/brand/masks/compact-vegas.png);
+  -webkit-mask-image: url(/brand/masks/compact-vegas.png);
+  background-color: var(--gold);
+}

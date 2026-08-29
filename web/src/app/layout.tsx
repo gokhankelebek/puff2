@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, Instrument_Sans, Yellowtail } from "next/font/google";
+import { Bebas_Neue, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { INIT_SCRIPT } from "@/lib/theme";
 import InlineScript from "@/components/InlineScript";
@@ -10,8 +10,9 @@ import InlineScript from "@/components/InlineScript";
    it does is size and tracking, which is why the ladder lives in globals.css
    as named steps rather than ad-hoc font-size overrides.
 
-   Yellowtail is the neon script, and it is used for exactly one word — the
-   "Puff" in the logo lockup. Nothing else on the site is script.
+   There is no script face. The handoff set the logo as type and used
+   Yellowtail for the word "Puff"; the shop's real logo replaced that, so
+   carrying the font would be a download that renders nothing.
 
    Instrument Sans carries every piece of body copy. It has real tabular
    figures, which the clock, the countdowns and the price columns all need:
@@ -22,13 +23,6 @@ const display = Bebas_Neue({
   weight: ["400"],
   display: "swap",
   variable: "--font-bebas",
-});
-
-const script = Yellowtail({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-  variable: "--font-yellowtail",
 });
 
 const bodyFace = Instrument_Sans({
@@ -152,7 +146,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${display.variable} ${script.variable} ${bodyFace.variable}`}
+      className={`${display.variable} ${bodyFace.variable}`}
     >
       <head>
         <InlineScript html={INIT_SCRIPT} />

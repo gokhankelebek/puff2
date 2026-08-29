@@ -96,7 +96,6 @@
 
   /* Type */
   --font-display: var(--font-bebas), "Oswald", "Arial Narrow", sans-serif;
-  --font-script: var(--font-yellowtail), "Brush Script MT", cursive;
   --font-body: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
   /* Geometry. The spec's ladder, named by role rather than by pixel so a
@@ -396,11 +395,6 @@ video {
   line-height: 1;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-}
-
-.script {
-  font-family: var(--font-script);
-  font-weight: 400;
 }
 
 /* Prices, hours and deal headlines. Tabular so a column of prices lines up

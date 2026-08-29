@@ -3,6 +3,7 @@ import {
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_TERMS_LABEL,
 } from "@/lib/hotels";
+import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import SearchBox from "./SearchBox";
 import { headers } from "next/headers";
@@ -15,22 +16,19 @@ export const PHONE_HREF = "tel:+17026137799";
 /* -------------------------------------------------------------------------
    The lockup.
 
-   Marquee Neon sets the logo as type: Yellowtail "Puff" in magenta beside
-   Bebas "VEGAS" in cyan, both glowing. That is a deliberate departure from
-   what was here before — the shop's actual raster mark, which is still on
-   disk at public/brand/logo*.webp if the real sign is ever wanted back.
-
-   The glow is a token, not a literal, which is the whole reason this survives
-   day mode: at 2 p.m. --glow-*-text resolves to `none` and the same two words
-   render as flat pigment, exactly like an unlit tube.
+   This used to be set type — Yellowtail "Puff" beside Bebas "VEGAS" — which
+   the handoff drew as a stand-in. The shop has a real logo, so the real logo
+   is what ships. See components/Logo.tsx for why it is painted from masks
+   rather than shown as the original red artwork.
    ------------------------------------------------------------------------- */
 
 export function Wordmark({ size = "sm" }: { size?: "sm" | "lg" }) {
-  return (
-    <span className={s.lockup} data-size={size}>
-      <span className={s.lockupPuff}>Puff</span>
-      <span className={s.lockupVegas}>Vegas</span>
-    </span>
+  /* The full lockup only where there is room for the tagline to be read.
+     In the header it is the compact pair. */
+  return size === "lg" ? (
+    <Logo variant="lockup" className={s.lockupLg} />
+  ) : (
+    <Logo variant="compact" className={s.lockupSm} />
   );
 }
 

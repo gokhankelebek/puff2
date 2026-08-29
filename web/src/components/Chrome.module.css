@@ -4,39 +4,13 @@
 
 /* --- The lockup ---------------------------------------------------------- */
 
-.lockup {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 7px;
-  white-space: nowrap;
-}
+/* Only the height is set; Logo carries the aspect ratio so the three mask
+   layers cannot drift out of register. */
+.lockupSm { --logo-h: 30px; }
+.lockupLg { --logo-h: 62px; }
 
-.lockupPuff {
-  font-family: var(--font-script);
-  font-size: 30px;
-  line-height: 1;
-  color: var(--magenta);
-  /* A token, not a literal: day mode resolves this to `none` and the word
-     becomes flat pigment — an unlit tube. */
-  text-shadow: var(--glow-magenta-text);
-}
-
-.lockupVegas {
-  font-family: var(--font-display);
-  font-size: 26px;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  text-shadow: var(--glow-cyan-text);
-}
-
-.lockup[data-size="lg"] .lockupPuff {
-  font-size: 46px;
-}
-
-.lockup[data-size="lg"] .lockupVegas {
-  font-size: 40px;
+@media (min-width: 1200px) {
+  .lockupSm { --logo-h: 36px; }
 }
 
 /* --- Utility bar --------------------------------------------------------- */
