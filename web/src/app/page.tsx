@@ -36,17 +36,35 @@ const RAIL_ORDER: Department[] = ["vape", "glass", "cigars", "accessories"];
 const RAIL_SIZE = 9;
 
 /**
- * "THE FLOOR" — the 2×2 grid.
+ * "THE FLOOR" — every department, in the order the shop wants them walked.
  *
- * The design draws DISPOSABLES / GLASS / HEMP & CBD / CIGARS with a subtitle
- * each. Departments and their counts come from the catalogue rather than the
- * mock, so a tile can never advertise a shelf that is empty.
+ * The handoff draws four tiles and an "ALL 9 →". We show all of them and let
+ * the extras slide on desktop, so the link is a shortcut to the index rather
+ * than the only way to discover that a sixth shelf exists.
+ *
+ * The note is the fallback for a shelf with nothing published on it. It has to
+ * be true on its own terms: hemp does NOT say "COAs on file", because none are
+ * on file yet — that is exactly why it has nothing to list.
  */
-const FLOOR: { department: Department; note: string }[] = [
-  { department: "vape", note: "Disposables, pods and juice" },
-  { department: "glass", note: "Blown here in Vegas" },
-  { department: "hemp", note: "COAs on file" },
-  { department: "cigars", note: "Walk-in humidor" },
+const FLOOR_NOTES: Record<Department, string> = {
+  vape: "Disposables, pods and juice",
+  cigars: "Walk-in humidor",
+  cigarettes: "Every pack, behind the counter",
+  hookah: "Shisha, bowls and charcoal",
+  glass: "Blown here in Vegas",
+  hemp: "In the shop, not listed yet",
+  accessories: "Lighters, papers, grinders",
+};
+
+/** Biggest shelves lead. Anything with nothing published sorts to the back. */
+const FLOOR_ORDER: Department[] = [
+  "vape",
+  "glass",
+  "cigars",
+  "accessories",
+  "cigarettes",
+  "hookah",
+  "hemp",
 ];
 
 export default async function HomePage() {
@@ -146,11 +164,15 @@ export default async function HomePage() {
             </a>
           </div>
           <ul className={s.floorGrid}>
-            {FLOOR.map(({ department, note }, i) => {
+            {FLOOR_ORDER.map((department, i) => {
               const n = counts[department] ?? 0;
               return (
-                <li key={department}>
-                  <a className={s.floorCard} href={`/${department}`} data-ground={(i % 4) + 1}>
+                <li key={department} className={s.floorCell}>
+                  <a
+                    className={s.floorCard}
+                    href={`/${department}`}
+                    data-ground={(i % 4) + 1}
+                  >
                     <span className={s.floorShot}>
                       <DepartmentGlyph department={department} size={56} />
                     </span>
@@ -160,7 +182,7 @@ export default async function HomePage() {
                     {/* Only claim a count when there is one. An empty shelf
                         says what it is rather than showing "0 in stock". */}
                     <span className={s.floorNote}>
-                      {n > 0 ? `${n} in stock` : note}
+                      {n > 0 ? `${n} in stock` : FLOOR_NOTES[department]}
                     </span>
                   </a>
                 </li>

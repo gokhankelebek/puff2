@@ -245,6 +245,35 @@
   padding: 0 var(--gutter);
 }
 
+.floorCell {
+  display: flex;
+}
+
+/* Every department is in the markup at every width; the narrow layouts just
+   show fewer and let "ALL N ->" carry the rest. Hidden rather than not
+   rendered, so the desktop rail can un-hide them instead of the layouts
+   needing different markup.
+
+   The cap is tied to the column count so a row is never left half-empty:
+   2 columns show 4, 3 columns show 6. A dangling single card at the end of a
+   grid reads as a loading failure. */
+@media (max-width: 767px) {
+  .floorCell:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+/* Tablet: the handoff's 3-up. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .floorGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .floorCell:nth-child(n + 7) {
+    display: none;
+  }
+}
+
 .floorCard {
   display: flex;
   flex-direction: column;
@@ -474,11 +503,29 @@
     padding: 0 40px;
   }
 
-  /* 5-across, and never let a card stretch past ~300. */
+  /* Desktop shows every department and slides the overflow, so the count in
+     "ALL N ->" is something you can also just scroll to. Cards are a fixed
+     width rather than fractions of the container: at seven departments a
+     fr-based grid would squeeze them all in and there would be nothing to
+     scroll, which loses the affordance the design uses everywhere else. */
   .floorGrid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    display: flex;
+    grid-template-columns: none;
     gap: 14px;
-    padding: 0 40px;
+    padding: 0 40px 6px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+  }
+
+  .floorCell {
+    flex: 0 0 244px;
+    scroll-snap-align: start;
+  }
+
+  /* Undo the mobile cap — this is the layout that shows them all. */
+  .floorCell:nth-child(n + 5) {
+    display: flex;
   }
 
   .railTrack {
