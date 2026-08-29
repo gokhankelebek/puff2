@@ -273,9 +273,21 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 4 / 3;
+  max-height: 150px;
   margin-bottom: 8px;
   border-radius: var(--r-thumb);
-  color: var(--text-faint);
+  /* The glyph strokes in currentColor. Cyan is the design's label
+     colour and keeps the six marks reading as one set. */
+  color: var(--cyan);
+  overflow: hidden;
+}
+
+.floorShot img,
+.floorShot svg {
+  width: auto;
+  height: 68%;
+  max-height: 92px;
+  object-fit: contain;
 }
 
 .floorName {

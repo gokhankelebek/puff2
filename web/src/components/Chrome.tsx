@@ -128,7 +128,9 @@ export function Header() {
    ------------------------------------------------------------------------- */
 
 const NAV = [
-  { label: "Floor", href: "/vape" },
+  /* "Floor" means the whole floor — the department index — not the vape
+     shelf that happened to be first alphabetically. */
+  { label: "Floor", href: "/floor" },
   { label: "Brands", href: "/vape/brands" },
   { label: "Delivery", href: "/delivery" },
   { label: "Visit", href: "/pickup" },

@@ -177,6 +177,14 @@ export function IconHemp({ size = 24, className }: IconProps) {
   );
 }
 
+/* The owner's raster department art (public/dept/*.webp) is deliberately NOT
+   used here. Those marks are dark stickers -- a near-black body on transparent,
+   drawn for a light ground -- and on Marquee Neon's midnight cards three of the
+   six (hookah, glass, accessories) disappear entirely. The drawn glyph is
+   vector and strokes in currentColor, so it reads on any ground, which is also
+   what the handoff asks for: a real icon set at the same optical size.
+   The raster art is still on disk if a lighter treatment ever wants it. */
+
 /**
  * The owner's department art. Deliberately PARTIAL over Department.
  *

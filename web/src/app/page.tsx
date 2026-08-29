@@ -19,7 +19,7 @@ import {
   HOTELS,
 } from "@/lib/hotels";
 import { SHOP_STREET } from "@/lib/shop";
-import { DepartmentMark } from "@/components/Icons";
+import { DepartmentGlyph } from "@/components/Icons";
 
 /**
  * Which departments lead the rail.
@@ -98,7 +98,7 @@ export default async function HomePage() {
               <a className={s.ctaPrimary} href="/delivery">
                 Deliver to my room
               </a>
-              <a className={s.ctaGhost} href="/vape">
+              <a className={s.ctaGhost} href="/floor">
                 Browse
               </a>
             </div>
@@ -141,7 +141,7 @@ export default async function HomePage() {
             <h2 className={s.sectionTitle} id="floor-title">
               The floor
             </h2>
-            <a className={s.sectionLink} href="/vape">
+            <a className={s.sectionLink} href="/floor">
               All {departmentCount} →
             </a>
           </div>
@@ -152,7 +152,7 @@ export default async function HomePage() {
                 <li key={department}>
                   <a className={s.floorCard} href={`/${department}`} data-ground={(i % 4) + 1}>
                     <span className={s.floorShot}>
-                      <DepartmentMark department={department} size={64} />
+                      <DepartmentGlyph department={department} size={56} />
                     </span>
                     <span className={s.floorName}>
                       {DEPARTMENT_LABELS[department]}
@@ -193,7 +193,7 @@ export default async function HomePage() {
                         decoding="async"
                       />
                     ) : (
-                      <DepartmentMark department={p.department} size={56} />
+                      <DepartmentGlyph department={p.department} size={48} />
                     )}
                   </span>
                   <span className={s.railName}>{p.title}</span>
