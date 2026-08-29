@@ -287,6 +287,12 @@
   --glow-magenta-text: 0 0 10px rgba(255, 46, 136, 0.85), 0 0 26px rgba(255, 46, 136, 0.45);
   --glow-cyan-text: 0 0 10px rgba(36, 224, 255, 0.7), 0 0 26px rgba(36, 224, 255, 0.35);
   --glow-cta: 0 0 24px rgba(255, 46, 136, 0.45);
+  /* The panel tokens belong here too. Without them a lit island that draws a
+     live panel inside itself got the night ink and the DAY wash -- near-white
+     text on pale pink, which is how the delivery band's headline went
+     invisible in day mode. */
+  --panel-live-bg: rgba(255, 46, 136, 0.08);
+  --glow-panel: 0 0 24px rgba(255, 46, 136, 0.18);
   background: var(--bg-alt);
   color: var(--text);
 }

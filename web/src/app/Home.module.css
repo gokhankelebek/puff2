@@ -434,7 +434,11 @@
   padding: 20px;
   border: 1px solid var(--magenta);
   border-radius: var(--r-card);
-  background: var(--panel-live-bg);
+  /* Washes OVER the island's ground rather than replacing it: --panel-live-bg
+     is semi-transparent, so as a plain `background` it let the page ground
+     through and the island stopped being dark. */
+  background-color: var(--bg-alt);
+  background-image: linear-gradient(var(--panel-live-bg), var(--panel-live-bg));
   box-shadow: var(--glow-panel);
 }
 
