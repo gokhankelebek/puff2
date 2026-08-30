@@ -127,3 +127,13 @@
   /* The legal floor — nothing dimmer carries body copy. */
   color: var(--text-dim);
 }
+
+
+/* The shop's bulb sign. See page.tsx. */
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 14px 0 4px;
+  border-radius: var(--r-card);
+}

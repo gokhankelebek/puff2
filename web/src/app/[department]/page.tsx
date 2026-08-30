@@ -48,6 +48,20 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * Real photographs of a department, where one exists. Deliberately partial —
+ * see the render site. Cropped from research/photos/.
+ */
+const DEPARTMENT_PHOTO: Partial<
+  Record<Department, { src: string; srcSet: string; alt: string }>
+> = {
+  vape: {
+    src: "/shop/vape-wall-1152.webp",
+    srcSet: "/shop/vape-wall-640.webp 640w, /shop/vape-wall-1152.webp 1152w",
+    alt: "The vape wall at Puff Vegas: rows of disposables sorted by flavour, every colour of the spectrum, with lighters on the shelf below.",
+  },
+};
+
 export default async function CategoryPage({
   params,
   searchParams,
@@ -112,6 +126,26 @@ export default async function CategoryPage({
             {syncMins !== null ? ` · stock updated ${syncMins} min ago` : ""}
           </p>
         </div>
+
+        {/* Only where a real photograph of that department exists. Vape is the
+            one so far, and it is also the largest department — the wall IS the
+            category, which no icon or copy line conveys. Keyed by department
+            rather than rendered blank, because five empty frames would read as
+            five failures to load. */}
+        {DEPARTMENT_PHOTO[department] && (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            className={s.deptShot}
+            src={DEPARTMENT_PHOTO[department]!.src}
+            srcSet={DEPARTMENT_PHOTO[department]!.srcSet}
+            sizes="(min-width: 1200px) 1120px, 100vw"
+            width={1152}
+            height={620}
+            alt={DEPARTMENT_PHOTO[department]!.alt}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
 
         {(hasFlavors || hasBrands) && (
           <nav className={s.hubs} aria-label="Browse this department">

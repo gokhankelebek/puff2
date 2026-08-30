@@ -241,6 +241,7 @@
     grid-template-columns: 260px minmax(0, 1fr);
     grid-template-areas:
       "head head"
+      "shot shot"
       "hubs hubs"
       "warn warn"
       "rail results";
@@ -293,3 +294,26 @@
   .results { grid-area: results; min-width: 0; }
 }
 
+
+
+/* The department photograph, where one exists. See page.tsx DEPARTMENT_PHOTO. */
+.deptShot {
+  display: block;
+  width: calc(100% - 2 * var(--gutter));
+  height: auto;
+  margin: 4px var(--gutter) 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+
+@media (min-width: 1200px) {
+  .deptShot {
+    /* .wrap is a grid whose every child claims an area BY NAME. Without this
+       the image was left at grid-area: auto and auto-placed into the 260px
+       filter rail, rendering 180px wide — the same defect the filter bar had
+       before it was given grid-area: rail. */
+    grid-area: shot;
+    width: calc(100% - 80px);
+    margin-inline: 40px;
+  }
+}

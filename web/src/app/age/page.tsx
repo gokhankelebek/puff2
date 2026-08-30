@@ -42,6 +42,32 @@ export default async function AgeGate({
         </div>
         <p className={a.eyebrow}>Open 24 hours · {SHOP_STREET}</p>
 
+        {/* The shop's own bulb sign. Every marquee device on this site — the
+            wordmark's VEGAS, the divider strips — is drawn from this object,
+            so the gate is the right place to show the real one: it says a
+            room exists behind the form.
+
+            Cropped to the sign. The full frame is a counter wall of Marlboro,
+            Camel and Newport packs, and this page is seen BEFORE anyone has
+            affirmed they are 21. Framing on the subject is better composition
+            anyway; keeping cigarette branding off the pre-verification page is
+            the second reason. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={a.shot}
+          src="/shop/neon-1152.webp"
+          srcSet="/shop/neon-640.webp 640w, /shop/neon-1152.webp 1152w"
+          sizes="(min-width: 720px) 560px, 100vw"
+          width={1152}
+          height={530}
+          alt="The bulb-lit SMOKE SHOP sign hanging inside Puff Vegas, hookahs on the glass shelf beside it."
+          /* Eager, not lazy: on this page the sign is above the fold in the
+             initial viewport, so deferring it only delays the one image the
+             gate has. */
+          loading="eager"
+          decoding="async"
+        />
+
         <Bulbs />
 
         {denied ? (
