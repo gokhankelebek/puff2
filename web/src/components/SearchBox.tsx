@@ -91,12 +91,21 @@ export default function SearchBox() {
 
   return (
     <>
-      {/* The mobile trigger. Desktop hides it and shows the field directly. */}
-      <button
+      {/* A LINK to /search, not a button, and deliberately so. This is a client
+          component, so a plain button is dead between first paint and hydration
+          — on a cold production load the pill is visible but inert and a tap
+          does nothing, which reads as "search is broken". As an anchor it
+          always works: before JS the tap goes to the real /search page; after
+          JS onClick cancels that and expands the field inline. Same contract as
+          the form below. */}
+      <a
         className={s.trigger}
-        type="button"
+        href="/search"
         data-collapsed={expanded || undefined}
-        onClick={() => setExpanded(true)}
+        onClick={(e) => {
+          e.preventDefault();
+          setExpanded(true);
+        }}
         aria-expanded={expanded}
       >
         <svg className={s.icon} viewBox="0 0 24 24" aria-hidden="true">
@@ -104,7 +113,7 @@ export default function SearchBox() {
           <path d="M20 20l-3.6-3.6" />
         </svg>
         Search
-      </button>
+      </a>
 
       <div className={s.wrap} ref={box} data-expanded={expanded || undefined}>
         <form className={s.form} action="/search" method="get" role="search">
