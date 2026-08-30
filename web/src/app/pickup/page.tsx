@@ -24,7 +24,7 @@ import {
 export const metadata: Metadata = {
   title: "Visit us — open 24 hours on the Strip | Puff Vegas",
   description:
-    "Walk in 24 hours a day at 3649 S Las Vegas Blvd, suite 611-613, inside Grand Bazaar Shops next to Ole Red. Walk-in humidor, glass gallery and testing bar.",
+    "Walk in 24 hours a day at 3649 S Las Vegas Blvd, suite 611-613, inside Grand Bazaar Shops next to Ole Red. Walk-in humidor and glass gallery.",
   alternates: { canonical: "/pickup" },
 };
 
@@ -112,12 +112,6 @@ export default async function PickupPage() {
               <span className={g.insideName}>Glass gallery</span>
               <span className={g.insideNote}>
                 Blown in Vegas, one-offs included. Ask to handle anything.
-              </span>
-            </li>
-            <li className={g.insideRow}>
-              <span className={g.insideName}>Testing bar</span>
-              <span className={g.insideNote}>
-                Try a flavour before you commit to a 25,000-puff device.
               </span>
             </li>
           </ul>

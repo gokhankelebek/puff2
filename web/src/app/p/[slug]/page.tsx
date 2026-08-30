@@ -15,8 +15,6 @@ import {
   type Product,
 } from "@/lib/commerce";
 import {
-  TAX_RATE,
-  DELIVERY_FEE_CENTS,
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_MINIMUM_LABEL,
 } from "@/lib/hotels";
@@ -124,10 +122,15 @@ export default async function ProductPage({
                 )}
               </div>
               {perPuff && <p className={s.perPuff}>{perPuff}</p>}
+              {/* Not an all-in figure for this one item. The fee is charged
+                  once per order (lib/draft.ts), so quoting price + tax + $20
+                  on every product told anyone buying two things that delivery
+                  costs $40. Stating the rule instead of a total is both true
+                  and the better offer: adding more does not cost more. */}
               {product.deliveryEligible && (
                 <p className={s.allIn}>
-                  about {allInEstimate(product)} delivered ·{" "}
-                  {DELIVERY_STRIP_FEE_LABEL} · {DELIVERY_MINIMUM_LABEL}
+                  {DELIVERY_STRIP_FEE_LABEL} flat delivery, once per order
+                  however much you add · {DELIVERY_MINIMUM_LABEL}
                 </p>
               )}
             </div>
@@ -243,20 +246,3 @@ function StockBlock({ product }: { product: Product }) {
   );
 }
 
-/**
- * All-in price at the moment of interest rather than at the moment of
- * commitment. Costs a conversion point here, buys back three at checkout, and
- * buys the trust position outright — fee surprise is the single most
- * documented delivery failure in this market.
- *
- * 8.375% Clark County sales tax plus the flat $20 Strip delivery fee.
- *
- * There is no merchandise floor any more, so this figure is now the whole
- * truth for a single item rather than a number the customer still has to
- * clear a minimum to act on.
- */
-function allInEstimate(product: Product): string {
-  const withTax = Math.round(product.price.cents * (1 + TAX_RATE));
-  const delivered = withTax + DELIVERY_FEE_CENTS;
-  return `$${(delivered / 100).toFixed(2)}`;
-}

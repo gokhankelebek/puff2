@@ -317,4 +317,8 @@ export const DELIVERY_MINIMUM_LABEL = "no minimum";
 export const DELIVERY_TERMS_LABEL = `${DELIVERY_STRIP_FEE_LABEL} flat · no minimum`;
 
 /** Clark County sales tax, applied at 8.375% — same as the product pages. */
+/* Clark County sales tax. Currently unused: the only caller was the product
+   page's all-in estimate, removed once it became clear the $20 is charged per
+   order rather than per item. Kept because the rate is a fact the order flow
+   will need the day tax is computed rather than collected at handoff. */
 export const TAX_RATE = 0.08375;
