@@ -119,39 +119,22 @@ export default async function HomePage() {
             {/* The flat fee and the missing minimum are the offer, and they
                 were the tail of a grey sentence. Own line, own weight. */}
             <p className={s.heroTerms}>{DELIVERY_TERMS_LABEL}</p>
+            {/* Two ways to buy, sized as peers. "Browse" used to sit here and
+                was demoted for competing with the primary — correctly, because
+                it was a smaller action and the floor is right below with its
+                own link. Coming to the shop is not a smaller action; it is the
+                other sale, and for anyone already on the Strip it is the better
+                one. Which fits depends on where the reader is standing, which
+                the page cannot know. */}
             <div className={s.heroCtas}>
               <a className={s.ctaPrimary} href="/delivery">
                 Deliver to my hotel
               </a>
-              <a className={s.ctaGhost} href="/floor">
-                Browse
+              <a className={s.ctaGhost} href="/pickup">
+                Come to the shop
               </a>
             </div>
 
-            {/* The second lit island: neon at any hour, day mode included. */}
-            <div className={s.picker} data-island="lit">
-              <p className={s.pickerTitle}>Where are you staying?</p>
-              <ul className={s.chipRow}>
-                {featured.map((hotel) => (
-                  <li key={hotel.slug}>
-                    <a
-                      className={s.chip}
-                      href={`/delivery?hotel=${encodeURIComponent(hotel.slug)}`}
-                    >
-                      {hotel.name}
-                    </a>
-                  </li>
-                ))}
-                <li>
-                  <a className={s.chipMore} href="/delivery">
-                    + {moreHotels} more
-                  </a>
-                </li>
-              </ul>
-              <p className={s.pickerNote}>
-                Typical hotel run: 25–40 min
-              </p>
-            </div>
           </div>
 
           <div className={s.heroMedia}>
@@ -259,6 +242,44 @@ export default async function HomePage() {
           </ul>
         </section>
 
+        {/* The shop, given the same weight as the delivery band below it.
+            The homepage carried two delivery sections and none for the shop,
+            and reached /pickup only through an address link inside a grey
+            sentence — the strongest asset the business has, with no button
+            anywhere on its own front page.
+
+            On the page surface rather than lit, so the two bands read as two
+            offers instead of one long dark stretch: the shop is a real room,
+            the delivery band is a neon service. */}
+        <section className={s.shopBand} aria-labelledby="shop-title">
+          <h2 className={s.shopTitle} id="shop-title">
+            No fee.
+            <br />
+            No wait.
+          </h2>
+          <ul className={s.bandStats}>
+            <li className={s.bandStat}>
+              <span className={s.shopFigure}>{all.length}</span>
+              <span className={s.shopLabel}>On the floor</span>
+            </li>
+            <li className={s.bandStat}>
+              <span className={s.shopFigure}>$0</span>
+              <span className={s.shopLabel}>To walk in</span>
+            </li>
+            <li className={s.bandStat}>
+              <span className={s.shopFigure}>2nd</span>
+              <span className={s.shopLabel}>Level, next to Ole Red</span>
+            </li>
+          </ul>
+          <p className={s.shopNote}>
+            Open every hour of the year at {SHOP_STREET}, inside {SHOP_MALL}.
+            Handle the glass, ask what is worth it, walk out with it.
+          </p>
+          <a className={s.ctaPrimary} href="/pickup">
+            Find the shop
+          </a>
+        </section>
+
         {/* The one strip that runs. A single chasing divider above the
             delivery band reads as a sign; every divider running would read as
             a fairground. */}
@@ -284,6 +305,33 @@ export default async function HomePage() {
               <span className={s.bandLabel}>Every hour</span>
             </li>
           </ul>
+          {/* Moved down from the hero, where it took the lower half for one
+              of the two ways to buy. Here it sits inside the section that
+              explains the thing it starts. */}
+          {/* The second lit island: neon at any hour, day mode included. */}
+          <div className={s.picker} data-island="lit">
+            <p className={s.pickerTitle}>Where are you staying?</p>
+            <ul className={s.chipRow}>
+              {featured.map((hotel) => (
+                <li key={hotel.slug}>
+                  <a
+                    className={s.chip}
+                    href={`/delivery?hotel=${encodeURIComponent(hotel.slug)}`}
+                  >
+                    {hotel.name}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a className={s.chipMore} href="/delivery">
+                  + {moreHotels} more
+                </a>
+              </li>
+            </ul>
+            <p className={s.pickerNote}>
+              Typical hotel run: 25–40 min
+            </p>
+          </div>
           <a className={s.ctaPrimary} href="/delivery">
             Start a delivery
           </a>
