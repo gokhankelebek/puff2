@@ -640,26 +640,56 @@
     width: auto;
   }
 
+  /* A grid, not a flex row. As a row this held title | stats | CTA, each with
+     its own width rule; the hotel picker moved in later with no rule of its
+     own, took its natural width, and squeezed .bandStats — whose columns are
+     minmax(0, 1fr) and so collapsed to nothing, overlapping every figure with
+     its own label. Four items is too many for one row anyway.
+
+     Left is the offer (headline, then the numbers), right is the action
+     (pick a hotel, or just start). Every child claims its area by name, so
+     nothing added later can auto-place itself into a collapsing column —
+     the same failure the category grid had. */
   .deliveryBand {
-    flex-direction: row;
-    align-items: center;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 460px;
+    grid-template-areas:
+      "title  picker"
+      "stats  picker"
+      "cta    picker";
+    align-items: start;
+    gap: 20px 40px;
     margin: 32px 40px;
     padding: 32px;
   }
 
   .bandTitle {
-    width: 420px;
-    flex: none;
+    grid-area: title;
+    width: auto;
   }
 
+  /* gap is shared; placement is not. .bandStats is used by the shop band too,
+     which is a flex COLUMN — an unscoped align-self: center there is read on
+     the cross axis and shunted its stats to the middle of the card while the
+     title, note and button stayed left. */
   .bandStats {
-    flex: 1;
     gap: 32px;
   }
 
+  .deliveryBand .bandStats {
+    grid-area: stats;
+    align-self: center;
+  }
+
+  .deliveryBand .picker {
+    grid-area: picker;
+    align-self: center;
+    margin-top: 0;
+  }
+
   .deliveryBand .ctaPrimary {
-    flex: none;
+    grid-area: cta;
+    justify-self: start;
     min-width: 220px;
   }
 }
