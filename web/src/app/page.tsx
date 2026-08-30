@@ -54,6 +54,7 @@ const FLOOR_NOTES: Record<Department, string> = {
   vape: "Disposables, pods and juice",
   cigars: "Walk-in humidor",
   cigarettes: "Every pack, behind the counter",
+  pouch: "ZYN, Velo, Alp and more",
   hookah: "Shisha, bowls and charcoal",
   glass: "Blown here in Vegas",
   hemp: "In the shop, not listed yet",

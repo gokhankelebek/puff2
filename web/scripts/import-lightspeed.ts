@@ -209,6 +209,13 @@ const MODEL_OVERRIDES: Record<string, Mapping> = {
       "not an oral nicotine product like Zyn. Different statute, different " +
       "warnings. Withheld deliberately; do not reclassify to `pouch`.",
   },
+  "Super Value Pipe Tobacco": {
+    cls: "rollYourOwn",
+    review:
+      "Pipe/roll-your-own tobacco that fell into the Tobacco-Pouches category " +
+      "and inherited its `pouch` class, so it surfaced in the Pouches " +
+      "department next to Zyn. It is loose tobacco, not oral nicotine.",
+  },
 
   // --- Cigarillos. FDA nicotine warning vacated for cigars. ---------------
   "Al Capone": { cls: "cigar" },

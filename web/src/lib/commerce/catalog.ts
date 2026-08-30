@@ -58,12 +58,20 @@ type GeneratedModel = {
  */
 function departmentFor(m: GeneratedModel): Department {
   const c = m.category ?? "";
+  /* Pouch first, and out of the accessories catch-all it used to share. Oral
+     nicotine (ZYN, Velo, Alp, Lucy) is the #4-selling category by volume and
+     was landing in "accessories" next to lighters with no browse path of its
+     own. Keyed on the class as well as the category text, because some pouch
+     SKUs import with a blank Lightspeed category. "Tobacco-Pouches" (dip:
+     Copenhagen, Skoal) is deliberately NOT caught here — that is smokeless and
+     stays unpublished until its own warning text exists. */
+  if (m.regulatoryClass === "pouch" || /nicotine pouch/i.test(c)) return "pouch";
   if (/glass|bong|pipe/i.test(c)) return "glass";
   if (/hookah|shisha/i.test(c)) return "hookah";
   if (/^cigar$|cigarillo/i.test(c)) return "cigars";
   if (/cigarette/i.test(c)) return "cigarettes";
   if (/vape|juul|vuse|njoy|juice/i.test(c)) return "vape";
-  if (/pouch|lighter|torch|papper|paper|leaf|rolling|smoke part|part of wd/i.test(c))
+  if (/lighter|torch|papper|paper|leaf|rolling|smoke part|part of wd/i.test(c))
     return "accessories";
 
   switch (m.regulatoryClass) {

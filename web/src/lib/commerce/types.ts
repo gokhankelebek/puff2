@@ -229,6 +229,7 @@ export type Department =
   | "vape"
   | "cigars"
   | "cigarettes"
+  | "pouch"
   | "hookah"
   | "glass"
   | "hemp"
@@ -245,6 +246,7 @@ export type Department =
 export const DEPARTMENTS: readonly Department[] = [
   "vape",
   "glass",
+  "pouch",
   "cigars",
   "accessories",
   "cigarettes",
@@ -256,6 +258,7 @@ export const DEPARTMENT_LABELS: Record<Department, string> = {
   vape: "Vape",
   cigars: "Cigars",
   cigarettes: "Cigarettes",
+  pouch: "Pouches",
   hookah: "Hookah",
   glass: "Glass",
   hemp: "Hemp & CBD",

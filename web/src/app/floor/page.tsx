@@ -23,7 +23,7 @@ import {
 export const metadata: Metadata = {
   title: "The floor — everything we stock | Puff Vegas",
   description:
-    "Every department on the floor at Puff Vegas, 3649 S Las Vegas Blvd. Vape, cigars, cigarettes, hookah, glass and accessories, open 24 hours.",
+    "Every department on the floor at Puff Vegas, 3649 S Las Vegas Blvd. Vape, nicotine pouches, cigars, cigarettes, hookah, glass and accessories, open 24 hours.",
   alternates: { canonical: "/floor" },
 };
 
@@ -32,6 +32,7 @@ const BLURB: Record<Department, string> = {
   vape: "Disposables, pods, juice and hardware",
   cigars: "Walk-in humidor, singles and boxes",
   cigarettes: "Every pack, behind the counter",
+  pouch: "Nicotine pouches — ZYN, Velo, Alp, Lucy",
   hookah: "Shisha, bowls, hoses and charcoal",
   glass: "Blown in Vegas, one-offs included",
   hemp: "COAs on file for every batch",
