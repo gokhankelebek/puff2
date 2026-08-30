@@ -145,6 +145,18 @@
 
 .inside { padding: 24px var(--gutter); }
 
+.insideShot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 14px 0 18px;
+  /* Capped so it does not become the page on a wide screen; the list under it
+     is the part that answers "what do you actually stock". */
+  max-width: 620px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+
 .sectionTitle {
   font-family: var(--font-display);
   line-height: 0.92;

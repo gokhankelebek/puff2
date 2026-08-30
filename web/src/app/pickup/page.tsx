@@ -101,6 +101,28 @@ export default async function PickupPage() {
 
         <section className={g.inside}>
           <h2 className={g.sectionTitle}>What&rsquo;s inside</h2>
+          {/* The heading promises the room; this is the room. Same photograph
+              as the homepage hero and the same two derivatives, so it is very
+              likely already cached by the time anyone follows "Find the shop"
+              from there.
+
+              No scrim here, unlike the hero. There the shelves were competing
+              with a 97px headline and had to sit back; on this page the shop
+              IS the content, and the point is to show someone what they are
+              walking into — public reviews say the unit is hard to find, so
+              recognising it on arrival is worth more than restraint. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className={g.insideShot}
+            src="/hero/interior-1024.webp"
+            srcSet="/hero/interior-640.webp 640w, /hero/interior-1024.webp 1024w"
+            sizes="(min-width: 1200px) 620px, 100vw"
+            width={1024}
+            height={768}
+            alt="Inside Puff Vegas: the SMOKE SHOP sign over the back counter, wall of vapes and cigars, glass cases of pipes."
+            loading="lazy"
+            decoding="async"
+          />
           <ul className={g.insideList}>
             <li className={g.insideRow}>
               <span className={g.insideName}>Walk-in humidor</span>
