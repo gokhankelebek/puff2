@@ -167,3 +167,30 @@ was ever confirmed by eye.
 higher-resolution version exists. 1x is covered, 2x is soft. Accepted by the
 owner on 2026-08-29. If a better original ever turns up, re-run the two webp
 derivatives from `research/photos/interior-2023-03-11.jpg`.
+
+## LIVE on production, needs the owner — age cookie secret (verified 2026-08-30)
+
+The site is deployed at puff2-ten.vercel.app (GitHub → Vercel auto-deploy),
+and `AGE_COOKIE_SECRET` is NOT set in the Vercel project. Confirmed against
+production, not guessed:
+
+- `web/src/lib/age.ts` falls back to the literal `"dev-only-insecure-secret"`
+  when the env var is unset. That string is in this public repo.
+- Signing a cookie with that secret and sending it to the live site hides the
+  age banner: the "Verify my age" prompt is present with no cookie and absent
+  with the forged one, which means production accepted the forgery — so the
+  env var is unset there.
+
+Impact is bounded: the gate never blocked pages (middleware sets a header, it
+does not redirect), so this does not expose anything that was otherwise hidden.
+What it defeats is the 21+ affirmation itself — anyone can mint an "affirmed"
+cookie without ever seeing the gate.
+
+Fix (needs Vercel dashboard access, i.e. the owner):
+1. Vercel → the puff2 project → Settings → Environment Variables.
+2. Add `AGE_COOKIE_SECRET` for Production (and Preview) — any long random
+   string, e.g. generated with `node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"`.
+3. Redeploy. Every existing affirmation cookie is invalidated by the change,
+   which is the point.
+
+Do not commit the secret to the repo — it is public.
