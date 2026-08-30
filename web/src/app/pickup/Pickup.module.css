@@ -151,8 +151,10 @@
   height: auto;
   margin: 14px 0 18px;
   /* Capped so it does not become the page on a wide screen; the list under it
-     is the part that answers "what do you actually stock". */
-  max-width: 620px;
+     is the part that answers "what do you actually stock". Tighter than the
+     620 a landscape frame took, because this one is 4:5 and would otherwise
+     run 775px tall. */
+  max-width: 470px;
   border: 1px solid var(--border);
   border-radius: var(--r-card);
 }

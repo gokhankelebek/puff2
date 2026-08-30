@@ -101,25 +101,26 @@ export default async function PickupPage() {
 
         <section className={g.inside}>
           <h2 className={g.sectionTitle}>What&rsquo;s inside</h2>
-          {/* The heading promises the room; this is the room. Same photograph
-              as the homepage hero and the same two derivatives, so it is very
-              likely already cached by the time anyone follows "Find the shop"
-              from there.
+          {/* The view up the aisle, not the wide shot the homepage uses. This
+              page's job is findability — public reviews say the unit is hard to
+              locate — and this frame carries the things you actually navigate
+              by: the two Puff Vegas A-frames, the mall's marble floor and glass
+              shopfront on the left, the length of the wall on the right. It is
+              what you see as you walk up, so it lets someone confirm they are
+              in the right place.
 
-              No scrim here, unlike the hero. There the shelves were competing
-              with a 97px headline and had to sit back; on this page the shop
-              IS the content, and the point is to show someone what they are
-              walking into — public reviews say the unit is hard to find, so
-              recognising it on arrival is worth more than restraint. */}
+              Cropped from a 1152x2467 original, which is far too tall for a
+              page; the top 300px were ceiling conduit. No scrim — on this page
+              the shop is the content, not a backdrop for a headline. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className={g.insideShot}
-            src="/hero/interior-1024.webp"
-            srcSet="/hero/interior-640.webp 640w, /hero/interior-1024.webp 1024w"
+            src="/hero/aisle-1152.webp"
+            srcSet="/hero/aisle-640.webp 640w, /hero/aisle-1152.webp 1152w"
             sizes="(min-width: 1200px) 620px, 100vw"
-            width={1024}
-            height={768}
-            alt="Inside Puff Vegas: the SMOKE SHOP sign over the back counter, wall of vapes and cigars, glass cases of pipes."
+            width={1152}
+            height={1440}
+            alt="Looking up the aisle inside Puff Vegas: two Puff Vegas signs by the entrance, glass cases of pipes on the right, the wall of vapes behind them."
             loading="lazy"
             decoding="async"
           />
