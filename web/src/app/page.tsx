@@ -152,7 +152,7 @@ export default async function HomePage() {
             <img
               className={s.heroImg}
               src="/hero/interior-1672.webp"
-              srcSet="/hero/interior-1672-640.webp 640w, /hero/interior-1672.webp 1672w"
+              srcSet="/hero/interior-1672-640.webp 640w, /hero/interior-1672-1080.webp 1080w, /hero/interior-1672.webp 1672w"
               sizes="(min-width: 1200px) 620px, 100vw"
               width={1672}
               height={941}

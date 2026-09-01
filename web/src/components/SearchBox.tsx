@@ -2,8 +2,24 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import s from "./SearchBox.module.css";
-import { search } from "@/lib/search";
-import { SEARCH_DOCS } from "@/lib/search-index";
+import type { search as searchFn } from "@/lib/search";
+import type { SEARCH_DOCS } from "@/lib/search-index";
+
+/* The scorer (13KB) and the doc index (48KB) used to import statically, so
+   ~61KB of search machinery shipped in the header bundle on EVERY page and sat
+   unused until someone searched. They now load on first intent — focus, or a
+   hover over the field — via dynamic import, off the initial payload. */
+type SearchModule = { search: typeof searchFn; docs: typeof SEARCH_DOCS };
+let cached: SearchModule | null = null;
+async function loadSearch(): Promise<SearchModule> {
+  if (cached) return cached;
+  const [mod, index] = await Promise.all([
+    import("@/lib/search"),
+    import("@/lib/search-index"),
+  ]);
+  cached = { search: mod.search, docs: index.SEARCH_DOCS };
+  return cached;
+}
 
 /**
  * The search box, everywhere.
@@ -28,8 +44,8 @@ import { SEARCH_DOCS } from "@/lib/search-index";
  * and hides it only once the head script has set data-js, so a phone without
  * JavaScript gets the real search page and never sees a dead trigger.
  */
-export default function SearchBox() {
-  const docs = SEARCH_DOCS;
+export default function SearchBox({ count }: { count: number }) {
+  const [mod, setMod] = useState<SearchModule | null>(cached);
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
@@ -39,11 +55,19 @@ export default function SearchBox() {
   const box = useRef<HTMLDivElement>(null);
   const input = useRef<HTMLInputElement>(null);
 
+  /* Idempotent: first focus or hover pulls the index in; later calls are the
+     cached module. Kicked from onFocus (covers desktop and the mobile panel,
+     which focuses the input on expand) and onPointerEnter (warm preload). */
+  function warm() {
+    if (!cached) void loadSearch().then(setMod);
+    else if (!mod) setMod(cached);
+  }
+
   /* Same two-pass search the results page runs, so the dropdown can never
      disagree with the page it leads to — including when it relaxes. */
   const hits = useMemo(
-    () => (q.trim().length < 2 ? [] : search(docs, q, 7).docs),
-    [docs, q],
+    () => (mod && q.trim().length >= 2 ? mod.search(mod.docs, q, 7).docs : []),
+    [mod, q],
   );
 
   useEffect(() => {
@@ -102,6 +126,8 @@ export default function SearchBox() {
         className={s.trigger}
         href="/search"
         data-collapsed={expanded || undefined}
+        onPointerEnter={warm}
+        onFocus={warm}
         onClick={(e) => {
           e.preventDefault();
           setExpanded(true);
@@ -128,7 +154,7 @@ export default function SearchBox() {
           name="q"
           value={q}
           autoComplete="off"
-          placeholder={`Search ${docs.length} products`}
+          placeholder={`Search ${count} products`}
           aria-label="Search products"
           aria-expanded={open && hits.length > 0}
           aria-controls={listId}
@@ -138,7 +164,11 @@ export default function SearchBox() {
             setOpen(true);
             setActive(-1);
           }}
-          onFocus={() => setOpen(true)}
+          onFocus={() => {
+            warm();
+            setOpen(true);
+          }}
+          onPointerEnter={warm}
           onKeyDown={onKey}
         />
         <button

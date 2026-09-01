@@ -9,6 +9,7 @@ import SearchBox from "./SearchBox";
 import { headers } from "next/headers";
 import { PATH_HEADER } from "@/lib/age-shared";
 import { SHOP_ADDRESS_LINE, SHOP_STREET } from "@/lib/shop";
+import { CATALOG_SIZE } from "@/lib/commerce";
 
 export const PHONE_DISPLAY = "(702) 613-7799";
 export const PHONE_HREF = "tel:+17026137799";
@@ -123,7 +124,7 @@ export function Header() {
             data-js, so a phone without JS gets the real search page rather
             than a dead trigger. */}
         <div className={s.headerSearch}>
-          <SearchBox />
+          <SearchBox count={CATALOG_SIZE} />
         </div>
         <a className={s.searchPill} href="/search">
           Search
