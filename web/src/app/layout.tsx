@@ -5,6 +5,7 @@ import { INIT_SCRIPT } from "@/lib/theme";
 import InlineScript from "@/components/InlineScript";
 import { SITE_ORIGIN, SITE_INDEXABLE } from "@/lib/shop";
 import { jsonLd } from "@/lib/jsonld";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /* Marquee Neon uses three faces and each one has exactly one job.
 
@@ -216,6 +217,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLd(SITE_JSONLD)}
         />
+        {/* Vercel RUM — real field CWV (LCP/INP/CLS) from production traffic,
+            the measurement the plan says to have on before tuning. Active only
+            on Vercel with Speed Insights enabled in the project. */}
+        <SpeedInsights />
       </body>
     </html>
   );
