@@ -32,6 +32,6 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Everything except static assets and the affirm endpoint itself.
-    "/((?!_next/static|_next/image|favicon.ico|api/age).*)",
+    "/((?!_next/static|_next/image|favicon.ico|api/age|sitemap.xml|robots.txt).*)",
   ],
 };
