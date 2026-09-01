@@ -8,6 +8,8 @@ import PageNicotineWarning from "@/components/PageNicotineWarning";
 import Bulbs from "@/components/Bulbs";
 import { activeFilterCount, applyFilters } from "@/lib/filters";
 import { AGE_HEADER } from "@/lib/age-shared";
+import { SITE_ORIGIN } from "@/lib/shop";
+import { jsonLd, breadcrumbLd } from "@/lib/jsonld";
 import {
   commerce,
   DEPARTMENTS,
@@ -117,8 +119,14 @@ export default async function CategoryPage({
 
   const inStock = items.filter((p) => p.stock.tier !== "out").length;
 
+  const breadcrumb = breadcrumbLd(SITE_ORIGIN, [
+    { name: "Puff Vegas", path: "/" },
+    { name: DEPARTMENT_LABELS[department], path: `/${department}` },
+  ]);
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       <UtilityBar />
       <AgeBanner affirmed={affirmed} />
       <Header />

@@ -4,6 +4,7 @@ import "./globals.css";
 import { INIT_SCRIPT } from "@/lib/theme";
 import InlineScript from "@/components/InlineScript";
 import { SITE_ORIGIN, SITE_INDEXABLE } from "@/lib/shop";
+import { jsonLd } from "@/lib/jsonld";
 
 /* Marquee Neon uses three faces and each one has exactly one job.
 
@@ -44,6 +45,24 @@ export const metadata: Metadata = {
   robots: SITE_INDEXABLE
     ? { index: true, follow: true }
     : { index: false, follow: false },
+  openGraph: {
+    type: "website",
+    siteName: "Puff Vegas",
+    locale: "en_US",
+    /* One static default (metadataBase makes it absolute). Deliberately not
+       175 per-product ImageResponse cards: OG images carry no ranking weight
+       and only nudge social-share CTR, which is marginal for a local organic
+       shop — high build cost, no SEO payoff. */
+    images: [
+      {
+        url: "/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Puff Vegas storefront — a 24-hour smoke shop on the Las Vegas Strip.",
+      },
+    ],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
@@ -68,13 +87,21 @@ export const viewport: Viewport = {
  * NOT mark up our own AggregateRating; Google restricts that to sites
  * reviewing other businesses.
  */
-const STORE_JSONLD = {
-  "@context": "https://schema.org",
+const STORE_NODE = {
   "@type": ["Store", "LocalBusiness"],
   "@id": `${SITE_ORIGIN}/#store`,
   name: "Puff Vegas Smoke & Vape Shop",
   alternateName: "Puff Vegas",
   url: `${SITE_ORIGIN}/`,
+  /* A real photograph of the storefront, absolute-URL. Ties the entity to the
+     shop Google sees on the profile. */
+  image: `${SITE_ORIGIN}/shop/storefront-1448.webp`,
+  /* A live map link built from the surveyed coordinate — not the Google
+     "Grand Bazaar Shops" pin, which is 85 m off (see geo note). */
+  hasMap: "https://www.google.com/maps/search/?api=1&query=36.113777,-115.172005",
+  /* sameAs [GBP, Yelp, Apple Maps, Instagram] belongs here to tie the entity to
+     the 4.9-star profile — pending the owner supplying the exact profile URLs.
+     Do not invent them; a wrong sameAs points the entity at the wrong business. */
   telephone: "+1-702-613-7799",
   priceRange: "$$",
   currenciesAccepted: "USD",
@@ -135,6 +162,33 @@ const STORE_JSONLD = {
   },
 };
 
+/**
+ * WebSite + SearchAction — the sitelinks search box. Points at the real /search
+ * route, which robots.ts deliberately leaves crawlable so this action is not
+ * ignored. Combined with the Store node in one @graph so the page emits a
+ * single, linked structured-data document.
+ */
+const WEBSITE_NODE = {
+  "@type": "WebSite",
+  "@id": `${SITE_ORIGIN}/#website`,
+  url: `${SITE_ORIGIN}/`,
+  name: "Puff Vegas",
+  publisher: { "@id": `${SITE_ORIGIN}/#store` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_ORIGIN}/search?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const SITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@graph": [STORE_NODE, WEBSITE_NODE],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -160,7 +214,7 @@ export default function RootLayout({
         {children}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(STORE_JSONLD) }}
+          dangerouslySetInnerHTML={jsonLd(SITE_JSONLD)}
         />
       </body>
     </html>

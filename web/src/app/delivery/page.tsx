@@ -19,6 +19,7 @@ import {
   hotelBySlug,
 } from "@/lib/hotels";
 import { SHOP_STREET } from "@/lib/shop";
+import { jsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "Hotel delivery, 24 hours | Puff Vegas",
@@ -52,8 +53,68 @@ export default async function DeliveryPage({
   const featured = HOTELS.slice(0, 8);
   const more = Math.max(0, HOTELS.length - featured.length);
 
+  /* FAQPage from facts stated on this page — the fee, window, meet point,
+     payment, ID check and no-ship policy. Every answer is on-page copy, not
+     invented, so the markup is honest. (Google has narrowed FAQ rich results,
+     but the markup stays valid and aids understanding.) */
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much is delivery to a Las Vegas Strip hotel?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "$20 flat to any Strip hotel, with no minimum order.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How long does delivery take?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "About 25\u201340 minutes, 24 hours a day.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do I meet the driver?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We don\u2019t come up to rooms \u2014 you meet the runner at your hotel\u2019s valet stand or rideshare pickup.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do I pay?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Cash or card at handoff. We never take card details on the site.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you check ID?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes \u2014 valid ID is checked at handoff on every order, no exceptions.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you ship orders?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Local delivery only, across the Las Vegas Strip.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqLd)} />
       <UtilityBar hotel={hotel?.name} />
       <AgeBanner affirmed={affirmed} />
       <Header />

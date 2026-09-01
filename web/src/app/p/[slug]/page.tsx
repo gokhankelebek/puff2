@@ -12,8 +12,11 @@ import {
   pricePerThousandPuffs,
   puffsInHumanUnits,
   stockLabel,
+  DEPARTMENT_LABELS,
   type Product,
 } from "@/lib/commerce";
+import { SITE_ORIGIN } from "@/lib/shop";
+import { jsonLd, breadcrumbLd } from "@/lib/jsonld";
 import {
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_MINIMUM_LABEL,
@@ -50,8 +53,54 @@ export default async function ProductPage({
   const perPuff = pricePerThousandPuffs(product);
   const human = puffsInHumanUnits(product);
 
+  /* Product + Offer, shipped for correctness. Google suppresses shopping /
+     merchant rich results for tobacco & nicotine, so this is unlikely to earn
+     price/availability stars — but the markup is valid, honest, and matches the
+     visible page exactly (price and availability drift is what triggers
+     "spammy structured data"). Description is intentionally omitted until real
+     product copy lands (Phase 4); a fabricated one would be thin. */
+  const availability =
+    product.stock.tier === "out"
+      ? "https://schema.org/OutOfStock"
+      : product.stock.tier === "low"
+        ? "https://schema.org/LimitedAvailability"
+        : "https://schema.org/InStock";
+  const productLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        name: product.title,
+        ...(product.brand
+          ? { brand: { "@type": "Brand", name: product.brand } }
+          : {}),
+        ...(product.images[0]
+          ? { image: `${SITE_ORIGIN}${product.images[0].src}` }
+          : {}),
+        category: DEPARTMENT_LABELS[product.department],
+        offers: {
+          "@type": "Offer",
+          price: (product.price.cents / 100).toFixed(2),
+          priceCurrency: product.price.currency,
+          availability,
+          url: `${SITE_ORIGIN}/p/${product.slug}`,
+          seller: { "@id": `${SITE_ORIGIN}/#store` },
+        },
+      },
+      breadcrumbLd(SITE_ORIGIN, [
+        { name: "Puff Vegas", path: "/" },
+        {
+          name: DEPARTMENT_LABELS[product.department],
+          path: `/${product.department}`,
+        },
+        { name: product.title, path: `/p/${product.slug}` },
+      ]),
+    ],
+  };
+
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(productLd)} />
       <AgeBanner affirmed={affirmed} />
       <Header />
 
