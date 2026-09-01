@@ -53,12 +53,24 @@ export async function generateMetadata({
  * see the render site. Cropped from research/photos/.
  */
 const DEPARTMENT_PHOTO: Partial<
-  Record<Department, { src: string; srcSet: string; alt: string }>
+  Record<
+    Department,
+    { src: string; srcSet: string; alt: string; w: number; h: number }
+  >
 > = {
   vape: {
     src: "/shop/vape-wall-1152.webp",
     srcSet: "/shop/vape-wall-640.webp 640w, /shop/vape-wall-1152.webp 1152w",
     alt: "The vape wall at Puff Vegas: rows of disposables sorted by flavour, every colour of the spectrum, with lighters on the shelf below.",
+    w: 1152,
+    h: 620,
+  },
+  glass: {
+    src: "/shop/glass-1080.webp",
+    srcSet: "/shop/glass-640.webp 640w, /shop/glass-1080.webp 1080w",
+    alt: "The glass case at Puff Vegas: a lit display of figurine bongs, rigs and silicone pieces, the wall of disposables behind it.",
+    w: 1080,
+    h: 560,
   },
 };
 
@@ -139,8 +151,8 @@ export default async function CategoryPage({
             src={DEPARTMENT_PHOTO[department]!.src}
             srcSet={DEPARTMENT_PHOTO[department]!.srcSet}
             sizes="(min-width: 1200px) 1120px, 100vw"
-            width={1152}
-            height={620}
+            width={DEPARTMENT_PHOTO[department]!.w}
+            height={DEPARTMENT_PHOTO[department]!.h}
             alt={DEPARTMENT_PHOTO[department]!.alt}
             loading="lazy"
             decoding="async"

@@ -94,6 +94,23 @@ export default async function FloorPage() {
           </p>
         </div>
 
+        {/* An establishing shot of the actual floor — the packed wall, the
+            hexagon lights, the glass cases. This page is the "everything we
+            stock" index, and a real photo of the room says that faster than
+            the count line does. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={fl.establishing}
+          src="/shop/floor-1200.webp"
+          srcSet="/shop/floor-640.webp 640w, /shop/floor-1200.webp 1200w"
+          sizes="(min-width: 1200px) 1120px, 100vw"
+          width={1672}
+          height={941}
+          alt="The floor at Puff Vegas: a full wall of disposables and accessories, glass cases, and a Zippo display under hexagon lights."
+          loading="lazy"
+          decoding="async"
+        />
+
         <PageNicotineWarning products={all} />
 
         <Bulbs />

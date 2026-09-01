@@ -25,6 +25,22 @@
   font-variant-numeric: tabular-nums;
 }
 
+.establishing {
+  display: block;
+  width: calc(100% - 2 * var(--gutter));
+  height: auto;
+  margin: 4px var(--gutter) 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+
+@media (min-width: 1200px) {
+  .establishing {
+    width: calc(100% - 80px);
+    margin-inline: 40px;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

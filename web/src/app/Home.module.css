@@ -704,13 +704,30 @@
 .shopBand {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
+  gap: 18px;
   margin: 4px var(--gutter) 0;
   padding: 26px 22px 28px;
   border: 1px solid var(--border-strong);
   border-radius: var(--r-card);
   background: var(--surface);
+}
+
+.shopCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* The real storefront. Fills the card on mobile; on desktop it takes the right
+   column (see the 1200 block). object-fit cover because the source is 16:9 and
+   the desktop slot is closer to square. */
+.shopMedia {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-card);
+  border: 1px solid var(--border);
 }
 
 .shopTitle {
@@ -749,8 +766,18 @@
 
 @media (min-width: 1200px) {
   .shopBand {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 520px;
+    align-items: center;
+    gap: 40px;
     margin-inline: 40px;
     padding: 34px 40px 36px;
+  }
+
+  .shopMedia {
+    height: 100%;
+    max-height: 300px;
+    object-fit: cover;
   }
 
   .shopNote {

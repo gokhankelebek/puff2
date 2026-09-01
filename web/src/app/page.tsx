@@ -253,32 +253,50 @@ export default async function HomePage() {
             offers instead of one long dark stretch: the shop is a real room,
             the delivery band is a neon service. */}
         <section className={s.shopBand} aria-labelledby="shop-title">
-          <h2 className={s.shopTitle} id="shop-title">
-            No fee.
-            <br />
-            No wait.
-          </h2>
-          <ul className={s.bandStats}>
-            <li className={s.bandStat}>
-              <span className={s.shopFigure}>{all.length}</span>
-              <span className={s.shopLabel}>On the floor</span>
-            </li>
-            <li className={s.bandStat}>
-              <span className={s.shopFigure}>$0</span>
-              <span className={s.shopLabel}>To walk in</span>
-            </li>
-            <li className={s.bandStat}>
-              <span className={s.shopFigure}>2nd</span>
-              <span className={s.shopLabel}>Level, next to Ole Red</span>
-            </li>
-          </ul>
-          <p className={s.shopNote}>
-            Open every hour of the year at {SHOP_STREET}, inside {SHOP_MALL}.
-            Handle the glass, ask what is worth it, walk out with it.
-          </p>
-          <a className={s.ctaPrimary} href="/pickup">
-            Find the shop
-          </a>
+          <div className={s.shopCopy}>
+            <h2 className={s.shopTitle} id="shop-title">
+              No fee.
+              <br />
+              No wait.
+            </h2>
+            <ul className={s.bandStats}>
+              <li className={s.bandStat}>
+                <span className={s.shopFigure}>{all.length}</span>
+                <span className={s.shopLabel}>On the floor</span>
+              </li>
+              <li className={s.bandStat}>
+                <span className={s.shopFigure}>$0</span>
+                <span className={s.shopLabel}>To walk in</span>
+              </li>
+              <li className={s.bandStat}>
+                <span className={s.shopFigure}>2nd</span>
+                <span className={s.shopLabel}>Level, next to Ole Red</span>
+              </li>
+            </ul>
+            <p className={s.shopNote}>
+              Open every hour of the year at {SHOP_STREET}, inside {SHOP_MALL}.
+              Handle the glass, ask what is worth it, walk out with it.
+            </p>
+            <a className={s.ctaPrimary} href="/pickup">
+              Find the shop
+            </a>
+          </div>
+
+          {/* The real storefront makes "come to the shop" concrete: the lit red
+              awning, the open doors, the OPEN neon. Paired with the walk-in
+              pitch rather than left to the /pickup page alone. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className={s.shopMedia}
+            src="/shop/entrance-1200.webp"
+            srcSet="/shop/entrance-640.webp 640w, /shop/entrance-1200.webp 1200w"
+            sizes="(min-width: 1200px) 520px, 100vw"
+            width={1672}
+            height={941}
+            alt="The Puff Vegas storefront: lit red awning, open glass doors, OPEN neon, the shop glowing behind."
+            loading="lazy"
+            decoding="async"
+          />
         </section>
 
         {/* The one strip that runs. A single chasing divider above the
