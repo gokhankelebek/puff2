@@ -36,6 +36,11 @@ export async function generateMetadata({
   if (!isDepartment(department)) return { title: "Not found | Puff Vegas" };
   const sp = await searchParams;
   const filtered = Boolean(sp.flavor || sp.nic);
+  /* hemp classifies but is not listed online (no batch COA published), so its
+     department renders an empty state — noindex it so a thin, contentless page
+     is never indexed. Crawlable-but-unindexed rather than 404, so the day it
+     gets stock one line flips it back. */
+  const noindex = filtered || department === "hemp";
 
   return {
     title: `${DEPARTMENT_LABELS[department]} — open 24 hours on the Strip | Puff Vegas`,
@@ -44,7 +49,7 @@ export async function generateMetadata({
     // consolidate signals, so Google's own guidance warns against using
     // robots.txt for canonicalisation.
     alternates: { canonical: `/${department}` },
-    robots: filtered ? { index: false, follow: true } : { index: true, follow: true },
+    robots: noindex ? { index: false, follow: true } : { index: true, follow: true },
   };
 }
 
