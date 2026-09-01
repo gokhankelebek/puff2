@@ -3,6 +3,7 @@ import { Bebas_Neue, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { INIT_SCRIPT } from "@/lib/theme";
 import InlineScript from "@/components/InlineScript";
+import { SITE_ORIGIN, SITE_INDEXABLE } from "@/lib/shop";
 
 /* Marquee Neon uses three faces and each one has exactly one job.
 
@@ -33,12 +34,16 @@ const bodyFace = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://puffvegas.us"),
+  metadataBase: new URL(SITE_ORIGIN),
   title: "Smoke Shop on the Las Vegas Strip — Open 24 Hours | Puff Vegas",
   description:
     "Open 24 hours on the Las Vegas Strip, inside Grand Bazaar Shops next to Ole Red. Disposables, cigarettes, premium cigars, hookah and glass. 24/7 delivery, $20 flat to any Strip hotel, no minimum, meet us downstairs, cash on handover.",
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  /* Env-gated: noindex until launch so the in-progress build is not indexed
+     under the preview domain. Set NEXT_PUBLIC_SITE_INDEXABLE=1 at go-live. */
+  robots: SITE_INDEXABLE
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
@@ -66,10 +71,10 @@ export const viewport: Viewport = {
 const STORE_JSONLD = {
   "@context": "https://schema.org",
   "@type": ["Store", "LocalBusiness"],
-  "@id": "https://puffvegas.us/#store",
+  "@id": `${SITE_ORIGIN}/#store`,
   name: "Puff Vegas Smoke & Vape Shop",
   alternateName: "Puff Vegas",
-  url: "https://puffvegas.us/",
+  url: `${SITE_ORIGIN}/`,
   telephone: "+1-702-613-7799",
   priceRange: "$$",
   currenciesAccepted: "USD",

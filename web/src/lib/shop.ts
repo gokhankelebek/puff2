@@ -33,3 +33,33 @@ export const SHOP_ADDRESS_FULL = `${SHOP_STREET} ${SHOP_SUITE}, ${SHOP_CITY}, ${
  * Suite 611-613 itself, not the mall. Do not replace with a Google pin.
  */
 export const SHOP_GEO = { lat: 36.113777, lng: -115.172005 } as const;
+
+/**
+ * The canonical origin for absolute URLs — canonical tags, Open Graph, and the
+ * JSON-LD @id/url. Env-driven ON PURPOSE:
+ *
+ *  - Today the site is still being built and served on the Vercel preview, so
+ *    this defaults to the actually-served production origin. Nothing
+ *    self-canonicalizes to a domain we do not serve.
+ *  - At launch on puffvegas.us, set NEXT_PUBLIC_SITE_URL=https://puffvegas.us
+ *    once DNS points at Vercel and the old URLs 301 — one env var, whole site
+ *    flips. It is deliberately NOT hardcoded to puffvegas.us now: DNS is not
+ *    there yet, so canonicalizing to it would point every page at the stale
+ *    old site.
+ */
+function resolveSiteOrigin(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercel) return `https://${vercel}`;
+  return "http://localhost:3000";
+}
+
+export const SITE_ORIGIN = resolveSiteOrigin();
+
+/**
+ * Whether this deployment may be indexed. OFF while building, so nothing gets
+ * indexed under the preview domain and then has to be migrated to puffvegas.us.
+ * Flip it at launch: set NEXT_PUBLIC_SITE_INDEXABLE=1 (alongside the site URL).
+ */
+export const SITE_INDEXABLE = process.env.NEXT_PUBLIC_SITE_INDEXABLE === "1";

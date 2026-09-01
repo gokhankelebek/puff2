@@ -35,7 +35,7 @@ const BLURB: Record<Department, string> = {
   pouch: "Nicotine pouches — ZYN, Velo, Alp, Lucy",
   hookah: "Shisha, bowls, hoses and charcoal",
   glass: "Blown in Vegas, one-offs included",
-  hemp: "COAs on file for every batch",
+  hemp: "In the shop, not listed online yet",
   accessories: "Lighters, papers, grinders, parts",
 };
 
