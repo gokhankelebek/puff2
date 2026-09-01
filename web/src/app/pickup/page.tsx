@@ -89,6 +89,25 @@ export default async function PickupPage() {
           </div>
         </section>
 
+        {/* The real storefront, in the Grand Bazaar arcade. This is the
+            findability payoff: the red awning, the blade signs down the
+            arcade, the 21+ notice board, and the Vegas-sign "next to
+            Horseshoe" poster — everything someone scans for on approach. It
+            is why /pickup exists, and until now the page had a schematic and
+            an interior but never the face of the building. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={g.storefront}
+          src="/shop/storefront-1448.webp"
+          srcSet="/shop/storefront-720.webp 720w, /shop/storefront-1448.webp 1448w"
+          sizes="(min-width: 1200px) 1120px, 100vw"
+          width={1448}
+          height={1086}
+          alt="The Puff Vegas storefront inside Grand Bazaar Shops: red puff VEGAS awning, VAPE and SHOP neon, the 21+ notice board, and a Welcome to Puff Vegas poster."
+          loading="lazy"
+          decoding="async"
+        />
+
         <Bulbs />
 
         <section className={g.hoursCard}>

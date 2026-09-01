@@ -4,3 +4,6 @@
 # POS export: supply cost, on-hand, suppliers. This GitHub repo is public.
 research/lightspeed-product-export.csv
 research/lightspeed-models.json
+
+# Unrelated embedded repo — not part of the site
+grapher/

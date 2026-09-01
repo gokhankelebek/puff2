@@ -145,6 +145,22 @@
 
 .inside { padding: 24px var(--gutter); }
 
+.storefront {
+  display: block;
+  width: calc(100% - 2 * var(--gutter));
+  height: auto;
+  margin: 4px var(--gutter) 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+
+@media (min-width: 1200px) {
+  .storefront {
+    width: calc(100% - 80px);
+    margin-inline: 40px;
+  }
+}
+
 .insideShot {
   display: block;
   width: 100%;

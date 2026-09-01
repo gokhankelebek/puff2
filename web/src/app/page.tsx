@@ -145,18 +145,18 @@ export default async function HomePage() {
                 rather than moved to another section.
 
                 The LCP. srcset because the panel is ~640px on a phone and
-                ~620px on desktop; the source is 1024 wide, so 1x is covered
-                and 2x is soft. A higher-resolution original would fix that —
-                see docs/OPEN-DECISIONS.md. */}
+                ~620px on desktop; the source is 1672 wide, so 1x
+                and 2x are both covered — this replaces the 1024 shot that was
+                soft on retina, the OPEN-DECISIONS caveat now closed. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={s.heroImg}
-              src="/hero/interior-1024.webp"
-              srcSet="/hero/interior-640.webp 640w, /hero/interior-1024.webp 1024w"
+              src="/hero/interior-1672.webp"
+              srcSet="/hero/interior-1672-640.webp 640w, /hero/interior-1672.webp 1672w"
               sizes="(min-width: 1200px) 620px, 100vw"
-              width={1024}
-              height={768}
-              alt="Inside Puff Vegas: the SMOKE SHOP sign over the back counter, wall of vapes and cigars, glass cases of pipes."
+              width={1672}
+              height={941}
+              alt="Inside Puff Vegas: the aisle of glass cases and the wall of vapes, cigars and rolling papers under hexagon lights."
               fetchPriority="high"
               decoding="async"
             />
