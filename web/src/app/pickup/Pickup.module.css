@@ -145,6 +145,22 @@
 
 .inside { padding: 24px var(--gutter); }
 
+.poster {
+  display: block;
+  width: calc(100% - 2 * var(--gutter));
+  max-width: 620px;
+  height: auto;
+  margin: 8px var(--gutter) 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+
+@media (min-width: 1200px) {
+  .poster {
+    margin-inline: 40px;
+  }
+}
+
 .storefront {
   display: block;
   width: calc(100% - 2 * var(--gutter));

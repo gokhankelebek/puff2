@@ -159,6 +159,22 @@ export default async function PickupPage() {
           </ul>
         </section>
 
+        {/* The storefront as it reads from the promenade — the shop's own
+            window marketing and the OPEN 24 HOURS call, a brand close to the
+            page. Added at the owner's direction. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={g.poster}
+          src="/shop/poster-933.webp"
+          srcSet="/shop/poster-640.webp 640w, /shop/poster-933.webp 933w"
+          sizes="(min-width: 1200px) 720px, 100vw"
+          width={933}
+          height={879}
+          alt="The Puff Vegas storefront from the Grand Bazaar promenade: red puff VEGAS awning, the shop window and its 24-hour marketing."
+          loading="lazy"
+          decoding="async"
+        />
+
         <section className={g.legal}>
           <p className={g.legalBody}>
             21+ with valid ID at the counter, every time. {SHOP_ADDRESS_FULL}.
