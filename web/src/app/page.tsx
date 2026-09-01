@@ -335,7 +335,7 @@ export default async function HomePage() {
                 <li key={hotel.slug}>
                   <a
                     className={s.chip}
-                    href={`/delivery?hotel=${encodeURIComponent(hotel.slug)}`}
+                    href={`/delivery/${hotel.slug}`}
                   >
                     {hotel.name}
                   </a>

@@ -16,10 +16,11 @@ import {
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_TERMS_LABEL,
   HOTELS,
-  hotelBySlug,
+  hotelByQuery,
 } from "@/lib/hotels";
 import { SHOP_STREET } from "@/lib/shop";
 import { jsonLd } from "@/lib/jsonld";
+import { permanentRedirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Hotel delivery, 24 hours | Puff Vegas",
@@ -49,7 +50,13 @@ export default async function DeliveryPage({
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
-  const hotel = sp.hotel ? hotelBySlug(sp.hotel) : undefined;
+  /* Legacy ?hotel=X (and aliases like ballys → horseshoe) permanently redirect
+     to the canonical /delivery/{slug} page, consolidating link signals onto the
+     indexable per-hotel URL instead of a query string. */
+  if (sp.hotel) {
+    const target = hotelByQuery(sp.hotel);
+    if (target) permanentRedirect(`/delivery/${target.slug}`);
+  }
   const featured = HOTELS.slice(0, 8);
   const more = Math.max(0, HOTELS.length - featured.length);
 
@@ -115,7 +122,7 @@ export default async function DeliveryPage({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqLd)} />
-      <UtilityBar hotel={hotel?.name} />
+      <UtilityBar />
       <AgeBanner affirmed={affirmed} />
       <Header />
       <Bulbs />
@@ -193,11 +200,7 @@ export default async function DeliveryPage({
           <ul className={d.chipRow}>
             {featured.map((x) => (
               <li key={x.slug}>
-                <a
-                  className={d.chip}
-                  href={`/delivery?hotel=${encodeURIComponent(x.slug)}`}
-                  aria-current={hotel?.slug === x.slug ? "true" : undefined}
-                >
+                <a className={d.chip} href={`/delivery/${x.slug}`}>
                   {x.name}
                 </a>
               </li>
@@ -207,26 +210,12 @@ export default async function DeliveryPage({
             </li>
           </ul>
 
-          {hotel ? (
-            <div className={d.picked}>
-              <p className={d.pickedName}>Delivering to {hotel.name}</p>
-              {/* Meet points are deliberately empty in hotels.ts until the
-                  shop fills them in per property. Naming "the north valet"
-                  from a map would strand a runner and a customer at two
-                  different stands, which is the one failure this whole flow
-                  exists to avoid. */}
-              <p className={d.pickedNote}>
-                {hotel.meet ??
-                  "Valet or rideshare pickup — we'll confirm which when you text."}
-              </p>
-              <p className={d.pickedTerms}>{DELIVERY_TERMS_LABEL} · 25–40 min</p>
-            </div>
-          ) : (
-            <p className={d.pickedNote}>
-              Pick your hotel and we&rsquo;ll show the meet point and the
-              current run time.
-            </p>
-          )}
+          {/* Each hotel links to its own /delivery/{slug} page, which shows
+              the meet point, distance and run time. */}
+          <p className={d.pickedNote}>
+            Pick your hotel for its meet point, distance from the shop and
+            typical run time.
+          </p>
 
           <a className={d.cta} href={PHONE_HREF}>
             Start a delivery

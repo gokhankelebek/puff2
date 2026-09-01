@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { commerce, DEPARTMENTS, type Product } from "@/lib/commerce";
 import { slugifyBrand } from "@/lib/slugs";
 import { SITE_ORIGIN } from "@/lib/shop";
+import { HOTELS } from "@/lib/hotels";
 
 /**
  * The crawl map. With paid vape/tobacco ads banned, organic crawl coverage IS
@@ -34,6 +35,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry("/deals", { changeFrequency: "daily", priority: 0.7 }),
     entry("/legal", { changeFrequency: "yearly", priority: 0.3 }),
   ];
+
+  // --- Per-hotel delivery pages (now live) -----------------------------------
+  const hotelEntries: MetadataRoute.Sitemap = HOTELS.map((x) =>
+    entry(`/delivery/${x.slug}`, { changeFrequency: "monthly", priority: 0.7 }),
+  );
 
   // --- Departments (with published stock; hemp excluded) ---------------------
   const byDept = new Map<string, Product[]>();
@@ -101,6 +107,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticEntries,
+    ...hotelEntries,
     ...deptEntries,
     ...hubEntries,
     ...brandEntries,

@@ -273,6 +273,33 @@ export function milesFromMeters(meters: number): number {
 }
 
 /**
+ * Compass direction from the shop to a point, as a plain word. The Strip runs
+ * roughly north-south, so nearly every hotel resolves to "north" or "south" of
+ * Grand Bazaar Shops — a genuinely distinguishing per-hotel fact ("half a mile
+ * south" vs "north"), not a template variable. Eight-point resolution.
+ */
+export function directionFromShop(geo: { lat: number; lng: number }): string {
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const dLng = toRad(geo.lng - SHOP_GEO.lng);
+  const y = Math.sin(dLng) * Math.cos(toRad(geo.lat));
+  const x =
+    Math.cos(toRad(SHOP_GEO.lat)) * Math.sin(toRad(geo.lat)) -
+    Math.sin(toRad(SHOP_GEO.lat)) * Math.cos(toRad(geo.lat)) * Math.cos(dLng);
+  const bearing = (Math.atan2(y, x) * 180) / Math.PI;
+  const points = [
+    "north",
+    "north-east",
+    "east",
+    "south-east",
+    "south",
+    "south-west",
+    "west",
+    "north-west",
+  ];
+  return points[Math.round(((bearing % 360) + 360) % 360 / 45) % 8];
+}
+
+/**
  * Delivery economics — published before the order, not at the door.
  *
  * ── This used to be a meter, and deliberately is not any more ──────────────
