@@ -8,7 +8,7 @@ import PageNicotineWarning from "@/components/PageNicotineWarning";
 import Bulbs from "@/components/Bulbs";
 import { activeFilterCount, applyFilters } from "@/lib/filters";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { SITE_ORIGIN } from "@/lib/shop";
+import { SITE_ORIGIN, SITE_INDEXABLE } from "@/lib/shop";
 import { jsonLd, breadcrumbLd } from "@/lib/jsonld";
 import {
   commerce,
@@ -38,11 +38,7 @@ export async function generateMetadata({
   if (!isDepartment(department)) return { title: "Not found | Puff Vegas" };
   const sp = await searchParams;
   const filtered = Boolean(sp.flavor || sp.nic);
-  /* hemp classifies but is not listed online (no batch COA published), so its
-     department renders an empty state — noindex it so a thin, contentless page
-     is never indexed. Crawlable-but-unindexed rather than 404, so the day it
-     gets stock one line flips it back. */
-  const noindex = filtered || department === "hemp";
+  const noindex = filtered;
 
   return {
     title: `${DEPARTMENT_LABELS[department]} — open 24 hours on the Strip | Puff Vegas`,
@@ -51,7 +47,13 @@ export async function generateMetadata({
     // consolidate signals, so Google's own guidance warns against using
     // robots.txt for canonicalisation.
     alternates: { canonical: `/${department}` },
-    robots: noindex ? { index: false, follow: true } : { index: true, follow: true },
+    // Setting `robots` here replaces the root layout's, so the pre-launch
+    // SITE_INDEXABLE gate has to be repeated or departments leak into the index.
+    robots: !SITE_INDEXABLE
+      ? { index: false, follow: false }
+      : noindex
+        ? { index: false, follow: true }
+        : { index: true, follow: true },
   };
 }
 

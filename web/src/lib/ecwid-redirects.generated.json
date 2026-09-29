@@ -1,0 +1,954 @@
+[
+ {
+  "source": "/about-us",
+  "destination": "/pickup"
+ },
+ {
+  "source": "/about-vape-use",
+  "destination": "/vape"
+ },
+ {
+  "source": "/best-disposable-vapes-2025",
+  "destination": "/vape"
+ },
+ {
+  "source": "/blogs",
+  "destination": "/"
+ },
+ {
+  "source": "/brands",
+  "destination": "/vape/brands"
+ },
+ {
+  "source": "/buy-vape-products-online-best-vapes-eliquids-accessories",
+  "destination": "/vape"
+ },
+ {
+  "source": "/cigars-las-vegas",
+  "destination": "/cigars"
+ },
+ {
+  "source": "/contact-us",
+  "destination": "/pickup"
+ },
+ {
+  "source": "/flum-pebble-near-me",
+  "destination": "/vape"
+ },
+ {
+  "source": "/is-raz-or-geek-bar-better",
+  "destination": "/vape"
+ },
+ {
+  "source": "/join-our-team",
+  "destination": "/pickup"
+ },
+ {
+  "source": "/most-popular-disposable-vape-2025",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/7-hydroxy-products",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/acid-blondie",
+  "destination": "/p/acid-blondie"
+ },
+ {
+  "source": "/products/acid-kuba-deluxe",
+  "destination": "/p/acid-kuba-deluxe"
+ },
+ {
+  "source": "/products/acid-kuba-kuba",
+  "destination": "/p/acid-kuba-kuba"
+ },
+ {
+  "source": "/products/adjust-mycool-40000-puffs",
+  "destination": "/p/adjust-mycool-40000-puffs"
+ },
+ {
+  "source": "/products/adjust-myflavor-40k",
+  "destination": "/p/adjust-myflavor-40k"
+ },
+ {
+  "source": "/products/adjust-mysweet-40k",
+  "destination": "/p/adjust-mysweet-40k"
+ },
+ {
+  "source": "/products/airis-neo-40k",
+  "destination": "/p/airis-neo-40k"
+ },
+ {
+  "source": "/products/al-capone",
+  "destination": "/p/al-capone"
+ },
+ {
+  "source": "/products/al-capone-leaf",
+  "destination": "/p/al-capone-leaf"
+ },
+ {
+  "source": "/products/al-fakher-250g",
+  "destination": "/p/al-fakher-250g"
+ },
+ {
+  "source": "/products/al-fakher-50g",
+  "destination": "/p/al-fakher-50g"
+ },
+ {
+  "source": "/products/al-fakher-crown-60k",
+  "destination": "/p/al-fakher-crown-60k"
+ },
+ {
+  "source": "/products/al-fakher-crown-bar-12k",
+  "destination": "/p/al-fakher-crown-bar-12k"
+ },
+ {
+  "source": "/products/alp-3mg-nicotine-pouches",
+  "destination": "/p/alp-3mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/alp-6mg-nicotine-pouches",
+  "destination": "/p/alp-6mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/alp-9mg-nicotine-pouches",
+  "destination": "/p/alp-9mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/american-spirit",
+  "destination": "/p/american-spirit"
+ },
+ {
+  "source": "/products/american-spirit-rolling-tobacco",
+  "destination": "/p/american-spirit-rolling-tobacco"
+ },
+ {
+  "source": "/products/backwoods-5pk",
+  "destination": "/p/backwoods-5pk"
+ },
+ {
+  "source": "/products/bali-shag",
+  "destination": "/p/bali-shag"
+ },
+ {
+  "source": "/products/benson--hedges",
+  "destination": "/p/benson-hedges"
+ },
+ {
+  "source": "/products/black--mild-5-pack",
+  "destination": "/p/black-mild-5-pack"
+ },
+ {
+  "source": "/products/black--mild-single",
+  "destination": "/p/black-mild-single"
+ },
+ {
+  "source": "/products/blk-swisher-sweets",
+  "destination": "/p/blk-swisher-sweets"
+ },
+ {
+  "source": "/products/butane",
+  "destination": "/p/butane"
+ },
+ {
+  "source": "/products/camel",
+  "destination": "/p/camel"
+ },
+ {
+  "source": "/products/capri",
+  "destination": "/p/capri"
+ },
+ {
+  "source": "/products/chill-tree-organic-botanical-shot",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/cigar-shop",
+  "destination": "/cigars"
+ },
+ {
+  "source": "/products/cigarettes",
+  "destination": "/pouch"
+ },
+ {
+  "source": "/products/cigarillos-leaf--wraps",
+  "destination": "/cigars"
+ },
+ {
+  "source": "/products/cocous-charcoal-burner",
+  "destination": "/p/cocous-charcoal-burner"
+ },
+ {
+  "source": "/products/cohiba-red-dot",
+  "destination": "/p/cohiba-red-dot"
+ },
+ {
+  "source": "/products/cookies-30k",
+  "destination": "/p/cookies-30k"
+ },
+ {
+  "source": "/products/copenhagen-nicotine-pouches",
+  "destination": "/pouch"
+ },
+ {
+  "source": "/products/cream",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/disposable-vapes",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/djarum",
+  "destination": "/p/djarum"
+ },
+ {
+  "source": "/products/dkhaan-hookah-25-000-puffs",
+  "destination": "/hookah"
+ },
+ {
+  "source": "/products/drum",
+  "destination": "/p/drum"
+ },
+ {
+  "source": "/products/dutch",
+  "destination": "/p/dutch"
+ },
+ {
+  "source": "/products/eb-create-bc-pro-40k",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/empire-hookah",
+  "destination": "/p/empire-hookah"
+ },
+ {
+  "source": "/products/euro-gas-2000g",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/euro-gas-615",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/eve",
+  "destination": "/p/eve"
+ },
+ {
+  "source": "/products/fasta-drop-50k-nicotine-vape",
+  "destination": "/p/fasta-drop-50k-nicotine-vape"
+ },
+ {
+  "source": "/products/fifty-bar-20-000-puff",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/float-flum-mello-20000-disposable-vape",
+  "destination": "/p/float-flum-mello-20000-disposable-vape"
+ },
+ {
+  "source": "/products/float-x-10k",
+  "destination": "/p/float-x-10k"
+ },
+ {
+  "source": "/products/flonq-max-smart-10k-2-nic",
+  "destination": "/p/flonq-max-smart-10k-2-nic"
+ },
+ {
+  "source": "/products/flum-pebble",
+  "destination": "/p/flum-pebble"
+ },
+ {
+  "source": "/products/flum-ut-bar-50k",
+  "destination": "/p/flum-ut-bar-50k"
+ },
+ {
+  "source": "/products/foger-30-000-puff-pod",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/foger-bit-35k",
+  "destination": "/p/foger-bit-35k"
+ },
+ {
+  "source": "/products/foger-kit-pod-30-000-puff",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/fre-12-mg-nicotine-pouches",
+  "destination": "/p/fre-12-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/fre-15-mg-nicotine-pouches",
+  "destination": "/p/fre-15-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/fre-9-mg-nicotine-pouches",
+  "destination": "/p/fre-9-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/fumari-100g-tobacco",
+  "destination": "/p/fumari-100g-tobacco"
+ },
+ {
+  "source": "/products/fvkd-3-5-thc-disposable",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/game",
+  "destination": "/p/game"
+ },
+ {
+  "source": "/products/geek-bar-burj-80k-hookah-vape",
+  "destination": "/p/geek-bar-burj-80k-hookah-vape"
+ },
+ {
+  "source": "/products/geek-bar-clr-50k-disposable",
+  "destination": "/p/geek-bar-clr-50k-disposable"
+ },
+ {
+  "source": "/products/geek-bar-hookah-x-dtl-25k",
+  "destination": "/p/geek-bar-hookah-x-dtl-25k"
+ },
+ {
+  "source": "/products/geek-bar-mate-kit-60k",
+  "destination": "/p/geek-bar-mate-kit-60k"
+ },
+ {
+  "source": "/products/geek-bar-pulse-15000-puffs-disposable",
+  "destination": "/p/geek-bar-pulse-15000-puffs-disposable"
+ },
+ {
+  "source": "/products/geek-bar-pulse-x-25k",
+  "destination": "/p/geek-bar-pulse-x-25k"
+ },
+ {
+  "source": "/products/geek-vape-aegis-legend-5-kit",
+  "destination": "/p/geek-vape-aegis-legend-5-kit"
+ },
+ {
+  "source": "/products/glass-bong-size-3",
+  "destination": "/p/glass-bong-size-3"
+ },
+ {
+  "source": "/products/glass-bong-size-4",
+  "destination": "/p/glass-bong-size-4"
+ },
+ {
+  "source": "/products/glass-bong-size-5",
+  "destination": "/p/glass-bong-size-5"
+ },
+ {
+  "source": "/products/glass-bong-size-6",
+  "destination": "/p/glass-bong-size-6"
+ },
+ {
+  "source": "/products/glass-bong-size-7",
+  "destination": "/p/glass-bong-size-7"
+ },
+ {
+  "source": "/products/glass-bong-size-8",
+  "destination": "/p/glass-bong-size-8"
+ },
+ {
+  "source": "/products/glass-pipe",
+  "destination": "/p/glass-pipe"
+ },
+ {
+  "source": "/products/good-times-woods",
+  "destination": "/p/good-times-woods"
+ },
+ {
+  "source": "/products/grab-a-crush",
+  "destination": "/p/grab-a-crush"
+ },
+ {
+  "source": "/products/graba-leaf-crushed",
+  "destination": "/p/graba-leaf-crushed"
+ },
+ {
+  "source": "/products/grabba-leaf",
+  "destination": "/p/grabba-leaf"
+ },
+ {
+  "source": "/products/grabba-leaf-green",
+  "destination": "/p/grabba-leaf-green"
+ },
+ {
+  "source": "/products/hand-pipes",
+  "destination": "/glass"
+ },
+ {
+  "source": "/products/hazy-mary-1g-diamond-preroll",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/hazy-mary-2g-diamond-preroll",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/high-hemp",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/hookah--shisha-accessories",
+  "destination": "/hookah"
+ },
+ {
+  "source": "/products/hookah-725116287",
+  "destination": "/p/hookah"
+ },
+ {
+  "source": "/products/hot-skull",
+  "destination": "/p/hot-skull"
+ },
+ {
+  "source": "/products/hyppe-infiniti-50k",
+  "destination": "/p/hyppe-infiniti-50k"
+ },
+ {
+  "source": "/products/java-drew-estate-maduro-cigar",
+  "destination": "/p/java-drew-estate-maduro-cigar"
+ },
+ {
+  "source": "/products/juices",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/juul-device",
+  "destination": "/p/juul-device"
+ },
+ {
+  "source": "/products/juul-pod",
+  "destination": "/p/juul-pod"
+ },
+ {
+  "source": "/products/kanva-botanicals-focus-flow",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/kanva-botanicals-release-relax",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/kratom",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/kratom-seltzer",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/leather-rose-torpedo",
+  "destination": "/p/leather-rose-torpedo"
+ },
+ {
+  "source": "/products/lm",
+  "destination": "/p/lm"
+ },
+ {
+  "source": "/products/loose-leaf",
+  "destination": "/p/loose-leaf"
+ },
+ {
+  "source": "/products/lost-mary-70k-nera-kits",
+  "destination": "/p/lost-mary-70k-nera-kits"
+ },
+ {
+  "source": "/products/lost-mary-e-hookah-26-000-puff",
+  "destination": "/hookah"
+ },
+ {
+  "source": "/products/lost-mary-mo-20000-puff-pro",
+  "destination": "/p/lost-mary-mo-20000-puff-pro"
+ },
+ {
+  "source": "/products/lost-mary-mt-15k",
+  "destination": "/p/lost-mary-mt-15k"
+ },
+ {
+  "source": "/products/lost-mary-mt35000-turbo",
+  "destination": "/p/lost-mary-mt35000-turbo"
+ },
+ {
+  "source": "/products/lost-vape-orion-bar-50-000-puff",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/lucky-strike",
+  "destination": "/p/lucky-strike"
+ },
+ {
+  "source": "/products/lucy-12-mg-nicotine-pouches",
+  "destination": "/p/lucy-12-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/lucy-4-mg-nicotine-pouches",
+  "destination": "/p/lucy-4-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/lucy-8-mg-nicotine-pouches",
+  "destination": "/p/lucy-8-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/lucy-breakers-4-mg-nicotine-pouches",
+  "destination": "/p/lucy-breakers-4-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/lucy-breakers-8-mg-nicotine-pouches",
+  "destination": "/p/lucy-breakers-8-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/lumi-10-mg-gummies",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/macanudo-cafe-montego-y-oia",
+  "destination": "/p/macanudo-cafe-montego-y-oia"
+ },
+ {
+  "source": "/products/macanudo-vintage-2010-toro-grande",
+  "destination": "/p/macanudo-vintage-2010-toro-grande"
+ },
+ {
+  "source": "/products/marlboro",
+  "destination": "/p/marlboro"
+ },
+ {
+  "source": "/products/meloso-30k",
+  "destination": "/p/meloso-30k"
+ },
+ {
+  "source": "/products/mit-kratom",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/mj-arsenal-spoon-pipe",
+  "destination": "/p/mj-arsenal-spoon-pipe"
+ },
+ {
+  "source": "/products/mnke-25k",
+  "destination": "/p/mnke-25k"
+ },
+ {
+  "source": "/products/mnke-bars-25k-zero-nic",
+  "destination": "/p/mnke-bars-25k-zero-nic"
+ },
+ {
+  "source": "/products/montecristo-classic-tubo-especial",
+  "destination": "/p/montecristo-classic-tubo-especial"
+ },
+ {
+  "source": "/products/montecristo-white-series-magnum-especial",
+  "destination": "/p/montecristo-white-series-magnum-especial"
+ },
+ {
+  "source": "/products/montecristo-white-toro-grande",
+  "destination": "/p/montecristo-white-toro-grande"
+ },
+ {
+  "source": "/products/montego",
+  "destination": "/p/montego"
+ },
+ {
+  "source": "/products/mpb-hookah-bowl",
+  "destination": "/p/mpb-hookah-bowl"
+ },
+ {
+  "source": "/products/muffins-jelly-hole-2-2-5-gr",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/mushroom-products",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/newport",
+  "destination": "/p/newport"
+ },
+ {
+  "source": "/products/nexa-50-ultra-2",
+  "destination": "/p/nexa-50-ultra-2"
+ },
+ {
+  "source": "/products/nexa-pix-35k",
+  "destination": "/p/nexa-pix-35k"
+ },
+ {
+  "source": "/products/nexa-ultra-50-000-puff",
+  "destination": "/p/nexa-ultra-50000-puff"
+ },
+ {
+  "source": "/products/nicotine-pouches",
+  "destination": "/pouch"
+ },
+ {
+  "source": "/products/north-5k",
+  "destination": "/p/north-5k"
+ },
+ {
+  "source": "/products/north-stellar-40-000-puff",
+  "destination": "/p/north-stellar-40000-puff"
+ },
+ {
+  "source": "/products/off-stamp-kit",
+  "destination": "/p/off-stamp-kit"
+ },
+ {
+  "source": "/products/off-stamp-pod",
+  "destination": "/p/off-stamp-pod"
+ },
+ {
+  "source": "/products/olit-hookahlit-plus",
+  "destination": "/p/olit-hookahlit-plus"
+ },
+ {
+  "source": "/products/olit-hookalit-40k",
+  "destination": "/p/olit-hookalit-40k"
+ },
+ {
+  "source": "/products/olit-pro-60k-hookahlit",
+  "destination": "/p/olit-pro-60k-hookahlit"
+ },
+ {
+  "source": "/products/on-nicotine-pouches-2-mg",
+  "destination": "/p/on-nicotine-pouches-2-mg"
+ },
+ {
+  "source": "/products/on-nicotine-pouches-4mg",
+  "destination": "/p/on-nicotine-pouches-4mg"
+ },
+ {
+  "source": "/products/on-nicotine-pouches-8mg",
+  "destination": "/p/on-nicotine-pouches-8mg"
+ },
+ {
+  "source": "/products/opms-shot-kratom-extract",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/oxbar-50k",
+  "destination": "/p/oxbar-50k"
+ },
+ {
+  "source": "/products/pall-mall",
+  "destination": "/p/pall-mall"
+ },
+ {
+  "source": "/products/pillow-talk-40-000-puff-sweet-control",
+  "destination": "/p/pillow-talk-40000-puff-sweet-control"
+ },
+ {
+  "source": "/products/pillow-talk-ice-control-40000-puffs",
+  "destination": "/p/pillow-talk-ice-control-40000-puffs"
+ },
+ {
+  "source": "/products/pillow-talk-nicotine-level-control",
+  "destination": "/p/pillow-talk-nicotine-level-control"
+ },
+ {
+  "source": "/products/pixi-50k",
+  "destination": "/p/pixi-50k"
+ },
+ {
+  "source": "/products/polkadot-chocolate",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/polkadot-mushroom-gummies",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/pop-salt-onyx-cloud-25k-hookah",
+  "destination": "/p/pop-salt-onyx-cloud-25k-hookah"
+ },
+ {
+  "source": "/products/pyne-pod-20k",
+  "destination": "/p/pyne-pod-20k"
+ },
+ {
+  "source": "/products/pyne-pod-20k-zero-nic",
+  "destination": "/p/pyne-pod-20k-zero-nic"
+ },
+ {
+  "source": "/products/pyne-pod-click-bogo-66k",
+  "destination": "/p/pyne-pod-click-bogo-66k"
+ },
+ {
+  "source": "/products/pyramid",
+  "destination": "/p/pyramid"
+ },
+ {
+  "source": "/products/raw-cones",
+  "destination": "/p/raw-cones"
+ },
+ {
+  "source": "/products/raw-papers",
+  "destination": "/p/raw-papers"
+ },
+ {
+  "source": "/products/raz-25k-puff-zero-nicotine",
+  "destination": "/p/raz-25k-puff-zero-nicotine"
+ },
+ {
+  "source": "/products/raz-disposable-vape-25000-puffs",
+  "destination": "/p/raz-disposable-vape-25000-puffs"
+ },
+ {
+  "source": "/products/raz-rl-classic-35k",
+  "destination": "/p/raz-rl-classic-35k"
+ },
+ {
+  "source": "/products/rhino",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/rj-reserve-real-cigar-twisted-toro",
+  "destination": "/p/r-j-reserve-real-cigar-twisted-toro"
+ },
+ {
+  "source": "/products/road-trip",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/rogue-3mg-nicotine-pouches",
+  "destination": "/p/rogue-3mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/rogue-6-mg-nicotine-pouches",
+  "destination": "/p/rogue-6-mg-nicotine-pouches"
+ },
+ {
+  "source": "/products/rolling-papers-cigarillos-leaf--wraps",
+  "destination": "/cigars"
+ },
+ {
+  "source": "/products/romeo-y-juliet-reserva-real",
+  "destination": "/p/romeo-y-juliet-reserva-real"
+ },
+ {
+  "source": "/products/salem",
+  "destination": "/p/salem"
+ },
+ {
+  "source": "/products/seneca",
+  "destination": "/p/seneca"
+ },
+ {
+  "source": "/products/serbetli-50-gr",
+  "destination": "/p/serbetli-50-gr"
+ },
+ {
+  "source": "/products/silly-farms-mushroom-chocolate",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/skoal",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/small-pipe",
+  "destination": "/p/small-pipe"
+ },
+ {
+  "source": "/products/smok-mag-solo-kit",
+  "destination": "/p/smok-mag-solo-kit"
+ },
+ {
+  "source": "/products/space-gas",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/space-gas-3000g",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/space-gas-4-4l-4000g",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/spaceman-10k-pro",
+  "destination": "/p/spaceman-10k-pro"
+ },
+ {
+  "source": "/products/spaceman-sp40000-puff",
+  "destination": "/p/spaceman-sp40000-puff"
+ },
+ {
+  "source": "/products/starbuzz-tabacco",
+  "destination": "/p/starbuzz-tabacco"
+ },
+ {
+  "source": "/products/starbuzz-tobacco",
+  "destination": "/p/starbuzz-tobacco"
+ },
+ {
+  "source": "/products/stoned-gummies-mushroom",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/stoned-mushroom-chocolate",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/super-value-pipe-tobacco",
+  "destination": "/p/super-value-pipe-tobacco"
+ },
+ {
+  "source": "/products/swft-meta-disposable-vape-30000-puffs",
+  "destination": "/p/swft-meta-disposable-vape-30000-puffs"
+ },
+ {
+  "source": "/products/swisher-sweets",
+  "destination": "/p/swisher-sweets"
+ },
+ {
+  "source": "/products/switch-glow",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/syntrix-ghost-it-40k",
+  "destination": "/p/syntrix-ghost-it-40k"
+ },
+ {
+  "source": "/products/tatiana-classic-6x44",
+  "destination": "/p/tatiana-classic-6x44"
+ },
+ {
+  "source": "/products/thca",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/tobacco",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/torch-live-resin",
+  "destination": "/accessories"
+ },
+ {
+  "source": "/products/tre-house-2g-thca-disposable-vape",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/tre-house-extra-strength-mushroom-gummies",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/tre-house-mushroom-chocolate-bar",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/vape-juice",
+  "destination": "/p/vape-juice"
+ },
+ {
+  "source": "/products/vape-mods",
+  "destination": "/vape"
+ },
+ {
+  "source": "/products/vaporesso-armour-ultra",
+  "destination": "/p/vaporesso-armour-ultra"
+ },
+ {
+  "source": "/products/vaporesso-xros-3",
+  "destination": "/p/vaporesso-xros-3"
+ },
+ {
+  "source": "/products/vaporesso-xros-3-mini",
+  "destination": "/p/vaporesso-xros-3-mini"
+ },
+ {
+  "source": "/products/vaporesso-xros-4",
+  "destination": "/p/vaporesso-xros-4"
+ },
+ {
+  "source": "/products/vaporesso-xros-4-mini",
+  "destination": "/p/vaporesso-xros-4-mini"
+ },
+ {
+  "source": "/products/vaporesso-xros-5",
+  "destination": "/p/vaporesso-xros-5"
+ },
+ {
+  "source": "/products/vaporesso-xros-5-mini",
+  "destination": "/p/vaporesso-xros-5-mini"
+ },
+ {
+  "source": "/products/vaporesso-xros-pro",
+  "destination": "/p/vaporesso-xros-pro"
+ },
+ {
+  "source": "/products/velo-9mg",
+  "destination": "/p/velo-9mg"
+ },
+ {
+  "source": "/products/virginia-slims",
+  "destination": "/p/virginia-slims"
+ },
+ {
+  "source": "/products/white-owl",
+  "destination": "/p/white-owl"
+ },
+ {
+  "source": "/products/winston",
+  "destination": "/p/winston"
+ },
+ {
+  "source": "/products/woyu-black-gold-hookah",
+  "destination": "/p/woyu-black-gold-hookah"
+ },
+ {
+  "source": "/products/xxx",
+  "destination": "/floor"
+ },
+ {
+  "source": "/products/zig-zag-cigarillos",
+  "destination": "/p/zig-zag-cigarillos"
+ },
+ {
+  "source": "/products/zig-zag-wraps",
+  "destination": "/p/zig-zag-wraps"
+ },
+ {
+  "source": "/products/zigzag-papers",
+  "destination": "/p/zigzag-papers"
+ },
+ {
+  "source": "/products/zone-nicotine-pouches-6mg",
+  "destination": "/p/zone-nicotine-pouches-6mg"
+ },
+ {
+  "source": "/products/zone-nicotine-pouches-9mg",
+  "destination": "/p/zone-nicotine-pouches-9mg"
+ },
+ {
+  "source": "/products/zyn-3-nicotine-pouches",
+  "destination": "/p/zyn-3-nicotine-pouches"
+ },
+ {
+  "source": "/products/zyn-6-nicotine-pouches",
+  "destination": "/p/zyn-6-nicotine-pouches"
+ },
+ {
+  "source": "/products/zyn-ultra-9-mg-nicotine-pouches",
+  "destination": "/p/zyn-ultra-9-mg-nicotine-pouches"
+ },
+ {
+  "source": "/top-disposable-vape-brands-2025",
+  "destination": "/vape"
+ },
+ {
+  "source": "/what-is-the-top-selling-vape",
+  "destination": "/vape"
+ },
+ {
+  "source": "/whip-cream-charger",
+  "destination": "/floor"
+ }
+]

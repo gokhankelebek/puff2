@@ -29,7 +29,14 @@ web/public/p/*                                  172 images + images.generated.js
         │  npx tsx scripts/build-search-index.ts
         ▼
 src/lib/search-index.ts                         ~48 KB
+        │  npx tsx scripts/build-ecwid-redirects.ts
+        ▼
+src/lib/ecwid-redirects.generated.json          old Ecwid URLs → 301 map (next.config.ts)
 ```
+
+Re-run the redirect builder after the importer, so a product that starts
+publishing starts receiving its old Ecwid URL. **Restart the dev server after**
+— next.config.ts is not hot-reloaded.
 
 `scripts/match-ecwid-titles.ts` proposes title matches against the old Ecwid
 storefront; `--apply` writes them. Run it *before* the importer when reconciling.
