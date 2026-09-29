@@ -245,7 +245,8 @@ const MODEL_OVERRIDES: Record<string, Mapping> = {
     cls: "accessory",
     review:
       "Hemp wraps contain no tobacco and no nicotine, so no warning — but " +
-      "confirm they are the tobacco-free line and not a CBD product.",
+      "confirm they are the tobacco-free line and not a CBD product. Held " +
+      "off-site by the cannabinoid firewall until confirmed.",
   },
   "High Hemp Papers": { cls: "accessory" },
 
@@ -629,6 +630,43 @@ for (const m of models) {
 }
 
 /**
+ * Third pass: the cannabinoid firewall. Owner decision (2026-09-29): no THC
+ * or CBD product appears on the site.
+ *
+ * This runs LAST and beats category, override and inference alike, because
+ * the POS files some of these under ordinary categories — "Geek THCX 3 gram
+ * disposable" and "Torch 1 Gram THC-A Disposable" arrived as vapes, and the
+ * `thca` name test above never saw them (it only runs on uncategorised rows,
+ * and it does not match "thc-a", "thcx" or "thcp" anyway).
+ *
+ *  - THC in any spelling, cannabis, HHC, delta-8/9/10 → `restricted`.
+ *  - CBD → `hemp`, which never publishes (see the publish rule below).
+ *
+ *  - Hemp wraps and rolls → `unknown`. Owner decision, same day: hidden
+ *    until the shop confirms they are the tobacco-free line and not a CBD
+ *    one. "High Hemp" is a wrap brand, so it is named outright. Plain hemp
+ *    PAPERS ("Pure Hemp Papers", "High Hemp Papers") are ordinary rolling
+ *    papers and are deliberately not matched.
+ */
+const THC_NAME = /\bthc|cannabi|\bhhc\b|delta.?(8|9|10)\b/;
+const CBD_NAME = /\bcbd\b/;
+const HEMP_WRAP_NAME = /\bhemp\b.*\b(wraps?|rolls?)\b|\bhemparillo\b|^high hemp$/;
+const firewalled = new Set<string>();
+for (const m of models) {
+  const t = m.title.toLowerCase();
+  if (THC_NAME.test(t) && m.regulatoryClass !== "restricted") {
+    m.regulatoryClass = "restricted";
+    firewalled.add(m.title);
+  } else if (CBD_NAME.test(t) && m.regulatoryClass !== "restricted" && m.regulatoryClass !== "hemp") {
+    m.regulatoryClass = "hemp";
+    firewalled.add(m.title);
+  } else if (HEMP_WRAP_NAME.test(t) && m.regulatoryClass !== "restricted" && m.regulatoryClass !== "hemp") {
+    m.regulatoryClass = "unknown";
+    firewalled.add(m.title);
+  }
+}
+
+/**
  * Brands, for the homepage wall and the product page byline.
  *
  * `brand` has been a declared-but-never-populated field: the product page has
@@ -703,18 +741,14 @@ const PUBLISHABLE_CLASSES = new Set<RegulatoryClass>([
   "ends", "hookah", "cigar", "cigarette", "pouch", "rollYourOwn", "accessory",
 ]);
 
-/* `hemp` is deliberately NOT in the set above.
-   It is a lawful class, but a hemp listing makes a claim the shop cannot
-   support from POS data alone — that the product is at or below 0.3% delta-9.
-   The evidence for that claim is a batch COA, so the COA is the gate. Until
-   the shop attaches one, hemp imports, classifies, and stays off the site.
-   This is the same fail-closed posture as `unknown`, for a different reason:
-   not "we could not tell", but "we can tell, and we cannot yet prove it". */
+/* `hemp` is deliberately NOT in the set above, and there is no longer a way in.
+   It used to publish once a batch COA was attached; the owner has since
+   decided (2026-09-29) that no CBD or THC product is listed online at all, COA
+   or not. Hemp still imports and classifies so the report can count it — it
+   just never goes out. Reopening it is a decision, not a data fix. */
 for (const m of models) {
   m.brand = brandOf(m.title);
-  const classOk =
-    PUBLISHABLE_CLASSES.has(m.regulatoryClass) ||
-    (m.regulatoryClass === "hemp" && m.coa != null);
+  const classOk = PUBLISHABLE_CLASSES.has(m.regulatoryClass);
   m.publishable = classOk && m.onlineSkus > 0 && m.priceCents !== null;
 }
 
@@ -815,6 +849,16 @@ Still unclassified with no category, and flagged online:
 ${models.filter((m) => !m.category && m.regulatoryClass === "unknown" && m.onlineSkus > 0)
   .map((m) => `- **${m.title}**`).join("\n") || "- none"}
 
+## 4a. Cannabinoid firewall (${firewalled.size})
+
+THC, CBD or hemp wraps in the name, reclassified regardless of category or
+override so it cannot publish. Owner decision, 2026-09-29.
+
+${models.filter((m) => firewalled.has(m.title))
+  .sort((a, b) => a.title.localeCompare(b.title))
+  .map((m) => `- \`${m.regulatoryClass}\` — ${m.title}${m.category ? ` (was in "${m.category}")` : ""}`)
+  .join("\n") || "- none"}
+
 ## 5. Per-model overrides
 
 ${overridesFired.size} of ${Object.keys(MODEL_OVERRIDES).length} overrides matched a product in this export.
@@ -841,6 +885,7 @@ console.log(`models          ${models.length}`);
 console.log(`publishable     ${publishable.length}`);
 console.log(`unknown         ${needClassifying.length}`);
 console.log(`inferred        ${inferred.size}`);
+console.log(`firewalled      ${firewalled.size}`);
 console.log(`restricted      ${restricted.length}`);
 console.log(`unmapped flavs  ${unmappedFlavors.length} of ${flavorRelevantTotal} (vape/pouch/hookah only)`);
 console.log(`\n→ ${outCatalog}`);

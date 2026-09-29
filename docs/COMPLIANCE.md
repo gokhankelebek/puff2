@@ -33,6 +33,16 @@ dry weight, the 2018 Farm Bill line) and everything intoxicating, which stays
 `restricted` behind the SB 356 firewall no matter how it is labelled —
 delta-8, delta-9 above trace, THCA, HHC, 7-OH.
 
+> **Owner decision, 2026-09-29: no CBD or THC product is listed online.** The
+> COA route described below has been closed: `hemp` never publishes, COA or not,
+> and the department is gone from `DEPARTMENTS` (no tile, no route, no sitemap).
+> A final "cannabinoid firewall" pass in the importer forces any title naming
+> THC (any spelling — THC-A, THCP, THCX), cannabis, HHC or delta-8/9/10 into
+> `restricted`, and any CBD title into `hemp`, overriding category and
+> per-model overrides. It exists because two THC vapes arrived in the POS under
+> vape categories and were one online-SKU flag away from publishing as `ends`.
+> Hemp rolling wraps/papers are not cannabinoids and are unaffected.
+
 **`hemp` is classified but not publishable.** It is deliberately absent from
 `PUBLISHABLE_CLASSES`; a hemp model publishes only once `Product.coa` carries a
 batch certificate. The reasoning differs from `unknown`: not *"we could not

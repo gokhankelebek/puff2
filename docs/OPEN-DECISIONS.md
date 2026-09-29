@@ -55,10 +55,13 @@ process? If SMS is the answer, 4h should probably be cut rather than kept as a
 receipt — it is the one screen in the bundle that cannot be honest without a
 back end.
 
-## Hemp & CBD 🔴
+## Hemp & CBD ⛔ closed
 
-The shop is adding the department; the model is in place and deliberately
-inert. See [COMPLIANCE.md](COMPLIANCE.md#hemp--cbd--hemp-).
+**Decided 2026-09-29: no CBD or THC product is listed online.** The department
+is removed and the importer's cannabinoid firewall keeps these off the site
+regardless of COA. The questions below only matter if that is ever reopened.
+
+The model is in place and deliberately inert. See [COMPLIANCE.md](COMPLIANCE.md#hemp--cbd--hemp-).
 
 Blocked on two human answers:
 

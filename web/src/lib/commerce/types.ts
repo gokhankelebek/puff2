@@ -242,6 +242,10 @@ export type Department =
  * separate lists, so the same six cards appeared in two different orders one
  * click apart and the muscle memory built on the homepage was wrong on the
  * index it led to.
+ *
+ * `hemp` is absent on purpose: no CBD or THC product is listed online (owner
+ * decision, 2026-09-29), so it gets no tile, no route and no sitemap entry.
+ * The `Department` type keeps it so the importer can still classify into it.
  */
 export const DEPARTMENTS: readonly Department[] = [
   "vape",
@@ -251,7 +255,6 @@ export const DEPARTMENTS: readonly Department[] = [
   "accessories",
   "cigarettes",
   "hookah",
-  "hemp",
 ];
 
 export const DEPARTMENT_LABELS: Record<Department, string> = {
