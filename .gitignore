@@ -7,3 +7,5 @@ research/lightspeed-models.json
 
 # Unrelated embedded repo — not part of the site
 grapher/
+.vercel
+.env*

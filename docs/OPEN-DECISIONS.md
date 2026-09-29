@@ -5,12 +5,18 @@ they hold back.
 
 ---
 
-## Nothing is deployed
+## Deployed — 2026-09-29 ✅
 
-**puffvegas.us still serves the old Ecwid storefront.** Everything in `web/` runs
-only on localhost. No hosting, domain cutover, or redirect map has been decided.
-The old storefront's URLs should be inventoried before cutover — `research/ingest/`
-has crawl output that can seed a redirect table.
+puffvegas.us serves this site from Vercel (project `puff2`). DNS is still
+managed at Bluehost: A `@` → 216.150.1.1 and CNAME `www` →
+616b72d4dd421322.vercel-dns-016.com. Vercel also suggests a second A record,
+216.150.16.1, for redundancy. Rollback: point both back at 34.193.83.23 (the
+old Ecwid site).
+
+Production env: `NEXT_PUBLIC_SITE_URL=https://puffvegas.us`,
+`NEXT_PUBLIC_SITE_INDEXABLE=1`, `AGE_COOKIE_SECRET` (secret, set by the owner).
+Every URL in the old Ecwid sitemap 301s here — see
+`scripts/build-ecwid-redirects.ts`.
 
 ## Shop decisions
 
@@ -171,7 +177,13 @@ higher-resolution version exists. 1x is covered, 2x is soft. Accepted by the
 owner on 2026-08-29. If a better original ever turns up, re-run the two webp
 derivatives from `research/photos/interior-2023-03-11.jpg`.
 
-## LIVE on production, needs the owner — age cookie secret (verified 2026-08-30)
+## Age cookie secret — FIXED 2026-09-29 ✅
+
+`AGE_COOKIE_SECRET` is now set in Vercel Production. The history below is kept
+for context.
+
+### Original finding (2026-08-30)
+
 
 The site is deployed at puff2-ten.vercel.app (GitHub → Vercel auto-deploy),
 and `AGE_COOKIE_SECRET` is NOT set in the Vercel project. Confirmed against

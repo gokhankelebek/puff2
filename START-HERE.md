@@ -3,7 +3,7 @@
 A new website for **Puff Vegas Smoke & Vape Shop**, Grand Bazaar Shops, Las Vegas
 Strip. It replaces the shop's Ecwid storefront.
 
-**Status: builds and runs locally. Nothing is deployed — puffvegas.us still serves Ecwid.**
+**Status: LIVE on puffvegas.us since 2026-09-29** (Vercel project `puff2`, GitHub `main` → auto-deploy). DNS stays at Bluehost: A `@` → 216.150.1.1, CNAME `www` → Vercel. To roll back to Ecwid, point both at 34.193.83.23.
 
 ```bash
 cd web && npm install && npm run dev
@@ -71,7 +71,7 @@ pre-filled SMS.
 `36.113777, -115.172005`, *not* Google's Grand Bazaar pin, which is 85 m away and
 outside the mall footprint. See [docs/LOCATION.md](docs/LOCATION.md).
 
-**Biggest open item:** deployment. See [docs/OPEN-DECISIONS.md](docs/OPEN-DECISIONS.md).
+**Biggest open items:** the counsel questions in [docs/OPEN-DECISIONS.md](docs/OPEN-DECISIONS.md) — the site is now public.
 
 ---
 
