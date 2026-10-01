@@ -1218,7 +1218,7 @@
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 55,
-  "priceCents": 3299,
+  "priceCents": 3399,
   "puffCount": 40000,
   "flavors": [
    {
@@ -1745,7 +1745,7 @@
   "title": "Al Fakher Crown Bar 12k",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 6,
   "skuCount": 6,
   "stock": 88,
@@ -7130,7 +7130,7 @@
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 35,
-  "priceCents": 3399,
+  "priceCents": 3594,
   "puffCount": 30000,
   "flavors": [
    {
@@ -9211,7 +9211,7 @@
   "title": "Ebcreate BC PRO 40k",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 15,
   "skuCount": 15,
   "stock": 24,
@@ -10360,7 +10360,7 @@
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": 2,
-  "priceCents": 3399,
+  "priceCents": 3497,
   "flavors": [
    {
     "value": "Blueberry Cereal Donut Milk",
@@ -10389,7 +10389,7 @@
   "publishable": true,
   "onlineSkus": 38,
   "skuCount": 38,
-  "stock": -38,
+  "stock": 3,
   "priceCents": 3399,
   "puffCount": 20000,
   "flavors": [
@@ -14268,7 +14268,7 @@
   "title": "Geek Bar Hookah X DTL 25K",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 5,
@@ -14418,7 +14418,7 @@
   "onlineSkus": 69,
   "skuCount": 69,
   "stock": 1367,
-  "priceCents": 3499,
+  "priceCents": 3691,
   "puffCount": 15000,
   "flavors": [
    {
@@ -14945,7 +14945,7 @@
   "onlineSkus": 42,
   "skuCount": 42,
   "stock": 1603,
-  "priceCents": 3799,
+  "priceCents": 3991,
   "puffCount": 25000,
   "flavors": [
    {
@@ -15441,7 +15441,7 @@
   "onlineSkus": 4,
   "skuCount": 4,
   "stock": 2,
-  "priceCents": 14000,
+  "priceCents": 11995,
   "flavors": [
    {
     "value": "Green",
@@ -22184,7 +22184,7 @@
   "title": "Lost Mary E-Hookah 26.000 Puff",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 11,
   "skuCount": 11,
   "stock": 25,
@@ -22326,7 +22326,7 @@
   "title": "Lost Mary Mo 20000 Puff Pro",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 29,
   "skuCount": 29,
   "stock": 85,
@@ -22635,7 +22635,7 @@
   "title": "Lost Mary Mt 15K",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 34,
   "skuCount": 34,
   "stock": 34,
@@ -22798,7 +22798,7 @@
   "onlineSkus": 41,
   "skuCount": 41,
   "stock": 1143,
-  "priceCents": 3799,
+  "priceCents": 3991,
   "flavors": [
    {
     "value": "Miami Mint",
@@ -23359,7 +23359,7 @@
   "title": "Lost Vape Orion Bar 50.000 Puff",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 15,
   "skuCount": 15,
   "stock": 19,
@@ -24971,7 +24971,7 @@
   "title": "Meloso 30k",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 12,
   "skuCount": 12,
   "stock": 14,
@@ -25382,7 +25382,7 @@
   "title": "MNKE 25k",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 22,
@@ -25441,7 +25441,7 @@
   "onlineSkus": 7,
   "skuCount": 7,
   "stock": 105,
-  "priceCents": 2899,
+  "priceCents": 3497,
   "puffCount": 25000,
   "flavors": [
    {
@@ -27764,7 +27764,7 @@
   "title": "North 5k",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 10,
   "skuCount": 10,
   "stock": 41,
@@ -28788,7 +28788,7 @@
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 3,
-  "priceCents": 3699,
+  "priceCents": 3594,
   "flavors": [
    {
     "value": "Blue Razz Ice",
@@ -28862,7 +28862,7 @@
   "onlineSkus": 34,
   "skuCount": 34,
   "stock": 195,
-  "priceCents": 2499,
+  "priceCents": 2699,
   "flavors": [
    {
     "value": "Blue Razz Ice",
@@ -30432,7 +30432,7 @@
   "title": "Oxbar 50K",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 6,
   "skuCount": 6,
   "stock": 14,
@@ -30916,7 +30916,7 @@
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 7,
-  "priceCents": 2999,
+  "priceCents": 3594,
   "puffCount": 40000,
   "flavors": [
    {
@@ -31088,7 +31088,7 @@
   "onlineSkus": 26,
   "skuCount": 26,
   "stock": 1,
-  "priceCents": 2999,
+  "priceCents": 3594,
   "puffCount": 40000,
   "flavors": [
    {
@@ -31241,7 +31241,7 @@
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 4,
-  "priceCents": 2999,
+  "priceCents": 3594,
   "flavors": [
    {
     "value": "Cool Mint",
@@ -32351,7 +32351,7 @@
   "title": "Pyne Pod 20K",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 17,
   "skuCount": 17,
   "stock": 17,
@@ -32796,14 +32796,14 @@
  {
   "slug": "pyne-pod-click-bogo-66k",
   "vendorHandle": "pyne-pod-click-bogo-22k",
-  "title": "Pyne Pod Click Bogo 66k",
+  "title": "Pyne Pod Click Bogo 40K",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
   "publishable": true,
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 2,
-  "priceCents": 3999,
+  "priceCents": 3594,
   "puffCount": 66000,
   "flavors": [
    {
@@ -39221,7 +39221,7 @@
   "title": "Spaceman 10K Pro",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 17,
   "skuCount": 17,
   "stock": 29,
@@ -39395,7 +39395,7 @@
   "title": "Spaceman Sp40000 Puff",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 34,
@@ -40529,7 +40529,7 @@
   "title": "SWFT Meta Disposable Vape 30000 Puffs",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 19,
   "skuCount": 19,
   "stock": 11,
@@ -41099,7 +41099,7 @@
   "title": "Syntrix Ghost It 40K",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 5,
   "skuCount": 5,
   "stock": 7,
@@ -43608,7 +43608,7 @@
   "onlineSkus": 5,
   "skuCount": 5,
   "stock": 2,
-  "priceCents": 11000,
+  "priceCents": 11995,
   "flavors": [
    {
     "value": "Camo Silver",
@@ -43840,7 +43840,7 @@
   "onlineSkus": 11,
   "skuCount": 11,
   "stock": -1,
-  "priceCents": 4999,
+  "priceCents": 6920,
   "flavors": [
    {
     "value": "Royal Gold",
@@ -43906,7 +43906,7 @@
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 0,
-  "priceCents": 4000,
+  "priceCents": 4997,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -43965,7 +43965,7 @@
   "onlineSkus": 10,
   "skuCount": 10,
   "stock": 3,
-  "priceCents": 4999,
+  "priceCents": 6920,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -43986,7 +43986,7 @@
   "onlineSkus": 10,
   "skuCount": 10,
   "stock": 4,
-  "priceCents": 4499,
+  "priceCents": 4997,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -44007,7 +44007,7 @@
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 2,
-  "priceCents": 6000,
+  "priceCents": 6920,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -44028,7 +44028,7 @@
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 5,
-  "priceCents": 5000,
+  "priceCents": 4997,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -44158,7 +44158,7 @@
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 2,
-  "priceCents": 6000,
+  "priceCents": 6920,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {

@@ -105,7 +105,7 @@
  },
  {
   "source": "/products/al-fakher-crown-bar-12k",
-  "destination": "/p/al-fakher-crown-bar-12k"
+  "destination": "/hookah"
  },
  {
   "source": "/products/alp-3mg-nicotine-pouches",
@@ -313,7 +313,7 @@
  },
  {
   "source": "/products/geek-bar-hookah-x-dtl-25k",
-  "destination": "/p/geek-bar-hookah-x-dtl-25k"
+  "destination": "/hookah"
  },
  {
   "source": "/products/geek-bar-mate-kit-60k",
@@ -465,11 +465,11 @@
  },
  {
   "source": "/products/lost-mary-mo-20000-puff-pro",
-  "destination": "/p/lost-mary-mo-20000-puff-pro"
+  "destination": "/vape"
  },
  {
   "source": "/products/lost-mary-mt-15k",
-  "destination": "/p/lost-mary-mt-15k"
+  "destination": "/vape"
  },
  {
   "source": "/products/lost-mary-mt35000-turbo",
@@ -521,7 +521,7 @@
  },
  {
   "source": "/products/meloso-30k",
-  "destination": "/p/meloso-30k"
+  "destination": "/vape"
  },
  {
   "source": "/products/mit-kratom",
@@ -533,7 +533,7 @@
  },
  {
   "source": "/products/mnke-25k",
-  "destination": "/p/mnke-25k"
+  "destination": "/vape"
  },
  {
   "source": "/products/mnke-bars-25k-zero-nic",
@@ -589,7 +589,7 @@
  },
  {
   "source": "/products/north-5k",
-  "destination": "/p/north-5k"
+  "destination": "/vape"
  },
  {
   "source": "/products/north-stellar-40-000-puff",
@@ -633,7 +633,7 @@
  },
  {
   "source": "/products/oxbar-50k",
-  "destination": "/p/oxbar-50k"
+  "destination": "/floor"
  },
  {
   "source": "/products/pall-mall",
@@ -669,7 +669,7 @@
  },
  {
   "source": "/products/pyne-pod-20k",
-  "destination": "/p/pyne-pod-20k"
+  "destination": "/vape"
  },
  {
   "source": "/products/pyne-pod-20k-zero-nic",
@@ -773,11 +773,11 @@
  },
  {
   "source": "/products/spaceman-10k-pro",
-  "destination": "/p/spaceman-10k-pro"
+  "destination": "/vape"
  },
  {
   "source": "/products/spaceman-sp40000-puff",
-  "destination": "/p/spaceman-sp40000-puff"
+  "destination": "/vape"
  },
  {
   "source": "/products/starbuzz-tabacco",
@@ -801,7 +801,7 @@
  },
  {
   "source": "/products/swft-meta-disposable-vape-30000-puffs",
-  "destination": "/p/swft-meta-disposable-vape-30000-puffs"
+  "destination": "/vape"
  },
  {
   "source": "/products/swisher-sweets",
@@ -813,7 +813,7 @@
  },
  {
   "source": "/products/syntrix-ghost-it-40k",
-  "destination": "/p/syntrix-ghost-it-40k"
+  "destination": "/vape"
  },
  {
   "source": "/products/tatiana-classic-6x44",

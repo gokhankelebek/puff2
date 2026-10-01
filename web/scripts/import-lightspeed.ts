@@ -746,10 +746,88 @@ const PUBLISHABLE_CLASSES = new Set<RegulatoryClass>([
    decided (2026-09-29) that no CBD or THC product is listed online at all, COA
    or not. Hemp still imports and classifies so the report can count it — it
    just never goes out. Reopening it is a decision, not a data fix. */
+/**
+ * Shop edits — corrections the shop hands us that the POS does not (yet)
+ * reflect. Keyed by POS title, exactly as MODEL_OVERRIDES is. We never write
+ * these back to Lightspeed; they live here until the shop fixes the source.
+ *
+ *  - `priceCents` replaces the lowest SKU price.
+ *  - `retired`    takes a discontinued product off the site.
+ *  - `title`      corrects the display name. The slug is left alone on
+ *                 purpose: images and inbound links are keyed on it.
+ *  - `inStock`    the shop says it is on the shelf although the POS count is
+ *                 zero or negative (sales rung up without receiving). Lifts the
+ *                 count just past the "low" tier so it reads "usually here".
+ *
+ * Source of each block is noted so a later list can be checked against it.
+ */
+type ShopEdit = { priceCents?: number; retired?: true; title?: string; inStock?: true };
+const SHOP_EDITS: Record<string, ShopEdit> = {
+  // --- Owner's handwritten vape list, 2026-10-01 ("kalktı" = discontinued).
+  "Spaceman 10K Pro": { retired: true },
+  "Spaceman Sp40000 Puff": { retired: true },
+  "SWFT Meta Disposable Vape 30000 Puffs": { retired: true },
+  "Syntrix Ghost It 40K": { retired: true },
+  "Al Fakher Crown Bar 12k": { retired: true },
+  "Ebcreate BC PRO 40k": { retired: true },
+  "Geek Bar Hookah X DTL 25K": { retired: true },
+  "Lost Mary E-Hookah 26.000 Puff": { retired: true },
+  "Lost Mary Mo 20000 Puff Pro": { retired: true },
+  "Lost Mary Mt 15K": { retired: true },
+  "Lost Vape Orion Bar 50.000 Puff": { retired: true },
+  "Meloso 30k": { retired: true },
+  "MNKE 25k": { retired: true },
+  "North 5k": { retired: true },
+  "Oxbar 50K": { retired: true },
+  "Pyne Pod 20K": { retired: true },
+
+  "Vaporesso Armour Ultra": { priceCents: 11995 },
+  "Vaporesso XRos 3": { priceCents: 6920 },
+  "Vaporesso Xros 3 Mini": { priceCents: 4997 },
+  "Vaporesso Xros 4": { priceCents: 6920 },
+  "Vaporesso Xros 4 Mini": { priceCents: 4997 },
+  "Vaporesso Xros 5": { priceCents: 6920 },
+  "Vaporesso XROS 5 Mini": { priceCents: 4997 },
+  "Vaporesso Xros Pro": { priceCents: 6920 },
+  "Airis Neo 40K": { priceCents: 3399 },
+  "Cookies 30K": { priceCents: 3594 },
+  "Fifty Bar 20.000 Puff": { inStock: true }, // "out of stock değil"
+  "Fifty Bar %2 Nicotine": { priceCents: 3497 },
+  "Geek Bar Pulse 15000 Puffs Disposable": { priceCents: 3691 },
+  "Geek Bar Pulse X 25K": { priceCents: 3991 },
+  "Geek Vape Aegis Legend 5 Kit": { priceCents: 11995 },
+  "Lost Mary MT35000 Turbo": { priceCents: 3991 },
+  "MNKE Bars 25k Zero Nic": { priceCents: 3497 },
+  "Off Stamp Kit": { priceCents: 3594 },
+  "Off Stamp Pod": { priceCents: 2699 },
+  "Pillow Talk Ice Control 40000 Puffs": { priceCents: 3594 },
+  "Pillow Talk 40.000 Puff Sweet Control": { priceCents: 3594 },
+  "Pillow Talk Nicotine Level Control": { priceCents: 3594 },
+  // "40k olacak, 66k değil" — it is the 40K device; the POS name is wrong.
+  "Pyne Pod Click Bogo 66k": { title: "Pyne Pod Click Bogo 40K", priceCents: 3594 },
+};
+
+const editsFired = new Set<string>();
+for (const m of models) {
+  const e = SHOP_EDITS[m.title];
+  if (!e) continue;
+  editsFired.add(m.title);
+  if (e.priceCents !== undefined) m.priceCents = e.priceCents;
+  if (e.inStock && m.stock <= 2) m.stock = 3;
+  if (e.title) m.title = e.title;
+}
+
 for (const m of models) {
   m.brand = brandOf(m.title);
   const classOk = PUBLISHABLE_CLASSES.has(m.regulatoryClass);
   m.publishable = classOk && m.onlineSkus > 0 && m.priceCents !== null;
+}
+
+// After the publish rule, so nothing upstream can put a retired product back.
+for (const [title, e] of Object.entries(SHOP_EDITS)) {
+  if (!e.retired) continue;
+  const m = models.find((x) => x.title === title);
+  if (m) m.publishable = false;
 }
 
 /* ---------------------------------------------------------------------------
@@ -870,6 +948,16 @@ ${Object.keys(MODEL_OVERRIDES).filter((k) => !overridesFired.has(k)).length === 
 Models still unclassified inside a mixed category:
 ${models.filter((m) => m.category && MIXED_CATEGORIES.has(m.category) && m.regulatoryClass === "unknown").map((m) => `- **${m.title}** (${m.category})`).join("\n") || "- none"}
 
+## 5a. Shop edits
+
+${editsFired.size} of ${Object.keys(SHOP_EDITS).length} shop edits matched a product.
+${Object.keys(SHOP_EDITS).filter((k) => !editsFired.has(k)).length === 0
+  ? "None are stale."
+  : "**Stale edits (no matching product — renamed in the POS, or fixed there?):**\n" +
+    Object.keys(SHOP_EDITS).filter((k) => !editsFired.has(k)).map((k) => `- ${k}`).join("\n")}
+
+Retired: ${Object.entries(SHOP_EDITS).filter(([, e]) => e.retired).map(([k]) => k).join(", ") || "none"}.
+
 ## 6. Restricted inventory withheld (${restricted.length})
 
 Firewalled pending counsel. Not published, not linked, not in the sitemap.
@@ -886,6 +974,7 @@ console.log(`publishable     ${publishable.length}`);
 console.log(`unknown         ${needClassifying.length}`);
 console.log(`inferred        ${inferred.size}`);
 console.log(`firewalled      ${firewalled.size}`);
+console.log(`shop edits      ${editsFired.size} of ${Object.keys(SHOP_EDITS).length} matched`);
 console.log(`restricted      ${restricted.length}`);
 console.log(`unmapped flavs  ${unmappedFlavors.length} of ${flavorRelevantTotal} (vape/pouch/hookah only)`);
 console.log(`\n→ ${outCatalog}`);
