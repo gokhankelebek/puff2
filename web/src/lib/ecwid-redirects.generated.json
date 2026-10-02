@@ -301,7 +301,7 @@
  },
  {
   "source": "/products/game",
-  "destination": "/p/game"
+  "destination": "/floor"
  },
  {
   "source": "/products/geek-bar-burj-80k-hookah-vape",

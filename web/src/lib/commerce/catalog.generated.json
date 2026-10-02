@@ -2095,7 +2095,7 @@
   "onlineSkus": 12,
   "skuCount": 12,
   "stock": 535,
-  "priceCents": 1661,
+  "priceCents": 1845,
   "flavors": [
    {
     "value": "Light Blue",
@@ -3033,7 +3033,7 @@
   "onlineSkus": 2,
   "skuCount": 2,
   "stock": 55,
-  "priceCents": 1999,
+  "priceCents": 2307,
   "flavors": [
    {
     "value": "European Blend",
@@ -6140,7 +6140,7 @@
   "vendorHandle": "cigarette-case",
   "title": "Cigarette Case",
   "category": "Tobacco-Pouches",
-  "regulatoryClass": "pouch",
+  "regulatoryClass": "accessory",
   "publishable": false,
   "onlineSkus": 0,
   "skuCount": 1,
@@ -6303,7 +6303,7 @@
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": 14,
-  "priceCents": 799,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Original",
@@ -6348,7 +6348,7 @@
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": 9,
-  "priceCents": 799,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Original",
@@ -6393,7 +6393,7 @@
   "onlineSkus": 0,
   "skuCount": 7,
   "stock": 4,
-  "priceCents": 799,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Original",
@@ -8755,7 +8755,7 @@
   "onlineSkus": 2,
   "skuCount": 2,
   "stock": 3,
-  "priceCents": 1999,
+  "priceCents": 2307,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -13632,7 +13632,7 @@
   "title": "Game",
   "category": "Rolling Papers, Cigarillos, Leaf & Wraps",
   "regulatoryClass": "cigar",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 15,
   "skuCount": 15,
   "stock": 4,
@@ -16903,7 +16903,7 @@
   "onlineSkus": 1,
   "skuCount": 1,
   "stock": 16,
-  "priceCents": 399,
+  "priceCents": 392,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -18271,7 +18271,7 @@
   "onlineSkus": 1,
   "skuCount": 1,
   "stock": 22,
-  "priceCents": 999,
+  "priceCents": 461,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -18292,7 +18292,7 @@
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": 7,
-  "priceCents": 500,
+  "priceCents": 461,
   "flavors": [
    {
     "value": "Original King",
@@ -18436,7 +18436,7 @@
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": 14,
-  "priceCents": 699,
+  "priceCents": 1099,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -24023,14 +24023,14 @@
  {
   "slug": "macanudo-cafe-montego-y-oia",
   "vendorHandle": "macanudo-cafe-montego-y-oia",
-  "title": "Macanudo Cafe Montego Y OIA",
+  "title": "Macanudo Cafe Montego Y Cia 8 Pack",
   "category": "Cigar",
   "regulatoryClass": "cigar",
   "publishable": true,
   "onlineSkus": 1,
   "skuCount": 1,
   "stock": 34,
-  "priceCents": 1599,
+  "priceCents": 3998,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -29574,7 +29574,7 @@
   "onlineSkus": 6,
   "skuCount": 6,
   "stock": 172,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Mint",
@@ -29620,7 +29620,7 @@
   "onlineSkus": 6,
   "skuCount": 6,
   "stock": 131,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Mint",
@@ -29666,7 +29666,7 @@
   "onlineSkus": 6,
   "skuCount": 6,
   "stock": 169,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Citrus",
@@ -33457,7 +33457,7 @@
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 457,
-  "priceCents": 399,
+  "priceCents": 692,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -34602,7 +34602,7 @@
   "onlineSkus": 11,
   "skuCount": 11,
   "stock": 112,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Citrus",
@@ -34668,7 +34668,7 @@
   "onlineSkus": 12,
   "skuCount": 12,
   "stock": 360,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Mango",
@@ -40245,7 +40245,7 @@
   "onlineSkus": 6,
   "skuCount": 6,
   "stock": 13,
-  "priceCents": 1999,
+  "priceCents": 2307,
   "flavors": [
    {
     "value": "Black & Gold",
@@ -43030,7 +43030,7 @@
   "onlineSkus": 0,
   "skuCount": 3,
   "stock": 1,
-  "priceCents": 799,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Cola Ice",
@@ -46519,7 +46519,7 @@
   "onlineSkus": 0,
   "skuCount": 12,
   "stock": 0,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Peppermint",
@@ -46588,7 +46588,7 @@
   "onlineSkus": 0,
   "skuCount": 12,
   "stock": 0,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Winter green",
@@ -46730,7 +46730,7 @@
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 121,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Mint",
@@ -46788,7 +46788,7 @@
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 176,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Mint",
@@ -46846,7 +46846,7 @@
   "onlineSkus": 17,
   "skuCount": 17,
   "stock": 575,
-  "priceCents": 1199,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Peppermint",
@@ -46936,7 +46936,7 @@
   "onlineSkus": 16,
   "skuCount": 16,
   "stock": 342,
-  "priceCents": 1199,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Spearmint",

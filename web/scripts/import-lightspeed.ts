@@ -249,6 +249,9 @@ const MODEL_OVERRIDES: Record<string, Mapping> = {
       "off-site by the cannabinoid firewall until confirmed.",
   },
   "High Hemp Papers": { cls: "accessory" },
+  // Filed under "Tobacco-Pouches" in the POS, which maps to `pouch` — it is a
+  // case, not oral nicotine, and was picking up the house pouch price.
+  "Cigarette Case": { cls: "accessory" },
 
   "NEXA 50 Ultra 2": {
     cls: "ends",
@@ -805,7 +808,34 @@ const SHOP_EDITS: Record<string, ShopEdit> = {
   "Pillow Talk Nicotine Level Control": { priceCents: 3594 },
   // "40k olacak, 66k değil" — it is the 40K device; the POS name is wrong.
   "Pyne Pod Click Bogo 66k": { title: "Pyne Pod Click Bogo 40K", priceCents: 3594 },
+
+  // --- Owner's handwritten tobacco list, 2026-10-02. The odd cents are
+  //     pre-tax prices that land on a round total at Las Vegas's 8.375%
+  //     ($23.07 → $25.00, $4.61 → $5.00, $18.45 → $19.99). Do not "tidy" them.
+  "Game": { retired: true }, // "kalktı 2.99" — every Game SKU was $2.99
+  "Graba Leaf Crushed": { priceCents: 392 }, // "Grabba leaf small"
+  "Hot Skull": { priceCents: 461 },
+  "Hot Skull Spliffarillos Cones": { priceCents: 461 },
+  "Macanudo Cafe Montego Y OIA": { title: "Macanudo Cafe Montego Y Cia 8 Pack", priceCents: 3998 },
+  "Raw Cones": { priceCents: 692 },
+  "Bali Shag": { priceCents: 2307 },
+  "Drum": { priceCents: 2307 },
+  "Super Value Pipe Tobacco": { priceCents: 2307 },
+  "American Spirit": { priceCents: 1845 }, // the cigarettes, $16.61 before
 };
+
+/* "Pouches Ultra ve Alp hariç hepsi 10.99" — every nicotine pouch is $10.99
+   except Zyn Ultra and Alp. A class-wide rule rather than a list, so a pouch
+   the shop adds later gets the house price too. A per-title SHOP_EDITS price
+   still wins over it. */
+const POUCH_PRICE_CENTS = 1099;
+const POUCH_PRICE_EXCEPT = /\bultra\b|\balp\b/i;
+
+for (const m of models) {
+  if (m.regulatoryClass === "pouch" && !POUCH_PRICE_EXCEPT.test(m.title)) {
+    m.priceCents = POUCH_PRICE_CENTS;
+  }
+}
 
 const editsFired = new Set<string>();
 for (const m of models) {
