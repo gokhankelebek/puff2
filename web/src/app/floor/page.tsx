@@ -10,7 +10,7 @@ import {
   Header,
   UtilityBar,
 } from "@/components/Chrome";
-import DepartmentIcon from "@/components/DepartmentIcon";
+import DepartmentArt from "@/components/DepartmentArt";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
   commerce,
@@ -116,15 +116,14 @@ export default async function FloorPage() {
         <Bulbs />
 
         <ul className={fl.grid}>
-          {stocked.map(({ department, total, onShelf }, i) => (
+          {stocked.map(({ department, total, onShelf }) => (
             <li key={department}>
-              <a
-                className={fl.card}
-                href={`/${department}`}
-                data-ground={(i % 4) + 1}
-              >
+              <a className={fl.card} href={`/${department}`}>
                 <span className={fl.shot}>
-                  <DepartmentIcon department={department} />
+                  <DepartmentArt
+                    department={department}
+                    sizes="(min-width: 1200px) 400px, 45vw"
+                  />
                 </span>
                 <span className={fl.name}>
                   {DEPARTMENT_LABELS[department]}

@@ -1,0 +1,23 @@
+/* The element is sized to the render's own 3:2 shape and centred in the shot
+   box, rather than stretched to fill it. The box changes shape a lot — near
+   3:2 on a home card, but ~415x150 on /floor at desktop — and filling it would
+   either crop the tall subjects (vape, bong, hookah) or leave the render's
+   edge as a visible seam inside the box.
+
+   The box paints --art-ground, the renders' own background, and the image's
+   edges are feathered into it, so any spare width reads as more of the same
+   night rather than as a picture with a border. Every subject sits well inside
+   its frame, so the fade only ever touches empty background. */
+.art {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 3 / 2;
+  margin-inline: auto;
+  object-fit: contain;
+  mask-image:
+    linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
+    linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  mask-composite: intersect;
+}

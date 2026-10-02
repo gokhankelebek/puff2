@@ -62,26 +62,19 @@
 
 .card:hover { border-color: var(--border-hover); }
 
-.card[data-ground="1"] .shot { background: var(--photo-1); }
-.card[data-ground="2"] .shot { background: var(--photo-2); }
-.card[data-ground="3"] .shot { background: var(--photo-3); }
-.card[data-ground="4"] .shot { background: var(--photo-4); }
-
 /* Identical geometry to the homepage's .floorShot -- these are the same card
    in two places and must not drift. Capped height because at two-up on a wide
    phone a pure 4/3 box grew to ~280px around a small mark, which reads as a
-   missing image rather than a department card. */
+   missing image rather than a department card. Paints --art-ground behind
+   DepartmentArt; see .floorShot in Home.module.css. */
 .shot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   aspect-ratio: 4 / 3;
   max-height: 150px;
   margin-bottom: 8px;
   border-radius: var(--r-thumb);
-  color: var(--cyan);
+  background: var(--art-ground);
   overflow: hidden;
-  --dept-icon-h: 68%;
 }
 
 .name {

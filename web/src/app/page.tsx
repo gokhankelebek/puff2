@@ -21,6 +21,7 @@ import {
 } from "@/lib/hotels";
 import { SHOP_MALL, SHOP_STREET } from "@/lib/shop";
 import DepartmentIcon from "@/components/DepartmentIcon";
+import DepartmentArt from "@/components/DepartmentArt";
 
 /**
  * Which departments lead the rail.
@@ -175,17 +176,16 @@ export default async function HomePage() {
             </a>
           </div>
           <ul className={s.floorGrid}>
-            {DEPARTMENTS.map((department, i) => {
+            {DEPARTMENTS.map((department) => {
               const n = counts[department] ?? 0;
               return (
                 <li key={department} className={s.floorCell}>
-                  <a
-                    className={s.floorCard}
-                    href={`/${department}`}
-                    data-ground={(i % 4) + 1}
-                  >
+                  <a className={s.floorCard} href={`/${department}`}>
                     <span className={s.floorShot}>
-                      <DepartmentIcon department={department} />
+                      <DepartmentArt
+                        department={department}
+                        sizes="(min-width: 1200px) 220px, (min-width: 768px) 31vw, 45vw"
+                      />
                     </span>
                     <span className={s.floorName}>
                       {DEPARTMENT_LABELS[department]}

@@ -366,35 +366,20 @@
   border-color: var(--border-hover);
 }
 
-/* Grounds rotate so a grid of unshot products does not read as one flat
-   block. Four grounds, cycled. */
-.floorCard[data-ground="1"] .floorShot { background: var(--photo-1); }
-.floorCard[data-ground="2"] .floorShot { background: var(--photo-2); }
-.floorCard[data-ground="3"] .floorShot { background: var(--photo-3); }
-.floorCard[data-ground="4"] .floorShot { background: var(--photo-4); }
-
 /* One shot geometry for every department card, here and on /floor. Keep the
    two in step -- they are the same card rendered in two places.
 
-   The icon is a FRACTION of the box, not a pixel size, so its optical weight
-   is identical at 375 and at 1440. A fixed px icon is a different share of its
-   box at every breakpoint, which is how these drifted apart. */
+   The box holds DepartmentArt, a night render with its ground baked in, so
+   the box paints that same ground in both themes: it reads as one dark
+   photograph inside the card rather than a dark sticker on a light one. */
 .floorShot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   aspect-ratio: 4 / 3;
   max-height: 150px;
   margin-bottom: 8px;
   border-radius: var(--r-thumb);
-  /* The mask paints in currentColor; cyan is the design's label colour and
-     keeps the whole set reading as one family. */
-  color: var(--cyan);
+  background: var(--art-ground);
   overflow: hidden;
-  /* Filling more of the box: at 48% the glyph sat in ~85% empty tint and the
-     card read as a photo slot that failed to load — next to a real storefront
-     photograph, on a page whose whole content is these cards. */
-  --dept-icon-h: 68%;
 }
 
 .floorName {

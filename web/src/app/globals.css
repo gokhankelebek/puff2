@@ -63,6 +63,11 @@
   --photo-4: #1f1524;
   --photo-5: #101f1a;
 
+  /* The ground the department card art (public/dept-art) was rendered on.
+     Defined here only — NOT re-picked for day: the renders are always night,
+     so the box they sit in is too, and it shows while an image loads. */
+  --art-ground: #0d0418;
+
   /* Flavour swatches. This is product data, not brand colour: the only job is
      separating ten families at thumbnail size, so they stay saturated and are
      re-picked per theme rather than tinted from the accents. The design's
