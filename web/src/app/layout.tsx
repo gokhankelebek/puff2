@@ -6,6 +6,7 @@ import InlineScript from "@/components/InlineScript";
 import { SITE_ORIGIN, SITE_INDEXABLE } from "@/lib/shop";
 import { jsonLd } from "@/lib/jsonld";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 /* Marquee Neon uses three faces and each one has exactly one job.
 
@@ -221,6 +222,7 @@ export default function RootLayout({
             the measurement the plan says to have on before tuning. Active only
             on Vercel with Speed Insights enabled in the project. */}
         <SpeedInsights />
+        <GoogleAnalytics />
       </body>
     </html>
   );
