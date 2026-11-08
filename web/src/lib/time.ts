@@ -27,18 +27,11 @@ export function vegasHour(now: Date = new Date()): number {
 /**
  * Is it night in the shop's sense — the hours the sign is the whole pitch?
  *
- * Drives the hero's "IT'S 4 AM." / "IT'S 2 PM." and the rail heading's
- * "MOVING TONIGHT" / "MOVING TODAY". One predicate so the page cannot claim
- * 4 a.m. in the headline while merchandising for noon underneath.
+ * Drives the rail heading's "MOVING TONIGHT" / "MOVING TODAY". The hero
+ * headline has its own hour bands in lib/hero-lines.ts.
  */
 export function isNight(hour: number = vegasHour()): boolean {
   return hour >= 20 || hour < 8;
-}
-
-/** The hero's time-of-day line, e.g. "It's 4 AM." */
-export function hourLabel(hour: number = vegasHour()): string {
-  const h12 = hour % 12 === 0 ? 12 : hour % 12;
-  return `It's ${h12} ${hour < 12 ? "AM" : "PM"}.`;
 }
 
 /**
