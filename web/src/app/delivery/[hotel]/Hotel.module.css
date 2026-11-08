@@ -61,26 +61,8 @@
   text-wrap: pretty;
 }
 
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: var(--tap);
+.ctas {
   margin-top: 20px;
-  padding: 0 26px;
-  border-radius: var(--r-button);
-  background: var(--magenta);
-  color: var(--magenta-ink);
-  font-family: var(--font-display);
-  line-height: 0.92;
-  font-size: 17px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  box-shadow: var(--glow-cta);
-  transition: filter var(--d-state) ease-out;
-}
-.cta:hover {
-  filter: brightness(1.08);
 }
 
 /* --- Facts grid ----------------------------------------------------------- */

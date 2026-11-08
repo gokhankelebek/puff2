@@ -71,7 +71,7 @@ export default async function OrderSheet() {
       {totals.lines.length > 0 ? (
         <section className={o.eta} data-island="lit">
           <p className={o.etaTime}>
-            25–35 min{hotel ? ` to ${hotel.name}` : ""}
+            25–40 min{hotel ? ` to ${hotel.name}` : ""}
           </p>
           <p className={o.etaTerms}>
             {DELIVERY_TERMS_LABEL} · cash or card when we hand it over

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import d from "./Delivery.module.css";
 import Bulbs from "@/components/Bulbs";
+import OrderButtons from "@/components/OrderButtons";
 import {
   AgeBanner,
   BottomNav,
@@ -9,7 +10,6 @@ import {
   Header,
   UtilityBar,
   PHONE_DISPLAY,
-  PHONE_HREF,
 } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
@@ -141,6 +141,9 @@ export default async function DeliveryPage({
             price, whatever you order and wherever you are on the Boulevard.
             You pay the runner at handoff.
           </p>
+          <div className={d.heroCtas}>
+            <OrderButtons />
+          </div>
         </section>
 
         <ul className={d.stats}>
@@ -173,10 +176,11 @@ export default async function DeliveryPage({
             <li className={d.step}>
               <span className={d.stepNum}>2</span>
               <span className={d.stepBody}>
-                <span className={d.stepTitle}>Pick your items</span>
+                <span className={d.stepTitle}>Text us what you want</span>
                 <span className={d.stepNote}>
-                  Anything on the floor that can leave the building. Some items
-                  are in-store only and say so on their page.
+                  Or call. The shelf moves all night, so we confirm what&rsquo;s
+                  in and the total before a runner leaves. Cigarettes are
+                  in-store only.
                 </span>
               </span>
             </li>
@@ -217,11 +221,9 @@ export default async function DeliveryPage({
             typical run time.
           </p>
 
-          <a className={d.cta} href={PHONE_HREF}>
-            Start a delivery
-          </a>
+          <OrderButtons />
           <p className={d.ctaNote}>
-            Text or call {PHONE_DISPLAY}. No account, no card on file.
+            No account, no card on file. Text or call {PHONE_DISPLAY}.
           </p>
         </section>
 

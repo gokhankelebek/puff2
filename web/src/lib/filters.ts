@@ -25,7 +25,9 @@ export function applyFilters(items: Product[], sp: CatalogFilters): Product[] {
     .filter((p) => (sp.flavor ? p.flavorFamily === sp.flavor : true))
     .filter((p) => (sp.nic ? String(p.nicotineMg ?? "") === sp.nic : true))
     .filter((p) => (sp.brand ? p.brand === sp.brand : true))
-    .filter((p) => (sp.inStock === "1" ? p.stock.tier !== "out" : true))
+    .filter((p) => (sp.inStock === "1"
+          ? p.stock.tier === "expected" || p.stock.tier === "verified"
+          : true))
     .filter((p) =>
       Number.isFinite(min) && min > 0 ? (p.puffCount ?? 0) >= min : true,
     )

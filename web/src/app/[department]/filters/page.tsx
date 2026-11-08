@@ -204,7 +204,7 @@ export default async function FilterSheet({
             defaultChecked={sp.inStock === "1"}
           />
           <span className={f.toggleTrack} aria-hidden="true" />
-          <span className={f.toggleLabel}>Only what&rsquo;s on the shelf</span>
+          <span className={f.toggleLabel}>Only what&rsquo;s usually in</span>
         </label>
 
         <div className={f.footer}>

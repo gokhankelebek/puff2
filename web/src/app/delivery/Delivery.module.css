@@ -14,6 +14,8 @@
   color: var(--text);
 }
 
+.heroCtas { margin-top: 18px; }
+
 .heroSub {
   margin-top: 14px;
   max-width: 52ch;
@@ -183,23 +185,6 @@
   font-size: 13px;
   color: var(--text);
   font-variant-numeric: tabular-nums;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: var(--tap);
-  padding: 0 20px;
-  border-radius: var(--r-button);
-  background: var(--magenta);
-  color: var(--magenta-ink);
-  font-family: var(--font-display);
-  line-height: 0.92;
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  box-shadow: var(--glow-cta);
 }
 
 .ctaNote { font-size: 12px; color: var(--text-dim); }

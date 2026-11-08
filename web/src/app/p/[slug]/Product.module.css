@@ -164,6 +164,21 @@
 
 .actions { display: flex; gap: 12px; }
 
+.orderActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pickupLink {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pickupLink:hover { color: var(--text); }
+
 /* Add-to-delivery is 1.4 to hold-it's 1 — delivery is the action the
    business wants, and the design sizes the targets to say so. */
 .primary {

@@ -106,9 +106,14 @@ function departmentFor(m: GeneratedModel): Department {
  * badge that means something and one that lies.
  */
 function stockFor(m: GeneratedModel): Stock {
-  if (m.stock <= 0) return { tier: "out" };
-  if (m.stock <= 2) return { tier: "low", remaining: Math.round(m.stock) };
-  return { tier: "expected" };
+  /* Owner, 2026-11-08: the site "might not be perfectly aligned with the
+     inventory". The export is a point-in-time snapshot, so a count of 1–2 or 0
+     is exactly where it is most likely to be wrong by now. "2 left" and "Out"
+     both read as live facts; neither is one. Anything the POS last saw on the
+     shelf is "usually here", and anything at or near zero is "ask us" — the
+     text to the shop is where stock gets confirmed. */
+  if (m.stock > 2) return { tier: "expected" };
+  return { tier: "unknown" };
 }
 
 /** The most common family across a model's range — drives the tile band. */

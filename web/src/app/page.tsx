@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import s from "./Home.module.css";
 import PageNicotineWarning from "@/components/PageNicotineWarning";
 import Bulbs from "@/components/Bulbs";
+import OrderButtons from "@/components/OrderButtons";
 import { AgeBanner, BottomNav, Footer, Header, UtilityBar } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { hourLabel, isNight, vegasHour } from "@/lib/time";
@@ -128,13 +129,11 @@ export default async function HomePage() {
                 other sale, and for anyone already on the Strip it is the better
                 one. Which fits depends on where the reader is standing, which
                 the page cannot know. */}
+            {/* Text and call lead: that is how an order actually reaches the
+                shop. Walking in stays one tap away in the line above (the
+                address links to /pickup) and in the shop band below. */}
             <div className={s.heroCtas}>
-              <a className={s.ctaPrimary} href="/delivery">
-                Deliver to my hotel
-              </a>
-              <a className={s.ctaGhost} href="/pickup">
-                Come to the shop
-              </a>
+              <OrderButtons note={false} />
             </div>
 
           </div>
@@ -351,9 +350,7 @@ export default async function HomePage() {
               Typical hotel run: 25–40 min
             </p>
           </div>
-          <a className={s.ctaPrimary} href="/delivery">
-            Start a delivery
-          </a>
+          <OrderButtons align="center" />
         </section>
 
       </main>

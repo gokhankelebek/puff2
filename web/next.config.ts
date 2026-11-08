@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
         destination: "/pickup",
         permanent: true,
       },
+      // The Mirage closed in July 2024; its old delivery page was indexed.
+      // Treasure Island is the next property along on the same kerb.
+      {
+        source: "/delivery/mirage",
+        destination: "/delivery/treasure-island",
+        permanent: true,
+      },
       ...ecwidRedirects.map((r) => ({ ...r, permanent: true })),
       // Anything under the old /products/ the crawl did not see. Must stay
       // after the exact map above: redirects match first-listed-first.
