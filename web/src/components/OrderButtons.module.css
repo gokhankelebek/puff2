@@ -1,0 +1,75 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wrap[data-align="center"] {
+  align-items: center;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wrap[data-align="center"] .row {
+  justify-content: center;
+}
+
+.text,
+.call {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  border-radius: var(--r-button);
+  font-family: var(--font-display);
+  line-height: 0.92;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.text {
+  padding: 0 30px;
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  box-shadow: var(--glow-cta);
+  transition: filter var(--d-state) ease-out;
+}
+
+.text:hover {
+  filter: brightness(1.08);
+}
+
+.call {
+  padding: 0 24px;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  transition: border-color var(--d-state) ease-out;
+}
+
+.call:hover {
+  border-color: var(--border-hover);
+}
+
+/* Two peers at natural width overflow a 375px screen; give each the row. */
+@media (max-width: 559px) {
+  .text,
+  .call {
+    flex: 1 1 100%;
+  }
+}
+
+.note {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-dim);
+}

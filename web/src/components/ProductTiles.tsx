@@ -1,5 +1,6 @@
 import s from "./ProductTiles.module.css";
 import { formatMoney, stockLabel, type Product } from "@/lib/commerce";
+import { deliveryTextBody, productTextName, smsHref } from "@/lib/contact";
 
 /**
  * The product card, and there is only one of it.
@@ -44,7 +45,7 @@ function stockNote(p: Product): { text: string; tone: "in" | "low" | "out" | "ra
   const flavors = p.flavors?.length ?? 0;
   if (p.stock.tier !== "out" && flavors > 1) {
     /* A flavour count is a fact about the model, not a stock state. */
-    return { text: `${flavors} flavors in`, tone: "range" };
+    return { text: `${flavors} flavors`, tone: "range" };
   }
   if (p.stock.tier === "low" && typeof p.stock.remaining === "number") {
     return {
@@ -95,15 +96,18 @@ export function ProductTiles({ items }: { items: Product[] }) {
                   A form POST rather than a link: adding to the draft changes
                   state, and a GET that mutates gets fetched by every crawler
                   and link-prefetcher that touches the page. */}
-              {out ? null : (
-                <form className={s.addForm} action="/api/draft" method="POST">
-                  <input type="hidden" name="action" value="add" />
-                  <input type="hidden" name="slug" value={p.slug} />
-                  <input type="hidden" name="next" value="/delivery/order" />
-                  <button className={s.add} type="submit">
-                    Add to delivery
-                  </button>
-                </form>
+              {/* Text-to-order, not a cart. Orders reach the shop by text,
+                  and the shelf here is a snapshot, so the message asks.
+                  Cigarettes are pickup-only and get no delivery text. */}
+              {out || p.inStoreOnly ? null : (
+                <div className={s.addForm}>
+                  <a
+                    className={s.add}
+                    href={smsHref(deliveryTextBody({ item: productTextName(p) }))}
+                  >
+                    Text to order
+                  </a>
+                </div>
               )}
             </article>
           </li>

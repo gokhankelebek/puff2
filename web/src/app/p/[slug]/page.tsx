@@ -4,7 +4,9 @@ import type { Metadata } from "next";
 import s from "./Product.module.css";
 import NicotineWarning from "@/components/NicotineWarning";
 import Bulbs from "@/components/Bulbs";
-import { AgeBanner, Header, BottomNav, PHONE_DISPLAY, PHONE_HREF } from "@/components/Chrome";
+import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
+import OrderButtons from "@/components/OrderButtons";
+import { productTextName, smsHref } from "@/lib/contact";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
   commerce,
@@ -15,7 +17,7 @@ import {
   DEPARTMENT_LABELS,
   type Product,
 } from "@/lib/commerce";
-import { SITE_ORIGIN } from "@/lib/shop";
+import { SITE_ORIGIN, SHOP_STREET } from "@/lib/shop";
 import { jsonLd, breadcrumbLd } from "@/lib/jsonld";
 import {
   DELIVERY_STRIP_FEE_LABEL,
@@ -50,6 +52,8 @@ export default async function ProductPage({
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
+  const productName = productTextName(product);
+
   const perPuff = pricePerThousandPuffs(product);
   const human = puffsInHumanUnits(product);
 
@@ -62,9 +66,9 @@ export default async function ProductPage({
   const availability =
     product.stock.tier === "out"
       ? "https://schema.org/OutOfStock"
-      : product.stock.tier === "low"
-        ? "https://schema.org/LimitedAvailability"
-        : "https://schema.org/InStock";
+      : product.stock.tier === "expected" || product.stock.tier === "verified"
+        ? "https://schema.org/InStock"
+        : "https://schema.org/LimitedAvailability";
   const productLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -186,31 +190,30 @@ export default async function ProductPage({
 
             <StockBlock product={product} />
 
-            <div className={s.actions}>
-              {product.inStoreOnly ? (
-                <>
-                  <p className={s.constraint}>{product.inStoreReason}</p>
-                  <a className={s.primary} href="/pickup">
-                    Pick-Up
-                  </a>
-                </>
-              ) : (
-                <>
-                  <a className={s.primary} href="/delivery">
-                    Delivery
-                  </a>
-                  <a className={s.secondary} href="/pickup">
-                    Pick-Up
-                  </a>
-                </>
-              )}
-              {/* Person-to-person SMS. Automated outbound is prohibited for
-                  this category, but a customer texting our real phone is not
-                  A2P and stays available. */}
-              <a className={s.secondary} href={`sms:+17026137799`}>
-                Text us about this
-              </a>
-            </div>
+            {/* Text and call are how an order reaches the shop — there is no
+                checkout, and the shelf here is a POS snapshot, so the text
+                asks rather than assumes. Person-to-person SMS only. */}
+            {product.inStoreOnly ? (
+              <div className={s.actions}>
+                <p className={s.constraint}>{product.inStoreReason}</p>
+                <a className={s.primary} href="/pickup">
+                  Pick-Up
+                </a>
+                <a
+                  className={s.secondary}
+                  href={smsHref(`Hi Puff Vegas, do you have ${productName}? I'll pick it up.`)}
+                >
+                  Text us about this
+                </a>
+              </div>
+            ) : (
+              <div className={s.orderActions}>
+                <OrderButtons item={productName} />
+                <a className={s.pickupLink} href="/pickup">
+                  Or pick it up — walk in at {SHOP_STREET}
+                </a>
+              </div>
+            )}
 
             {product.regulatoryClass === "cigar" && (
               <p className={s.specs}>

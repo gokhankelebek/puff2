@@ -8,10 +8,9 @@ import {
   Footer,
   Header,
   UtilityBar,
-  PHONE_DISPLAY,
-  PHONE_HREF,
 } from "@/components/Chrome";
 import Bulbs from "@/components/Bulbs";
+import OrderButtons from "@/components/OrderButtons";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
   HOTELS,
@@ -54,7 +53,7 @@ export async function generateMetadata({
   if (!hotel) return { title: "Not found | Puff Vegas" };
   return {
     title: `Vape & Smoke Delivery to ${hotel.name} — $20 Flat, 24 Hours | Puff Vegas`,
-    description: `24-hour vape, cigarette, cigar and nicotine-pouch delivery to ${hotel.name} on the Las Vegas Strip. $20 flat, no minimum, about 25–40 minutes. Meet the runner at valet or rideshare pickup, ID checked at handoff.`,
+    description: `24-hour vape, cigar, hookah and nicotine-pouch delivery to ${hotel.name} on the Las Vegas Strip. Text or call to order: $20 flat, no minimum, about 25–40 minutes. Meet the runner at valet or rideshare pickup, ID checked at handoff.`,
     alternates: { canonical: `/delivery/${hotel.slug}` },
   };
 }
@@ -133,13 +132,13 @@ export default async function HotelDeliveryPage({
             {DELIVERY_STRIP_FEE_LABEL} flat · {DELIVERY_MINIMUM_LABEL}
           </p>
           <p className={h.sub}>
-            Vapes, cigarettes, cigars, hookah and nicotine pouches, run from our
-            counter at {SHOP_STREET} inside {SHOP_MALL} straight to{" "}
-            {hotel.name} — about 25–40 minutes, any hour of the night.
+            Vapes, cigars, hookah and nicotine pouches, run from our counter at{" "}
+            {SHOP_STREET} inside {SHOP_MALL} straight to {hotel.name} — about
+            25–40 minutes, any hour of the night. Cigarettes are in-store only.
           </p>
-          <a className={h.cta} href={PHONE_HREF}>
-            Call to order · {PHONE_DISPLAY}
-          </a>
+          <div className={h.ctas}>
+            <OrderButtons hotel={hotel.name} />
+          </div>
         </section>
 
         <section className={h.facts} aria-label={`Delivery to ${hotel.name}`}>

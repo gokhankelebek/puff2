@@ -119,7 +119,9 @@ export default async function CategoryPage({
     ? Math.max(0, Math.round((Date.now() - counted.getTime()) / 60000))
     : null;
 
-  const inStock = items.filter((p) => p.stock.tier !== "out").length;
+  const inStock = items.filter(
+    (p) => p.stock.tier === "expected" || p.stock.tier === "verified",
+  ).length;
 
   const breadcrumb = breadcrumbLd(SITE_ORIGIN, [
     { name: "Puff Vegas", path: "/" },
@@ -148,8 +150,8 @@ export default async function CategoryPage({
               So both are shown whenever they disagree. */}
           <p className={s.count}>
             {items.length !== inStock
-              ? `${items.length} ${items.length === 1 ? "result" : "results"} · ${inStock} on the shelf right now`
-              : `${inStock} on the shelf right now`}
+              ? `${items.length} ${items.length === 1 ? "result" : "results"} · ${inStock} usually in`
+              : `${items.length} ${items.length === 1 ? "product" : "products"} · text us to check the shelf`}
             {syncMins !== null ? ` · stock updated ${syncMins} min ago` : ""}
           </p>
         </div>

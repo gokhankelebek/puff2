@@ -32,6 +32,18 @@ Every URL in the old Ecwid sitemap 301s here — see
 
 ## Ordering has no back end 🔴
 
+> **Decided 2026-11-08 (owner): text and call are the ordering process.** Every
+> delivery CTA is now *Text your order* (pre-filled with the hotel or item)
+> plus *Call*, via `components/OrderButtons.tsx`. Product tiles say *Text to
+> order* instead of adding to a draft. Because the online catalogue "might not
+> be perfectly aligned with the inventory", stock no longer shows counts or
+> "Out" — anything the POS last saw above 2 is *Usually here*, the rest is
+> *Ask us*, and the text is where stock is confirmed. GA4 counts
+> `click_to_text` and `click_to_call` with a `hotel` param.
+>
+> `/delivery/order` and `/delivery/track` still work but nothing links to the
+> order builder any more. Cutting them is the open follow-up.
+
 The Marquee Neon handoff specifies an order lifecycle: **SEND THE RUNNER**
 creates an order, `/delivery/track` shows a live arrival time, a status list
 advancing `received → packed → en_route → delivered`, and a named runner with

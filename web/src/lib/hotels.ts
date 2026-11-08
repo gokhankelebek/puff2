@@ -69,8 +69,8 @@ export const HOTELS: Hotel[] = [
   { slug: "palazzo", name: "The Palazzo", geo: { lat: 36.1238, lng: -115.1677 } },
   { slug: "wynn", name: "Wynn Las Vegas", geo: { lat: 36.1265, lng: -115.1654 } },
   { slug: "encore", name: "Encore", geo: { lat: 36.1288, lng: -115.1648 } },
+  // The Mirage closed 2024-07-17 for its Hard Rock rebuild; removed 2026-11-08.
   { slug: "treasure-island", name: "Treasure Island", geo: { lat: 36.1219, lng: -115.1726 } },
-  { slug: "mirage", name: "The Mirage", geo: { lat: 36.1212, lng: -115.1742 } },
   { slug: "resorts-world", name: "Resorts World", towers: ["Hilton", "Conrad", "Crockfords"], geo: { lat: 36.1365, lng: -115.1648 } },
   { slug: "sahara", name: "Sahara Las Vegas", geo: { lat: 36.1425, lng: -115.1566 } },
   { slug: "strat", name: "The STRAT", geo: { lat: 36.1475, lng: -115.1556 } },
@@ -222,7 +222,6 @@ export const STRIP_SPINE: SpineStop[] = [
   { kind: "hotel", slug: "treasure-island", side: "west" },
   { kind: "hotel", slug: "palazzo", side: "east" },
   { kind: "hotel", slug: "venetian", side: "east" },
-  { kind: "hotel", slug: "mirage", side: "west" },
   { kind: "hotel", slug: "harrahs", side: "east" },
   { kind: "hotel", slug: "linq", side: "east", center: true },
   { kind: "hotel", slug: "flamingo", side: "east", center: true },

@@ -10,9 +10,9 @@ import { headers } from "next/headers";
 import { PATH_HEADER } from "@/lib/age-shared";
 import { SHOP_ADDRESS_LINE, SHOP_STREET } from "@/lib/shop";
 import { CATALOG_SIZE } from "@/lib/commerce";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
-export const PHONE_DISPLAY = "(702) 613-7799";
-export const PHONE_HREF = "tel:+17026137799";
+export { PHONE_DISPLAY, PHONE_HREF };
 
 /* -------------------------------------------------------------------------
    The lockup.

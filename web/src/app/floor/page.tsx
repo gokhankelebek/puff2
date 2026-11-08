@@ -62,7 +62,9 @@ export default async function FloorPage() {
     return {
       department,
       total: items.length,
-      onShelf: items.filter((p) => p.stock.tier !== "out").length,
+      onShelf: items.filter(
+        (p) => p.stock.tier === "expected" || p.stock.tier === "verified",
+      ).length,
     };
   }).filter((d) => d.total > 0);
 
@@ -89,8 +91,8 @@ export default async function FloorPage() {
           </nav>
           <h1 className={fl.title}>The floor</h1>
           <p className={fl.count}>
-            {stocked.length} departments · {all.length} products on the shelf
-            right now
+            {stocked.length} departments · {all.length} products. The shelf
+            moves all night, so text us to check before you order.
           </p>
         </div>
 
@@ -131,8 +133,8 @@ export default async function FloorPage() {
                 <span className={fl.blurb}>{BLURB[department]}</span>
                 <span className={fl.stock}>
                   {onShelf === total
-                    ? `${total} in stock`
-                    : `${total} listed · ${onShelf} in stock`}
+                    ? `${total} products`
+                    : `${total} listed · ${onShelf} usually in`}
                 </span>
               </a>
             </li>

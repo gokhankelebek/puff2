@@ -75,7 +75,7 @@ export default async function TrackPage() {
             <p className={t.eyebrow}>Sent to the shop</p>
             {/* Deliberately not a clock time. We do not have one, and a
                 number here would be believed. */}
-            <p className={t.window}>25–35 min</p>
+            <p className={t.window}>25–40 min</p>
             <p className={t.where}>
               {hotel?.name ?? "Your hotel"}
               {draft.meet ? ` · ${MEET_LABEL[draft.meet]}` : ""}
