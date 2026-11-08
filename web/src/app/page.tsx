@@ -5,7 +5,8 @@ import Bulbs from "@/components/Bulbs";
 import OrderButtons from "@/components/OrderButtons";
 import { AgeBanner, BottomNav, Footer, Header, UtilityBar } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { hourLabel, isNight, vegasHour } from "@/lib/time";
+import { isNight, vegasHour } from "@/lib/time";
+import { heroLine } from "@/lib/hero-lines";
 import {
   commerce,
   formatMoney,
@@ -88,7 +89,7 @@ export default async function HomePage() {
   /* One clock, read once: the headline and the rail heading cannot disagree
      about what time it is. */
   const night = isNight(hour);
-  const heroHour = hourLabel(hour);
+  const [heroTop, heroBottom] = heroLine(hour);
   const railHeading = night ? "Moving tonight" : "Moving today";
 
   /* Five names, then the count of everything else. HOTELS is the real list,
@@ -106,12 +107,17 @@ export default async function HomePage() {
       <main className={s.main}>
         <section className={s.hero} aria-labelledby="hero-title">
           <div className={s.heroCopy}>
-            <p className={s.eyebrow}>Center Strip · {SHOP_MALL}</p>
-            <h1 className={s.heroTitle} id="hero-title">
-              {heroHour}
-              <br />
-              We&rsquo;re open.
+            {/* The stable, keyword-bearing heading. The big line under it
+                changes with the hour (lib/hero-lines.ts), so it is a <p>:
+                the page's <h1> should not depend on when Google crawls. */}
+            <h1 className={s.eyebrow}>
+              24-hour smoke &amp; vape shop · Center Strip · {SHOP_MALL}
             </h1>
+            <p className={s.heroTitle} id="hero-title">
+              {heroTop}
+              <br />
+              {heroBottom}
+            </p>
             <p className={s.heroSub}>
               Walk in at{" "}
               <a className={s.heroAddr} href="/pickup">
