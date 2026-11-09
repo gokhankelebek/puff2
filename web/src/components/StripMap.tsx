@@ -17,7 +17,7 @@ import s from "./StripMap.module.css";
  *     the Strip, and the whole walk stays inside the mall  (LOCATION.md)
  *   - the 600 row runs along the mall's southern edge, and we are 611-613
  *     between 610 and 614  (LOCATION.md, from the mall's own directory map)
- *   - second level  (the page copy beneath this)
+ *   - ground level  (owner, 2026-11-08 — an earlier "Level 2" was wrong)
  * Nothing is invented to fill the picture. No cross streets, because the repo
  * does not assert any.
  *
@@ -79,7 +79,7 @@ export default function StripMap() {
         d="M252 152 L376 168 C470 186, 500 214, 528 252 L616 282"
       />
       <text className={`${s.label} ${s.minor}`} x="546" y="228">
-        Escalator · Level 2
+        Ground level · 600 row
       </text>
 
       {/* --- Us ------------------------------------------------------------ */}

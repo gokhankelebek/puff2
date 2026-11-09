@@ -25,7 +25,7 @@ export type HeroBand = "day" | "evening" | "late" | "dawn";
 
 const BANDS: Record<HeroBand, readonly HeroLine[]> = {
   day: [
-    ["Center Strip.", "Upstairs at Grand Bazaar."],
+    ["Center Strip.", "Ground level at Grand Bazaar."],
     ["Across from Bellagio.", "Open all day."],
     ["Walk in,", "or we run it to your hotel."],
     ["Forgot your charger?", "We're right here."],

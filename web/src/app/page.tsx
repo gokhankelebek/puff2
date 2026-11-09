@@ -274,8 +274,8 @@ export default async function HomePage() {
                 <span className={s.shopLabel}>To walk in</span>
               </li>
               <li className={s.bandStat}>
-                <span className={s.shopFigure}>2nd</span>
-                <span className={s.shopLabel}>Level, next to Ole Red</span>
+                <span className={s.shopFigure}>611</span>
+                <span className={s.shopLabel}>Ground level, next to Ole Red</span>
               </li>
             </ul>
             <p className={s.shopNote}>
