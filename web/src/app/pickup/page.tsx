@@ -69,9 +69,9 @@ export default async function PickupPage() {
             {SHOP_SUITE}
           </h1>
           <p className={g.where}>
-            Inside {SHOP_MALL}, next to Ole Red. Take the escalator to the
-            second level and follow the 600 numbers — we are on the south side,
-            between 610 and 614.
+            Inside {SHOP_MALL}, next to Ole Red, on the ground level — no
+            stairs. Follow the 600 numbers along the south side; we are between
+            610 and 614.
           </p>
 
           <div className={g.actions}>

@@ -50,7 +50,7 @@ export function UtilityBar({ hotel }: { hotel?: string }) {
       {/* Goes to /pickup rather than straight to a maps app. Google's
           "Grand Bazaar Shops" pin is 85m from the door and outside the mall
           footprint (docs/LOCATION.md), so a raw map link drops someone on the
-          Boulevard with no idea the shop is upstairs between 610 and 614.
+          Boulevard with no idea the shop is on the 600 row between 610 and 614.
           /pickup carries that wayfinding AND a Directions button built from
           the surveyed coordinate. */}
       <a className={s.utilityAddr} href="/pickup">

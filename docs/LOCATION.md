@@ -15,6 +15,11 @@ geo: 36.113777, -115.172005
 Used in `web/src/app/layout.tsx` (JSON-LD `geo` **and** `areaServed.geoMidpoint`)
 and as `SHOP` in `research/ingest/walk-times.py`. Keep those three in sync.
 
+**Ground level.** The owner confirmed on 2026-11-08 that the shop is on the
+ground level of Grand Bazaar Shops, next to Ole Red. Earlier copy ("take the
+escalator to the second level", "Upstairs at Grand Bazaar", "2nd Level") was
+wrong and has been removed. Do not reintroduce a level or escalator.
+
 ## Why not Google's pin
 
 Google's **"Grand Bazaar Shops"** pin is `36.1144636, -115.1724136`. It is:

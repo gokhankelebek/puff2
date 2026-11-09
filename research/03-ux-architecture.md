@@ -333,7 +333,7 @@ Decisions:
         Show this at the counter
 
   Grand Bazaar Shops, Suite 611
-  Upper level, next to Ole Red
+  Ground level, next to Ole Red
 
   ┌──────────────────────────────┐
   │   Walking directions →       │
