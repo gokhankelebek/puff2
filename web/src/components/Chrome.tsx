@@ -192,8 +192,7 @@ export function Footer() {
       </p>
       <p className={s.footerLegal}>
         21+ with valid ID, at the counter and at every handover. Nicotine is an
-        addictive chemical. We do not ship — local delivery only. Hemp products
-        sold in compliance with Nevada law.
+        addictive chemical. We do not ship — local delivery only.
       </p>
       {/* /legal has existed since the rebuild with nothing linking to it —
           reachable only by typing the URL. For a tobacco retailer that is the

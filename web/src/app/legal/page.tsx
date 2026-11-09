@@ -9,8 +9,6 @@ import {
   Footer,
   Header,
   UtilityBar,
-  PHONE_DISPLAY,
-  PHONE_HREF,
 } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { LEGAL_AGE } from "@/lib/age";
@@ -79,20 +77,14 @@ export default async function LegalPage() {
           </p>
         </section>
 
+        {/* Was "Lab reports", promising a COA on every hemp product listed.
+            No hemp or CBD product is listed online (owner, 2026-09-29), so the
+            section described something the site does not sell. */}
         <section className={k.section}>
-          <h2 className={k.h2}>Lab reports</h2>
+          <h2 className={k.h2}>Hemp &amp; CBD</h2>
           <p className={k.body}>
-            Every hemp product we list carries a batch certificate of analysis
-            showing delta-9 THC at or below 0.3% by dry weight. If a batch has
-            no COA on file, it does not appear on this site — that is enforced
-            in the catalogue itself, not by hand.
-          </p>
-          <p className={k.note}>
-            COA lookup by batch is not published yet. Ask at the counter or call{" "}
-            <a className={k.link} href={PHONE_HREF}>
-              {PHONE_DISPLAY}
-            </a>{" "}
-            and we will send the report for the batch you are holding.
+            We do not list hemp, CBD or THC products on this site, and we do
+            not deliver them.
           </p>
         </section>
 
