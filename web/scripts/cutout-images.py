@@ -132,6 +132,11 @@ WEBP_QUALITY = 82
 FORCE_PLATE = {
     "fasta-drop-50k-nicotine-vape": "model keeps only the red frame, box face drops out",
     "lucky-strike": "model keeps the roundel, the white pack body drops out",
+    "swisher-sweets-leaf": "full-bleed pouch; model keeps only the printed leaf",
+    "backwoods-true-wraps": "full-bleed pouch; model keeps only the wordmark",
+    "flum-3000-puffs": "pale device on white; model keeps the white frame",
+    "bob-marley-cons": "white cones on dark grey; model keeps stray shadows",
+    "zig-zag-cones": "packs on white; model keeps the white frame",
 }
 
 

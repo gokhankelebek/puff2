@@ -741,44 +741,52 @@
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 18,
-  "priceCents": 3500,
+  "priceCents": 3594,
   "puffCount": 40000,
   "flavors": [
    {
-    "value": "Mixed Mint",
-    "family": "mint"
+    "value": "Black Razz Baja",
+    "family": "berry"
    },
    {
     "value": "Blue Razz Ice",
     "family": "berry"
    },
    {
+    "value": "Mixed Mint",
+    "family": "mint"
+   },
+   {
     "value": "Pineapple Ice Peach",
     "family": "orchard"
    },
    {
-    "value": "Tangerine White Gummy",
-    "family": "dessert"
-   },
-   {
-    "value": "Watermelon Mango Peach",
+    "value": "Raspberry Watermelon",
     "family": "melon"
    },
    {
-    "value": "Black Razz Baja",
-    "family": "berry"
-   },
-   {
-    "value": "Rasberry Watermelon",
-    "family": "melon"
+    "value": "Sour Grapple",
+    "family": "orchard"
    },
    {
     "value": "Strawberry Mint Candy",
     "family": "berry"
    },
    {
+    "value": "Tangerine White Gummy",
+    "family": "dessert"
+   },
+   {
     "value": "Triple Berry Grape",
     "family": "grape"
+   },
+   {
+    "value": "Watermelon Mango Peach",
+    "family": "melon"
+   },
+   {
+    "value": "Wintergreen Savers",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -1218,12 +1226,12 @@
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 55,
-  "priceCents": 3399,
+  "priceCents": 3400,
   "puffCount": 40000,
   "flavors": [
    {
-    "value": "Grape Lemon",
-    "family": "grape"
+    "value": "Banana Coconut",
+    "family": "tropical"
    },
    {
     "value": "Black Cherry",
@@ -1234,12 +1242,12 @@
     "family": "berry"
    },
    {
-    "value": "Blueberry  Watermelon",
+    "value": "Blueberry Watermelon",
     "family": "melon"
    },
    {
-    "value": "Banana Coconut",
-    "family": "tropical"
+    "value": "Grape Lemon",
+    "family": "grape"
    },
    {
     "value": "Kiwi Dragon Berry",
@@ -1339,7 +1347,7 @@
   "onlineSkus": 3,
   "skuCount": 3,
   "stock": 14,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
     "value": "Cognac",
@@ -1638,20 +1646,40 @@
   "onlineSkus": 22,
   "skuCount": 22,
   "stock": 80,
-  "priceCents": 4499,
+  "priceCents": 4498,
   "puffCount": 60000,
   "flavors": [
    {
-    "value": "Blue Rasberry",
+    "value": "Blue Razz Blast",
     "family": "berry"
-   },
-   {
-    "value": "Gum Mint",
-    "family": "mint"
    },
    {
     "value": "Blueberry Gum",
     "family": "berry"
+   },
+   {
+    "value": "Blueberry Lemonade",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Raspberry",
+    "family": "berry"
+   },
+   {
+    "value": "Cherry Fizz",
+    "family": "orchard"
+   },
+   {
+    "value": "Cool Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Fusion Pop",
+    "family": null
+   },
+   {
+    "value": "Gum Mint",
+    "family": "mint"
    },
    {
     "value": "Lemon Mint",
@@ -1666,56 +1694,32 @@
     "family": null
    },
    {
-    "value": "Cool Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "Peach Ice",
-    "family": "tropical"
-   },
-   {
-    "value": "Strawberry Punch",
-    "family": "berry"
-   },
-   {
-    "value": "Two Apple",
-    "family": "orchard"
-   },
-   {
     "value": "Mango Pineapple",
     "family": "orchard"
-   },
-   {
-    "value": "Watermelon Pineapple",
-    "family": "melon"
-   },
-   {
-    "value": "Cherry Fizz",
-    "family": "orchard"
-   },
-   {
-    "value": "Pineapple Ice",
-    "family": "orchard"
-   },
-   {
-    "value": "Watermelon Lime",
-    "family": "melon"
    },
    {
     "value": "Mint",
     "family": "mint"
    },
    {
+    "value": "Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Pineapple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Strawberry Punch",
+    "family": "berry"
+   },
+   {
     "value": "Summer Dream",
     "family": null
    },
    {
-    "value": "Blueberry Lemonade",
-    "family": "berry"
-   },
-   {
-    "value": "Fushion Pop",
-    "family": null
+    "value": "Two Apple",
+    "family": "orchard"
    },
    {
     "value": "Watermelon Cherry",
@@ -1726,8 +1730,12 @@
     "family": "melon"
    },
    {
-    "value": "Blue Razz Blast",
-    "family": "berry"
+    "value": "Watermelon Lime",
+    "family": "melon"
+   },
+   {
+    "value": "Watermelon Pineapple",
+    "family": "melon"
    }
   ],
   "nicotineMg": [],
@@ -1823,28 +1831,28 @@
     "family": "mint"
    },
    {
-    "value": "Sweet Nectar",
-    "family": null
+    "value": "Classic",
+    "family": "tobacco"
    },
    {
     "value": "Mountain Wintergreen",
     "family": null
    },
    {
-    "value": "Tropical Fruit",
-    "family": "tropical"
-   },
-   {
     "value": "Refreshing Chill",
     "family": null
    },
    {
-    "value": "Classic",
-    "family": "tobacco"
-   },
-   {
     "value": "Spearmint",
     "family": "mint"
+   },
+   {
+    "value": "Sweet Nectar",
+    "family": null
+   },
+   {
+    "value": "Tropical Fruit",
+    "family": "tropical"
    }
   ],
   "nicotineMg": [],
@@ -1873,28 +1881,28 @@
     "family": "mint"
    },
    {
-    "value": "Sweet Nectar",
-    "family": null
+    "value": "Classic",
+    "family": "tobacco"
    },
    {
     "value": "Mountain Wintergreen",
     "family": null
    },
    {
-    "value": "Tropical Fruit",
-    "family": "tropical"
-   },
-   {
     "value": "Refreshing Chill",
     "family": null
    },
    {
-    "value": "Classic",
-    "family": "tobacco"
-   },
-   {
     "value": "Spearmint",
     "family": "mint"
+   },
+   {
+    "value": "Sweet Nectar",
+    "family": null
+   },
+   {
+    "value": "Tropical Fruit",
+    "family": "tropical"
    }
   ],
   "nicotineMg": [],
@@ -1923,28 +1931,28 @@
     "family": "mint"
    },
    {
-    "value": "Sweet Nectar",
-    "family": null
+    "value": "Classic",
+    "family": "tobacco"
    },
    {
     "value": "Mountain Wintergreen",
     "family": null
    },
    {
-    "value": "Tropical Fruit",
-    "family": "tropical"
-   },
-   {
     "value": "Refreshing Chill",
     "family": null
    },
    {
-    "value": "Classic",
-    "family": "tobacco"
-   },
-   {
     "value": "Spearmint",
     "family": "mint"
+   },
+   {
+    "value": "Sweet Nectar",
+    "family": null
+   },
+   {
+    "value": "Tropical Fruit",
+    "family": "tropical"
    }
   ],
   "nicotineMg": [],
@@ -2102,7 +2110,23 @@
     "family": null
    },
    {
+    "value": "Gold",
+    "family": null
+   },
+   {
     "value": "Sky",
+    "family": null
+   },
+   {
+    "value": "Orange",
+    "family": "citrus"
+   },
+   {
+    "value": "Purple",
+    "family": null
+   },
+   {
+    "value": "Turquoise",
     "family": null
    },
    {
@@ -2114,31 +2138,15 @@
     "family": null
    },
    {
+    "value": "Celadon",
+    "family": null
+   },
+   {
     "value": "Yellow",
     "family": null
    },
    {
-    "value": "Celedon",
-    "family": null
-   },
-   {
     "value": "Dark Green",
-    "family": null
-   },
-   {
-    "value": "Orange",
-    "family": "citrus"
-   },
-   {
-    "value": "Turquoise",
-    "family": null
-   },
-   {
-    "value": "Gold",
-    "family": null
-   },
-   {
-    "value": "Purple",
     "family": null
    },
    {
@@ -2781,111 +2789,11 @@
   "onlineSkus": 31,
   "skuCount": 31,
   "stock": 319,
-  "priceCents": 1000,
+  "priceCents": 997,
   "flavors": [
    {
     "value": "Banana",
     "family": "tropical"
-   },
-   {
-    "value": "Black Russian",
-    "family": null
-   },
-   {
-    "value": "Dark Leaf",
-    "family": null
-   },
-   {
-    "value": "Cognac",
-    "family": null
-   },
-   {
-    "value": "Wild Rum",
-    "family": null
-   },
-   {
-    "value": "Zaza",
-    "family": null
-   },
-   {
-    "value": "Generation",
-    "family": null
-   },
-   {
-    "value": "Vanilla",
-    "family": "dessert"
-   },
-   {
-    "value": "Aromatic",
-    "family": null
-   },
-   {
-    "value": "Smooth",
-    "family": null
-   },
-   {
-    "value": "Grape",
-    "family": "grape"
-   },
-   {
-    "value": "Chocolate",
-    "family": "dessert"
-   },
-   {
-    "value": "Dark Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Smoked Caramel",
-    "family": "dessert"
-   },
-   {
-    "value": "Nola",
-    "family": null
-   },
-   {
-    "value": "Tical",
-    "family": null
-   },
-   {
-    "value": "Atl Southern Sweet Tea",
-    "family": null
-   },
-   {
-    "value": "Chi Sweet Summertime",
-    "family": null
-   },
-   {
-    "value": "Rum Cake",
-    "family": "dessert"
-   },
-   {
-    "value": "Caddy Cream",
-    "family": null
-   },
-   {
-    "value": "The Maraton",
-    "family": null
-   },
-   {
-    "value": "Philly",
-    "family": null
-   },
-   {
-    "value": "Irish Cream",
-    "family": null
-   },
-   {
-    "value": "Honey",
-    "family": null
-   },
-   {
-    "value": "Honey Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Original",
-    "family": "unflavored"
    },
    {
     "value": "Sweet Aromatic",
@@ -2896,7 +2804,75 @@
     "family": null
    },
    {
-    "value": "Dark Stout",
+    "value": "Original",
+    "family": "unflavored"
+   },
+   {
+    "value": "Black Russian",
+    "family": null
+   },
+   {
+    "value": "Chocolate",
+    "family": "dessert"
+   },
+   {
+    "value": "Dark Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Dark Leaf",
+    "family": null
+   },
+   {
+    "value": "Dark Scout",
+    "family": null
+   },
+   {
+    "value": "Honey Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Smooth",
+    "family": null
+   },
+   {
+    "value": "Smoked Caramel",
+    "family": "dessert"
+   },
+   {
+    "value": "Tical",
+    "family": null
+   },
+   {
+    "value": "Wild Rum",
+    "family": null
+   },
+   {
+    "value": "Philly",
+    "family": null
+   },
+   {
+    "value": "Nola",
+    "family": null
+   },
+   {
+    "value": "Honey",
+    "family": null
+   },
+   {
+    "value": "Vanilla",
+    "family": "dessert"
+   },
+   {
+    "value": "Rum Cake",
+    "family": "dessert"
+   },
+   {
+    "value": "Marathon",
+    "family": null
+   },
+   {
+    "value": "Bet",
     "family": null
    },
    {
@@ -2907,7 +2883,7 @@
   "nicotineMg": [],
   "nonFlavorVariants": {
    "hardware": 0,
-   "packSize": 1,
+   "packSize": 0,
    "other": 0
   },
   "imageUrl": null,
@@ -2966,19 +2942,19 @@
   "title": "Backwoods True Wraps",
   "category": "Leaf",
   "regulatoryClass": "rollYourOwn",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 3,
-  "stock": -4,
-  "priceCents": 999,
+  "stock": 3,
+  "priceCents": 997,
   "flavors": [
-   {
-    "value": "Original",
-    "family": "unflavored"
-   },
    {
     "value": "Aromatic",
     "family": null
+   },
+   {
+    "value": "Original",
+    "family": "unflavored"
    },
    {
     "value": "Vanilla",
@@ -3213,7 +3189,7 @@
     "family": "mint"
    },
    {
-    "value": "De luxe",
+    "value": "De Luxe",
     "family": null
    },
    {
@@ -3405,63 +3381,47 @@
   "onlineSkus": 14,
   "skuCount": 14,
   "stock": 1256,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
-    "value": "Original",
+    "value": "Casino Plastic Tip",
+    "family": null
+   },
+   {
+    "value": "Casino Wood Tip",
+    "family": null
+   },
+   {
+    "value": "Jazz Plastic Tip",
+    "family": null
+   },
+   {
+    "value": "Jazz Wood Tip",
+    "family": null
+   },
+   {
+    "value": "Wine Plastic Tip",
+    "family": null
+   },
+   {
+    "value": "Wine Wood Tip",
+    "family": null
+   },
+   {
+    "value": "Sweets Plastic Tip",
+    "family": null
+   },
+   {
+    "value": "Sweets Wood Tip",
+    "family": null
+   },
+   {
+    "value": "Original Plastic Tip",
     "family": "unflavored"
    },
    {
-    "value": "Cream",
-    "family": null
-   },
-   {
-    "value": "Wine",
-    "family": null
-   },
-   {
-    "value": "Original Wood",
+    "value": "Original Wood Tip",
     "family": "unflavored"
-   },
-   {
-    "value": "Wine Wood",
-    "family": null
-   },
-   {
-    "value": "Select",
-    "family": null
-   },
-   {
-    "value": "Jazz",
-    "family": null
-   },
-   {
-    "value": "Jazz Wood",
-    "family": null
-   },
-   {
-    "value": "Casino Wood",
-    "family": null
-   },
-   {
-    "value": "Sweet",
-    "family": null
-   },
-   {
-    "value": "Royale",
-    "family": null
-   },
-   {
-    "value": "Sweet Wood",
-    "family": null
-   },
-   {
-    "value": "Casino",
-    "family": null
-   },
-   {
-    "value": "Sweet Plastic",
-    "family": null
    }
   ],
   "nicotineMg": [],
@@ -3483,50 +3443,46 @@
   "onlineSkus": 11,
   "skuCount": 11,
   "stock": 288,
-  "priceCents": 1000,
+  "priceCents": 997,
   "flavors": [
    {
-    "value": "Original",
-    "family": "unflavored"
-   },
-   {
-    "value": "Cherry",
+    "value": "Apple Plastic Tip",
     "family": "orchard"
    },
    {
-    "value": "Wine",
+    "value": "Cream Plastic Tip",
     "family": null
    },
    {
-    "value": "Cream Plastic",
+    "value": "Jazz Plastic Tip",
     "family": null
    },
    {
-    "value": "Apple",
-    "family": "orchard"
+    "value": "Jazz Wood Tip",
+    "family": null
    },
    {
-    "value": "Original Wood",
+    "value": "Wine Plastic Tip",
+    "family": null
+   },
+   {
+    "value": "Wine Wood Tip",
+    "family": null
+   },
+   {
+    "value": "Original Plastic Tip",
     "family": "unflavored"
    },
    {
-    "value": "Wine Wood",
-    "family": null
+    "value": "Original Wood Tip",
+    "family": "unflavored"
    },
    {
-    "value": "Jazz",
-    "family": null
+    "value": "Original Filter Tip",
+    "family": "unflavored"
    },
    {
-    "value": "Originnal FT",
-    "family": null
-   },
-   {
-    "value": "Sweets FT",
-    "family": null
-   },
-   {
-    "value": "Jazz Wood",
+    "value": "Sweets Filter Tip",
     "family": null
    }
   ],
@@ -3702,11 +3658,11 @@
   "title": "Blazy Susan Cons",
   "category": "Papper & Cons",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": 30,
-  "priceCents": 699,
+  "priceCents": 692,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -3714,7 +3670,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Blazy Susan"
  },
  {
   "slug": "blazy-susan-papers",
@@ -3734,7 +3691,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Blazy Susan"
  },
  {
   "slug": "bleecker-st",
@@ -4116,16 +4074,8 @@
   "onlineSkus": 7,
   "skuCount": 7,
   "stock": 36,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
-   {
-    "value": "Smooth",
-    "family": null
-   },
-   {
-    "value": "Cherry",
-    "family": "orchard"
-   },
    {
     "value": "Grape",
     "family": "grape"
@@ -4139,7 +4089,11 @@
     "family": null
    },
    {
-    "value": "Cocoa",
+    "value": "Cherry",
+    "family": "orchard"
+   },
+   {
+    "value": "Smooth",
     "family": null
    },
    {
@@ -4264,11 +4218,11 @@
   "title": "Bob Marley Cons",
   "category": "Papper & Cons",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 1,
   "stock": 16,
-  "priceCents": 699,
+  "priceCents": 692,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -4276,7 +4230,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Bob Marley"
  },
  {
   "slug": "bob-marley-papers",
@@ -4296,7 +4251,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Bob Marley"
  },
  {
   "slug": "body-armor-20oz",
@@ -4698,6 +4654,10 @@
     "family": "mint"
    },
    {
+    "value": "Crush Silver Menthol",
+    "family": "mint"
+   },
+   {
     "value": "Crush Smooth",
     "family": null
    },
@@ -4714,6 +4674,14 @@
     "family": null
    },
    {
+    "value": "Red",
+    "family": null
+   },
+   {
+    "value": "Blue",
+    "family": null
+   },
+   {
     "value": "Gold",
     "family": null
    },
@@ -4723,22 +4691,6 @@
    },
    {
     "value": "Jade Silver Menthol",
-    "family": "mint"
-   },
-   {
-    "value": "Camel none Filter",
-    "family": null
-   },
-   {
-    "value": "Red",
-    "family": null
-   },
-   {
-    "value": "Blue",
-    "family": null
-   },
-   {
-    "value": "Crush Silver Menthol",
     "family": "mint"
    }
   ],
@@ -8393,63 +8345,7 @@
   "puffCount": 25000,
   "flavors": [
    {
-    "value": "Baghdad Nights",
-    "family": null
-   },
-   {
-    "value": "Clear",
-    "family": "unflavored"
-   },
-   {
-    "value": "Pure Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Strawberry Bubble Gum",
-    "family": "berry"
-   },
-   {
-    "value": "Omg Fusion",
-    "family": null
-   },
-   {
-    "value": "Martino",
-    "family": null
-   },
-   {
-    "value": "Strawberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Double Apple",
-    "family": "orchard"
-   },
-   {
-    "value": "Gum Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
-    "value": "The Duke",
-    "family": null
-   },
-   {
-    "value": "Honey melon",
-    "family": "melon"
-   },
-   {
-    "value": "Don Juan",
-    "family": null
-   },
-   {
-    "value": "Peach Cola",
+    "value": "Passion Fruit Guava",
     "family": "tropical"
    },
    {
@@ -8457,19 +8353,31 @@
     "family": "dessert"
    },
    {
-    "value": "Crazy Lemon",
-    "family": "citrus"
+    "value": "Blueberry Gummy Bear",
+    "family": "dessert"
    },
    {
-    "value": "Passion Fruit Guava",
-    "family": "tropical"
+    "value": "Mixed Berries",
+    "family": null
    },
    {
-    "value": "Grape Lemon",
-    "family": "grape"
+    "value": "Pure Mint",
+    "family": "mint"
    },
    {
-    "value": "Habibilicious",
+    "value": "Clear",
+    "family": "unflavored"
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "Baghdad Nights",
     "family": null
    }
   ],
@@ -8838,7 +8746,7 @@
   "title": "Dunhill",
   "category": "Cigarettes",
   "regulatoryClass": "cigarette",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 3,
   "stock": 67,
@@ -8863,7 +8771,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Dunhill"
  },
  {
   "slug": "durex-condoms",
@@ -8895,30 +8804,10 @@
   "onlineSkus": 16,
   "skuCount": 16,
   "stock": 425,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
-    "value": "Sweet",
-    "family": null
-   },
-   {
-    "value": "Blue Dream",
-    "family": null
-   },
-   {
-    "value": "Royal Haze",
-    "family": null
-   },
-   {
-    "value": "Platinum",
-    "family": null
-   },
-   {
-    "value": "Gold",
-    "family": null
-   },
-   {
-    "value": "Diamond",
+    "value": "Gold Fusion",
     "family": null
    },
    {
@@ -8926,7 +8815,7 @@
     "family": "tropical"
    },
    {
-    "value": "Sunset Dream",
+    "value": "Diamond Fusion",
     "family": null
    },
    {
@@ -8934,35 +8823,43 @@
     "family": null
    },
    {
-    "value": "Blue Razz",
+    "value": "Sweet Fusion",
+    "family": null
+   },
+   {
+    "value": "Og Fusion",
+    "family": null
+   },
+   {
+    "value": "Royal Haze",
+    "family": null
+   },
+   {
+    "value": "Platinum Fusion",
+    "family": null
+   },
+   {
+    "value": "Irish Cream",
+    "family": null
+   },
+   {
+    "value": "Java Fusion",
+    "family": null
+   },
+   {
+    "value": "Blue Dream Fusion",
+    "family": null
+   },
+   {
+    "value": "Berry Fusion",
     "family": "berry"
-   },
-   {
-    "value": "Irish",
-    "family": null
-   },
-   {
-    "value": "Honey",
-    "family": null
-   },
-   {
-    "value": "Java",
-    "family": null
-   },
-   {
-    "value": "Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Silver",
-    "family": null
    }
   ],
   "nicotineMg": [],
   "nonFlavorVariants": {
    "hardware": 0,
    "packSize": 0,
-   "other": 1
+   "other": 0
   },
   "imageUrl": null,
   "brand": "Dutch"
@@ -9434,11 +9331,11 @@
   "title": "Elements Cone",
   "category": "Papper & Cons",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 1,
   "stock": 37,
-  "priceCents": 699,
+  "priceCents": 692,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -9446,7 +9343,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Elements"
  },
  {
   "slug": "elements-cons",
@@ -9466,7 +9364,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Elements"
  },
  {
   "slug": "elements-papers",
@@ -9486,7 +9385,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Elements"
  },
  {
   "slug": "elite-pro-foil-with-holes",
@@ -10241,13 +10141,9 @@
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 44,
-  "priceCents": 3699,
+  "priceCents": 3594,
   "puffCount": 50000,
   "flavors": [
-   {
-    "value": "Blue Razz",
-    "family": "berry"
-   },
    {
     "value": "Berry Punch",
     "family": "berry"
@@ -10267,18 +10163,6 @@
    {
     "value": "Peach Ice",
     "family": "tropical"
-   },
-   {
-    "value": "Strawberry Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry Kiwi",
-    "family": "berry"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
    }
   ],
   "nicotineMg": [],
@@ -10390,20 +10274,56 @@
   "onlineSkus": 38,
   "skuCount": 38,
   "stock": 3,
-  "priceCents": 3399,
+  "priceCents": 3400,
   "puffCount": 20000,
   "flavors": [
+   {
+    "value": "Apple Cronut",
+    "family": "orchard"
+   },
+   {
+    "value": "Baja Burst",
+    "family": null
+   },
+   {
+    "value": "Baja Mango",
+    "family": "tropical"
+   },
    {
     "value": "Baja Slushie",
     "family": null
    },
    {
-    "value": "Strawberry Shortcake",
+    "value": "Berry Pop",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Cereal Donut Milk",
     "family": "dessert"
    },
    {
-    "value": "Watermelon Ice",
-    "family": "melon"
+    "value": "Blueberry Pound Cake",
+    "family": "dessert"
+   },
+   {
+    "value": "Bonker Berries",
+    "family": null
+   },
+   {
+    "value": "Butterbean",
+    "family": null
+   },
+   {
+    "value": "Chocolate Creme",
+    "family": "dessert"
+   },
+   {
+    "value": "Cinnamon Funnel Cake",
+    "family": "dessert"
+   },
+   {
+    "value": "Cookie Butter",
+    "family": "dessert"
    },
    {
     "value": "Gold Tobacco",
@@ -10414,47 +10334,19 @@
     "family": "orchard"
    },
    {
-    "value": "Pineapple Whip",
-    "family": "orchard"
-   },
-   {
     "value": "Gummy Whip",
     "family": "dessert"
-   },
-   {
-    "value": "Strawberry Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "HoneyBerry Cream",
-    "family": "berry"
-   },
-   {
-    "value": "Vanilla Bean Tobacco",
-    "family": "dessert"
-   },
-   {
-    "value": "Lava Blast",
-    "family": null
    },
    {
     "value": "Hawaiian Nectar",
     "family": "tropical"
    },
    {
-    "value": "Pink Sour Straws",
-    "family": null
+    "value": "HoneyBerry Cream",
+    "family": "berry"
    },
    {
-    "value": "Yeti Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Rainbow Road",
+    "value": "Lava Blast",
     "family": null
    },
    {
@@ -10462,56 +10354,40 @@
     "family": null
    },
    {
-    "value": "Butterbean",
-    "family": null
+    "value": "Mint",
+    "family": "mint"
    },
    {
-    "value": "Strawberry Cereal Donut Milk",
-    "family": "dessert"
-   },
-   {
-    "value": "Blueberry Cereal Donut Milk",
-    "family": "dessert"
-   },
-   {
-    "value": "Vanilla Custard",
-    "family": "dessert"
-   },
-   {
-    "value": "Cinnamon Funnel Cake",
-    "family": "dessert"
-   },
-   {
-    "value": "Rasberry Jam",
-    "family": "berry"
+    "value": "Peach Cobbler",
+    "family": "tropical"
    },
    {
     "value": "Pina Lush",
     "family": null
    },
    {
-    "value": "Blueberry Pound Cake",
-    "family": "dessert"
+    "value": "Pineapple Whip",
+    "family": "orchard"
+   },
+   {
+    "value": "Pink Sour Straws",
+    "family": null
    },
    {
     "value": "Polar Ice",
     "family": "mint"
    },
    {
-    "value": "Cookie Butter",
-    "family": "dessert"
-   },
-   {
-    "value": "Bonker Berries",
+    "value": "Rainbow Road",
     "family": null
    },
    {
-    "value": "Baja Burst",
-    "family": null
-   },
-   {
-    "value": "Berry Pop",
+    "value": "Raspberry Jam",
     "family": "berry"
+   },
+   {
+    "value": "Salted Caramel",
+    "family": "dessert"
    },
    {
     "value": "Southern Tobacco",
@@ -10522,24 +10398,52 @@
     "family": "mint"
    },
    {
-    "value": "Apple Cronut",
-    "family": "orchard"
+    "value": "Strawberry Beltz",
+    "family": "berry"
    },
    {
-    "value": "Chocolate Creme",
+    "value": "Strawberry Cereal Donut Milk",
     "family": "dessert"
    },
    {
-    "value": "Peach Cobbler",
-    "family": "tropical"
+    "value": "Strawberry Shortcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "Tree Leches",
+    "family": null
+   },
+   {
+    "value": "Vanilla Bean Tobacco",
+    "family": "dessert"
+   },
+   {
+    "value": "Vanilla Custard",
+    "family": "dessert"
+   },
+   {
+    "value": "Watermelon Hubba",
+    "family": "melon"
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
    },
    {
     "value": "White Cherry Slushie",
     "family": "orchard"
    },
    {
-    "value": "Salted Caramel",
-    "family": "dessert"
+    "value": "White Punch Raspberry",
+    "family": "berry"
+   },
+   {
+    "value": "Yeti Mint",
+    "family": "mint"
    }
   ],
   "nicotineMg": [],
@@ -10984,48 +10888,24 @@
   "onlineSkus": 10,
   "skuCount": 10,
   "stock": 23,
-  "priceCents": 3699,
+  "priceCents": 3594,
   "puffCount": 10000,
   "flavors": [
    {
-    "value": "taro ice",
-    "family": "mint"
+    "value": "Banana",
+    "family": "tropical"
+   },
+   {
+    "value": "Clear Oolong",
+    "family": null
    },
    {
     "value": "Clear",
     "family": "unflavored"
    },
    {
-    "value": "Mint",
-    "family": "mint"
-   },
-   {
-    "value": "crisp green",
-    "family": null
-   },
-   {
-    "value": "Pink Guava",
-    "family": "tropical"
-   },
-   {
-    "value": "Cola Ice",
-    "family": "mint"
-   },
-   {
     "value": "Lemon Pineapple",
     "family": "orchard"
-   },
-   {
-    "value": "Lush Ice",
-    "family": "mint"
-   },
-   {
-    "value": "Banana",
-    "family": "tropical"
-   },
-   {
-    "value": "clear oolong",
-    "family": null
    }
   ],
   "nicotineMg": [],
@@ -11237,67 +11117,23 @@
   "title": "Flum 3000 Puffs",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 22,
   "stock": 45,
-  "priceCents": 2599,
+  "priceCents": 2499,
   "puffCount": 3000,
   "flavors": [
-   {
-    "value": "Berry Fusion",
-    "family": "berry"
-   },
-   {
-    "value": "Peach Ice Tea",
-    "family": "tropical"
-   },
-   {
-    "value": "Tobacco Cream",
-    "family": "tobacco"
-   },
    {
     "value": "Aloe Grape",
     "family": "grape"
    },
    {
-    "value": "Lush Ice",
-    "family": "mint"
+    "value": "Apple Icy",
+    "family": "orchard"
    },
    {
-    "value": "Mixed Berries",
-    "family": null
-   },
-   {
-    "value": "De`lo Lychee",
-    "family": "tropical"
-   },
-   {
-    "value": "Strawberry Ice Cream",
-    "family": "dessert"
-   },
-   {
-    "value": "Nana Cobbler",
-    "family": null
-   },
-   {
-    "value": "Fruity Hawaii",
-    "family": null
-   },
-   {
-    "value": "Tropical Punch",
-    "family": "tropical"
-   },
-   {
-    "value": "Litchi Ice",
-    "family": "mint"
-   },
-   {
-    "value": "Tropical Delight",
-    "family": "tropical"
-   },
-   {
-    "value": "Strawberry Banana",
+    "value": "Blue Raspberry Ice",
     "family": "berry"
    },
    {
@@ -11305,32 +11141,36 @@
     "family": "unflavored"
    },
    {
-    "value": "Blue Raspberry Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Peach Ice",
-    "family": "tropical"
-   },
-   {
-    "value": "Rainbow Skittle",
-    "family": "dessert"
-   },
-   {
-    "value": "Aloe Mango Melon Ice",
-    "family": "melon"
+    "value": "Cool Mint",
+    "family": "mint"
    },
    {
     "value": "Guava Citrus",
     "family": "tropical"
    },
    {
-    "value": "Icy Berry Lemon",
-    "family": "berry"
+    "value": "Gummy Drop",
+    "family": "dessert"
    },
    {
-    "value": "Apple Icy",
-    "family": "orchard"
+    "value": "Lime Romance",
+    "family": "citrus"
+   },
+   {
+    "value": "Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Tropical Delight",
+    "family": "tropical"
+   },
+   {
+    "value": "Tropical Punch",
+    "family": "tropical"
    }
   ],
   "nicotineMg": [],
@@ -11675,127 +11515,187 @@
   "onlineSkus": 47,
   "skuCount": 47,
   "stock": 1055,
-  "priceCents": 3699,
+  "priceCents": 3691,
   "puffCount": 50000,
   "flavors": [
    {
-    "value": "white peach rasberry",
+    "value": "Aloe Grape",
+    "family": "grape"
+   },
+   {
+    "value": "Aloe Grape Aloe Watermelon",
+    "family": "grape"
+   },
+   {
+    "value": "Aloe Watermelon Sour Sweet",
+    "family": "melon"
+   },
+   {
+    "value": "Banana Smoothie Strawberry",
     "family": "berry"
    },
    {
-    "value": "clear",
-    "family": "unflavored"
+    "value": "Blue Rancher Lemonade",
+    "family": "dessert"
    },
    {
-    "value": "naked spring water",
-    "family": null
-   },
-   {
-    "value": "cool mint icy",
-    "family": "mint"
-   },
-   {
-    "value": "Bluerazz ice triple berry",
+    "value": "Blue Razz Lemonade",
     "family": "berry"
-   },
-   {
-    "value": "banana smoothy strawbery",
-    "family": "tropical"
-   },
-   {
-    "value": "white peach lemon head",
-    "family": "tropical"
-   },
-   {
-    "value": "watermeloon b pop",
-    "family": null
-   },
-   {
-    "value": "sour fab citrus ice",
-    "family": "citrus"
-   },
-   {
-    "value": "green apple fuji",
-    "family": "orchard"
-   },
-   {
-    "value": "mango strawberry",
-    "family": "berry"
-   },
-   {
-    "value": "Miami Mint-Mint Slushy",
-    "family": "mint"
-   },
-   {
-    "value": "tobacco gold",
-    "family": "tobacco"
    },
    {
     "value": "BlueRazz Ice",
     "family": "berry"
    },
    {
-    "value": "Aloe grape",
-    "family": "grape"
+    "value": "Bluerazz Ice Triple Berry",
+    "family": "berry"
    },
    {
-    "value": "Watermelon ice",
-    "family": "melon"
-   },
-   {
-    "value": "Root soda vanilla",
+    "value": "Cherry Strawberry Gummy",
     "family": "dessert"
    },
    {
-    "value": "Thai mango juice peach",
+    "value": "Clear",
+    "family": "unflavored"
+   },
+   {
+    "value": "Cola Ice",
+    "family": "mint"
+   },
+   {
+    "value": "Cola Ice Cherry",
+    "family": "orchard"
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Cool Mint Icy Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Crush Mango Strawberry",
+    "family": "berry"
+   },
+   {
+    "value": "Fresh Menthol",
+    "family": "mint"
+   },
+   {
+    "value": "Gold",
+    "family": null
+   },
+   {
+    "value": "Green Apple Fuji",
+    "family": "orchard"
+   },
+   {
+    "value": "Green Apple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Green Crisp Watermelon Icy",
+    "family": "melon"
+   },
+   {
+    "value": "Heartbeat Watermelon B-Pop",
+    "family": "dessert"
+   },
+   {
+    "value": "Icy Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Lemon Drop",
+    "family": "citrus"
+   },
+   {
+    "value": "Lemonade Slush",
+    "family": "citrus"
+   },
+   {
+    "value": "Mango Peach",
     "family": "tropical"
    },
    {
-    "value": "Strawberry watermelon icy",
-    "family": "melon"
+    "value": "Mango Strawberry",
+    "family": "berry"
    },
    {
-    "value": "Blue rancher lemonade",
-    "family": "dessert"
+    "value": "Mango Tango",
+    "family": "tropical"
+   },
+   {
+    "value": "Match Slushy",
+    "family": null
+   },
+   {
+    "value": "Mexican Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint-Mint Slushy",
+    "family": "mint"
+   },
+   {
+    "value": "Naked Spring Water",
+    "family": null
    },
    {
     "value": "Passion Fruit Mango",
     "family": "tropical"
    },
    {
-    "value": "Blue razz lemonade",
+    "value": "Passion Kiwi Pineapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Peach Mango Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Pineapple Coconut Slushy",
+    "family": "orchard"
+   },
+   {
+    "value": "Pink Lemonade Mixberry",
     "family": "berry"
    },
    {
-    "value": "Aloe grape aloe watermelon",
+    "value": "Raspberry Grape Guava",
     "family": "grape"
    },
    {
-    "value": "White gummy cherry",
+    "value": "Root Soda Vanilla",
     "family": "dessert"
    },
    {
-    "value": "Cola ice Cherry",
-    "family": "orchard"
+    "value": "Sapphire",
+    "family": null
+   },
+   {
+    "value": "Slushy Lemon",
+    "family": "citrus"
    },
    {
     "value": "Sour Apple",
     "family": "orchard"
    },
    {
-    "value": "Watermelon Sour Peach",
-    "family": "melon"
+    "value": "Sour Fab Citrus Ice",
+    "family": "citrus"
    },
    {
-    "value": "Passion Kiwi Pineapple",
-    "family": "orchard"
-   },
-   {
-    "value": "Strawberry Swirl",
+    "value": "Strawberry Guava",
     "family": "berry"
    },
    {
-    "value": "Wild Berry Drop",
+    "value": "Strawberry Swirl",
     "family": "berry"
    },
    {
@@ -11803,43 +11703,7 @@
     "family": "melon"
    },
    {
-    "value": "Miami mint",
-    "family": "mint"
-   },
-   {
-    "value": "Strawberry Guava",
-    "family": "berry"
-   },
-   {
-    "value": "Mexican Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "Lemon Drop",
-    "family": "citrus"
-   },
-   {
-    "value": "Cherry Strawberry Gummy",
-    "family": "dessert"
-   },
-   {
-    "value": "Rasberry Grape Guava",
-    "family": "grape"
-   },
-   {
-    "value": "Pink Lemonade Mixberry",
-    "family": "berry"
-   },
-   {
-    "value": "Aloe Watermelon Sour Sweet",
-    "family": "melon"
-   },
-   {
-    "value": "Slushy Lemon",
-    "family": "citrus"
-   },
-   {
-    "value": "Watermelon Icy Slushy",
+    "value": "Strawberry Watermelon Icy",
     "family": "melon"
    },
    {
@@ -11847,24 +11711,44 @@
     "family": null
    },
    {
-    "value": "Heartbeat Watermelon B-Pop",
-    "family": "dessert"
-   },
-   {
-    "value": "Crush Mango Strawberry",
-    "family": "berry"
-   },
-   {
-    "value": "Cola Ice",
-    "family": "mint"
-   },
-   {
-    "value": "Mango Tango",
+    "value": "Thai Mango Juice Peach",
     "family": "tropical"
    },
    {
-    "value": "Green Crisp Watermelon Icy",
+    "value": "Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Watermelon Ice",
     "family": "melon"
+   },
+   {
+    "value": "Watermelon Icy Slushy",
+    "family": "melon"
+   },
+   {
+    "value": "Watermelon Sour Peach",
+    "family": "melon"
+   },
+   {
+    "value": "Watermelon B Pop",
+    "family": "melon"
+   },
+   {
+    "value": "White Gummy Cherry",
+    "family": "dessert"
+   },
+   {
+    "value": "White Peach Lemon Head",
+    "family": "tropical"
+   },
+   {
+    "value": "White Peach Raspberry",
+    "family": "berry"
+   },
+   {
+    "value": "Wild Berry Drop",
+    "family": "berry"
    }
   ],
   "nicotineMg": [],
@@ -11910,104 +11794,168 @@
   "puffCount": 30000,
   "flavors": [
    {
-    "value": "Blueberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Sour Apple Ice",
-    "family": "orchard"
-   },
-   {
-    "value": "Kiwi Dragon Berry",
+    "value": "Berry Bliss",
     "family": "berry"
    },
    {
-    "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Blue Razz Ice",
+    "value": "Blackberry Blueberry",
     "family": "berry"
    },
    {
-    "value": "Juicy Peach ice",
+    "value": "Blackberry Passion Refresher",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Dragon",
     "family": "tropical"
    },
    {
-    "value": "Strawberry Kiwi",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Gum Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Strawberry Banana",
-    "family": "berry"
-   },
-   {
-    "value": "Coffee",
-    "family": null
-   },
-   {
-    "value": "Mexico Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "Clear",
-    "family": "unflavored"
-   },
-   {
-    "value": "Watermelon Bubble",
-    "family": "melon"
-   },
-   {
-    "value": "White Gummy",
+    "value": "Blue Rancher",
     "family": "dessert"
-   },
-   {
-    "value": "Ice Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Strawberry Cupcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Tobacco",
-    "family": "tobacco"
    },
    {
     "value": "Blue Ranger B-Pop",
     "family": "dessert"
    },
    {
-    "value": "Sour Gush",
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Cotton Candy",
+    "family": "dessert"
+   },
+   {
+    "value": "Blueberry Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "California Cherry",
+    "family": "orchard"
+   },
+   {
+    "value": "Cherry Bomb",
+    "family": "orchard"
+   },
+   {
+    "value": "Cherry Slush",
+    "family": "orchard"
+   },
+   {
+    "value": "Chocolate Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Clear",
+    "family": "unflavored"
+   },
+   {
+    "value": "Coconut Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Coffee",
     "family": null
    },
    {
-    "value": "Sour Blue Dust",
+    "value": "Cola SLush",
     "family": null
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Dragon Melon",
+    "family": "melon"
+   },
+   {
+    "value": "Frozen Banana",
+    "family": "tropical"
+   },
+   {
+    "value": "Frozen Blackberry",
+    "family": "berry"
+   },
+   {
+    "value": "Frozen Blueberry",
+    "family": "berry"
+   },
+   {
+    "value": "Frozen Lemon",
+    "family": "citrus"
+   },
+   {
+    "value": "Frozen Orange & Green",
+    "family": "citrus"
+   },
+   {
+    "value": "Frozen Pineapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Frozen Straw Grapefruit",
+    "family": "grape"
+   },
+   {
+    "value": "Frozen Summer Pear",
+    "family": "orchard"
+   },
+   {
+    "value": "Frozen Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Frozen Wildberry Mix",
+    "family": "berry"
+   },
+   {
+    "value": "Grape Slush",
+    "family": "grape"
+   },
+   {
+    "value": "Gum Mint",
+    "family": "mint"
    },
    {
     "value": "Gummy Bear",
     "family": "dessert"
    },
    {
-    "value": "Pineapple Coconut",
+    "value": "Hawaiian Punch",
+    "family": "tropical"
+   },
+   {
+    "value": "Ice Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Juicy Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Kiwi Dragon Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Lemon Heads",
+    "family": "citrus"
+   },
+   {
+    "value": "Lime Berry Orange",
+    "family": "berry"
+   },
+   {
+    "value": "Mango Pineapple Refresher",
     "family": "orchard"
    },
    {
-    "value": "Strawberry Ice",
-    "family": "berry"
+    "value": "Meta Moon",
+    "family": null
+   },
+   {
+    "value": "Mexico Mango",
+    "family": "tropical"
    },
    {
     "value": "Miami Mint",
@@ -12018,31 +11966,7 @@
     "family": "dessert"
    },
    {
-    "value": "Strawberry B-Pop",
-    "family": "dessert"
-   },
-   {
-    "value": "Sour Fcuking Fab",
-    "family": null
-   },
-   {
-    "value": "Sour Cranapple",
-    "family": "orchard"
-   },
-   {
-    "value": "Frozen Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Frozen Blueberry",
-    "family": "berry"
-   },
-   {
-    "value": "Frozen Banana",
-    "family": "tropical"
-   },
-   {
-    "value": "Frozen Lemon",
+    "value": "Orange Dream Refresher",
     "family": "citrus"
    },
    {
@@ -12050,19 +11974,19 @@
     "family": "citrus"
    },
    {
-    "value": "Grape Slush",
-    "family": "grape"
+    "value": "Peach Berries Refresher",
+    "family": "tropical"
    },
    {
-    "value": "Cola SLush",
-    "family": null
+    "value": "Peach Slush",
+    "family": "tropical"
    },
    {
-    "value": "Meta Moon",
-    "family": null
+    "value": "Pineapple Coconut",
+    "family": "orchard"
    },
    {
-    "value": "Pink & blue",
+    "value": "Pink & Blue",
     "family": null
    },
    {
@@ -12070,15 +11994,19 @@
     "family": "citrus"
    },
    {
-    "value": "Cherry bomb",
-    "family": "orchard"
+    "value": "Purple Passion Punch",
+    "family": "tropical"
    },
    {
-    "value": "Vanilla Cupcake",
-    "family": "dessert"
+    "value": "Raspberry Watermelon",
+    "family": "melon"
    },
    {
-    "value": "Chocolate Cupcake",
+    "value": "Red Mix Refresher",
+    "family": null
+   },
+   {
+    "value": "Red Velvet Cupcake",
     "family": "dessert"
    },
    {
@@ -12086,31 +12014,59 @@
     "family": "dessert"
    },
    {
-    "value": "Coconut Capcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Red Velvet Cupcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Hawaiian Punch",
-    "family": "tropical"
-   },
-   {
-    "value": "Triple Berry Punch",
-    "family": "berry"
-   },
-   {
-    "value": "Purple Passion Punch",
-    "family": "tropical"
-   },
-   {
-    "value": "Cherry Slush",
+    "value": "Sour Apple Ice",
     "family": "orchard"
    },
    {
-    "value": "Sour Rasberry Punch",
+    "value": "Sour Blue Dust",
+    "family": null
+   },
+   {
+    "value": "Sour Cranapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Sour Gush",
+    "family": null
+   },
+   {
+    "value": "Sour Punch",
+    "family": null
+   },
+   {
+    "value": "Sour Raspberry Punch",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry B-Pop",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry Banana",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Cotton Candy",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Kiwi",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Mango",
     "family": "berry"
    },
    {
@@ -12118,19 +12074,23 @@
     "family": "berry"
    },
    {
-    "value": "Peach Slush",
-    "family": "tropical"
-   },
-   {
-    "value": "Frozen Blackberry",
-    "family": "berry"
-   },
-   {
-    "value": "Frozen Pineapple",
-    "family": "orchard"
+    "value": "Strawberry Watermelon",
+    "family": "melon"
    },
    {
     "value": "Strawnana Ice Cream",
+    "family": "dessert"
+   },
+   {
+    "value": "Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Triple Berry Punch",
+    "family": "berry"
+   },
+   {
+    "value": "Vanilla Cupcake",
     "family": "dessert"
    },
    {
@@ -12138,36 +12098,20 @@
     "family": "dessert"
    },
    {
+    "value": "Watermelon Bubble",
+    "family": "melon"
+   },
+   {
     "value": "Watermelon Cotton Candy",
     "family": "dessert"
    },
    {
-    "value": "Blueberry Cotton Candy",
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "White Gummy",
     "family": "dessert"
-   },
-   {
-    "value": "Strawberry Cotton Candy",
-    "family": "dessert"
-   },
-   {
-    "value": "Blue Dragon",
-    "family": "tropical"
-   },
-   {
-    "value": "Blackberry Blueberry",
-    "family": "berry"
-   },
-   {
-    "value": "Sour Punch",
-    "family": null
-   },
-   {
-    "value": "Lemon Heads",
-    "family": "citrus"
-   },
-   {
-    "value": "Lime Berry Orange",
-    "family": "berry"
    }
   ],
   "nicotineMg": [],
@@ -12210,71 +12154,83 @@
   "onlineSkus": 25,
   "skuCount": 25,
   "stock": 325,
-  "priceCents": 3999,
+  "priceCents": 3991,
   "puffCount": 35000,
   "flavors": [
    {
-    "value": "Banana taffy freeze",
+    "value": "Banana Taffy Freeze",
     "family": "tropical"
    },
    {
-    "value": "Sour mango pineapplee",
+    "value": "Black Blueberry Freezer Jam",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Frozen Cherry",
     "family": "orchard"
    },
    {
-    "value": "Miami mint",
-    "family": "mint"
-   },
-   {
-    "value": "Orange cranberry lime ice",
-    "family": "berry"
-   },
-   {
-    "value": "Passion kiwi",
+    "value": "Frozen Kiwi",
     "family": "tropical"
    },
    {
-    "value": "Summer mist",
-    "family": null
-   },
-   {
-    "value": "Cool mint",
-    "family": "mint"
-   },
-   {
-    "value": "Watermelon ice",
-    "family": "melon"
-   },
-   {
-    "value": "Fucking fab",
-    "family": null
-   },
-   {
-    "value": "White peach raspberry",
-    "family": "berry"
-   },
-   {
-    "value": "Georgia peach",
+    "value": "Frozen Peach",
     "family": "tropical"
    },
    {
-    "value": "Sour apple watermelon",
+    "value": "Frozen Tropical Rainbow",
+    "family": "tropical"
+   },
+   {
+    "value": "Frozen Vanilla",
+    "family": "dessert"
+   },
+   {
+    "value": "Georgia Peach",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Orange Cranberry Lime Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Orange Freezer Jam",
+    "family": "citrus"
+   },
+   {
+    "value": "Passion Kiwi",
+    "family": "tropical"
+   },
+   {
+    "value": "Peach Freezer Jam",
+    "family": "tropical"
+   },
+   {
+    "value": "Sour Apple Watermelon",
     "family": "melon"
    },
    {
-    "value": "Wintergreen",
-    "family": null
-   },
-   {
-    "value": "Strawberry burst",
+    "value": "Sour Blackberry Gush",
     "family": "berry"
    },
    {
-    "value": "Blue razz ice",
-    "family": "berry"
-   },
-   {
-    "value": "Sour Blueberry Gush",
+    "value": "Sour Blueberry Jam",
     "family": "berry"
    },
    {
@@ -12282,36 +12238,24 @@
     "family": "tropical"
    },
    {
-    "value": "Sour Blackberry Gush",
+    "value": "Sour Mango Pineapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Strawberry Freezer Jam",
     "family": "berry"
    },
    {
-    "value": "Sour Grape Gush",
-    "family": "grape"
+    "value": "Summer Mist",
+    "family": null
    },
    {
-    "value": "Sour Cherry Gush",
-    "family": "orchard"
+    "value": "Watermelon Ice",
+    "family": "melon"
    },
    {
-    "value": "Frozen Vanilla",
-    "family": "dessert"
-   },
-   {
-    "value": "Frozen Cherry",
-    "family": "orchard"
-   },
-   {
-    "value": "Frozen Peach",
-    "family": "tropical"
-   },
-   {
-    "value": "Frozen Kiwi",
-    "family": "tropical"
-   },
-   {
-    "value": "Frozen Tropical Rainbow",
-    "family": "tropical"
+    "value": "Wintergreen",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -12333,271 +12277,15 @@
   "onlineSkus": 71,
   "skuCount": 71,
   "stock": 868,
-  "priceCents": 3699,
+  "priceCents": 3691,
   "puffCount": 30000,
   "flavors": [
    {
-    "value": "Blue Razz Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Sour Apple Ice",
-    "family": "orchard"
-   },
-   {
-    "value": "Gummy Bear",
-    "family": "dessert"
-   },
-   {
-    "value": "Juicy Peach Ice",
-    "family": "tropical"
-   },
-   {
-    "value": "Strawberry Banana",
-    "family": "berry"
-   },
-   {
-    "value": "Blueberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Strawberry Kiwi",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Gum Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Coffee",
+    "value": "Baja Splash",
     "family": null
-   },
-   {
-    "value": "Miami Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Mexico Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "Tobacco",
-    "family": "tobacco"
-   },
-   {
-    "value": "Clear",
-    "family": "unflavored"
-   },
-   {
-    "value": "Watermelon Bubble Gum",
-    "family": "melon"
-   },
-   {
-    "value": "White Gummy",
-    "family": "dessert"
-   },
-   {
-    "value": "Strawberry CupCake",
-    "family": "dessert"
-   },
-   {
-    "value": "Kiwi Dragon Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Pineapple Coconut",
-    "family": "orchard"
-   },
-   {
-    "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Strawberry Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Sour Gush",
-    "family": null
-   },
-   {
-    "value": "Sour Blue Dust",
-    "family": null
-   },
-   {
-    "value": "Icy Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Omg B-Pop",
-    "family": "dessert"
-   },
-   {
-    "value": "Strawberry B-Pop",
-    "family": "dessert"
-   },
-   {
-    "value": "Blue Rancher B-Pop",
-    "family": "dessert"
-   },
-   {
-    "value": "Sour Fcuking Fab",
-    "family": null
-   },
-   {
-    "value": "Sour Cranapple",
-    "family": "orchard"
-   },
-   {
-    "value": "Frozen Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Frozen Blueberry",
-    "family": "berry"
-   },
-   {
-    "value": "Frozen Banana",
-    "family": "tropical"
-   },
-   {
-    "value": "Frozen Lemon",
-    "family": "citrus"
-   },
-   {
-    "value": "Orange Slush",
-    "family": "citrus"
-   },
-   {
-    "value": "Grape Slush",
-    "family": "grape"
-   },
-   {
-    "value": "Cola Slush",
-    "family": null
-   },
-   {
-    "value": "Meta moon",
-    "family": null
-   },
-   {
-    "value": "Pink&Blue",
-    "family": null
-   },
-   {
-    "value": "Dragon Fruit Lemonade",
-    "family": "tropical"
-   },
-   {
-    "value": "Pink Lemonade",
-    "family": "citrus"
-   },
-   {
-    "value": "Cherry bomb",
-    "family": "orchard"
-   },
-   {
-    "value": "Vanilla Cupcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Chocolate Cupcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Skittles Cupcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Coconut Cupcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Red Velvet Cupcake",
-    "family": "dessert"
-   },
-   {
-    "value": "Hawaiian Punch",
-    "family": "tropical"
-   },
-   {
-    "value": "Tripple Berry Punch",
-    "family": "berry"
-   },
-   {
-    "value": "Purple Passion Punch",
-    "family": "tropical"
-   },
-   {
-    "value": "Cherry Slush",
-    "family": "orchard"
-   },
-   {
-    "value": "Sour Rasberry Punch",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry Slush",
-    "family": "berry"
-   },
-   {
-    "value": "Peach Slush",
-    "family": "tropical"
-   },
-   {
-    "value": "Dragon Melon",
-    "family": "melon"
-   },
-   {
-    "value": "California Cherry",
-    "family": "orchard"
    },
    {
     "value": "Berry Bliss",
-    "family": "berry"
-   },
-   {
-    "value": "Frozen Blackberry",
-    "family": "berry"
-   },
-   {
-    "value": "Frozen Pineapple",
-    "family": "orchard"
-   },
-   {
-    "value": "Strawnana Ice Cream",
-    "family": "dessert"
-   },
-   {
-    "value": "Vanilla Ice Cream",
-    "family": "dessert"
-   },
-   {
-    "value": "Watermelon Cotton Candy",
-    "family": "dessert"
-   },
-   {
-    "value": "Blueberry Cotton Candy",
-    "family": "dessert"
-   },
-   {
-    "value": "Strawberry Cotton Candy",
-    "family": "dessert"
-   },
-   {
-    "value": "Blue Dragon",
-    "family": "tropical"
-   },
-   {
-    "value": "Blue Sour Rasberry",
     "family": "berry"
    },
    {
@@ -12605,19 +12293,339 @@
     "family": "berry"
    },
    {
-    "value": "Sour Punch",
+    "value": "Blackberry Passion Refresher",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Dragon",
+    "family": "tropical"
+   },
+   {
+    "value": "Blue Rancher B-Pop",
+    "family": "dessert"
+   },
+   {
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Sour Raspberry",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Cotton Candy",
+    "family": "dessert"
+   },
+   {
+    "value": "Blueberry Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "California Cherry",
+    "family": "orchard"
+   },
+   {
+    "value": "Cherry Bomb",
+    "family": "orchard"
+   },
+   {
+    "value": "Cherry Slush",
+    "family": "orchard"
+   },
+   {
+    "value": "Chocolate Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Clear",
+    "family": "unflavored"
+   },
+   {
+    "value": "Coconut Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Coffee",
     "family": null
+   },
+   {
+    "value": "Cola Slush",
+    "family": null
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Dragon Fruit Lemonade",
+    "family": "tropical"
+   },
+   {
+    "value": "Dragon Melon",
+    "family": "melon"
+   },
+   {
+    "value": "Drop Sour Savers",
+    "family": null
+   },
+   {
+    "value": "Frozen Banana",
+    "family": "tropical"
+   },
+   {
+    "value": "Frozen Blackberry",
+    "family": "berry"
+   },
+   {
+    "value": "Frozen Blueberry",
+    "family": "berry"
+   },
+   {
+    "value": "Frozen Lemon",
+    "family": "citrus"
+   },
+   {
+    "value": "Frozen Orange Green",
+    "family": "citrus"
+   },
+   {
+    "value": "Frozen Pineapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Frozen Strawberry GrapeFruit",
+    "family": "grape"
+   },
+   {
+    "value": "Frozen Summer Grape",
+    "family": "grape"
+   },
+   {
+    "value": "Frozen Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Grape Slush",
+    "family": "grape"
+   },
+   {
+    "value": "Gum Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Gummy Bear",
+    "family": "dessert"
+   },
+   {
+    "value": "Hawaiian Punch",
+    "family": "tropical"
+   },
+   {
+    "value": "Icy Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Juicy Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Kiwi Dragon Berry",
+    "family": "berry"
    },
    {
     "value": "Lemon Heads",
     "family": "citrus"
    },
    {
+    "value": "Lemon Hubba",
+    "family": "citrus"
+   },
+   {
+    "value": "Lime Berry Orange",
+    "family": "berry"
+   },
+   {
+    "value": "Meta Moon",
+    "family": null
+   },
+   {
+    "value": "Mexico Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Mint Lemonade",
+    "family": "citrus"
+   },
+   {
+    "value": "Omg B-Pop",
+    "family": "dessert"
+   },
+   {
+    "value": "Orange Dream Refresher",
+    "family": "citrus"
+   },
+   {
+    "value": "Orange Slush",
+    "family": "citrus"
+   },
+   {
+    "value": "Peach Slush",
+    "family": "tropical"
+   },
+   {
+    "value": "Pineapple Coconut",
+    "family": "orchard"
+   },
+   {
+    "value": "Pineapple Savers",
+    "family": "orchard"
+   },
+   {
+    "value": "Pink Lemonade",
+    "family": "citrus"
+   },
+   {
+    "value": "Pink&Blue",
+    "family": null
+   },
+   {
+    "value": "Purple Passion Punch",
+    "family": "tropical"
+   },
+   {
+    "value": "Red Mix Refresher",
+    "family": null
+   },
+   {
+    "value": "Red Velvet Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Skittles Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Sour Apple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Blue Dust",
+    "family": null
+   },
+   {
+    "value": "Sour Cherry Savers",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Cranapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Sour Gush",
+    "family": null
+   },
+   {
+    "value": "Sour Punch",
+    "family": null
+   },
+   {
+    "value": "Sour Raspberry Punch",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry B-Pop",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry Banana",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Cotton Candy",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry CupCake",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Kiwi",
+    "family": "berry"
+   },
+   {
     "value": "Strawberry Mango",
     "family": "berry"
    },
    {
-    "value": "Lime Berry Orange",
+    "value": "Strawberry Savers",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Slush",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Strawberry Watermelon Hubba",
+    "family": "melon"
+   },
+   {
+    "value": "Strawnana Ice Cream",
+    "family": "dessert"
+   },
+   {
+    "value": "Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Triple Berry Punch",
+    "family": "berry"
+   },
+   {
+    "value": "Tropical Hubba",
+    "family": "tropical"
+   },
+   {
+    "value": "Vanilla Cupcake",
+    "family": "dessert"
+   },
+   {
+    "value": "Vanilla Ice Cream",
+    "family": "dessert"
+   },
+   {
+    "value": "Watermelon Bubble Gum",
+    "family": "melon"
+   },
+   {
+    "value": "Watermelon Cotton Candy",
+    "family": "dessert"
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "White Gummy",
+    "family": "dessert"
+   },
+   {
+    "value": "Wild Berry Savers",
     "family": "berry"
    }
   ],
@@ -12667,7 +12675,7 @@
     "family": "mint"
    },
    {
-    "value": "Sweets",
+    "value": "Lush",
     "family": null
    },
    {
@@ -12675,12 +12683,8 @@
     "family": null
    },
    {
-    "value": "Lush",
+    "value": "Sweet",
     "family": null
-   },
-   {
-    "value": "Watermelon",
-    "family": "melon"
    }
   ],
   "nicotineMg": [],
@@ -12705,19 +12709,19 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Sweet",
-    "family": null
-   },
-   {
     "value": "Mint",
     "family": "mint"
+   },
+   {
+    "value": "Lush",
+    "family": null
    },
    {
     "value": "Wintergreen",
     "family": null
    },
    {
-    "value": "Lush",
+    "value": "Sweet",
     "family": null
    },
    {
@@ -12740,7 +12744,7 @@
   "title": "Fre 6mg Nicotine Pouches",
   "category": "Nicotine Pouches",
   "regulatoryClass": "pouch",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 1,
   "stock": 23,
@@ -14082,9 +14086,29 @@
   "onlineSkus": 7,
   "skuCount": 7,
   "stock": 30,
-  "priceCents": 4999,
+  "priceCents": 5699,
   "puffCount": 80000,
   "flavors": [
+   {
+    "value": "Blueberry Gum",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Razz",
+    "family": "berry"
+   },
+   {
+    "value": "Double Apple",
+    "family": "orchard"
+   },
+   {
+    "value": "Grape Mint",
+    "family": "grape"
+   },
+   {
+    "value": "Gum Mint",
+    "family": "mint"
+   },
    {
     "value": "Lemon Mint",
     "family": "citrus"
@@ -14094,24 +14118,16 @@
     "family": "tropical"
    },
    {
-    "value": "Grape Mint",
-    "family": "grape"
+    "value": "Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Strawberry",
+    "family": "berry"
    },
    {
     "value": "Watermelon Mint",
     "family": "melon"
-   },
-   {
-    "value": "Blueberry Gum",
-    "family": "berry"
-   },
-   {
-    "value": "Gum Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Double Apple",
-    "family": "orchard"
    }
   ],
   "nicotineMg": [],
@@ -14128,13 +14144,21 @@
   "vendorHandle": "geek-bar-clio-platinum-kit",
   "title": "Geek Bar Clio Platinum Kit",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "ends",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 5,
   "stock": 91,
-  "priceCents": 4299,
+  "priceCents": 4498,
   "flavors": [
+   {
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Code Red",
+    "family": null
+   },
    {
     "value": "Triple Berry Ice",
     "family": "berry"
@@ -14144,16 +14168,8 @@
     "family": "berry"
    },
    {
-    "value": "White Peach Rasberry",
+    "value": "White Peach Raspberry",
     "family": "berry"
-   },
-   {
-    "value": "Blue Razz Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Code Red",
-    "family": null
    }
   ],
   "nicotineMg": [],
@@ -14171,23 +14187,15 @@
   "title": "Geek Bar Clio Pod",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 5,
   "stock": 37,
-  "priceCents": 3299,
+  "priceCents": 2999,
   "flavors": [
    {
     "value": "Blue Razz Ice",
     "family": "berry"
-   },
-   {
-    "value": "Peach Slush",
-    "family": "tropical"
-   },
-   {
-    "value": "Fcuking Fab",
-    "family": null
    },
    {
     "value": "Cool Mint",
@@ -14196,6 +14204,14 @@
    {
     "value": "Code Red",
     "family": null
+   },
+   {
+    "value": "Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Peach Slush",
+    "family": "tropical"
    }
   ],
   "nicotineMg": [],
@@ -14217,23 +14233,47 @@
   "onlineSkus": 8,
   "skuCount": 8,
   "stock": 150,
-  "priceCents": 4499,
+  "priceCents": 4498,
   "puffCount": 50000,
   "flavors": [
+   {
+    "value": "Amazon Lemonade",
+    "family": "citrus"
+   },
+   {
+    "value": "Banana Ice",
+    "family": "tropical"
+   },
    {
     "value": "Blue Rancher",
     "family": "dessert"
    },
    {
-    "value": "Miami Mint",
-    "family": "mint"
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Coffee",
+    "family": null
    },
    {
     "value": "Cool Mint",
     "family": "mint"
    },
    {
-    "value": "Blue Razz Ice",
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Peach Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Peach Slush",
+    "family": "tropical"
+   },
+   {
+    "value": "Strawberry Lemonade",
     "family": "berry"
    },
    {
@@ -14241,16 +14281,12 @@
     "family": "berry"
    },
    {
-    "value": "Peach Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Banana Ice",
-    "family": "tropical"
-   },
-   {
-    "value": "Coffee",
+    "value": "Watermellon Twist",
     "family": null
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
    }
   ],
   "nicotineMg": [],
@@ -14331,35 +14367,15 @@
   "onlineSkus": 16,
   "skuCount": 16,
   "stock": 283,
-  "priceCents": 4599,
+  "priceCents": 4498,
   "puffCount": 60000,
   "flavors": [
    {
+    "value": "Amazon Lemonade",
+    "family": "citrus"
+   },
+   {
     "value": "Blue Razz Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Sour Apple Ice",
-    "family": "orchard"
-   },
-   {
-    "value": "White Gummy",
-    "family": "dessert"
-   },
-   {
-    "value": "Miami Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Juicy Peach",
-    "family": "tropical"
-   },
-   {
-    "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Triple Berry",
     "family": "berry"
    },
    {
@@ -14367,15 +14383,23 @@
     "family": null
    },
    {
-    "value": "Strawberry Banana",
+    "value": "Blueberry Yummy",
     "family": "berry"
    },
    {
-    "value": "Amazon Lemonade",
-    "family": "citrus"
+    "value": "Cool Mint",
+    "family": "mint"
    },
    {
-    "value": "Watermelon Ice",
+    "value": "Juicy Peach",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Peach Mango Watermelon",
     "family": "melon"
    },
    {
@@ -14383,20 +14407,28 @@
     "family": "mint"
    },
    {
-    "value": "Strawaberry Kiwi",
+    "value": "Strawberry Kiwi",
     "family": "berry"
+   },
+   {
+    "value": "Strawberry Banana",
+    "family": "berry"
+   },
+   {
+    "value": "Triple Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "White Gummy",
+    "family": "dessert"
    },
    {
     "value": "White Peach Raspberry",
     "family": "berry"
-   },
-   {
-    "value": "Blueberry Yummy",
-    "family": "berry"
-   },
-   {
-    "value": "Peach Mango Watermelon",
-    "family": "melon"
    }
   ],
   "nicotineMg": [],
@@ -14422,111 +14454,19 @@
   "puffCount": 15000,
   "flavors": [
    {
-    "value": "Blueberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Blueberry Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Peach Ice",
+    "value": "Banana Ice",
     "family": "tropical"
    },
    {
-    "value": "Grape Ice",
-    "family": "grape"
-   },
-   {
-    "value": "Strawberry Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Kiwi Passion Fruit",
-    "family": "tropical"
-   },
-   {
-    "value": "Strawberry Kiwi Ie",
+    "value": "Berry Bliss",
     "family": "berry"
    },
    {
-    "value": "Mango Peach Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Mixed Berry Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry Mango Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Triple Melon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Fuyuan Cranberry Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Blueberry Sour Raspberry",
-    "family": "berry"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Juicy Peach Ice",
-    "family": "tropical"
-   },
-   {
-    "value": "Mexico Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "Sour Apple Ice",
+    "value": "Black Cherry",
     "family": "orchard"
    },
    {
-    "value": "Tropical Rainbow Blast",
-    "family": "tropical"
-   },
-   {
-    "value": "Fcuking Fab",
-    "family": null
-   },
-   {
-    "value": "Strawberry Mango",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry Banana",
-    "family": "berry"
-   },
-   {
-    "value": "Pink Lemonade",
-    "family": "citrus"
-   },
-   {
-    "value": "Meta Moon",
-    "family": null
-   },
-   {
-    "value": "White Gummy Ice",
-    "family": "dessert"
-   },
-   {
-    "value": "California Cherry",
-    "family": "orchard"
-   },
-   {
-    "value": "Blue Razz Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Miami Mint",
+    "value": "BlackMintz",
     "family": "mint"
    },
    {
@@ -14534,39 +14474,131 @@
     "family": null
    },
    {
-    "value": "Grape Blow Pop",
-    "family": "grape"
-   },
-   {
     "value": "Blue Mint",
     "family": "mint"
+   },
+   {
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Sour Raspberry",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "California Cherry",
+    "family": "orchard"
    },
    {
     "value": "Cherry Bomb",
     "family": "orchard"
    },
    {
-    "value": "Black Cherry",
-    "family": "orchard"
+    "value": "Clear",
+    "family": "unflavored"
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Crazy Melon",
+    "family": "melon"
+   },
+   {
+    "value": "CreamyMintz",
+    "family": "mint"
    },
    {
     "value": "Dragon Melon",
     "family": "melon"
    },
    {
-    "value": "Strawberry CC",
+    "value": "Drop Sour Savers",
+    "family": null
+   },
+   {
+    "value": "Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Frozen Blackberry Fab",
     "family": "berry"
    },
    {
-    "value": "Sour Apple Blow Pop",
+    "value": "Frozen Cherry Apple",
     "family": "orchard"
+   },
+   {
+    "value": "Frozen Pina Colada",
+    "family": "mint"
+   },
+   {
+    "value": "Frozen Strawberry",
+    "family": "berry"
+   },
+   {
+    "value": "Frozen Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Frozen White Grape",
+    "family": "grape"
+   },
+   {
+    "value": "Fuyuan Cranberry Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Grape Blow Pop",
+    "family": "grape"
+   },
+   {
+    "value": "Grape Ice",
+    "family": "grape"
    },
    {
     "value": "Grape Lemon",
     "family": "grape"
    },
    {
-    "value": "Berry Bliss",
+    "value": "IceyMintz",
+    "family": "mint"
+   },
+   {
+    "value": "Juicy Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Kiwi Passion Fruit",
+    "family": "tropical"
+   },
+   {
+    "value": "Mango Peach Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Meta Moon",
+    "family": null
+   },
+   {
+    "value": "Mexico Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Mixed Berry Ice",
     "family": "berry"
    },
    {
@@ -14578,32 +14610,48 @@
     "family": "citrus"
    },
    {
-    "value": "Crazy Melon",
-    "family": "melon"
+    "value": "Orange Mint Savers",
+    "family": "citrus"
    },
    {
-    "value": "Frozen Watermelon",
-    "family": "melon"
+    "value": "Peach Ice",
+    "family": "tropical"
    },
    {
-    "value": "Frozen blackberry fab",
-    "family": "berry"
+    "value": "Peach Lemonade",
+    "family": "tropical"
    },
    {
-    "value": "Frozen pina colada",
+    "value": "Peppermintz",
     "family": "mint"
    },
    {
-    "value": "Frozen strawberry",
-    "family": "berry"
-   },
-   {
-    "value": "Frozen cherry apple",
+    "value": "Pineapple Savers",
     "family": "orchard"
    },
    {
-    "value": "Frozen white grape",
-    "family": "grape"
+    "value": "Pink Lemonade",
+    "family": "citrus"
+   },
+   {
+    "value": "Punch",
+    "family": null
+   },
+   {
+    "value": "Raspberry Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Sour Apple Blow Pop",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Apple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Blue Dust",
+    "family": null
    },
    {
     "value": "Sour Cranapple",
@@ -14614,88 +14662,76 @@
     "family": null
    },
    {
-    "value": "Sour Blue Dust",
-    "family": null
+    "value": "Sour Strawberry",
+    "family": "berry"
    },
    {
     "value": "Sour Watermelon",
     "family": "melon"
    },
    {
-    "value": "Sour Strawberry",
-    "family": "berry"
-   },
-   {
-    "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
     "value": "Spooky Vanilla",
     "family": "dessert"
-   },
-   {
-    "value": "Peppermintz",
-    "family": "mint"
    },
    {
     "value": "StoneMintz",
     "family": "mint"
    },
    {
-    "value": "BlackMintz",
-    "family": "mint"
-   },
-   {
-    "value": "CreamyMintz",
-    "family": "mint"
-   },
-   {
-    "value": "IceyMintz",
-    "family": "mint"
-   },
-   {
-    "value": "Tobacco",
-    "family": "tobacco"
-   },
-   {
-    "value": "Orange Mint Savers",
-    "family": "citrus"
-   },
-   {
-    "value": "Strawberry Savers",
+    "value": "Strawberry Banana",
     "family": "berry"
    },
    {
-    "value": "Pineapple Savers",
-    "family": "orchard"
-   },
-   {
-    "value": "Wild Berry Savers",
+    "value": "Strawberry Cc",
     "family": "berry"
-   },
-   {
-    "value": "Drop Sour Savers",
-    "family": null
    },
    {
     "value": "Strawberry Kiwi",
     "family": "berry"
    },
    {
-    "value": "Rasberry Watermelon",
+    "value": "Strawberry Kiwi Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Mango",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Mango Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Savers",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Watermelon Ice",
     "family": "melon"
    },
    {
-    "value": "Punch",
-    "family": null
+    "value": "Tobacco",
+    "family": "tobacco"
    },
    {
-    "value": "Banana Ice",
+    "value": "Triple Melon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "Tropical Rainbow Blast",
     "family": "tropical"
    },
    {
-    "value": "Peach Lemonade",
-    "family": "tropical"
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "White Gummy Ice",
+    "family": "dessert"
+   },
+   {
+    "value": "Wild Berry Savers",
+    "family": "berry"
    }
   ],
   "nicotineMg": [],
@@ -14713,100 +14749,128 @@
   "title": "Geek Bar Pulse 2 15K",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 22,
   "stock": 378,
-  "priceCents": 3999,
+  "priceCents": 3991,
   "puffCount": 15000,
   "flavors": [
    {
-    "value": "Fcuking Fab",
-    "family": null
-   },
-   {
-    "value": "Lemon Hubba",
-    "family": "citrus"
-   },
-   {
-    "value": "Grape Hubba",
-    "family": "grape"
-   },
-   {
-    "value": "Strawberry Watermelon Hubba",
-    "family": "melon"
-   },
-   {
-    "value": "Frozen White Grape",
-    "family": "grape"
-   },
-   {
-    "value": "Peach Lemonade",
-    "family": "tropical"
-   },
-   {
-    "value": "Stone Freeze",
+    "value": "Bahama Freeze",
     "family": "mint"
-   },
-   {
-    "value": "Pineapple Savers",
-    "family": "orchard"
-   },
-   {
-    "value": "Miami Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Blue Razz Ice",
-    "family": "berry"
-   },
-   {
-    "value": "White Gummy Ice",
-    "family": "dessert"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Juicy Peach Ice",
-    "family": "tropical"
-   },
-   {
-    "value": "Sour Apple Ice",
-    "family": "orchard"
-   },
-   {
-    "value": "Sour Strawberry",
-    "family": "berry"
-   },
-   {
-    "value": "Sour Gush",
-    "family": null
-   },
-   {
-    "value": "Strawberry Banana",
-    "family": "berry"
-   },
-   {
-    "value": "Dragon Melon",
-    "family": "melon"
    },
    {
     "value": "Berry Bliss",
     "family": "berry"
    },
    {
-    "value": "Mexico Mango",
-    "family": "tropical"
+    "value": "Blue Razz Hubba",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Razz Ice",
+    "family": "berry"
    },
    {
     "value": "Blueberry Watermelon",
     "family": "melon"
    },
    {
+    "value": "Dragon Melon",
+    "family": "melon"
+   },
+   {
+    "value": "Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Frozen White Grape",
+    "family": "grape"
+   },
+   {
+    "value": "Grape Hubba",
+    "family": "grape"
+   },
+   {
+    "value": "Juicy Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "La Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Lemon Hubba",
+    "family": "citrus"
+   },
+   {
+    "value": "Mexico Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Peach Lemonade",
+    "family": "tropical"
+   },
+   {
+    "value": "Pineapple Savers",
+    "family": "orchard"
+   },
+   {
+    "value": "Pink Lemonade",
+    "family": "citrus"
+   },
+   {
+    "value": "Sour Apple Ice",
+    "family": "orchard"
+   },
+   {
     "value": "Sour Blue Dust",
     "family": null
+   },
+   {
+    "value": "Sour Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Sour Gush",
+    "family": null
+   },
+   {
+    "value": "Sour Strawberry",
+    "family": "berry"
+   },
+   {
+    "value": "Stone Freeze",
+    "family": "mint"
+   },
+   {
+    "value": "Strawberry Banana",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Watermelon Hubba",
+    "family": "melon"
+   },
+   {
+    "value": "Toasted Pina Colada",
+    "family": null
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "White Gummy Ice",
+    "family": "dessert"
+   },
+   {
+    "value": "White Peach Hubba",
+    "family": "tropical"
    }
   ],
   "nicotineMg": [],
@@ -14949,35 +15013,19 @@
   "puffCount": 25000,
   "flavors": [
    {
-    "value": "Blue Razz Ice",
-    "family": "berry"
-   },
-   {
-    "value": "White Peach Raspberry",
-    "family": "berry"
-   },
-   {
-    "value": "Lemon Heads",
-    "family": "citrus"
+    "value": "Atl Mint",
+    "family": "mint"
    },
    {
     "value": "Banana Taffy Freeze",
     "family": "tropical"
    },
    {
-    "value": "Sour Mango Pineapple",
-    "family": "orchard"
+    "value": "Blackberry B-Pop",
+    "family": "dessert"
    },
    {
-    "value": "Grapefruit Refresher",
-    "family": "grape"
-   },
-   {
-    "value": "Lime Berry Orange",
-    "family": "berry"
-   },
-   {
-    "value": "Raspberry Peach Lime",
+    "value": "Blackberry Blueberry",
     "family": "berry"
    },
    {
@@ -14985,71 +15033,19 @@
     "family": "dessert"
    },
    {
-    "value": "Blackberry B-Pop",
-    "family": "dessert"
-   },
-   {
-    "value": "Strawberry B-POP",
-    "family": "dessert"
-   },
-   {
-    "value": "Sour Fcuking FAB",
-    "family": null
-   },
-   {
-    "value": "Orange Fcukong FAB",
-    "family": "citrus"
-   },
-   {
-    "value": "Miami Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Sour Apple Ice",
-    "family": "orchard"
-   },
-   {
-    "value": "Sour Straws",
-    "family": null
-   },
-   {
-    "value": "Blackberry Blueberry",
+    "value": "Blue Razz Ice",
     "family": "berry"
    },
    {
-    "value": "Strawberry Colada",
+    "value": "Blueberry Jam",
     "family": "berry"
+   },
+   {
+    "value": "Cola Slush",
+    "family": null
    },
    {
     "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Strawberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Strawberry Kiwi Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Pink & Blue",
-    "family": null
-   },
-   {
-    "value": "Orange Dragon",
-    "family": "tropical"
-   },
-   {
-    "value": "Atl Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Peppermintz",
     "family": "mint"
    },
    {
@@ -15057,64 +15053,132 @@
     "family": "mint"
    },
    {
-    "value": "Peach Perfect Slush",
-    "family": "tropical"
-   },
-   {
-    "value": "Cola Slush",
+    "value": "Dualicious",
     "family": null
-   },
-   {
-    "value": "Wild Cherry Slush",
-    "family": "orchard"
-   },
-   {
-    "value": "Orange Slush",
-    "family": "citrus"
    },
    {
     "value": "Grape Slush",
     "family": "grape"
    },
    {
-    "value": "Raspberry Jam",
+    "value": "Grapefruit Refresher",
+    "family": "grape"
+   },
+   {
+    "value": "Lemon Heads",
+    "family": "citrus"
+   },
+   {
+    "value": "Lime Berry Orange",
     "family": "berry"
    },
    {
-    "value": "Peach Jam",
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Orange Dragon",
     "family": "tropical"
    },
    {
-    "value": "Blueberry Jam",
-    "family": "berry"
+    "value": "Orange Fcuking Fab",
+    "family": "citrus"
    },
    {
     "value": "Orange Jam",
     "family": "citrus"
    },
    {
-    "value": "Strawberry Jam",
-    "family": "berry"
+    "value": "Orange Mint",
+    "family": "citrus"
+   },
+   {
+    "value": "Orange Slush",
+    "family": "citrus"
+   },
+   {
+    "value": "Peach Jam",
+    "family": "tropical"
+   },
+   {
+    "value": "Peach Perfect Slush",
+    "family": "tropical"
    },
    {
     "value": "Pear Of Thieves",
     "family": "orchard"
    },
    {
-    "value": "Orange Mint",
-    "family": "citrus"
+    "value": "Peppermintz",
+    "family": "mint"
    },
    {
-    "value": "Strawberry Dragon",
-    "family": "berry"
+    "value": "Pink & Blue",
+    "family": null
    },
    {
     "value": "Pink Berry Lemonade",
     "family": "berry"
    },
    {
-    "value": "Dualicious",
+    "value": "Raspberry Jam",
+    "family": "berry"
+   },
+   {
+    "value": "Raspberry Peach Lime",
+    "family": "berry"
+   },
+   {
+    "value": "Sour Apple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Fcuking Fab",
     "family": null
+   },
+   {
+    "value": "Sour Mango Pineapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Straws",
+    "family": null
+   },
+   {
+    "value": "Strawberry B-Pop",
+    "family": "dessert"
+   },
+   {
+    "value": "Strawberry Colada",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Dragon",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Jam",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Kiwi Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "White Peach Raspberry",
+    "family": "berry"
+   },
+   {
+    "value": "Wild Cherry Slush",
+    "family": "orchard"
    }
   ],
   "nicotineMg": [],
@@ -16853,11 +16917,15 @@
   "priceCents": 461,
   "flavors": [
    {
-    "value": "Original",
-    "family": "unflavored"
+    "value": "Black",
+    "family": null
    },
    {
     "value": "Russian Cream",
+    "family": null
+   },
+   {
+    "value": "Dark",
     "family": null
    },
    {
@@ -16970,7 +17038,7 @@
   "onlineSkus": 1,
   "skuCount": 1,
   "stock": 43,
-  "priceCents": 999,
+  "priceCents": 997,
   "flavors": [
    {
     "value": "Natural",
@@ -16996,7 +17064,7 @@
   "onlineSkus": 2,
   "skuCount": 2,
   "stock": 15,
-  "priceCents": 999,
+  "priceCents": 997,
   "flavors": [
    {
     "value": "Natural",
@@ -18213,11 +18281,11 @@
   "title": "Horizon Tech 100K Disposable Vape",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 8,
   "stock": 15,
-  "priceCents": 4499,
+  "priceCents": 4998,
   "puffCount": 100000,
   "flavors": [
    {
@@ -18225,15 +18293,47 @@
     "family": "tropical"
    },
    {
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Watermelon",
+    "family": "melon"
+   },
+   {
+    "value": "Cherry Slush",
+    "family": "orchard"
+   },
+   {
+    "value": "Cola Slush",
+    "family": null
+   },
+   {
     "value": "Cool Mint",
     "family": "mint"
    },
    {
-    "value": "Mint Ice",
+    "value": "Grape Slush",
+    "family": "grape"
+   },
+   {
+    "value": "Mango Slush",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint",
     "family": "mint"
    },
    {
-    "value": "Blue Razz Ice",
+    "value": "Sour Fcuking Fab",
+    "family": null
+   },
+   {
+    "value": "Starlight Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Strawberry Banana",
     "family": "berry"
    },
    {
@@ -18241,16 +18341,12 @@
     "family": "melon"
    },
    {
-    "value": "Sour Straw Orange",
-    "family": "citrus"
+    "value": "Watermelon Slush",
+    "family": "melon"
    },
    {
-    "value": "Grape Slush",
-    "family": "grape"
-   },
-   {
-    "value": "Miami Mint",
-    "family": "mint"
+    "value": "White Peach Raspberry",
+    "family": "berry"
    }
   ],
   "nicotineMg": [],
@@ -18259,7 +18355,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Horizon Tech"
  },
  {
   "slug": "hot-skull",
@@ -18545,27 +18642,23 @@
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 69,
-  "priceCents": 3699,
+  "priceCents": 3594,
   "puffCount": 50000,
   "flavors": [
    {
-    "value": "Fizz Cola",
-    "family": null
+    "value": "Blue Razz Freeze",
+    "family": "berry"
    },
    {
-    "value": "Virginia Tobacco",
-    "family": "tobacco"
+    "value": "Blue Razz Lemonade",
+    "family": "berry"
    },
    {
-    "value": "Mighty Mint",
-    "family": "mint"
+    "value": "Chewy Banana Freeze",
+    "family": "tropical"
    },
    {
     "value": "Chewy Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Sour Watermelon Freeze",
     "family": "melon"
    },
    {
@@ -18573,32 +18666,104 @@
     "family": "mint"
    },
    {
-    "value": "White Gummy Freeze",
-    "family": "dessert"
-   },
-   {
     "value": "Dubai Chocolate",
     "family": "dessert"
    },
    {
-    "value": "Sour Summer Fab",
+    "value": "Fizzy Cola",
     "family": null
    },
    {
-    "value": "Misu Midnight",
-    "family": null
+    "value": "Grape Aloe Freeze",
+    "family": "grape"
    },
    {
-    "value": "Pineapple Lychee Freeze",
-    "family": "orchard"
+    "value": "Gummy Freezer",
+    "family": "dessert"
+   },
+   {
+    "value": "Hawaiian POG",
+    "family": "tropical"
    },
    {
     "value": "Icy Mint",
     "family": "mint"
    },
    {
+    "value": "Kiwi Melon Blush",
+    "family": "melon"
+   },
+   {
+    "value": "Mighty Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Misu Midnight",
+    "family": null
+   },
+   {
+    "value": "Naked",
+    "family": null
+   },
+   {
+    "value": "Peach Freeze",
+    "family": "tropical"
+   },
+   {
+    "value": "Pineapple Lychee Freeze",
+    "family": "orchard"
+   },
+   {
+    "value": "Rainbow Loops",
+    "family": null
+   },
+   {
+    "value": "Sour Apple Freeze",
+    "family": "orchard"
+   },
+   {
     "value": "Sour Mango Pineapple",
     "family": "orchard"
+   },
+   {
+    "value": "Sour Pineapple Coconut",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Straw Kiwi",
+    "family": "tropical"
+   },
+   {
+    "value": "Sour Straw Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Sour Straw Melon",
+    "family": "melon"
+   },
+   {
+    "value": "Sour Summer Fab",
+    "family": null
+   },
+   {
+    "value": "Sour Watermelon Freeze",
+    "family": "melon"
+   },
+   {
+    "value": "Straw Razz Freeze",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Glow",
+    "family": "berry"
+   },
+   {
+    "value": "Virginia Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "White Gummy Freeze",
+    "family": "dessert"
    }
   ],
   "nicotineMg": [],
@@ -20115,19 +20280,29 @@
   "title": "Kool",
   "category": "Cigarettes",
   "regulatoryClass": "cigarette",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 4,
   "stock": 117,
   "priceCents": 1569,
-  "flavors": [],
+  "flavors": [
+   {
+    "value": "Blue",
+    "family": null
+   },
+   {
+    "value": "Green",
+    "family": null
+   }
+  ],
   "nicotineMg": [],
   "nonFlavorVariants": {
    "hardware": 0,
    "packSize": 0,
-   "other": 0
+   "other": 2
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Kool"
  },
  {
   "slug": "kori-e-hookah-100k",
@@ -21801,18 +21976,26 @@
   "onlineSkus": 15,
   "skuCount": 15,
   "stock": 43,
-  "priceCents": 1299,
+  "priceCents": 1292,
   "flavors": [
+   {
+    "value": "Grape Dream",
+    "family": "grape"
+   },
    {
     "value": "Banana Dream",
     "family": "tropical"
    },
    {
-    "value": "Russian Cream",
-    "family": null
+    "value": "Ice Gold",
+    "family": "mint"
    },
    {
-    "value": "Natural Dark Leaf",
+    "value": "Strawberry Dream",
+    "family": "berry"
+   },
+   {
+    "value": "Honey Bourbon",
     "family": null
    },
    {
@@ -21820,48 +22003,12 @@
     "family": null
    },
    {
-    "value": "Watermelon Dream",
-    "family": "melon"
-   },
-   {
-    "value": "Reserve",
-    "family": null
-   },
-   {
     "value": "Sweet Aromatic",
     "family": null
    },
    {
-    "value": "Strawberry Dream",
-    "family": "berry"
-   },
-   {
-    "value": "Peach Dream",
-    "family": "tropical"
-   },
-   {
-    "value": "Ice Cold",
-    "family": "mint"
-   },
-   {
-    "value": "Honey Bourbon",
-    "family": null
-   },
-   {
-    "value": "Grape Dream",
-    "family": "grape"
-   },
-   {
-    "value": "San Andres",
-    "family": null
-   },
-   {
-    "value": "FTP",
-    "family": null
-   },
-   {
-    "value": "Almighty",
-    "family": null
+    "value": "Watermelon Dream",
+    "family": "melon"
    }
   ],
   "nicotineMg": [],
@@ -22002,19 +22149,27 @@
   "onlineSkus": 15,
   "skuCount": 15,
   "stock": 137,
-  "priceCents": 4499,
+  "priceCents": 4498,
   "puffCount": 70000,
   "flavors": [
    {
-    "value": "Watermelon Ice",
-    "family": "melon"
+    "value": "Blue Raz Ice/Blackberry Blueberry",
+    "family": "berry"
    },
    {
     "value": "Blue Razz Ice",
     "family": "berry"
    },
    {
+    "value": "Golden Berry/Scary Berry",
+    "family": "berry"
+   },
+   {
     "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Miami Mint/Winter Mint",
     "family": "mint"
    },
    {
@@ -22024,6 +22179,14 @@
    {
     "value": "Pink Lemonade",
     "family": "citrus"
+   },
+   {
+    "value": "Pink&Blue/Pink Lemonade",
+    "family": "citrus"
+   },
+   {
+    "value": "Polar Mint/Cool Mint",
+    "family": "mint"
    },
    {
     "value": "Pomegranate Blast",
@@ -22042,28 +22205,12 @@
     "family": "orchard"
    },
    {
-    "value": "Blue Raz Ice/Blackberry Blueberry",
-    "family": "berry"
-   },
-   {
-    "value": "Miami Mint/Winter Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Golden Berry/Scary Berry",
-    "family": "berry"
+    "value": "Watermelon Ice",
+    "family": "melon"
    },
    {
     "value": "Watermelon Ice/Watermelon Fcuking Fab",
     "family": "melon"
-   },
-   {
-    "value": "Pink&Blue/Pink Lemonade",
-    "family": "citrus"
-   },
-   {
-    "value": "Polar Mint/Cool Mint",
-    "family": "mint"
    }
   ],
   "nicotineMg": [],
@@ -22081,11 +22228,11 @@
   "title": "Lost Mary 70K Nera Pod",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 20,
   "stock": 208,
-  "priceCents": 2799,
+  "priceCents": 2999,
   "puffCount": 70000,
   "flavors": [
    {
@@ -22093,24 +22240,60 @@
     "family": "mint"
    },
    {
+    "value": "Blackberry Blueberry",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Carnival",
+    "family": null
+   },
+   {
     "value": "Blue Razz Ice",
     "family": "berry"
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
    },
    {
     "value": "Dragon Strawnana",
     "family": "tropical"
    },
    {
+    "value": "Golden Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Hawaiian Punch",
+    "family": "tropical"
+   },
+   {
+    "value": "Lemon Pop",
+    "family": "citrus"
+   },
+   {
     "value": "Miami Mint",
     "family": "mint"
+   },
+   {
+    "value": "Orange Dream",
+    "family": "citrus"
    },
    {
     "value": "Pineapple Passion Orange",
     "family": "orchard"
    },
    {
+    "value": "Pink & Blue",
+    "family": null
+   },
+   {
     "value": "Pink Lemonade",
     "family": "citrus"
+   },
+   {
+    "value": "Polar Mint",
+    "family": "mint"
    },
    {
     "value": "Pomegranate Blast",
@@ -22129,44 +22312,16 @@
     "family": "orchard"
    },
    {
+    "value": "Watermelon Fcuking Fab",
+    "family": "melon"
+   },
+   {
     "value": "Watermelon Ice",
     "family": "melon"
    },
    {
     "value": "Winter Mint",
     "family": "mint"
-   },
-   {
-    "value": "Blackberry Blueberry",
-    "family": "berry"
-   },
-   {
-    "value": "Pink & Blue",
-    "family": null
-   },
-   {
-    "value": "Orange Dream",
-    "family": "citrus"
-   },
-   {
-    "value": "Blue Carnival",
-    "family": null
-   },
-   {
-    "value": "Watermelon Fcuking Fab",
-    "family": "melon"
-   },
-   {
-    "value": "Lemon Pop",
-    "family": "citrus"
-   },
-   {
-    "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Golden Berry",
-    "family": "berry"
    }
   ],
   "nicotineMg": [],
@@ -22801,47 +22956,7 @@
   "priceCents": 3991,
   "flavors": [
    {
-    "value": "Miami Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Pink Lemonade+",
-    "family": "citrus"
-   },
-   {
-    "value": "Scary Berry+",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry+",
-    "family": "berry"
-   },
-   {
-    "value": "Tigers Blood+",
-    "family": null
-   },
-   {
-    "value": "Watermelon+",
-    "family": "melon"
-   },
-   {
-    "value": "Black Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Blackberry Blueberry+",
-    "family": "berry"
-   },
-   {
-    "value": "Pineapple lime+",
-    "family": "orchard"
-   },
-   {
-    "value": "Strawberry kiwi+",
-    "family": "berry"
-   },
-   {
-    "value": "White gami",
+    "value": "B-Gum Cotton Carnival",
     "family": null
    },
    {
@@ -22849,11 +22964,27 @@
     "family": null
    },
    {
-    "value": "Toasted Banana",
-    "family": "tropical"
+    "value": "Berry Burst",
+    "family": "berry"
    },
    {
-    "value": "Berry Burst",
+    "value": "Berry Burst Cotton Carnival",
+    "family": "berry"
+   },
+   {
+    "value": "Black Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Black Razz Lemon",
+    "family": "berry"
+   },
+   {
+    "value": "Blackberry Blueberry+",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Razz Cotton Carnival",
     "family": "berry"
    },
    {
@@ -22861,12 +22992,88 @@
     "family": "berry"
    },
    {
+    "value": "Blue Razz Lemonade",
+    "family": "berry"
+   },
+   {
+    "value": "Classic Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Clear",
+    "family": "unflavored"
+   },
+   {
+    "value": "Golden Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Half&Half",
+    "family": null
+   },
+   {
+    "value": "Kiwi Passion Fruit",
+    "family": "tropical"
+   },
+   {
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Mint Lemonade",
+    "family": "citrus"
+   },
+   {
+    "value": "Mountain Berry",
+    "family": "berry"
+   },
+   {
     "value": "Orange Passion Mango",
     "family": "tropical"
    },
    {
+    "value": "Orange Pixy",
+    "family": "citrus"
+   },
+   {
+    "value": "Pineapple Lime+",
+    "family": "orchard"
+   },
+   {
+    "value": "Pink Lemonade+",
+    "family": "citrus"
+   },
+   {
+    "value": "Purple Pixy",
+    "family": null
+   },
+   {
+    "value": "Red Pixy",
+    "family": null
+   },
+   {
     "value": "Rocket Freeze",
     "family": "mint"
+   },
+   {
+    "value": "Scary Berry+",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Cotton Carnival",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Dragon Lemonade",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry Kiwi+",
+    "family": "berry"
+   },
+   {
+    "value": "Strawberry+",
+    "family": "berry"
    },
    {
     "value": "Strawmelon Peach",
@@ -22877,92 +23084,44 @@
     "family": "grape"
    },
    {
-    "value": "Winter Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Black Razz Lemon",
-    "family": "berry"
-   },
-   {
     "value": "Sunny Orange",
     "family": "citrus"
    },
    {
-    "value": "Golden Berry",
-    "family": "berry"
+    "value": "Tigers Blood+",
+    "family": null
    },
    {
-    "value": "Mountain Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Kiwi Passion Fruit",
+    "value": "Toasted Banana",
     "family": "tropical"
-   },
-   {
-    "value": "Clear",
-    "family": "unflavored"
-   },
-   {
-    "value": "Classic Tobacco",
-    "family": "tobacco"
-   },
-   {
-    "value": "Blue Razz Lemonade",
-    "family": "berry"
-   },
-   {
-    "value": "Mint Lemonade",
-    "family": "citrus"
    },
    {
     "value": "Tropical Lemonade",
     "family": "tropical"
    },
    {
-    "value": "Half&Half",
-    "family": null
+    "value": "Watermelon Cotton Carnival",
+    "family": "melon"
    },
    {
-    "value": "Strawberry Dragon Lemonade",
-    "family": "berry"
+    "value": "Watermelon+",
+    "family": "melon"
+   },
+   {
+    "value": "White Gummy",
+    "family": "dessert"
    },
    {
     "value": "White Pixy",
     "family": null
    },
    {
-    "value": "Purple Pixy",
+    "value": "Winter Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Yellow Pixy",
     "family": null
-   },
-   {
-    "value": "Orange Pixy",
-    "family": "citrus"
-   },
-   {
-    "value": "Red Pixy",
-    "family": null
-   },
-   {
-    "value": "Berry Burst Cotton Carnival",
-    "family": "berry"
-   },
-   {
-    "value": "B-Gum Cotton Carnival",
-    "family": null
-   },
-   {
-    "value": "Blue Razz Cotton Carnival",
-    "family": "berry"
-   },
-   {
-    "value": "Strawberry Cotton Carnival",
-    "family": "berry"
-   },
-   {
-    "value": "Watermelon Cotton Carnival",
-    "family": "melon"
    }
   ],
   "nicotineMg": [],
@@ -23291,23 +23450,23 @@
   "title": "Lost Mary VIZ 55K Nicotine Vape",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": 42,
-  "priceCents": 4199,
+  "priceCents": 4198,
   "puffCount": 55000,
   "flavors": [
    {
-    "value": "Blue Razz Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
+    "value": "Baja Splash",
+    "family": null
    },
    {
     "value": "Blackberry Chill",
+    "family": "berry"
+   },
+   {
+    "value": "Blue Razz Ice",
     "family": "berry"
    },
    {
@@ -23317,10 +23476,6 @@
    {
     "value": "Miami Mint",
     "family": "mint"
-   },
-   {
-    "value": "Baja Splash",
-    "family": null
    }
   ],
   "nicotineMg": [],
@@ -23462,31 +23617,23 @@
   "title": "Loud Leaf 2 Pack",
   "category": "Leaf",
   "regulatoryClass": "rollYourOwn",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 5,
   "stock": 18,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
-   {
-    "value": "Original",
-    "family": "unflavored"
-   },
-   {
-    "value": "Honey Berry",
-    "family": "berry"
-   },
    {
     "value": "Russian Cream",
     "family": null
    },
    {
-    "value": "Honey Bourbon",
-    "family": null
+    "value": "Original",
+    "family": "unflavored"
    },
    {
-    "value": "Georgia Peach",
-    "family": "tropical"
+    "value": "Honey Bourbon",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -23495,7 +23642,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Loud Leaf"
  },
  {
   "slug": "loud-leaf-5-pack",
@@ -23532,7 +23680,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Loud Leaf"
  },
  {
   "slug": "love-don-t-be-shy",
@@ -23622,10 +23771,6 @@
     "family": "orchard"
    },
    {
-    "value": "Mango",
-    "family": "tropical"
-   },
-   {
     "value": "Espresso",
     "family": null
    },
@@ -23634,8 +23779,20 @@
     "family": null
    },
    {
+    "value": "Mango",
+    "family": "tropical"
+   },
+   {
     "value": "Tobacco",
     "family": "tobacco"
+   },
+   {
+    "value": "Wintergreen",
+    "family": null
+   },
+   {
+    "value": "Mint",
+    "family": "mint"
    }
   ],
   "nicotineMg": [],
@@ -23660,16 +23817,8 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Tobacco",
-    "family": "tobacco"
-   },
-   {
     "value": "Apple Ice",
     "family": "orchard"
-   },
-   {
-    "value": "Mango",
-    "family": "tropical"
    },
    {
     "value": "Espresso",
@@ -23680,8 +23829,20 @@
     "family": null
    },
    {
+    "value": "Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Tobacco",
+    "family": "tobacco"
+   },
+   {
     "value": "Wintergreen",
     "family": null
+   },
+   {
+    "value": "Mint",
+    "family": "mint"
    }
   ],
   "nicotineMg": [],
@@ -23706,20 +23867,8 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Wintergreen",
-    "family": null
-   },
-   {
-    "value": "Mint",
-    "family": "mint"
-   },
-   {
     "value": "Apple Ice",
     "family": "orchard"
-   },
-   {
-    "value": "Mango",
-    "family": "tropical"
    },
    {
     "value": "Espresso",
@@ -23730,8 +23879,20 @@
     "family": null
    },
    {
+    "value": "Mango",
+    "family": "tropical"
+   },
+   {
     "value": "Tobacco",
     "family": "tobacco"
+   },
+   {
+    "value": "Wintergreen",
+    "family": null
+   },
+   {
+    "value": "Mint",
+    "family": "mint"
    }
   ],
   "nicotineMg": [],
@@ -23760,10 +23921,6 @@
     "family": "orchard"
    },
    {
-    "value": "Mint",
-    "family": "mint"
-   },
-   {
     "value": "Mango",
     "family": "tropical"
    },
@@ -23774,10 +23931,6 @@
    {
     "value": "Apple Cider",
     "family": "orchard"
-   },
-   {
-    "value": "Berry Citrus",
-    "family": "berry"
    }
   ],
   "nicotineMg": [],
@@ -23802,14 +23955,6 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Apple Cider",
-    "family": "orchard"
-   },
-   {
-    "value": "Mint",
-    "family": "mint"
-   },
-   {
     "value": "Apple Ice",
     "family": "orchard"
    },
@@ -23818,8 +23963,12 @@
     "family": "tropical"
    },
    {
-    "value": "Berry Citrus",
-    "family": "berry"
+    "value": "Espresso",
+    "family": null
+   },
+   {
+    "value": "Apple Cider",
+    "family": "orchard"
    }
   ],
   "nicotineMg": [],
@@ -24411,63 +24560,7 @@
   "priceCents": 1569,
   "flavors": [
    {
-    "value": "red label",
-    "family": null
-   },
-   {
-    "value": "Nxt",
-    "family": null
-   },
-   {
-    "value": "Bold Ice",
-    "family": "mint"
-   },
-   {
-    "value": "Smooth",
-    "family": null
-   },
-   {
-    "value": "Red",
-    "family": null
-   },
-   {
-    "value": "Menthol",
-    "family": "mint"
-   },
-   {
     "value": "Menthol 100\"",
-    "family": "mint"
-   },
-   {
-    "value": "Blue Menthol",
-    "family": "mint"
-   },
-   {
-    "value": "Blue Menthol 100`s",
-    "family": "mint"
-   },
-   {
-    "value": "Gold",
-    "family": null
-   },
-   {
-    "value": "Menthol Gold",
-    "family": "mint"
-   },
-   {
-    "value": "Special Select Gold",
-    "family": null
-   },
-   {
-    "value": "Menthol Gold 100\"",
-    "family": "mint"
-   },
-   {
-    "value": "Silver",
-    "family": null
-   },
-   {
-    "value": "Menthol Silver",
     "family": "mint"
    },
    {
@@ -24475,23 +24568,15 @@
     "family": "mint"
    },
    {
-    "value": "Special Select",
-    "family": null
-   },
-   {
-    "value": "Midnight",
-    "family": null
-   },
-   {
-    "value": "Black Gold",
-    "family": null
+    "value": "Menthol Gold 100\"",
+    "family": "mint"
    },
    {
     "value": "Black Menthol 72s",
     "family": "mint"
    },
    {
-    "value": "Ice",
+    "value": "Menthol 72s",
     "family": "mint"
    },
    {
@@ -24503,19 +24588,75 @@
     "family": "mint"
    },
    {
-    "value": "Menthol 72s",
+    "value": "Gold",
+    "family": null
+   },
+   {
+    "value": "Menthol",
     "family": "mint"
+   },
+   {
+    "value": "Menthol Gold",
+    "family": "mint"
+   },
+   {
+    "value": "Menthol Silver",
+    "family": "mint"
+   },
+   {
+    "value": "Nxt",
+    "family": null
+   },
+   {
+    "value": "Red",
+    "family": null
+   },
+   {
+    "value": "Silver",
+    "family": null
+   },
+   {
+    "value": "Smooth",
+    "family": null
+   },
+   {
+    "value": "Special Select",
+    "family": null
+   },
+   {
+    "value": "Midnight",
+    "family": null
+   },
+   {
+    "value": "Ice",
+    "family": "mint"
+   },
+   {
+    "value": "Black Gold",
+    "family": null
    },
    {
     "value": "Black Menthol 100'",
     "family": "mint"
+   },
+   {
+    "value": "Bold Ice",
+    "family": "mint"
+   },
+   {
+    "value": "Red Label",
+    "family": null
+   },
+   {
+    "value": "Special Select Gold",
+    "family": null
    }
   ],
   "nicotineMg": [],
   "nonFlavorVariants": {
-   "hardware": 0,
+   "hardware": 1,
    "packSize": 0,
-   "other": 14
+   "other": 13
   },
   "imageUrl": null,
   "brand": "Marlboro"
@@ -26085,6 +26226,14 @@
   "priceCents": 1384,
   "flavors": [
    {
+    "value": "Menthol Gold 100s",
+    "family": "mint"
+   },
+   {
+    "value": "Menthol Silver 100s",
+    "family": "mint"
+   },
+   {
     "value": "Red",
     "family": null
    },
@@ -26094,14 +26243,6 @@
    },
    {
     "value": "Menthol Gold",
-    "family": "mint"
-   },
-   {
-    "value": "Menthol Gold 100s",
-    "family": "mint"
-   },
-   {
-    "value": "Menthol Silver 100s",
     "family": "mint"
    }
   ],
@@ -26893,15 +27034,15 @@
     "family": "mint"
    },
    {
-    "value": "Menthol Gold 100'",
-    "family": "mint"
-   },
-   {
     "value": "Menthol 100'",
     "family": "mint"
    },
    {
     "value": "Menthol Gold",
+    "family": "mint"
+   },
+   {
+    "value": "Menthol Gold 100'",
     "family": "mint"
    },
    {
@@ -28643,12 +28784,12 @@
   "vendorHandle": "ocb-bamboo-cones-6pck",
   "title": "OCB BAMBOO CONES",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "accessory",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": 68,
-  "priceCents": 699,
+  "priceCents": 692,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -28656,7 +28797,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "OCB"
  },
  {
   "slug": "ocb-filters",
@@ -28676,7 +28818,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "OCB"
  },
  {
   "slug": "ocb-papers",
@@ -28696,7 +28839,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "OCB"
  },
  {
   "slug": "ocb-unbleached-cones-6pck",
@@ -28704,11 +28848,11 @@
   "title": "OCB UNBLEACHED CONES 6pck",
   "category": "Papper & Cons",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 1,
   "stock": 11,
-  "priceCents": 699,
+  "priceCents": 692,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -28716,7 +28860,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "OCB"
  },
  {
   "slug": "ocb-unbleahed-king-con",
@@ -28736,7 +28881,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "OCB"
  },
  {
   "slug": "octopuss-monster",
@@ -29418,28 +29564,24 @@
   "onlineSkus": 10,
   "skuCount": 10,
   "stock": 32,
-  "priceCents": 4499,
+  "priceCents": 4498,
   "puffCount": 60000,
   "flavors": [
    {
-    "value": "Blueberry Mint",
-    "family": "berry"
+    "value": "Fcuking Fab",
+    "family": null
    },
    {
     "value": "Two Apple",
     "family": "orchard"
    },
    {
+    "value": "Blackcurrant Ice",
+    "family": "berry"
+   },
+   {
     "value": "Watermelon Strawberry Melon",
     "family": "melon"
-   },
-   {
-    "value": "Fcuking Fab",
-    "family": null
-   },
-   {
-    "value": "Gum Mint",
-    "family": "mint"
    },
    {
     "value": "BlueRazz Lemonade",
@@ -29450,23 +29592,47 @@
     "family": "tropical"
    },
    {
+    "value": "Peach Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Strawberry Kiwi",
+    "family": "berry"
+   },
+   {
+    "value": "First Love",
+    "family": null
+   },
+   {
+    "value": "Watermelon Kiwi",
+    "family": "melon"
+   },
+   {
+    "value": "Watermelon Straw Melon",
+    "family": "melon"
+   },
+   {
     "value": "Strawberry Ice",
     "family": "berry"
    },
    {
-    "value": "Sweet Passionfruit",
-    "family": "tropical"
+    "value": "Berry Ice",
+    "family": "berry"
    },
    {
-    "value": "Blackcurrant Ice",
+    "value": "Blueberry Mint",
     "family": "berry"
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
    }
   ],
   "nicotineMg": [],
   "nonFlavorVariants": {
    "hardware": 0,
    "packSize": 0,
-   "other": 0
+   "other": 1
   },
   "imageUrl": null,
   "brand": "Olit"
@@ -29585,12 +29751,12 @@
     "family": null
    },
    {
-    "value": "Citrus",
-    "family": "citrus"
-   },
-   {
     "value": "Coffee",
     "family": null
+   },
+   {
+    "value": "Citrus",
+    "family": "citrus"
    },
    {
     "value": "Cinnamon",
@@ -29635,11 +29801,11 @@
     "family": "citrus"
    },
    {
-    "value": "Coffee",
+    "value": "Cinnamon",
     "family": null
    },
    {
-    "value": "Cinnamon",
+    "value": "Coffee",
     "family": null
    },
    {
@@ -29677,6 +29843,10 @@
     "family": null
    },
    {
+    "value": "Original",
+    "family": "unflavored"
+   },
+   {
     "value": "Mint",
     "family": "mint"
    },
@@ -29687,10 +29857,6 @@
    {
     "value": "Cinnamon",
     "family": null
-   },
-   {
-    "value": "Original",
-    "family": "unflavored"
    }
   ],
   "nicotineMg": [],
@@ -29707,23 +29873,23 @@
   "vendorHandle": "on-plus-nicotine-pouches",
   "title": "On Plus Nicotine Pouches",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "pouch",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 3,
   "stock": 54,
-  "priceCents": 999,
+  "priceCents": 1099,
   "flavors": [
    {
     "value": "Mint",
     "family": "mint"
    },
    {
-    "value": "Wintergreen",
-    "family": null
+    "value": "Tobacco",
+    "family": "tobacco"
    },
    {
-    "value": "Tabbaco",
+    "value": "Wintergreen",
     "family": null
    }
   ],
@@ -29733,7 +29899,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "On!"
  },
  {
   "slug": "on7-12ct-tablet",
@@ -30530,16 +30697,16 @@
     "family": null
    },
    {
+    "value": "Blue",
+    "family": null
+   },
+   {
     "value": "Orange",
     "family": "citrus"
    },
    {
     "value": "Orange 100'",
     "family": "citrus"
-   },
-   {
-    "value": "Blue",
-    "family": null
    },
    {
     "value": "Green",
@@ -30614,7 +30781,7 @@
   "title": "Parliament",
   "category": "Cigarettes",
   "regulatoryClass": "cigarette",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 3,
   "stock": 169,
@@ -30635,7 +30802,8 @@
    "packSize": 0,
    "other": 1
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Parliament"
  },
  {
   "slug": "partagas-black-maximo",
@@ -31335,12 +31503,52 @@
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 41,
-  "priceCents": 3699,
+  "priceCents": 3594,
   "puffCount": 50000,
   "flavors": [
    {
-    "value": "Double Grape Ice",
+    "value": "Arctic Freeze",
+    "family": "mint"
+   },
+   {
+    "value": "Black Currant Grape",
     "family": "grape"
+   },
+   {
+    "value": "Blood Orange Ice",
+    "family": "citrus"
+   },
+   {
+    "value": "Blue Razz Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Blueberry Peach Ice",
+    "family": "berry"
+   },
+   {
+    "value": "Cane Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Double Apple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Naked",
+    "family": null
+   },
+   {
+    "value": "Sour Double Apple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Pineapple Strawberry",
+    "family": "orchard"
    },
    {
     "value": "Sour Watermelon Ice",
@@ -31351,27 +31559,11 @@
     "family": "berry"
    },
    {
-    "value": "Cool Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Blueberry Peach Ice",
-    "family": "berry"
-   },
-   {
-    "value": "Artic Freeze",
-    "family": "mint"
-   },
-   {
-    "value": "Naked",
-    "family": null
-   },
-   {
-    "value": "White Gummy",
+    "value": "Vanilla Bean Coffee",
     "family": "dessert"
    },
    {
-    "value": "Vanilla Bean Coffee",
+    "value": "White Gummy",
     "family": "dessert"
    }
   ],
@@ -32861,27 +33053,27 @@
   "priceCents": 1384,
   "flavors": [
    {
-    "value": "Menthol",
-    "family": "mint"
-   },
-   {
     "value": "Red",
     "family": null
+   },
+   {
+    "value": "Menthol",
+    "family": "mint"
    },
    {
     "value": "Blue",
     "family": null
    },
    {
-    "value": "Methol Short",
-    "family": null
+    "value": "Menthol Short",
+    "family": "mint"
    }
   ],
   "nicotineMg": [],
   "nonFlavorVariants": {
    "hardware": 0,
    "packSize": 0,
-   "other": 2
+   "other": 0
   },
   "imageUrl": null,
   "brand": "Pyramid"
@@ -33826,63 +34018,27 @@
   "onlineSkus": 23,
   "skuCount": 23,
   "stock": 17,
-  "priceCents": 3999,
+  "priceCents": 3991,
   "puffCount": 35000,
   "flavors": [
+   {
+    "value": "Banana Ice",
+    "family": "tropical"
+   },
+   {
+    "value": "Bitch Please",
+    "family": null
+   },
+   {
+    "value": "Blue Raz Bliss",
+    "family": null
+   },
    {
     "value": "Blue Raz Ice",
     "family": "mint"
    },
    {
-    "value": "White Yummy Ice",
-    "family": "mint"
-   },
-   {
-    "value": "Sour apple ice",
-    "family": "orchard"
-   },
-   {
-    "value": "Icy Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Rainbow",
-    "family": null
-   },
-   {
-    "value": "Orange Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "Miami Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Triple Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Raspberry Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Sour Strawberry",
-    "family": "berry"
-   },
-   {
-    "value": "Sour Apple",
-    "family": "orchard"
-   },
-   {
-    "value": "Peach Passionfruit",
-    "family": "tropical"
-   },
-   {
-    "value": "Watermelon Ice",
-    "family": "melon"
-   },
-   {
-    "value": "Peach Baddie",
+    "value": "Dragonfruit Lemonade",
     "family": "tropical"
    },
    {
@@ -33890,7 +34046,31 @@
     "family": "grape"
    },
    {
-    "value": "Bitch Please",
+    "value": "Icy Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Miami Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Night Crawler",
+    "family": null
+   },
+   {
+    "value": "Orange Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Peach Baddie",
+    "family": "tropical"
+   },
+   {
+    "value": "Peach Passionfruit",
+    "family": "tropical"
+   },
+   {
+    "value": "Pink &Blue",
     "family": null
    },
    {
@@ -33898,28 +34078,40 @@
     "family": null
    },
    {
-    "value": "Pink &Blue",
+    "value": "Rainbow",
     "family": null
    },
    {
-    "value": "Dragonfruit Lemonade",
-    "family": "tropical"
+    "value": "Raspberry Watermelon",
+    "family": "melon"
    },
    {
-    "value": "Blue Raz Bliss",
-    "family": null
+    "value": "Sour Apple",
+    "family": "orchard"
    },
    {
-    "value": "Banana Ice",
-    "family": "tropical"
+    "value": "Sour Apple Ice",
+    "family": "orchard"
+   },
+   {
+    "value": "Sour Strawberry",
+    "family": "berry"
+   },
+   {
+    "value": "Triple Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Watermelon Ice",
+    "family": "melon"
+   },
+   {
+    "value": "White Yummy Ice",
+    "family": "mint"
    },
    {
     "value": "Wild Berry Dew",
     "family": "berry"
-   },
-   {
-    "value": "Night Crawler",
-    "family": null
    }
   ],
   "nicotineMg": [],
@@ -33937,11 +34129,11 @@
   "title": "Raz Rx 50K Dew Edition",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 5,
   "stock": 33,
-  "priceCents": 3999,
+  "priceCents": 3991,
   "puffCount": 50000,
   "flavors": [
    {
@@ -33949,19 +34141,19 @@
     "family": null
    },
    {
-    "value": "Code Red",
-    "family": null
-   },
-   {
     "value": "Code Green",
     "family": null
    },
    {
-    "value": "Code Pink",
+    "value": "Code Red",
     "family": null
    },
    {
     "value": "Code White",
+    "family": null
+   },
+   {
+    "value": "Code Pink",
     "family": null
    }
   ],
@@ -34484,39 +34676,23 @@
   "vendorHandle": "rodman-playoffs",
   "title": "Rodman Playoffs",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "ends",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 7,
   "stock": 19,
-  "priceCents": 3599,
+  "priceCents": 3594,
   "flavors": [
+   {
+    "value": "Crystal Clear",
+    "family": null
+   },
    {
     "value": "Hokkaido Custard",
     "family": "dessert"
    },
    {
     "value": "Root Beer",
-    "family": null
-   },
-   {
-    "value": "Matcha Ice",
-    "family": "mint"
-   },
-   {
-    "value": "Lychee Watermelon",
-    "family": "melon"
-   },
-   {
-    "value": "Watermelon Apple",
-    "family": "melon"
-   },
-   {
-    "value": "Glacier Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Crystal Clear",
     "family": null
    }
   ],
@@ -34526,15 +34702,16 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Rodman"
  },
  {
   "slug": "rogue-12mg-nicotine-pouches",
   "vendorHandle": "rogue-12mg-nicotine-pouches",
   "title": "Rogue 12Mg Nicotine Pouches",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "pouch",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": 29,
@@ -34547,6 +34724,14 @@
    {
     "value": "Citrus",
     "family": "citrus"
+   },
+   {
+    "value": "Blue Raspberry",
+    "family": "berry"
+   },
+   {
+    "value": "Wintergreen",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -34563,8 +34748,8 @@
   "vendorHandle": "rogue-15mg-nicotine-pouches",
   "title": "Rogue 15Mg Nicotine Pouches",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "pouch",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 3,
   "stock": 35,
@@ -34575,12 +34760,16 @@
     "family": "mint"
    },
    {
-    "value": "Blue Rasberry",
+    "value": "Citrus",
+    "family": "citrus"
+   },
+   {
+    "value": "Blue Raspberry",
     "family": "berry"
    },
    {
-    "value": "Citrus",
-    "family": "citrus"
+    "value": "Wintergreen",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -34605,32 +34794,20 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Citrus",
-    "family": "citrus"
-   },
-   {
-    "value": "Peppermint",
-    "family": "mint"
-   },
-   {
-    "value": "Wintergreen",
-    "family": null
+    "value": "Apple",
+    "family": "orchard"
    },
    {
     "value": "Berry",
     "family": "berry"
    },
    {
-    "value": "Spearmint",
-    "family": "mint"
-   },
-   {
     "value": "Cinnamon",
     "family": null
    },
    {
-    "value": "Apple",
-    "family": "orchard"
+    "value": "Citrus",
+    "family": "citrus"
    },
    {
     "value": "Honey Lemon",
@@ -34641,12 +34818,24 @@
     "family": "tropical"
    },
    {
-    "value": "Tabac",
-    "family": null
-   },
-   {
     "value": "Original",
     "family": "unflavored"
+   },
+   {
+    "value": "Peppermint",
+    "family": "mint"
+   },
+   {
+    "value": "Spearmint",
+    "family": "mint"
+   },
+   {
+    "value": "Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Wintergreen",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -34671,12 +34860,8 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "Peppermint",
-    "family": "mint"
+    "value": "Apple",
+    "family": "orchard"
    },
    {
     "value": "Berry",
@@ -34687,36 +34872,40 @@
     "family": null
    },
    {
-    "value": "Apple",
-    "family": "orchard"
-   },
-   {
-    "value": "Honey lemon",
-    "family": "citrus"
-   },
-   {
-    "value": "Tabac",
-    "family": null
-   },
-   {
-    "value": "Original",
-    "family": "unflavored"
-   },
-   {
-    "value": "Wintergreen",
-    "family": null
-   },
-   {
-    "value": "Spearmint",
-    "family": "mint"
-   },
-   {
     "value": "Citrus",
     "family": "citrus"
    },
    {
     "value": "Frost",
     "family": "mint"
+   },
+   {
+    "value": "Honey Lemon",
+    "family": "citrus"
+   },
+   {
+    "value": "Mango",
+    "family": "tropical"
+   },
+   {
+    "value": "Original",
+    "family": "unflavored"
+   },
+   {
+    "value": "Peppermint",
+    "family": "mint"
+   },
+   {
+    "value": "Spearmint",
+    "family": "mint"
+   },
+   {
+    "value": "Tobacco",
+    "family": "tobacco"
+   },
+   {
+    "value": "Wintergreen",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -35544,11 +35733,11 @@
     "family": "mint"
    },
    {
-    "value": "Gold Menthol 100s",
+    "value": "Silver Menthol 100'",
     "family": "mint"
    },
    {
-    "value": "Silver Menthol 100'",
+    "value": "Gold Menthol 100s",
     "family": "mint"
    }
   ],
@@ -40659,31 +40848,19 @@
   "title": "Swisher 5 Pack",
   "category": "Leaf",
   "regulatoryClass": "rollYourOwn",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": -5,
-  "priceCents": 1000,
+  "priceCents": 997,
   "flavors": [
+   {
+    "value": "Original",
+    "family": "unflavored"
+   },
    {
     "value": "Diamond",
     "family": null
-   },
-   {
-    "value": "Classic Mini",
-    "family": "tobacco"
-   },
-   {
-    "value": "Diamond Mini",
-    "family": null
-   },
-   {
-    "value": "CLASSIC",
-    "family": "tobacco"
-   },
-   {
-    "value": "Grape",
-    "family": "grape"
    },
    {
     "value": "Cherry",
@@ -40696,7 +40873,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Swisher Sweets"
  },
  {
   "slug": "swisher-cigar-pack",
@@ -40733,7 +40911,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Swisher Sweets"
  },
  {
   "slug": "swisher-mini",
@@ -40794,7 +40973,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Swisher Sweets"
  },
  {
   "slug": "swisher-sweets",
@@ -40806,63 +40986,35 @@
   "onlineSkus": 23,
   "skuCount": 23,
   "stock": 332,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
-   {
-    "value": "Legend  Irish Cream",
-    "family": null
-   },
    {
     "value": "Diamonds",
     "family": null
-   },
-   {
-    "value": "Peppermint",
-    "family": "mint"
-   },
-   {
-    "value": "Classic",
-    "family": "tobacco"
    },
    {
     "value": "Blueberry",
     "family": "berry"
    },
    {
-    "value": "Grape",
-    "family": "grape"
-   },
-   {
     "value": "Tropical Fusion",
     "family": "tropical"
    },
    {
-    "value": "Green",
-    "family": null
-   },
-   {
-    "value": "Mango Lemonade",
-    "family": "tropical"
-   },
-   {
-    "value": "Legend Orginal",
-    "family": null
-   },
-   {
-    "value": "Legend Maui Mango",
-    "family": "tropical"
+    "value": "Cookies N Cream",
+    "family": "dessert"
    },
    {
     "value": "Cream",
     "family": null
    },
    {
-    "value": "Banana Smash",
-    "family": "tropical"
+    "value": "Grape",
+    "family": "grape"
    },
    {
-    "value": "White Grape",
-    "family": "grape"
+    "value": "Green",
+    "family": null
    },
    {
     "value": "Peach",
@@ -40873,32 +41025,16 @@
     "family": "berry"
    },
    {
-    "value": "Cookies N Cream",
+    "value": "Coco Pineapple",
+    "family": "orchard"
+   },
+   {
+    "value": "Vanilla",
     "family": "dessert"
    },
    {
-    "value": "Watermelon Haze",
-    "family": "melon"
-   },
-   {
-    "value": "Sticky Sweets",
-    "family": null
-   },
-   {
-    "value": "Summer Daze",
-    "family": null
-   },
-   {
-    "value": "Mango Blaze",
-    "family": "tropical"
-   },
-   {
-    "value": "Wild Rush",
-    "family": null
-   },
-   {
-    "value": "Classic Mini",
-    "family": "tobacco"
+    "value": "Original",
+    "family": "unflavored"
    }
   ],
   "nicotineMg": [],
@@ -40946,18 +41082,30 @@
   "title": "Swisher Sweets Leaf",
   "category": "Leaf",
   "regulatoryClass": "rollYourOwn",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 8,
   "stock": 53,
-  "priceCents": 599,
+  "priceCents": 600,
   "flavors": [
+   {
+    "value": "Aromatic",
+    "family": null
+   },
    {
     "value": "Cognac",
     "family": null
    },
    {
-    "value": "Neon Nights",
+    "value": "Dark Stout",
+    "family": null
+   },
+   {
+    "value": "Honey",
+    "family": null
+   },
+   {
+    "value": "Irish Cream",
     "family": null
    },
    {
@@ -40965,24 +41113,12 @@
     "family": "unflavored"
    },
    {
-    "value": "Honey",
-    "family": null
-   },
-   {
-    "value": "Aromatic",
+    "value": "Neon Lights",
     "family": null
    },
    {
     "value": "Peach Brandy",
     "family": "tropical"
-   },
-   {
-    "value": "Irish Cream",
-    "family": null
-   },
-   {
-    "value": "Dark Stout",
-    "family": null
    }
   ],
   "nicotineMg": [],
@@ -41000,15 +41136,27 @@
   "title": "Swisher Sweets Leaf Wraps",
   "category": null,
   "regulatoryClass": "rollYourOwn",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 1,
   "stock": 5,
-  "priceCents": 999,
+  "priceCents": 997,
   "flavors": [
+   {
+    "value": "Irish Cream",
+    "family": null
+   },
    {
     "value": "Peach Brandy",
     "family": "tropical"
+   },
+   {
+    "value": "Original",
+    "family": "unflavored"
+   },
+   {
+    "value": "Russian Cream",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -41222,11 +41370,11 @@
   "title": "Talon",
   "category": "Cigar",
   "regulatoryClass": "cigar",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": -1,
-  "priceCents": 1800,
+  "priceCents": 1845,
   "flavors": [
    {
     "value": "Vanilla",
@@ -41243,7 +41391,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Talon"
  },
  {
   "slug": "tar-bar",
@@ -44338,22 +44487,14 @@
   "title": "Velo 3mg",
   "category": "Nicotine Pouches",
   "regulatoryClass": "pouch",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 5,
   "stock": 194,
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Wild Berry",
-    "family": "berry"
-   },
-   {
-    "value": "Spearmint",
-    "family": "mint"
-   },
-   {
-    "value": "Wintergreen",
+    "value": "Cappuccino",
     "family": null
    },
    {
@@ -44361,7 +44502,15 @@
     "family": "mint"
    },
    {
-    "value": "Cappucino",
+    "value": "Spearmint",
+    "family": "mint"
+   },
+   {
+    "value": "Wild Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Wintergreen",
     "family": null
    }
   ],
@@ -44380,22 +44529,34 @@
   "title": "Velo 6mg",
   "category": "Nicotine Pouches",
   "regulatoryClass": "pouch",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 9,
   "stock": 242,
   "priceCents": 1099,
   "flavors": [
    {
+    "value": "Cappuccino",
+    "family": null
+   },
+   {
+    "value": "Citrus Chill",
+    "family": "citrus"
+   },
+   {
     "value": "Dragon Fruit",
     "family": "tropical"
    },
    {
-    "value": "Wintergeen",
-    "family": null
+    "value": "Mint",
+    "family": "mint"
    },
    {
-    "value": "Mint",
+    "value": "Wild Berry",
+    "family": "berry"
+   },
+   {
+    "value": "Peppermint",
     "family": "mint"
    },
    {
@@ -44403,24 +44564,12 @@
     "family": "mint"
    },
    {
-    "value": "Peppermint",
-    "family": "mint"
-   },
-   {
-    "value": "Citrus Chill",
-    "family": "citrus"
-   },
-   {
-    "value": "Wild Berry",
-    "family": "berry"
-   },
-   {
-    "value": "cappucino",
-    "family": null
-   },
-   {
     "value": "Tropical Heat",
     "family": "tropical"
+   },
+   {
+    "value": "Wintergreen",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -44483,15 +44632,11 @@
   "priceCents": 1099,
   "flavors": [
    {
+    "value": "Citrus Chill",
+    "family": "citrus"
+   },
+   {
     "value": "Mint",
-    "family": "mint"
-   },
-   {
-    "value": "Wintergreen",
-    "family": null
-   },
-   {
-    "value": "Spearmint",
     "family": "mint"
    },
    {
@@ -44499,12 +44644,24 @@
     "family": "mint"
    },
    {
-    "value": "Citrus Chill",
-    "family": "citrus"
+    "value": "Spearmint",
+    "family": "mint"
    },
    {
     "value": "Wild Berry",
     "family": "berry"
+   },
+   {
+    "value": "Wintergreen",
+    "family": null
+   },
+   {
+    "value": "Smooth",
+    "family": null
+   },
+   {
+    "value": "SpicedCider",
+    "family": "orchard"
    }
   ],
   "nicotineMg": [],
@@ -44553,22 +44710,6 @@
     "family": "mint"
    },
    {
-    "value": "Gold",
-    "family": null
-   },
-   {
-    "value": "Menthol Gold",
-    "family": "mint"
-   },
-   {
-    "value": "Silver",
-    "family": null
-   },
-   {
-    "value": "Menthol Silver",
-    "family": "mint"
-   },
-   {
     "value": "Red",
     "family": null
    },
@@ -44578,6 +44719,22 @@
    },
    {
     "value": "Super Menthol",
+    "family": "mint"
+   },
+   {
+    "value": "Menthol Silver",
+    "family": "mint"
+   },
+   {
+    "value": "Silver",
+    "family": null
+   },
+   {
+    "value": "Gold",
+    "family": null
+   },
+   {
+    "value": "Menthol Gold",
     "family": "mint"
    },
    {
@@ -44685,7 +44842,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Vuse"
  },
  {
   "slug": "vuse-pod",
@@ -44705,7 +44863,8 @@
    "packSize": 5,
    "other": 3
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Vuse"
  },
  {
   "slug": "water-16-9oz",
@@ -45158,91 +45317,27 @@
   "onlineSkus": 21,
   "skuCount": 21,
   "stock": 160,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
     "value": "White Russian",
     "family": null
    },
    {
-    "value": "Green Sweets",
-    "family": null
-   },
-   {
-    "value": "Black Sweets",
-    "family": null
-   },
-   {
-    "value": "White Grape",
-    "family": "grape"
-   },
-   {
-    "value": "Silver",
-    "family": null
-   },
-   {
-    "value": "Sweets",
-    "family": null
-   },
-   {
-    "value": "Vanilla",
+    "value": "Chocolate",
     "family": "dessert"
-   },
-   {
-    "value": "Grape",
-    "family": "grape"
-   },
-   {
-    "value": "Peach",
-    "family": "tropical"
-   },
-   {
-    "value": "Strawberry",
-    "family": "berry"
-   },
-   {
-    "value": "Pineapple",
-    "family": "orchard"
-   },
-   {
-    "value": "Mango",
-    "family": "tropical"
-   },
-   {
-    "value": "White Peach",
-    "family": "tropical"
-   },
-   {
-    "value": "Blue Raspberry",
-    "family": "berry"
-   },
-   {
-    "value": "Platinum",
-    "family": null
    },
    {
     "value": "Emerald",
     "family": null
    },
    {
-    "value": "Chocolate & Vanilla",
-    "family": "dessert"
-   },
-   {
-    "value": "Triple Grape",
-    "family": "grape"
-   },
-   {
-    "value": "Cherry Pie",
-    "family": "orchard"
+    "value": "Blue Raspberry",
+    "family": "berry"
    },
    {
     "value": "Blackout Berry",
     "family": "berry"
-   },
-   {
-    "value": "Moon Shine Sweet Peach Tea",
-    "family": "tropical"
    }
   ],
   "nicotineMg": [],
@@ -45385,7 +45480,7 @@
   "nonFlavorVariants": {
    "hardware": 0,
    "packSize": 0,
-   "other": 3
+   "other": 1
   },
   "imageUrl": null,
   "brand": "Winston"
@@ -46024,18 +46119,18 @@
   "title": "Zaza Large Leaf Cigar Wraps",
   "category": null,
   "regulatoryClass": "cigar",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": 19,
-  "priceCents": 999,
+  "priceCents": 997,
   "flavors": [
    {
-    "value": "Natural",
+    "value": "Dark Natural",
     "family": null
    },
    {
-    "value": "Dark Natural",
+    "value": "Natural",
     "family": null
    }
   ],
@@ -46045,7 +46140,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Zaza"
  },
  {
   "slug": "zaza-small-leaf-cigar-wraps",
@@ -46053,18 +46149,18 @@
   "title": "Zaza Small Leaf Cigar Wraps",
   "category": null,
   "regulatoryClass": "cigar",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": 49,
-  "priceCents": 399,
+  "priceCents": 392,
   "flavors": [
    {
-    "value": "Natural",
+    "value": "Dark Natural",
     "family": null
    },
    {
-    "value": "Dark Natural",
+    "value": "Natural",
     "family": null
    }
   ],
@@ -46074,7 +46170,8 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "brand": "Zaza"
  },
  {
   "slug": "zen-slim-filter-tips",
@@ -46179,7 +46276,7 @@
   "onlineSkus": 3,
   "skuCount": 3,
   "stock": 10,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
     "value": "Grape",
@@ -46208,28 +46305,28 @@
   "vendorHandle": "zig-zag-cones-1",
   "title": "Zig-Zag Cones",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "accessory",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 4,
   "stock": 36,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
-    "value": "Blueberry",
+    "value": "Dragonberry",
     "family": "berry"
    },
    {
-    "value": "Straight Up",
-    "family": null
+    "value": "Blueberry",
+    "family": "berry"
    },
    {
     "value": "Grape",
     "family": "grape"
    },
    {
-    "value": "Dragonberry",
-    "family": "berry"
+    "value": "Straight Up",
+    "family": null
    }
   ],
   "nicotineMg": [],
@@ -46251,30 +46348,22 @@
   "onlineSkus": 11,
   "skuCount": 11,
   "stock": 257,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
-    "value": "Peach",
+    "value": "Mango",
     "family": "tropical"
    },
    {
-    "value": "Grape",
-    "family": "grape"
-   },
-   {
-    "value": "Blueberry",
+    "value": "Dragonberry",
     "family": "berry"
-   },
-   {
-    "value": "Cherry",
-    "family": "orchard"
    },
    {
     "value": "Melon",
     "family": "melon"
    },
    {
-    "value": "Mango",
+    "value": "Peach",
     "family": "tropical"
    },
    {
@@ -46284,18 +46373,6 @@
    {
     "value": "Straight Up",
     "family": null
-   },
-   {
-    "value": "Vanilla",
-    "family": "dessert"
-   },
-   {
-    "value": "Dragonberry",
-    "family": "berry"
-   },
-   {
-    "value": "Pineapple",
-    "family": "orchard"
    }
   ],
   "nicotineMg": [],
@@ -46313,11 +46390,11 @@
   "title": "ZigZag Cones",
   "category": "Papper & Cons",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": 35,
-  "priceCents": 699,
+  "priceCents": 692,
   "flavors": [
    {
     "value": "King Ultra Thin",
@@ -46351,27 +46428,15 @@
   "title": "Zigzag Leaf",
   "category": "Leaf",
   "regulatoryClass": "rollYourOwn",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 5,
   "stock": 47,
-  "priceCents": 299,
+  "priceCents": 300,
   "flavors": [
    {
     "value": "Berry Bash",
     "family": "berry"
-   },
-   {
-    "value": "Vanilla Cream",
-    "family": "dessert"
-   },
-   {
-    "value": "Straight Up",
-    "family": null
-   },
-   {
-    "value": "Sweet",
-    "family": null
    },
    {
     "value": "Palma",
@@ -46737,18 +46802,6 @@
     "family": "mint"
    },
    {
-    "value": "Dragonfruit",
-    "family": "tropical"
-   },
-   {
-    "value": "Citus",
-    "family": null
-   },
-   {
-    "value": "Peppermint",
-    "family": "mint"
-   },
-   {
     "value": "Spearmint",
     "family": "mint"
    },
@@ -46757,16 +46810,20 @@
     "family": null
    },
    {
-    "value": "Chill",
-    "family": null
+    "value": "Dragonfruit",
+    "family": "tropical"
+   },
+   {
+    "value": "Peppermint",
+    "family": "mint"
+   },
+   {
+    "value": "Citrus",
+    "family": "citrus"
    },
    {
     "value": "White",
     "family": null
-   },
-   {
-    "value": "Jalapeno Lime",
-    "family": "citrus"
    }
   ],
   "nicotineMg": [],
@@ -46795,36 +46852,28 @@
     "family": "mint"
    },
    {
+    "value": "Wintergreen",
+    "family": null
+   },
+   {
     "value": "Dragonfruit",
     "family": "tropical"
-   },
-   {
-    "value": "Citrus",
-    "family": "citrus"
-   },
-   {
-    "value": "Peppermint",
-    "family": "mint"
    },
    {
     "value": "Spearmint",
     "family": "mint"
    },
    {
-    "value": "Wintergreen",
-    "family": null
+    "value": "Peppermint",
+    "family": "mint"
    },
    {
-    "value": "Chill",
-    "family": null
+    "value": "Tobacco",
+    "family": "tobacco"
    },
    {
-    "value": "White",
-    "family": null
-   },
-   {
-    "value": "Jalapeno Haze",
-    "family": null
+    "value": "Citrus",
+    "family": "citrus"
    }
   ],
   "nicotineMg": [],
@@ -46849,31 +46898,11 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Peppermint",
-    "family": "mint"
+    "value": "Apple Mint",
+    "family": "orchard"
    },
    {
-    "value": "Cool mint",
-    "family": "mint"
-   },
-   {
-    "value": "Spearmint",
-    "family": "mint"
-   },
-   {
-    "value": "Wintergreen",
-    "family": null
-   },
-   {
-    "value": "Coffee",
-    "family": null
-   },
-   {
-    "value": "Dragonberry",
-    "family": "berry"
-   },
-   {
-    "value": "Cinnamon",
+    "value": "Chill",
     "family": null
    },
    {
@@ -46881,19 +46910,15 @@
     "family": "citrus"
    },
    {
-    "value": "Black Cherry",
-    "family": "orchard"
-   },
-   {
-    "value": "Peach",
-    "family": "tropical"
-   },
-   {
-    "value": "Smooth",
+    "value": "Coffee",
     "family": null
    },
    {
-    "value": "Chill",
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Espresso Martini",
     "family": null
    },
    {
@@ -46901,20 +46926,28 @@
     "family": "mint"
    },
    {
-    "value": "Mojito",
+    "value": "Dragonberry",
+    "family": "berry"
+   },
+   {
+    "value": "Peppermint",
+    "family": "mint"
+   },
+   {
+    "value": "Smooth",
     "family": null
+   },
+   {
+    "value": "Spearmint",
+    "family": "mint"
    },
    {
     "value": "Spiced Cider",
     "family": "orchard"
    },
    {
-    "value": "Espresso Martini",
+    "value": "Wintergreen",
     "family": null
-   },
-   {
-    "value": "Apple",
-    "family": "orchard"
    }
   ],
   "nicotineMg": [],
@@ -46939,28 +46972,12 @@
   "priceCents": 1099,
   "flavors": [
    {
-    "value": "Spearmint",
-    "family": "mint"
+    "value": "Black Cherry",
+    "family": "orchard"
    },
    {
-    "value": "Cool mint",
-    "family": "mint"
-   },
-   {
-    "value": "Peppermint",
-    "family": "mint"
-   },
-   {
-    "value": "Wintergreen",
+    "value": "Chill",
     "family": null
-   },
-   {
-    "value": "Coffee",
-    "family": null
-   },
-   {
-    "value": "Dragonberry",
-    "family": "berry"
    },
    {
     "value": "Cinnamon",
@@ -46971,19 +46988,15 @@
     "family": "citrus"
    },
    {
-    "value": "Black Cherry",
-    "family": "orchard"
-   },
-   {
-    "value": "Peach",
-    "family": "tropical"
-   },
-   {
-    "value": "Smooth",
+    "value": "Coffee",
     "family": null
    },
    {
-    "value": "Chill",
+    "value": "Cool Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Espresso Martini",
     "family": null
    },
    {
@@ -46991,15 +47004,27 @@
     "family": "mint"
    },
    {
-    "value": "Mojito",
+    "value": "Dragonberry",
+    "family": "berry"
+   },
+   {
+    "value": "Peppermint",
+    "family": "mint"
+   },
+   {
+    "value": "Smooth",
     "family": null
+   },
+   {
+    "value": "Spearmint",
+    "family": "mint"
    },
    {
     "value": "Spiced Cider",
     "family": "orchard"
    },
    {
-    "value": "Espresso Martini",
+    "value": "Wintergreen",
     "family": null
    }
   ],
@@ -47025,12 +47050,8 @@
   "priceCents": 1199,
   "flavors": [
    {
-    "value": "Fresh Spearmint",
+    "value": "Peppermint Frost",
     "family": "mint"
-   },
-   {
-    "value": "Chill Mist",
-    "family": null
    },
    {
     "value": "Signature Smooth",
@@ -47041,16 +47062,16 @@
     "family": "citrus"
    },
    {
-    "value": "Wintergreen Blast",
+    "value": "Arctic Mint",
+    "family": "mint"
+   },
+   {
+    "value": "Chill Mist",
     "family": null
    },
    {
-    "value": "Peppermint Frost",
-    "family": "mint"
-   },
-   {
-    "value": "Arctic Mint",
-    "family": "mint"
+    "value": "Wintergreen",
+    "family": null
    }
   ],
   "nicotineMg": [],

@@ -25,6 +25,8 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { parse } from "csv-parse/sync";
 import type { FlavorFamily, RegulatoryClass } from "../src/lib/commerce/types";
+import { applyShop, SHOP_EDITS } from "./shop-catalog";
+import { classifyVariant } from "./flavors";
 
 /* ---------------------------------------------------------------------------
    1. Category → regulatory class.
@@ -253,6 +255,7 @@ const MODEL_OVERRIDES: Record<string, Mapping> = {
   // case, not oral nicotine, and was picking up the house pouch price.
   "Cigarette Case": { cls: "accessory" },
 
+
   "NEXA 50 Ultra 2": {
     cls: "ends",
     review:
@@ -370,80 +373,6 @@ function inferFromName(title: string, flavorCount: number): Mapping | null {
 
   // Everything else stays unknown. Deliberately.
   return null;
-}
-
-/* ---------------------------------------------------------------------------
-   2. Flavour → family.
-
-   Order matters. A fruit term wins over an ice/mint term, because
-   "Watermelon Ice" is a melon flavour that happens to be chilled, not a mint.
-   Dessert is checked before fruit only for compound confectionery terms.
-   --------------------------------------------------------------------------- */
-
-const FLAVOR_RULES: [FlavorFamily, RegExp][] = [
-  ["dessert", /cotton candy|ice cream|cupcake|custard|cheesecake|caramel|chocolate|cookie|gummy|rancher|skittle|b-?pop|marshmallow|vanilla|sundae|cake|donut|waffle/i],
-  ["grape", /grape/i],
-  ["melon", /watermelon|honeydew|cantaloupe|melon/i],
-  ["orchard", /apple|cherry|pear\b|plum|cider/i],
-  ["berry", /berry|razz|raspberr|blueberr|strawberr|blackberr|cranberr|acai|currant/i],
-  ["tropical", /mango|pineapple|coconut|banana|guava|passion|kiwi|dragon|lychee|papaya|hawaiian|tropical|peach|apricot/i],
-  ["citrus", /lemon|lime|orange|citrus|grapefruit|tangerine|yuzu/i],
-  ["tobacco", /tobacco|cuban|classic/i],
-  ["mint", /mint|menthol|\bice\b|icy|iced|cool|frozen|freeze|arctic|polar|spearmint|frost/i],
-  ["unflavored", /^clear$|unflavou?red|zero|plain|no flavou?r|original/i],
-];
-
-function classifyFlavor(value: string): FlavorFamily | null {
-  for (const [family, re] of FLAVOR_RULES) if (re.test(value)) return family;
-  return null;
-}
-
-/**
- * Lightspeed's variant slot is literally named "Flavor", but staff have used
- * it for whatever varies on a given product — coil resistance, nicotine
- * strength, pack size, weight. Roughly 40% of the values in that column are
- * not flavours at all.
- *
- * So before classifying, work out what a value actually IS. Treating
- * "0.15A Quadra 85-100W" as an unbucketed flavour would be a false negative;
- * treating it as a flavour with no swatch would be worse — it would put
- * hardware specs in the flavour filter.
- */
-type VariantKind =
-  | { kind: "flavor"; family: FlavorFamily | null }
-  | { kind: "strength"; mg: number }
-  | { kind: "hardware" }
-  | { kind: "packSize" }
-  | { kind: "other" };
-
-function classifyVariant(raw: string): VariantKind {
-  const v = raw.trim();
-
-  // Coil specs: "0.2A Mesh 50-58W", "0.6", "1.2A Mesh 8-12W"
-  if (/^\d+(\.\d+)?\s*(a\b|ohm|Ω)/i.test(v) || /\d+\s*-\s*\d+\s*w\b/i.test(v)) {
-    return { kind: "hardware" };
-  }
-  if (/^\d+(\.\d+)?$/.test(v)) return { kind: "hardware" };
-
-  // Nicotine strength: "30mg", "0 Mg", "5*15mg", "10*15 Mg"
-  const mg = v.match(/(?:^|\D)(\d{1,3})\s*mg\b/i);
-  if (mg && !/\d{3,}\s*mg/i.test(v)) {
-    return { kind: "strength", mg: Number(mg[1]) };
-  }
-
-  // Pack sizes and weights: '3" Pack', "20\" Softgels", "3.5g", "30mg 7pk"
-  if (/\bpack\b|\bpk\b|softgel|\d+\s*g\b|\d+\s*ct\b|count/i.test(v)) {
-    return { kind: "packSize" };
-  }
-
-  const family = classifyFlavor(v);
-  if (family) return { kind: "flavor", family };
-
-  // Text with no numbers is very likely a genuine flavour we simply have no
-  // rule for yet — worth surfacing. Anything else is noise.
-  return /^[A-Za-z][A-Za-z \-'&+.]{2,}$/.test(v)
-    ? { kind: "flavor", family: null }
-    : { kind: "other" };
 }
 
 /* ---------------------------------------------------------------------------
@@ -632,233 +561,11 @@ for (const m of models) {
   }
 }
 
-/**
- * Third pass: the cannabinoid firewall. Owner decision (2026-09-29): no THC
- * or CBD product appears on the site.
- *
- * This runs LAST and beats category, override and inference alike, because
- * the POS files some of these under ordinary categories — "Geek THCX 3 gram
- * disposable" and "Torch 1 Gram THC-A Disposable" arrived as vapes, and the
- * `thca` name test above never saw them (it only runs on uncategorised rows,
- * and it does not match "thc-a", "thcx" or "thcp" anyway).
- *
- *  - THC in any spelling, cannabis, HHC, delta-8/9/10 → `restricted`.
- *  - CBD → `hemp`, which never publishes (see the publish rule below).
- *
- *  - Hemp wraps and rolls → `unknown`. Owner decision, same day: hidden
- *    until the shop confirms they are the tobacco-free line and not a CBD
- *    one. "High Hemp" is a wrap brand, so it is named outright. Plain hemp
- *    PAPERS ("Pure Hemp Papers", "High Hemp Papers") are ordinary rolling
- *    papers and are deliberately not matched.
- */
-const THC_NAME = /\bthc|cannabi|\bhhc\b|delta.?(8|9|10)\b/;
-const CBD_NAME = /\bcbd\b/;
-const HEMP_WRAP_NAME = /\bhemp\b.*\b(wraps?|rolls?)\b|\bhemparillo\b|^high hemp$/;
-const firewalled = new Set<string>();
-for (const m of models) {
-  const t = m.title.toLowerCase();
-  if (THC_NAME.test(t) && m.regulatoryClass !== "restricted") {
-    m.regulatoryClass = "restricted";
-    firewalled.add(m.title);
-  } else if (CBD_NAME.test(t) && m.regulatoryClass !== "restricted" && m.regulatoryClass !== "hemp") {
-    m.regulatoryClass = "hemp";
-    firewalled.add(m.title);
-  } else if (HEMP_WRAP_NAME.test(t) && m.regulatoryClass !== "restricted" && m.regulatoryClass !== "hemp") {
-    m.regulatoryClass = "unknown";
-    firewalled.add(m.title);
-  }
-}
+// Third pass, the cannabinoid firewall, and the shop's own decisions — shop
+// classes, prices, publish and retire — live in shop-catalog.ts so the no-CSV
+// build (apply-shop-catalog.ts) runs exactly the same rules.
+const { editsFired, firewalled } = applyShop(models);
 
-/**
- * Brands, for the homepage wall and the product page byline.
- *
- * `brand` has been a declared-but-never-populated field: the product page has
- * always rendered `{product.brand && ...}` and never shown one. Deriving it
- * from the first word of the title gets "Al" out of "Al Fakher" and "Geek" out
- * of both Geek Bar and Geek Vape, which are different manufacturers, so the
- * list is curated instead.
- *
- * Matched longest-first on a word boundary, not as a prefix — "BLK Swisher
- * Sweets" is a Swisher Sweets product with a line name in front of it. A title
- * that matches nothing simply has no brand, which is the right outcome for
- * "Butane" and "Glass Bong – Size 3".
- */
-const BRANDS: [pattern: string, display: string][] = [
-  // Multi-word first; the sort below enforces it, this order is for reading.
-  ["Al Fakher", "Al Fakher"], ["Al Capone", "Al Capone"],
-  ["American Spirit", "American Spirit"], ["Benson & Hedges", "Benson & Hedges"],
-  ["Black & Mild", "Black & Mild"], ["Geek Bar", "Geek Bar"],
-  ["Geek Vape", "Geek Vape"], ["Lost Mary", "Lost Mary"],
-  ["Lost Vape", "Lost Vape"], ["Lucky Strike", "Lucky Strike"],
-  ["Lucy Breakers", "Lucy"], ["Grabba Leaf", "Grabba Leaf"],
-  ["Graba Leaf", "Grabba Leaf"], ["Leather Rose", "Leather Rose"],
-  ["MJ Arsenal", "MJ Arsenal"], ["Off Stamp", "Off Stamp"],
-  ["Pall Mall", "Pall Mall"], ["Pillow Talk", "Pillow Talk"],
-  ["Pyne Pod", "Pyne Pod"], ["Romeo y Juliet", "Romeo y Julieta"],
-  ["Swisher Sweets", "Swisher Sweets"], ["Virginia Slims", "Virginia Slims"],
-  ["White Owl", "White Owl"], ["High Hemp", "High Hemp"],
-  ["Good Times", "Good Times"], ["Super Value", "Super Value"],
-  ["Zig-Zag", "Zig-Zag"], ["ZigZag", "Zig-Zag"],
-  // Single word.
-  ["Vaporesso", "Vaporesso"], ["Montecristo", "Montecristo"],
-  ["Macanudo", "Macanudo"], ["Starbuzz", "Starbuzz"], ["Serbetli", "Serbetli"],
-  ["Spaceman", "Spaceman"], ["Syntrix", "Syntrix"], ["Cookies", "Cookies"],
-  ["Ebcreate", "EB Create"], ["Backwoods", "Backwoods"], ["Marlboro", "Marlboro"],
-  ["Newport", "Newport"], ["Camel", "Camel"], ["Winston", "Winston"],
-  ["Salem", "Salem"], ["Seneca", "Seneca"], ["Montego", "Montego"],
-  ["Pyramid", "Pyramid"], ["Capri", "Capri"], ["Djarum", "Djarum"],
-  ["Dutch", "Dutch"], ["Drum", "Drum"], ["Juul", "Juul"], ["Hyppe", "Hyppe"],
-  ["Oxbar", "Oxbar"], ["Flonq", "Flonq"], ["Flum", "Flum"], ["Foger", "Foger"],
-  ["Adjust", "Adjust"], ["Airis", "Airis"], ["Alp", "Alp"], ["Acid", "Acid"],
-  ["Rogue", "Rogue"], ["Velo", "Velo"], ["Zyn", "Zyn"], ["Zone", "Zone"],
-  ["Fre", "Fre"], ["Lucy", "Lucy"], ["Raw", "RAW"], ["Raz", "RAZ"],
-  ["MNKE", "MNKE"], ["Nexa", "Nexa"], ["Olit", "Olit"], ["Pixi", "Pixi"],
-  ["SWFT", "SWFT"], ["Smok", "Smok"], ["Fumari", "Fumari"],
-  ["Tatiana", "Tatiana"], ["Cohiba", "Cohiba"], ["Woyu", "Woyu"],
-  ["Cocous", "Cocous"], ["Bali Shag", "Bali Shag"], ["DKHAAN", "DKHAAN"],
-  ["Meloso", "Meloso"], ["Fifty Bar", "Fifty Bar"], ["Empire", "Empire"],
-  ["Loose Leaf", "Loose Leaf"], ["Drew Estate", "Drew Estate"],
-  ["Fasta Drop", "Fasta Drop"], ["Hot Skull", "Hot Skull"], ["Eve", "Eve"],
-  ["Game", "Game"], ["LM", "L&M"], ["North", "North"], ["Pop Salt", "Pop Salt"],
-  // "On" alone would match half the catalogue; only the full product name is
-  // safe. R&J is Romeo y Julieta under its initials.
-  ["On Nicotine Pouches", "On!"], ["R&J", "Romeo y Julieta"],
-]
-  // Longest pattern wins, so "Geek Vape" is never shadowed by a shorter entry.
-  .sort((a, b) => b[0].length - a[0].length) as [string, string][];
-
-function brandOf(rawTitle: string): string | undefined {
-  // POS titles carry stray double spaces ("Black  & Mild Single"), which a
-  // literal pattern will not match.
-  const title = rawTitle.replace(/\s+/g, " ").trim();
-  for (const [pattern, display] of BRANDS) {
-    const re = new RegExp(`(^|\\s)${pattern.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(\\s|$)`, "i");
-    if (re.test(title)) return display;
-  }
-  return undefined;
-}
-
-// Publishable = classifiable, not grey, online, and priced. All four, or it
-// does not go out.
-const PUBLISHABLE_CLASSES = new Set<RegulatoryClass>([
-  "ends", "hookah", "cigar", "cigarette", "pouch", "rollYourOwn", "accessory",
-]);
-
-/* `hemp` is deliberately NOT in the set above, and there is no longer a way in.
-   It used to publish once a batch COA was attached; the owner has since
-   decided (2026-09-29) that no CBD or THC product is listed online at all, COA
-   or not. Hemp still imports and classifies so the report can count it — it
-   just never goes out. Reopening it is a decision, not a data fix. */
-/**
- * Shop edits — corrections the shop hands us that the POS does not (yet)
- * reflect. Keyed by POS title, exactly as MODEL_OVERRIDES is. We never write
- * these back to Lightspeed; they live here until the shop fixes the source.
- *
- *  - `priceCents` replaces the lowest SKU price.
- *  - `retired`    takes a discontinued product off the site.
- *  - `title`      corrects the display name. The slug is left alone on
- *                 purpose: images and inbound links are keyed on it.
- *  - `inStock`    the shop says it is on the shelf although the POS count is
- *                 zero or negative (sales rung up without receiving). Lifts the
- *                 count just past the "low" tier so it reads "usually here".
- *
- * Source of each block is noted so a later list can be checked against it.
- */
-type ShopEdit = { priceCents?: number; retired?: true; title?: string; inStock?: true };
-const SHOP_EDITS: Record<string, ShopEdit> = {
-  // --- Owner's handwritten vape list, 2026-10-01 ("kalktı" = discontinued).
-  "Spaceman 10K Pro": { retired: true },
-  "Spaceman Sp40000 Puff": { retired: true },
-  "SWFT Meta Disposable Vape 30000 Puffs": { retired: true },
-  "Syntrix Ghost It 40K": { retired: true },
-  "Al Fakher Crown Bar 12k": { retired: true },
-  "Ebcreate BC PRO 40k": { retired: true },
-  "Geek Bar Hookah X DTL 25K": { retired: true },
-  "Lost Mary E-Hookah 26.000 Puff": { retired: true },
-  "Lost Mary Mo 20000 Puff Pro": { retired: true },
-  "Lost Mary Mt 15K": { retired: true },
-  "Lost Vape Orion Bar 50.000 Puff": { retired: true },
-  "Meloso 30k": { retired: true },
-  "MNKE 25k": { retired: true },
-  "North 5k": { retired: true },
-  "Oxbar 50K": { retired: true },
-  "Pyne Pod 20K": { retired: true },
-
-  "Vaporesso Armour Ultra": { priceCents: 11995 },
-  "Vaporesso XRos 3": { priceCents: 6920 },
-  "Vaporesso Xros 3 Mini": { priceCents: 4997 },
-  "Vaporesso Xros 4": { priceCents: 6920 },
-  "Vaporesso Xros 4 Mini": { priceCents: 4997 },
-  "Vaporesso Xros 5": { priceCents: 6920 },
-  "Vaporesso XROS 5 Mini": { priceCents: 4997 },
-  "Vaporesso Xros Pro": { priceCents: 6920 },
-  "Airis Neo 40K": { priceCents: 3399 },
-  "Cookies 30K": { priceCents: 3594 },
-  "Fifty Bar 20.000 Puff": { inStock: true }, // "out of stock değil"
-  "Fifty Bar %2 Nicotine": { priceCents: 3497 },
-  "Geek Bar Pulse 15000 Puffs Disposable": { priceCents: 3691 },
-  "Geek Bar Pulse X 25K": { priceCents: 3991 },
-  "Geek Vape Aegis Legend 5 Kit": { priceCents: 11995 },
-  "Lost Mary MT35000 Turbo": { priceCents: 3991 },
-  "MNKE Bars 25k Zero Nic": { priceCents: 3497 },
-  "Off Stamp Kit": { priceCents: 3594 },
-  "Off Stamp Pod": { priceCents: 2699 },
-  "Pillow Talk Ice Control 40000 Puffs": { priceCents: 3594 },
-  "Pillow Talk 40.000 Puff Sweet Control": { priceCents: 3594 },
-  "Pillow Talk Nicotine Level Control": { priceCents: 3594 },
-  // "40k olacak, 66k değil" — it is the 40K device; the POS name is wrong.
-  "Pyne Pod Click Bogo 66k": { title: "Pyne Pod Click Bogo 40K", priceCents: 3594 },
-
-  // --- Owner's handwritten tobacco list, 2026-10-02. The odd cents are
-  //     pre-tax prices that land on a round total at Las Vegas's 8.375%
-  //     ($23.07 → $25.00, $4.61 → $5.00, $18.45 → $19.99). Do not "tidy" them.
-  "Game": { retired: true }, // "kalktı 2.99" — every Game SKU was $2.99
-  "Graba Leaf Crushed": { priceCents: 392 }, // "Grabba leaf small"
-  "Hot Skull": { priceCents: 461 },
-  "Hot Skull Spliffarillos Cones": { priceCents: 461 },
-  "Macanudo Cafe Montego Y OIA": { title: "Macanudo Cafe Montego Y Cia 8 Pack", priceCents: 3998 },
-  "Raw Cones": { priceCents: 692 },
-  "Bali Shag": { priceCents: 2307 },
-  "Drum": { priceCents: 2307 },
-  "Super Value Pipe Tobacco": { priceCents: 2307 },
-  "American Spirit": { priceCents: 1845 }, // the cigarettes, $16.61 before
-};
-
-/* "Pouches Ultra ve Alp hariç hepsi 10.99" — every nicotine pouch is $10.99
-   except Zyn Ultra and Alp. A class-wide rule rather than a list, so a pouch
-   the shop adds later gets the house price too. A per-title SHOP_EDITS price
-   still wins over it. */
-const POUCH_PRICE_CENTS = 1099;
-const POUCH_PRICE_EXCEPT = /\bultra\b|\balp\b/i;
-
-for (const m of models) {
-  if (m.regulatoryClass === "pouch" && !POUCH_PRICE_EXCEPT.test(m.title)) {
-    m.priceCents = POUCH_PRICE_CENTS;
-  }
-}
-
-const editsFired = new Set<string>();
-for (const m of models) {
-  const e = SHOP_EDITS[m.title];
-  if (!e) continue;
-  editsFired.add(m.title);
-  if (e.priceCents !== undefined) m.priceCents = e.priceCents;
-  if (e.inStock && m.stock <= 2) m.stock = 3;
-  if (e.title) m.title = e.title;
-}
-
-for (const m of models) {
-  m.brand = brandOf(m.title);
-  const classOk = PUBLISHABLE_CLASSES.has(m.regulatoryClass);
-  m.publishable = classOk && m.onlineSkus > 0 && m.priceCents !== null;
-}
-
-// After the publish rule, so nothing upstream can put a retired product back.
-for (const [title, e] of Object.entries(SHOP_EDITS)) {
-  if (!e.retired) continue;
-  const m = models.find((x) => x.title === title);
-  if (m) m.publishable = false;
-}
 
 /* ---------------------------------------------------------------------------
    4. Emit.

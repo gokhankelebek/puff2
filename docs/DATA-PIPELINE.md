@@ -34,6 +34,35 @@ src/lib/search-index.ts                         ~48 KB
 src/lib/ecwid-redirects.generated.json          old Ecwid URLs → 301 map (next.config.ts)
 ```
 
+### Changing the catalogue without a POS export
+
+The shop is moving off Lightspeed, so the usual change no longer needs the CSV.
+Shop decisions — classes for uncategorised items, prices, `publish`, `retired`,
+brands, the cannabinoid firewall — live in `scripts/shop-catalog.ts`, and both
+builds run them:
+
+```
+edit scripts/shop-catalog.ts
+npx tsx scripts/apply-shop-catalog.ts     re-applies it to catalog.generated.json
+npx tsx scripts/build-search-index.ts
+npx tsx scripts/build-ecwid-redirects.ts
+```
+
+Flavour lists the shop supplies live in `scripts/shop-flavors.ts` and replace a
+product's POS flavours outright (classified by `scripts/flavors.ts`, the same
+rules the importer uses). The first came from Kemal's PDF, 2026-11-10.
+
+`apply-shop-catalog.ts` treats the committed `catalog.generated.json` as the
+last Lightspeed snapshot and is idempotent. A `publish: true` edit stands in for
+the POS "sell online" flag only; the class must still be publishable, so it
+cannot put `unknown`, `smokeless` or `hemp` online.
+
+Image manifests are keyed by POS title; `fetch-images.ts` also accepts the POS
+title behind a shop `title` edit, so a renamed product keeps its photo. Always
+follow it with the cutout step (`.venv-cutout`, see
+[HARVESTER.md](../research/ingest/HARVESTER.md)) — a re-downloaded original
+otherwise lands in `public/p` as a raw photo with its backdrop.
+
 Re-run the redirect builder after the importer, so a product that starts
 publishing starts receiving its old Ecwid URL. **Restart the dev server after**
 — next.config.ts is not hot-reloaded.
