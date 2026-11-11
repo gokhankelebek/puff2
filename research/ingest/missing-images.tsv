@@ -6,10 +6,20 @@
 # Or skip the URLs entirely and drop files into research/ingest/images/
 # named <slug>.jpg — that path takes priority over everything else.
 #
-# 3 products, grouped by brand.
+# 7 products, grouped by brand.
+
+# ── Zaza (2)
+Zaza Large Leaf Cigar Wraps ~~ <url>
+Zaza Small Leaf Cigar Wraps ~~ <url>
 
 # ── Butane (1)
 Butane ~~ <url>
+
+# ── Dunhill (1)
+Dunhill ~~ <url>
+
+# ── Loud (1)
+Loud Leaf 2 Pack ~~ <url>
 
 # ── Mpb (1)
 Mpb Hookah bowl ~~ <url>

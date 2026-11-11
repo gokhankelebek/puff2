@@ -36,6 +36,7 @@ import {
   rmSync,
 } from "node:fs";
 import { extname, basename, resolve } from "node:path";
+import { SHOP_EDITS } from "./shop-catalog";
 
 type Provenance = "own" | "supplier" | "ecwid" | "lightspeed";
 
@@ -139,6 +140,13 @@ async function main() {
   );
   const live = catalog.filter((m) => m.publishable);
   const byTitle = new Map(live.map((m) => [m.title, m.slug]));
+  // Image manifests are keyed by POS title. A shop `title` edit renames the
+  // product but keeps its slug, so also accept the POS title it came from —
+  // otherwise the renamed product silently loses its photo on the next run.
+  for (const [posTitle, e] of Object.entries(SHOP_EDITS)) {
+    const slug = e.title ? byTitle.get(e.title) : undefined;
+    if (slug && !byTitle.has(posTitle)) byTitle.set(posTitle, slug);
+  }
   const liveSlugs = new Set(live.map((m) => m.slug));
 
   const candidates: Candidate[] = [];

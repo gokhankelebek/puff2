@@ -1,14 +1,14 @@
 {
+ "backwoods-5pk": {
+  "src": "/p/backwoods-5pk.webp",
+  "provenance": "supplier",
+  "bytes": 20576,
+  "cutout": true
+ },
  "lost-mary-mt35000-turbo": {
   "src": "/p/lost-mary-mt35000-turbo.webp",
   "provenance": "supplier",
   "bytes": 44928,
-  "cutout": true
- },
- "spaceman-sp40000-puff": {
-  "src": "/p/spaceman-sp40000-puff.webp",
-  "provenance": "supplier",
-  "bytes": 37216,
   "cutout": true
  },
  "pyne-pod-20k-zero-nic": {
@@ -23,17 +23,191 @@
   "bytes": 243944,
   "cutout": true
  },
- "backwoods-5pk": {
-  "src": "/p/backwoods-5pk.webp",
-  "provenance": "supplier",
-  "bytes": 18958,
-  "cutout": true
- },
  "java-drew-estate-maduro-cigar": {
   "src": "/p/java-drew-estate-maduro-cigar.webp",
   "provenance": "supplier",
   "bytes": 17846,
   "cutout": true
+ },
+ "lost-mary-70k-nera-pod": {
+  "src": "/p/lost-mary-70k-nera-pod.webp",
+  "provenance": "supplier",
+  "bytes": 62256,
+  "cutout": true
+ },
+ "lost-mary-viz-55k-nicotine-vape": {
+  "src": "/p/lost-mary-viz-55k-nicotine-vape.webp",
+  "provenance": "supplier",
+  "bytes": 79724,
+  "cutout": true
+ },
+ "geek-bar-pulse-2-15k": {
+  "src": "/p/geek-bar-pulse-2-15k.webp",
+  "provenance": "supplier",
+  "bytes": 23208,
+  "cutout": true
+ },
+ "geek-bar-clio-platinum-kit": {
+  "src": "/p/geek-bar-clio-platinum-kit.webp",
+  "provenance": "supplier",
+  "bytes": 43196,
+  "cutout": true
+ },
+ "geek-bar-clio-pod": {
+  "src": "/p/geek-bar-clio-pod.webp",
+  "provenance": "supplier",
+  "bytes": 17248,
+  "cutout": true
+ },
+ "horizon-tech-100k-disposable-vape": {
+  "src": "/p/horizon-tech-100k-disposable-vape.webp",
+  "provenance": "supplier",
+  "bytes": 48880,
+  "cutout": true
+ },
+ "raz-rx-50k-dew-edition": {
+  "src": "/p/raz-rx-50k-dew-edition.webp",
+  "provenance": "supplier",
+  "bytes": 41960,
+  "cutout": true
+ },
+ "flum-3000-puffs": {
+  "src": "/p/flum-3000-puffs.png",
+  "provenance": "supplier",
+  "bytes": 53496,
+  "plate": "light"
+ },
+ "rodman-playoffs": {
+  "src": "/p/rodman-playoffs.webp",
+  "provenance": "supplier",
+  "bytes": 31746,
+  "cutout": true
+ },
+ "velo-3mg": {
+  "src": "/p/velo-3mg.webp",
+  "provenance": "supplier",
+  "bytes": 81736,
+  "cutout": true
+ },
+ "velo-6mg": {
+  "src": "/p/velo-6mg.webp",
+  "provenance": "supplier",
+  "bytes": 92828,
+  "cutout": true
+ },
+ "fre-6mg-nicotine-pouches": {
+  "src": "/p/fre-6mg-nicotine-pouches.webp",
+  "provenance": "supplier",
+  "bytes": 59576,
+  "cutout": true
+ },
+ "rogue-12mg-nicotine-pouches": {
+  "src": "/p/rogue-12mg-nicotine-pouches.webp",
+  "provenance": "supplier",
+  "bytes": 68978,
+  "cutout": true
+ },
+ "rogue-15mg-nicotine-pouches": {
+  "src": "/p/rogue-15mg-nicotine-pouches.webp",
+  "provenance": "supplier",
+  "bytes": 68528,
+  "cutout": true
+ },
+ "on-plus-nicotine-pouches": {
+  "src": "/p/on-plus-nicotine-pouches.webp",
+  "provenance": "supplier",
+  "bytes": 91336,
+  "cutout": true
+ },
+ "kool": {
+  "src": "/p/kool.webp",
+  "provenance": "supplier",
+  "bytes": 57148,
+  "cutout": true
+ },
+ "parliament": {
+  "src": "/p/parliament.jpg",
+  "provenance": "supplier",
+  "bytes": 88670,
+  "plate": "light"
+ },
+ "talon": {
+  "src": "/p/talon.webp",
+  "provenance": "supplier",
+  "bytes": 35058,
+  "cutout": true
+ },
+ "swisher-sweets-leaf": {
+  "src": "/p/swisher-sweets-leaf.jpg",
+  "provenance": "supplier",
+  "bytes": 47993,
+  "plate": "dark"
+ },
+ "swisher-sweets-leaf-wraps": {
+  "src": "/p/swisher-sweets-leaf-wraps.webp",
+  "provenance": "supplier",
+  "bytes": 31490,
+  "cutout": true
+ },
+ "swisher-5-pack": {
+  "src": "/p/swisher-5-pack.webp",
+  "provenance": "supplier",
+  "bytes": 62470,
+  "cutout": true
+ },
+ "zigzag-leaf": {
+  "src": "/p/zigzag-leaf.webp",
+  "provenance": "supplier",
+  "bytes": 82722,
+  "cutout": true
+ },
+ "zigzag-cones": {
+  "src": "/p/zigzag-cones.webp",
+  "provenance": "supplier",
+  "bytes": 123440,
+  "cutout": true
+ },
+ "ocb-bamboo-cones": {
+  "src": "/p/ocb-bamboo-cones.webp",
+  "provenance": "supplier",
+  "bytes": 97672,
+  "cutout": true
+ },
+ "ocb-unbleached-cones-6pck": {
+  "src": "/p/ocb-unbleached-cones-6pck.webp",
+  "provenance": "supplier",
+  "bytes": 84180,
+  "cutout": true
+ },
+ "elements-cone": {
+  "src": "/p/elements-cone.webp",
+  "provenance": "supplier",
+  "bytes": 25716,
+  "cutout": true
+ },
+ "blazy-susan-cons": {
+  "src": "/p/blazy-susan-cons.webp",
+  "provenance": "supplier",
+  "bytes": 54702,
+  "cutout": true
+ },
+ "bob-marley-cons": {
+  "src": "/p/bob-marley-cons.webp",
+  "provenance": "supplier",
+  "bytes": 47656,
+  "plate": "light"
+ },
+ "backwoods-true-wraps": {
+  "src": "/p/backwoods-true-wraps.jpg",
+  "provenance": "supplier",
+  "bytes": 55548,
+  "plate": "dark"
+ },
+ "zig-zag-cones": {
+  "src": "/p/zig-zag-cones.png",
+  "provenance": "supplier",
+  "bytes": 667294,
+  "plate": "light"
  },
  "zone-nicotine-pouches-9mg": {
   "src": "/p/zone-nicotine-pouches-9mg.webp",
@@ -257,18 +431,6 @@
   "bytes": 56114,
   "cutout": true
  },
- "geek-bar-hookah-x-dtl-25k": {
-  "src": "/p/geek-bar-hookah-x-dtl-25k.webp",
-  "provenance": "ecwid",
-  "bytes": 81684,
-  "cutout": true
- },
- "swft-meta-disposable-vape-30000-puffs": {
-  "src": "/p/swft-meta-disposable-vape-30000-puffs.webp",
-  "provenance": "ecwid",
-  "bytes": 26826,
-  "cutout": true
- },
  "geek-bar-pulse-x-25k": {
   "src": "/p/geek-bar-pulse-x-25k.webp",
   "provenance": "ecwid",
@@ -299,22 +461,10 @@
   "bytes": 10354,
   "cutout": true
  },
- "oxbar-50k": {
-  "src": "/p/oxbar-50k.webp",
-  "provenance": "ecwid",
-  "bytes": 61706,
-  "cutout": true
- },
  "hot-skull": {
   "src": "/p/hot-skull.webp",
   "provenance": "ecwid",
   "bytes": 86338,
-  "cutout": true
- },
- "high-hemp": {
-  "src": "/p/high-hemp.webp",
-  "provenance": "ecwid",
-  "bytes": 55014,
   "cutout": true
  },
  "al-capone-leaf": {
@@ -545,12 +695,6 @@
   "bytes": 38458,
   "cutout": true
  },
- "lost-mary-mo-20000-puff-pro": {
-  "src": "/p/lost-mary-mo-20000-puff-pro.webp",
-  "provenance": "ecwid",
-  "bytes": 53912,
-  "cutout": true
- },
  "pop-salt-onyx-cloud-25k-hookah": {
   "src": "/p/pop-salt-onyx-cloud-25k-hookah.webp",
   "provenance": "ecwid",
@@ -671,12 +815,6 @@
   "bytes": 29650,
   "cutout": true
  },
- "game": {
-  "src": "/p/game.webp",
-  "provenance": "ecwid",
-  "bytes": 24172,
-  "cutout": true
- },
  "fumari-100g-tobacco": {
   "src": "/p/fumari-100g-tobacco.webp",
   "provenance": "ecwid",
@@ -791,12 +929,6 @@
   "bytes": 34170,
   "cutout": true
  },
- "lost-mary-e-hookah-26000-puff": {
-  "src": "/p/lost-mary-e-hookah-26000-puff.webp",
-  "provenance": "ecwid",
-  "bytes": 31674,
-  "cutout": true
- },
  "r-j-reserve-real-cigar-twisted-toro": {
   "src": "/p/r-j-reserve-real-cigar-twisted-toro.webp",
   "provenance": "ecwid",
@@ -827,46 +959,16 @@
   "bytes": 35784,
   "cutout": true
  },
- "al-fakher-crown-bar-12k": {
-  "src": "/p/al-fakher-crown-bar-12k.webp",
-  "provenance": "ecwid",
-  "bytes": 55858,
-  "cutout": true
- },
  "flum-ut-bar-50k": {
   "src": "/p/flum-ut-bar-50k.webp",
   "provenance": "ecwid",
   "bytes": 32092,
   "cutout": true
  },
- "lost-vape-orion-bar-50000-puff": {
-  "src": "/p/lost-vape-orion-bar-50000-puff.webp",
-  "provenance": "ecwid",
-  "bytes": 40412,
-  "cutout": true
- },
- "syntrix-ghost-it-40k": {
-  "src": "/p/syntrix-ghost-it-40k.webp",
-  "provenance": "ecwid",
-  "bytes": 67746,
-  "cutout": true
- },
  "hyppe-infiniti-50k": {
   "src": "/p/hyppe-infiniti-50k.webp",
   "provenance": "ecwid",
   "bytes": 104696,
-  "cutout": true
- },
- "north-5k": {
-  "src": "/p/north-5k.webp",
-  "provenance": "ecwid",
-  "bytes": 32646,
-  "cutout": true
- },
- "mnke-25k": {
-  "src": "/p/mnke-25k.webp",
-  "provenance": "ecwid",
-  "bytes": 14424,
   "cutout": true
  },
  "adjust-mysweet-40k": {
@@ -899,24 +1001,6 @@
   "bytes": 31652,
   "cutout": true
  },
- "meloso-30k": {
-  "src": "/p/meloso-30k.webp",
-  "provenance": "ecwid",
-  "bytes": 32890,
-  "cutout": true
- },
- "pyne-pod-20k": {
-  "src": "/p/pyne-pod-20k.webp",
-  "provenance": "ecwid",
-  "bytes": 33394,
-  "cutout": true
- },
- "ebcreate-bc-pro-40k": {
-  "src": "/p/ebcreate-bc-pro-40k.webp",
-  "provenance": "ecwid",
-  "bytes": 51678,
-  "cutout": true
- },
  "foger-30000-puff-pod": {
   "src": "/p/foger-30000-puff-pod.webp",
   "provenance": "ecwid",
@@ -945,12 +1029,6 @@
   "src": "/p/adjust-myflavor-40k.webp",
   "provenance": "ecwid",
   "bytes": 20748,
-  "cutout": true
- },
- "lost-mary-mt-15k": {
-  "src": "/p/lost-mary-mt-15k.webp",
-  "provenance": "ecwid",
-  "bytes": 36678,
   "cutout": true
  },
  "raz-disposable-vape-25000-puffs": {
@@ -1001,16 +1079,10 @@
   "bytes": 16030,
   "cutout": true
  },
- "spaceman-10k-pro": {
-  "src": "/p/spaceman-10k-pro.webp",
-  "provenance": "lightspeed",
-  "bytes": 55070,
-  "cutout": true
- },
  "flum-pebble": {
   "src": "/p/flum-pebble.webp",
   "provenance": "lightspeed",
-  "bytes": 25500,
+  "bytes": 25486,
   "cutout": true
  },
  "geek-bar-pulse-15000-puffs-disposable": {
