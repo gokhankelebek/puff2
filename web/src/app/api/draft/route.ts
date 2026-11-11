@@ -28,7 +28,9 @@ function safeNext(raw: FormDataEntryValue | null): string {
 export async function POST(request: Request) {
   const form = await request.formData();
   const action = String(form.get("action") ?? "");
-  const slug = String(form.get("slug") ?? "");
+  const slug = String(form.get("slug") ?? "").slice(0, 80);
+  // Stored as given; priceDraft only honours a flavour the product lists.
+  const flavor = String(form.get("flavor") ?? "").slice(0, 80) || undefined;
   const next = safeNext(form.get("next"));
 
   const jar = await cookies();
@@ -36,18 +38,23 @@ export async function POST(request: Request) {
 
   switch (action) {
     case "add":
-      if (slug) draft = addLine(draft, slug);
+      if (slug) draft = addLine(draft, slug, flavor);
       break;
     case "inc":
-      if (slug) draft = stepLine(draft, slug, 1);
+      if (slug) draft = stepLine(draft, slug, flavor, 1);
       break;
     case "dec":
       // Stepping below 1 removes the line: the minus button is also the bin.
-      if (slug) draft = stepLine(draft, slug, -1);
+      if (slug) draft = stepLine(draft, slug, flavor, -1);
       break;
     case "remove":
-      if (slug) draft = removeLine(draft, slug);
+      if (slug) draft = removeLine(draft, slug, flavor);
       break;
+    case "mode": {
+      const mode = String(form.get("mode") ?? "");
+      draft = { ...draft, mode: mode === "pickup" ? "pickup" : "delivery" };
+      break;
+    }
     case "where": {
       const meet = String(form.get("meet") ?? "");
       draft = {

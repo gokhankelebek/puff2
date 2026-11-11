@@ -380,3 +380,75 @@
   color: var(--text-dim);
   max-width: 46ch;
 }
+
+/* --- Delivery / pickup switch ------------------------------------------- */
+
+.modeRow {
+  display: flex;
+  gap: 8px;
+  padding: 14px var(--gutter) 0;
+}
+
+.modeBtn {
+  flex: 1;
+  min-height: var(--tap);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-button);
+  background: none;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color var(--d-state) ease-out;
+}
+
+.modeBtn:hover { border-color: var(--border-hover); }
+
+.modeBtn[aria-pressed="true"] {
+  border-color: var(--magenta);
+  color: var(--text);
+  background: color-mix(in srgb, var(--magenta) 14%, transparent);
+}
+
+/* --- Lines: flavour, pickup-only ---------------------------------------- */
+
+.lineFlavor { color: var(--text-muted); }
+
+.held { margin-top: 14px; }
+
+.heldNote {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--magenta-text);
+}
+
+.line[data-held] .lineName,
+.line[data-held] .lineTotal { color: var(--text-faint); }
+
+.removeBtn {
+  min-height: var(--tap);
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-thumb);
+  background: none;
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.removeBtn:hover { border-color: var(--border-hover); }
+
+.clear {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  color: var(--text-faint);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.clear:hover { color: var(--text); }

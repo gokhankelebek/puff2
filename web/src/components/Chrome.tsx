@@ -6,7 +6,8 @@ import {
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import SearchBox from "./SearchBox";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { DRAFT_COOKIE, draftItemCount, parseDraft } from "@/lib/draft";
 import { PATH_HEADER } from "@/lib/age-shared";
 import { SHOP_ADDRESS_LINE, SHOP_STREET } from "@/lib/shop";
 import { CATALOG_SIZE } from "@/lib/commerce";
@@ -111,13 +112,21 @@ export function AgeBanner({ affirmed }: { affirmed: boolean }) {
    real search page (which already works as a GET form) does the work.
    ------------------------------------------------------------------------- */
 
-export function Header() {
+export async function Header() {
+  // The order list lives in a cookie (lib/draft.ts); a count needs no script.
+  const count = draftItemCount(parseDraft((await cookies()).get(DRAFT_COOKIE)?.value));
+
   return (
     <header className={s.header}>
       <a href="/" aria-label="Puff Vegas — home" className={s.brand}>
         <Wordmark />
       </a>
       <div className={s.headerActions}>
+        {count > 0 && (
+          <a className={s.orderPill} href="/delivery/order">
+            Order <span className={s.orderCount}>{count}</span>
+          </a>
+        )}
         {/* Two controls for one job, and only ever one of them visible.
             SearchBox is the live one and needs JavaScript; the plain link is
             the fallback and is hidden the moment the head script sets

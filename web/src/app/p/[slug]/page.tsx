@@ -1,13 +1,18 @@
 import { notFound } from "next/navigation";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { DRAFT_COOKIE, draftItemCount, parseDraft } from "@/lib/draft";
 import type { Metadata } from "next";
 import s from "./Product.module.css";
 import NicotineWarning from "@/components/NicotineWarning";
 import Bulbs from "@/components/Bulbs";
 import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
-import OrderButtons from "@/components/OrderButtons";
 import FlavorPicker from "@/components/FlavorPicker";
-import { productTextName, smsHref } from "@/lib/contact";
+import {
+  PHONE_DISPLAY,
+  deliveryTextBody,
+  productTextName,
+  smsHref,
+} from "@/lib/contact";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
   commerce,
@@ -60,7 +65,11 @@ export default async function ProductPage({
      rather than written into a text the customer sends. A one-flavour product
      is simply that flavour. */
   const flavors = product.flavors ?? [];
-  const asked = (await searchParams).flavor;
+  const sp = await searchParams;
+  const asked = sp.flavor;
+  // Set by /api/draft's redirect after "Add to order", to confirm it landed.
+  const justAdded = sp.added === "1";
+  const orderCount = draftItemCount(parseDraft((await cookies()).get(DRAFT_COOKIE)?.value));
   const chosen =
     typeof asked === "string" && flavors.some((f) => f.value === asked)
       ? asked
@@ -228,25 +237,52 @@ export default async function ProductPage({
               />
             )}
 
-            {/* Text and call are how an order reaches the shop — there is no
+            {/* Add to the order list, then text the whole list from
+                /delivery/order. A plain form POST, so it works with scripting
+                off; the chosen flavour rides along from the picker. */}
+            <form className={s.addForm} action="/api/draft" method="POST" id="order">
+              <input type="hidden" name="action" value="add" />
+              <input type="hidden" name="slug" value={product.slug} />
+              {chosen && <input type="hidden" name="flavor" value={chosen} />}
+              <input
+                type="hidden"
+                name="next"
+                value={`/p/${product.slug}?${chosen ? `flavor=${encodeURIComponent(chosen)}&` : ""}added=1#order`}
+              />
+              <button className={s.primary} type="submit">
+                {chosen && flavors.length > 1 ? `Add ${chosen} to order` : "Add to order"}
+              </button>
+              {orderCount > 0 && (
+                <a className={s.secondary} href="/delivery/order">
+                  View order ({orderCount})
+                </a>
+              )}
+            </form>
+            {justAdded && (
+              <p className={s.added} role="status">
+                Added. Keep browsing, or{" "}
+                <a href="/delivery/order">text us your order →</a>
+              </p>
+            )}
+
+            {/* Text and call still work for a single item — there is no
                 checkout, and the shelf here is a POS snapshot, so the text
                 asks rather than assumes. Person-to-person SMS only. */}
             {product.inStoreOnly ? (
               <div className={s.actions}>
                 <p className={s.constraint}>{product.inStoreReason}</p>
-                <a className={s.primary} href="/pickup">
-                  Pick-Up
-                </a>
                 <a
-                  className={s.secondary}
+                  className={s.pickupLink}
                   href={smsHref(`Hi Puff Vegas, do you have ${productName}? I'll pick it up.`)}
                 >
-                  Text us about this
+                  Or text us about just this one
                 </a>
               </div>
             ) : (
               <div className={s.orderActions}>
-                <OrderButtons item={productName} />
+                <a className={s.pickupLink} href={smsHref(deliveryTextBody({ item: productName }))}>
+                  Or text us about just this one · call {PHONE_DISPLAY}
+                </a>
                 <a className={s.pickupLink} href="/pickup">
                   Or pick it up — walk in at {SHOP_STREET}
                 </a>
