@@ -6,6 +6,7 @@ import NicotineWarning from "@/components/NicotineWarning";
 import Bulbs from "@/components/Bulbs";
 import { AgeBanner, Header, BottomNav } from "@/components/Chrome";
 import OrderButtons from "@/components/OrderButtons";
+import FlavorPicker from "@/components/FlavorPicker";
 import { productTextName, smsHref } from "@/lib/contact";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
@@ -42,8 +43,10 @@ export async function generateMetadata({
 
 export default async function ProductPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { slug } = await params;
   const product = await commerce.getProduct(slug);
@@ -52,7 +55,33 @@ export default async function ProductPage({
   const h = await headers();
   const affirmed = h.get(AGE_HEADER) === "1";
 
-  const productName = productTextName(product);
+  /* The chosen flavour, from the picker's `?flavor=`. Only a value the
+     product actually lists is honoured — anything else in the URL is ignored
+     rather than written into a text the customer sends. A one-flavour product
+     is simply that flavour. */
+  const flavors = product.flavors ?? [];
+  const asked = (await searchParams).flavor;
+  const chosen =
+    typeof asked === "string" && flavors.some((f) => f.value === asked)
+      ? asked
+      : flavors.length === 1
+        ? flavors[0].value
+        : undefined;
+  // Vapes, pouches and shisha come in flavours; cigarettes and leaf in styles
+  // ("Marlboro Gold", not "Marlboro in Gold").
+  const noun =
+    product.regulatoryClass === "ends" ||
+    product.regulatoryClass === "pouch" ||
+    product.regulatoryClass === "hookah"
+      ? "flavour"
+      : "style";
+
+  const baseName = productTextName(product);
+  const productName = !chosen
+    ? baseName
+    : noun === "flavour"
+      ? `${baseName} in ${chosen}`
+      : `${baseName} ${chosen}`;
 
   const perPuff = pricePerThousandPuffs(product);
   const human = puffsInHumanUnits(product);
@@ -189,6 +218,15 @@ export default async function ProductPage({
             </div>
 
             <StockBlock product={product} />
+
+            {flavors.length > 1 && (
+              <FlavorPicker
+                slug={product.slug}
+                flavors={flavors}
+                chosen={chosen}
+                noun={noun}
+              />
+            )}
 
             {/* Text and call are how an order reaches the shop — there is no
                 checkout, and the shelf here is a POS snapshot, so the text

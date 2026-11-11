@@ -1,0 +1,121 @@
+/* Flavour picker on the product page. Chips are real radio buttons, so the
+   form works with scripting off and keyboard arrows move between them. */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px var(--gutter) 0;
+  scroll-margin-top: 80px;
+}
+
+.fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.count {
+  margin-left: 6px;
+  color: var(--text-faint);
+}
+
+.group + .group { margin-top: 12px; }
+
+.groupLabel {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Visually hidden, still focusable and announced. */
+.radio {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.face {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--text);
+  transition: border-color var(--d-state) ease-out, background var(--d-state) ease-out;
+}
+
+.chip:hover .face { border-color: var(--border-hover); }
+
+.radio:checked + .face {
+  border-color: var(--magenta);
+  background: color-mix(in srgb, var(--magenta) 14%, transparent);
+}
+
+.radio:focus-visible + .face {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.swatch {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-pill);
+}
+
+.status {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.status strong { color: var(--text); font-weight: 600; }
+
+.status[data-pending] { opacity: 0.6; }
+
+.submit {
+  align-self: flex-start;
+  min-height: var(--tap);
+  padding: 0 22px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-button);
+  background: none;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:hover { border-color: var(--border-hover); }
