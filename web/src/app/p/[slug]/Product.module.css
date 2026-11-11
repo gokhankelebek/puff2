@@ -283,3 +283,34 @@
   .specs, .trust { grid-column: 2; margin-inline: 0; padding-inline: 0; }
   .trust { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* --- Add to order ---------------------------------------------------------- */
+
+.addForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px var(--gutter) 0;
+  scroll-margin-top: 80px;
+}
+
+.addForm .primary { padding: 0 26px; }
+.addForm .secondary { padding: 0 20px; }
+
+.added {
+  padding: 10px var(--gutter) 0;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.added a { color: var(--cyan); }
+.added a:hover { text-decoration: underline; }
+
+/* The single-item text links sit under the add button, on the same inset. */
+.addForm ~ .orderActions,
+.addForm ~ .actions {
+  gap: 8px;
+  padding: 14px var(--gutter) 0;
+}
+
+.addForm ~ .actions { flex-direction: column; }

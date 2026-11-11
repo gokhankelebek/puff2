@@ -395,3 +395,38 @@
 
 :global(html[data-js="1"]) .headerSearch { display: contents; }
 :global(html[data-js="1"]) .searchPill { display: none; }
+
+/* The order list, once there is one. Magenta because it is the next step. */
+.orderPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--magenta);
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  line-height: 0.92;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.orderCount {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--r-pill);
+  background: var(--magenta);
+  color: var(--magenta-ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+/* The search field takes the row while open; the pill steps aside. */
+.header:has([data-expanded]) .orderPill { display: none; }

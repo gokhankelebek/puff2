@@ -41,8 +41,12 @@ Every URL in the old Ecwid sitemap 301s here — see
 > *Ask us*, and the text is where stock is confirmed. GA4 counts
 > `click_to_text` and `click_to_call` with a `hotel` param.
 >
-> `/delivery/order` and `/delivery/track` still work but nothing links to the
-> order builder any more. Cutting them is the open follow-up.
+> **Updated 2026-11-10: the order list is back.** Product pages have *Add to
+> order* (with the flavour from the picker), the header shows *Order · N*, and
+> `/delivery/order` texts the whole list in one message. It now does pickup as
+> well as delivery: a pickup order has no fee and can include cigarettes; a
+> delivery order shows cigarettes as pickup-only rather than dropping them.
+> Still SMS — no order store. `/delivery/track` is still unlinked.
 
 The Marquee Neon handoff specifies an order lifecycle: **SEND THE RUNNER**
 creates an order, `/delivery/track` shows a live arrival time, a status list
