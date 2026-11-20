@@ -1114,5 +1114,35 @@
   "provenance": "supplier",
   "bytes": 47274,
   "cutout": true
+ },
+ "dunhill": {
+  "src": "/p/dunhill.webp",
+  "provenance": "own",
+  "bytes": 43496,
+  "cutout": true
+ },
+ "loud-leaf-2-pack": {
+  "src": "/p/loud-leaf-2-pack.webp",
+  "provenance": "own",
+  "bytes": 65610,
+  "cutout": true
+ },
+ "butane": {
+  "src": "/p/butane.webp",
+  "provenance": "own",
+  "bytes": 50420,
+  "cutout": true
+ },
+ "mpb-hookah-bowl": {
+  "src": "/p/mpb-hookah-bowl.webp",
+  "provenance": "own",
+  "bytes": 71954,
+  "cutout": true
+ },
+ "vape-juice": {
+  "src": "/p/vape-juice.webp",
+  "provenance": "own",
+  "bytes": 108014,
+  "cutout": true
  }
 }
