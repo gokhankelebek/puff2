@@ -1102,5 +1102,17 @@
   "provenance": "lightspeed",
   "bytes": 28064,
   "cutout": true
+ },
+ "zaza-large-leaf-cigar-wraps": {
+  "src": "/p/zaza-large-leaf-cigar-wraps.webp",
+  "provenance": "supplier",
+  "bytes": 46404,
+  "cutout": true
+ },
+ "zaza-small-leaf-cigar-wraps": {
+  "src": "/p/zaza-small-leaf-cigar-wraps.webp",
+  "provenance": "supplier",
+  "bytes": 47274,
+  "cutout": true
  }
 }
