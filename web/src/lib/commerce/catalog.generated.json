@@ -658,7 +658,7 @@
   "onlineSkus": 15,
   "skuCount": 15,
   "stock": 3,
-  "priceCents": 3500,
+  "priceCents": 3594,
   "puffCount": 40000,
   "flavors": [
    {
@@ -838,7 +838,7 @@
   "onlineSkus": 0,
   "skuCount": 3,
   "stock": 3,
-  "priceCents": 3500,
+  "priceCents": 3594,
   "puffCount": 40000,
   "flavors": [
    {
@@ -873,7 +873,7 @@
   "onlineSkus": 3,
   "skuCount": 3,
   "stock": 4,
-  "priceCents": 3500,
+  "priceCents": 3594,
   "puffCount": 40000,
   "flavors": [
    {
@@ -7078,7 +7078,7 @@
   "title": "Cookies 30K",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 35,
@@ -10977,7 +10977,7 @@
   "title": "Flonq Max Smart 10k 2% Nic",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 12,
   "skuCount": 12,
   "stock": 38,
@@ -11239,7 +11239,7 @@
   "title": "Flum Pebble",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 56,
   "skuCount": 56,
   "stock": 202,
@@ -14086,7 +14086,7 @@
   "onlineSkus": 7,
   "skuCount": 7,
   "stock": 30,
-  "priceCents": 5699,
+  "priceCents": 5999,
   "puffCount": 80000,
   "flavors": [
    {
@@ -16910,7 +16910,7 @@
   "title": "Grab a Crush",
   "category": "Leaf",
   "regulatoryClass": "rollYourOwn",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 3,
   "skuCount": 3,
   "stock": 64,
@@ -18642,7 +18642,7 @@
   "onlineSkus": 13,
   "skuCount": 13,
   "stock": 69,
-  "priceCents": 3594,
+  "priceCents": 3691,
   "puffCount": 50000,
   "flavors": [
    {
@@ -19733,7 +19733,7 @@
   "onlineSkus": 1,
   "skuCount": 1,
   "stock": 103,
-  "priceCents": 2499,
+  "priceCents": 2999,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -19780,7 +19780,7 @@
   "onlineSkus": 4,
   "skuCount": 4,
   "stock": 343,
-  "priceCents": 2799,
+  "priceCents": 2999,
   "flavors": [
    {
     "value": "Menthol %5",
@@ -32088,7 +32088,7 @@
   "title": "Pop Salt Onyx Cloud 25k Hookah",
   "category": null,
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 9,
   "skuCount": 9,
   "stock": 13,
@@ -32634,7 +32634,7 @@
   "title": "Pyne Pod 20k Zero Nic",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 10,
   "skuCount": 10,
   "stock": 0,
@@ -33729,7 +33729,7 @@
   "title": "Raz 25k Puff Zero Nicotine",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 3,
   "skuCount": 3,
   "stock": 0,
@@ -33764,7 +33764,7 @@
   "title": "RAZ Disposable Vape 25000 Puffs",
   "category": "Disposable Vape",
   "regulatoryClass": "ends",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 16,
   "skuCount": 16,
   "stock": 3,
@@ -36696,7 +36696,7 @@
   "title": "Seneca",
   "category": "Cigarettes",
   "regulatoryClass": "cigarette",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 5,
   "skuCount": 5,
   "stock": -23,

@@ -1,4 +1,5 @@
 import generated from "./catalog.generated.json";
+import { departmentFor } from "./department";
 import images from "./images.generated.json";
 import type {
   CommerceAdapter,
@@ -50,48 +51,6 @@ type GeneratedModel = {
   coa?: Product["coa"];
 };
 
-/**
- * Department is a BROWSE decision, not a legal one, so it keys off the source
- * category first and falls back to regulatory class. The two are related but
- * not the same: a hookah bowl and shisha tobacco belong on the same shelf and
- * in different regulatory buckets.
- */
-function departmentFor(m: GeneratedModel): Department {
-  const c = m.category ?? "";
-  /* Pouch first, and out of the accessories catch-all it used to share. Oral
-     nicotine (ZYN, Velo, Alp, Lucy) is the #4-selling category by volume and
-     was landing in "accessories" next to lighters with no browse path of its
-     own. Keyed on the class as well as the category text, because some pouch
-     SKUs import with a blank Lightspeed category. "Tobacco-Pouches" (dip:
-     Copenhagen, Skoal) is deliberately NOT caught here — that is smokeless and
-     stays unpublished until its own warning text exists. */
-  if (m.regulatoryClass === "pouch" || /nicotine pouch/i.test(c)) return "pouch";
-  if (/glass|bong|pipe/i.test(c)) return "glass";
-  if (/hookah|shisha/i.test(c)) return "hookah";
-  if (/^cigar$|cigarillo/i.test(c)) return "cigars";
-  if (/cigarette/i.test(c)) return "cigarettes";
-  if (/vape|juul|vuse|njoy|juice/i.test(c)) return "vape";
-  if (/lighter|torch|papper|paper|leaf|rolling|smoke part|part of wd/i.test(c))
-    return "accessories";
-
-  switch (m.regulatoryClass) {
-    case "ends":
-      return "vape";
-    case "cigar":
-      return "cigars";
-    case "cigarette":
-      return "cigarettes";
-    case "hookah":
-      return "hookah";
-    /* The one class whose department is decided by the class rather than the
-       category, because Lightspeed has no hemp category to read: these arrive
-       classified by name inference and there is nothing else to go on. */
-    case "hemp":
-      return "hemp";
-    default:
-      return "accessories";
-  }
-}
 
 /**
  * Stock, mapped honestly.

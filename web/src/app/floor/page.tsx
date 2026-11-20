@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 const BLURB: Record<Department, string> = {
   vape: "Disposables, pods, juice and hardware",
   cigars: "Walk-in humidor, singles and boxes",
+  cigarillos: "Swisher, Dutch, Backwoods, leaf and wraps",
   cigarettes: "Every pack, behind the counter",
   pouch: "Nicotine pouches — ZYN, Velo, Alp, Lucy",
   hookah: "Shisha, bowls, hoses and charcoal",

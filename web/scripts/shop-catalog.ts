@@ -224,7 +224,7 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "Vaporesso Xros Pro": { priceCents: 6920 },
   // Airis Neo 40K ($33.99) and Fifty Bar 20.000 Puff ("out of stock değil")
   // were here; both are re-stated in Kemal's list below with new prices.
-  "Cookies 30K": { priceCents: 3594 },
+  // "Cookies 30K" was repriced here; Kemal retired it on 2026-11-18 (below).
   "Fifty Bar %2 Nicotine": { priceCents: 3497 },
   "Geek Bar Pulse 15000 Puffs Disposable": { priceCents: 3691 },
   "Geek Bar Pulse X 25K": { priceCents: 3991 },
@@ -262,7 +262,6 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "Lost Mary 70K Nera Kits": { priceCents: 4498 },
   "Float X 10K": { priceCents: 3594 },
   "Raz RL Classic 35k": { priceCents: 3991 },
-  "Hyppe Infiniti 50k": { priceCents: 3594 },
   "Fifty Bar 20.000 Puff": { priceCents: 3400, inStock: true },
   "Flum UT Bar 50K": { priceCents: 3691 },
   "Airis Neo 40K": { priceCents: 3400 },
@@ -271,7 +270,6 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "Pixi 50K": { priceCents: 3594 },
   "Geek Bar Mate Kit 60K": { priceCents: 4498 },
   "Geek Bar CLR 50K Disposable": { priceCents: 4498 },
-  "Geek Bar Burj 80K Hookah Vape": { priceCents: 5699 },
   "Al Fakher Crown 60K": { priceCents: 4498 },
   "Olit Pro 60k Hookahlit": { priceCents: 4498 },
   "Swisher Sweets": { priceCents: 300 },
@@ -325,6 +323,26 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "Blazy Susan Cons": { publish: true, priceCents: 692 },
   "Bob Marley Cons": { publish: true, priceCents: 692 },
   "Backwoods True Wraps": { publish: true, priceCents: 997, inStock: true },
+
+  // --- Kemal, WhatsApp group, 2026-11-18. "yok" = no longer sold.
+  //     Pixi 50K was on the "yok" list, then kept the same evening ("biraz
+  //     varmış") — it stays, at the price above.
+  "Adjust Mycool 40000 Puffs": { priceCents: 3594 }, // "Adjust fiyatları $35.94"
+  "Adjust MySweet 40k": { priceCents: 3594 },
+  "Adjust MySour 40K": { priceCents: 3594 },
+  "Cookies 30K": { retired: true },
+  "Flonq Max Smart 10k 2% Nic": { retired: true },
+  "Flum Pebble": { retired: true }, // "Glum pebble"
+  "Geek Bar Burj 80K Hookah Vape": { priceCents: 5999 }, // "Geek bar burn"
+  "Hyppe Infiniti 50k": { priceCents: 3691 },
+  "Juul Device": { priceCents: 2999 }, // "device and pod same $29.99"
+  "Juul Pod": { priceCents: 2999 },
+  "Pop Salt Onyx Cloud 25k Hookah": { retired: true },
+  "Pyne Pod 20k Zero Nic": { retired: true },
+  "Raz 25k Puff Zero Nicotine": { retired: true }, // "Raz zero"
+  "RAZ Disposable Vape 25000 Puffs": { retired: true }, // "Raz 2500k"
+  "Grab a Crush": { retired: true },
+  "Seneca": { retired: true },
 };
 
 /* "Pouches Ultra ve Alp hariç hepsi 10.99" — every nicotine pouch is $10.99

@@ -15,6 +15,7 @@ import {
   type PricedLine,
 } from "@/lib/draft";
 import {
+  DELIVERY_MINIMUM_LABEL,
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_TERMS_LABEL,
   HOTELS,
@@ -59,7 +60,8 @@ export default async function OrderSheet() {
   const pickup = totals.mode === "pickup";
 
   const hotel = draft.hotel ? hotelBySlug(draft.hotel) : undefined;
-  const ready = totals.lines.length > 0 && (pickup || Boolean(hotel));
+  const short = totals.lines.length > 0 && totals.shortCents > 0;
+  const ready = totals.lines.length > 0 && !short && (pickup || Boolean(hotel));
   const sms = `${PHONE_HREF.replace("tel:", "sms:")}?&body=${encodeURIComponent(
     draftToSms(totals, draft, hotel?.name),
   )}`;
@@ -241,6 +243,13 @@ export default async function OrderSheet() {
             <p className={o.taxNote}>
               Tax is added at the counter. Nothing else is.
             </p>
+            {short && (
+              <p className={o.heldNote}>
+                Delivery is {DELIVERY_MINIMUM_LABEL} on products. Add{" "}
+                {formatMoney({ cents: totals.shortCents, currency: "USD" })} more,
+                or switch to pick up — no minimum at the counter.
+              </p>
+            )}
           </section>
         </>
       ) : null}
@@ -252,7 +261,11 @@ export default async function OrderSheet() {
           </a>
         ) : (
           <span className={o.sendOff} aria-disabled="true">
-            {totals.lines.length === 0 ? "Add something first" : "Choose your hotel"}
+            {totals.lines.length === 0
+              ? "Add something first"
+              : short
+                ? `Add ${formatMoney({ cents: totals.shortCents, currency: "USD" })} more for delivery`
+                : "Choose your hotel"}
           </span>
         )}
         <p className={o.sendNote}>
@@ -263,7 +276,7 @@ export default async function OrderSheet() {
           confirm it&rsquo;s on the shelf and the total.{" "}
           {pickup
             ? "21+ only, ID at the counter."
-            : `The runner checks ID at handoff. ${DELIVERY_STRIP_FEE_LABEL} flat, 21+ only.`}
+            : `The runner checks ID at handoff. ${DELIVERY_TERMS_LABEL}, 21+ only.`}
         </p>
         {totals.lines.length + totals.pickupOnly.length > 0 && (
           <form action="/api/draft" method="POST">

@@ -13,6 +13,7 @@ import {
 } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
+  DELIVERY_MINIMUM_LABEL,
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_TERMS_LABEL,
   HOTELS,
@@ -25,7 +26,7 @@ import { permanentRedirect } from "next/navigation";
 export const metadata: Metadata = {
   title: "Hotel delivery, 24 hours | Puff Vegas",
   description:
-    "Delivery to Las Vegas Strip hotels, $20 flat with no minimum, about 25–40 minutes. Meet the runner at your valet or rideshare pickup. Cash or card on handover, ID checked every time.",
+    "Delivery to Las Vegas Strip hotels, $20 flat on orders over $79, about 25–40 minutes. Meet the runner at your valet or rideshare pickup. Cash or card on handover, ID checked every time.",
   alternates: { canonical: "/delivery" },
 };
 
@@ -73,7 +74,7 @@ export default async function DeliveryPage({
         name: "How much is delivery to a Las Vegas Strip hotel?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "$20 flat to any Strip hotel, with no minimum order.",
+          text: "$20 flat to any Strip hotel, on orders of $79 or more.",
         },
       },
       {
@@ -132,7 +133,7 @@ export default async function DeliveryPage({
           <h1 className={d.heroTitle}>
             {DELIVERY_STRIP_FEE_LABEL} flat.
             <br />
-            No minimum.
+            {DELIVERY_MINIMUM_LABEL}.
             <br />
             Any hour.
           </h1>
