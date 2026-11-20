@@ -17,6 +17,7 @@ import {
   type Product,
 } from "@/lib/commerce";
 import {
+  DELIVERY_MINIMUM_LABEL,
   DELIVERY_STRIP_FEE_LABEL,
   DELIVERY_TERMS_LABEL,
   HOTELS,
@@ -56,6 +57,7 @@ const RAIL_SIZE = 10;
 const FLOOR_NOTES: Record<Department, string> = {
   vape: "Disposables, pods and juice",
   cigars: "Walk-in humidor",
+  cigarillos: "Swishers, Backwoods, Grabba",
   cigarettes: "Every pack, behind the counter",
   pouch: "ZYN, Velo, Alp and more",
   hookah: "Shisha, bowls and charcoal",
@@ -125,7 +127,7 @@ export default async function HomePage() {
               </a>
               , or we&rsquo;ll run it to your hotel and meet you downstairs.
             </p>
-            {/* The flat fee and the missing minimum are the offer, and they
+            {/* The flat fee and the minimum are the offer, and they
                 were the tail of a grey sentence. Own line, own weight. */}
             <p className={s.heroTerms}>{DELIVERY_TERMS_LABEL}</p>
             {/* Two ways to buy, sized as peers. "Browse" used to sit here and
@@ -313,7 +315,7 @@ export default async function HomePage() {
           <h2 className={s.bandTitle} id="band-title">
             {DELIVERY_STRIP_FEE_LABEL} flat.
             <br />
-            No minimum.
+            {DELIVERY_MINIMUM_LABEL}.
           </h2>
           <ul className={s.bandStats}>
             <li className={s.bandStat}>

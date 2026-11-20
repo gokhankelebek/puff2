@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
   title: "Smoke Shop on the Las Vegas Strip — Open 24 Hours | Puff Vegas",
   description:
-    "Open 24 hours on the Las Vegas Strip, inside Grand Bazaar Shops next to Ole Red. Disposables, cigarettes, premium cigars, hookah and glass. 24/7 delivery, $20 flat to any Strip hotel, no minimum, meet us downstairs, cash on handover.",
+    "Open 24 hours on the Las Vegas Strip, inside Grand Bazaar Shops next to Ole Red. Disposables, cigarettes, premium cigars, hookah and glass. 24/7 delivery, $20 flat to any Strip hotel on orders over $79, meet us downstairs, cash on handover.",
   alternates: { canonical: "/" },
   /* Env-gated: noindex until launch so the in-progress build is not indexed
      under the preview domain. Set NEXT_PUBLIC_SITE_INDEXABLE=1 at go-live. */

@@ -309,7 +309,10 @@ export function directionFromShop(geo: { lat: number; lng: number }): string {
  * Mandalay Bay 1.6), so the meter's variable half never actually varied for
  * a Strip run — it just made the customer wonder whether it would.
  *
- * "$20 flat, no minimum" is now the offer, and it is a headline rather than a
+ * (Until 2026-11-18 there was no minimum at all; see DELIVERY_MINIMUM_CENTS
+ * for why one came back. The reasoning below is the flat-fee half, which stands.)
+ *
+ * "$20 flat, no minimum" was the offer, and it is a headline rather than a
  * footnote: a single number a guest can accept at 4 a.m. without doing
  * arithmetic, and no floor to clear before a single item is worth ordering.
  * Losing the minimum is the substantive half — a $6 lighter is now a real
@@ -320,9 +323,11 @@ export function directionFromShop(geo: { lat: number; lng: number }): string {
  */
 export const DELIVERY_FEE_CENTS = 2000;
 
-/** No merchandise floor. Kept as a named zero so call sites read honestly and
- *  a future floor has one place to come back to. */
-export const DELIVERY_MINIMUM_CENTS = 0;
+/** Merchandise floor for delivery, before the fee and tax. Back on
+ *  2026-11-18: runners were driving $10 orders up the Strip ("değmiyor") at
+ *  2–3 a day. The shop settled on $79, so with the $20 fee a delivered order
+ *  starts around $100. Pickup has no floor. */
+export const DELIVERY_MINIMUM_CENTS = 7900;
 
 export function deliveryFeeCents(): number {
   return DELIVERY_FEE_CENTS;
@@ -338,9 +343,9 @@ export function formatDeliveryFee(cents: number): string {
 }
 
 export const DELIVERY_STRIP_FEE_LABEL = formatDeliveryFee(DELIVERY_FEE_CENTS);
-export const DELIVERY_MINIMUM_LABEL = "no minimum";
+export const DELIVERY_MINIMUM_LABEL = `${formatDeliveryFee(DELIVERY_MINIMUM_CENTS)} minimum`;
 /** The two facts as one phrase — the site says this in a dozen places. */
-export const DELIVERY_TERMS_LABEL = `${DELIVERY_STRIP_FEE_LABEL} flat · no minimum`;
+export const DELIVERY_TERMS_LABEL = `${DELIVERY_STRIP_FEE_LABEL} flat · ${DELIVERY_MINIMUM_LABEL}`;
 
 /** Clark County sales tax, applied at 8.375% — same as the product pages. */
 /* Clark County sales tax. Currently unused: the only caller was the product

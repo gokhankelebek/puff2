@@ -15,13 +15,15 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { departmentFor } from "../src/lib/commerce/department";
+import type { RegulatoryClass } from "../src/lib/commerce/types";
 
 type Model = {
   slug: string;
   title: string;
   brand?: string;
   category: string | null;
-  regulatoryClass: string;
+  regulatoryClass: RegulatoryClass;
   publishable: boolean;
   priceCents: number | null;
   flavors: { value: string; family: string | null }[];
@@ -35,38 +37,12 @@ const images: Record<string, { src: string }> = JSON.parse(
   readFileSync(resolve("src/lib/commerce/images.generated.json"), "utf8"),
 );
 
-/* departmentFor lives in the adapter and is not importable from a script
-   without pulling the whole module graph, so the mapping is mirrored here.
-   It reads fields off the model directly — an earlier version indexed a second
-   copy of the array with the filtered loop counter, which silently shifted
-   every department by the number of unpublishable models skipped before it and
-   filed the Acid cigars under accessories. */
-
+/* Same function the site uses, so search and the shelves cannot disagree about
+   where a product lives. */
 const docs = catalog
   .filter((m) => m.publishable && m.priceCents !== null)
   .map((m) => {
-    const c = m.category ?? "";
-    const dept = /glass|bong|pipe/i.test(c)
-      ? "glass"
-      : /hookah|shisha/i.test(c)
-        ? "hookah"
-        : /^cigar$|cigarillo/i.test(c)
-          ? "cigars"
-          : /cigarette/i.test(c)
-            ? "cigarettes"
-            : /vape|juul|vuse|njoy|juice/i.test(c)
-              ? "vape"
-              : /pouch|lighter|torch|papper|paper|leaf|rolling|smoke part|part of wd/i.test(c)
-                ? "accessories"
-                : m.regulatoryClass === "cigar"
-                  ? "cigars"
-                  : m.regulatoryClass === "cigarette"
-                    ? "cigarettes"
-                    : m.regulatoryClass === "hookah"
-                      ? "hookah"
-                      : m.regulatoryClass === "ends"
-                        ? "vape"
-                        : "accessories";
+    const dept = departmentFor(m);
 
     /* Must mirror `toDoc` exactly: flavour values PLUS the dominant family.
        Omitting the family made the client index find 82 matches for "mint"

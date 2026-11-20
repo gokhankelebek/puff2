@@ -1,4 +1,4 @@
-import { DELIVERY_FEE_CENTS } from "@/lib/hotels";
+import { DELIVERY_FEE_CENTS, DELIVERY_MINIMUM_CENTS } from "@/lib/hotels";
 import type { Product } from "@/lib/commerce";
 
 /**
@@ -151,6 +151,8 @@ export type Totals = {
   subtotalCents: number;
   feeCents: number;
   totalCents: number;
+  /** How far a delivery order is below the minimum; 0 when it clears it or is a pickup. */
+  shortCents: number;
 };
 
 /**
@@ -196,6 +198,8 @@ export function priceDraft(draft: Draft, catalog: Product[]): Totals {
     subtotalCents,
     feeCents,
     totalCents: subtotalCents + feeCents,
+    shortCents:
+      mode === "delivery" ? Math.max(0, DELIVERY_MINIMUM_CENTS - subtotalCents) : 0,
   };
 }
 

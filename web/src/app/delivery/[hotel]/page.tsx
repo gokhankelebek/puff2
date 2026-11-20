@@ -27,7 +27,7 @@ import { jsonLd, breadcrumbLd } from "@/lib/jsonld";
 /**
  * Per-hotel delivery landing pages — the local moat.
  *
- * The $20-flat, 24/7, no-minimum Strip delivery is the shop's biggest
+ * The $20-flat, 24/7 Strip delivery is the shop's biggest
  * differentiator and the lowest-competition local intent ("vape delivery
  * {hotel}", "smoke shop near {hotel}"), but it used to collapse to one
  * /delivery?hotel= query URL with nothing indexable behind it.
@@ -53,7 +53,7 @@ export async function generateMetadata({
   if (!hotel) return { title: "Not found | Puff Vegas" };
   return {
     title: `Vape & Smoke Delivery to ${hotel.name} — $20 Flat, 24 Hours | Puff Vegas`,
-    description: `24-hour vape, cigar, hookah and nicotine-pouch delivery to ${hotel.name} on the Las Vegas Strip. Text or call to order: $20 flat, no minimum, about 25–40 minutes. Meet the runner at valet or rideshare pickup, ID checked at handoff.`,
+    description: `24-hour vape, cigar, hookah and nicotine-pouch delivery to ${hotel.name} on the Las Vegas Strip. Text or call to order: $20 flat on orders over $79, about 25–40 minutes. Meet the runner at valet or rideshare pickup, ID checked at handoff.`,
     alternates: { canonical: `/delivery/${hotel.slug}` },
   };
 }
@@ -90,7 +90,7 @@ export default async function HotelDeliveryPage({
           "@type": "Offer",
           price: "20.00",
           priceCurrency: "USD",
-          description: "$20 flat, no minimum",
+          description: "$20 flat, $79 minimum order",
         },
       },
       breadcrumbLd(SITE_ORIGIN, [
