@@ -16340,7 +16340,7 @@
   "title": "Glass Pipe",
   "category": "Glass Pipe & Bong",
   "regulatoryClass": "accessory",
-  "publishable": true,
+  "publishable": false,
   "onlineSkus": 4,
   "skuCount": 4,
   "stock": 140,
@@ -16971,7 +16971,7 @@
   "onlineSkus": 1,
   "skuCount": 1,
   "stock": 16,
-  "priceCents": 392,
+  "priceCents": 399,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -25486,7 +25486,7 @@
   "onlineSkus": 4,
   "skuCount": 4,
   "stock": 6,
-  "priceCents": 2000,
+  "priceCents": 1999,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -37541,7 +37541,7 @@
   "onlineSkus": 1,
   "skuCount": 1,
   "stock": 32,
-  "priceCents": 1000,
+  "priceCents": 1499,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {

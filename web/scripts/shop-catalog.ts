@@ -243,7 +243,7 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   //     pre-tax prices that land on a round total at Las Vegas's 8.375%
   //     ($23.07 → $25.00, $4.61 → $5.00, $18.45 → $19.99). Do not "tidy" them.
   "Game": { retired: true }, // "kalktı 2.99" — every Game SKU was $2.99
-  "Graba Leaf Crushed": { priceCents: 392 }, // "Grabba leaf small"
+  // "Graba Leaf Crushed" was $3.92 here; $3.99 since 2026-11-18 (below).
   "Hot Skull": { priceCents: 461 },
   "Hot Skull Spliffarillos Cones": { priceCents: 461 },
   "Macanudo Cafe Montego Y OIA": { title: "Macanudo Cafe Montego Y Cia 8 Pack", priceCents: 3998 },
@@ -343,6 +343,13 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "RAZ Disposable Vape 25000 Puffs": { retired: true }, // "Raz 2500k"
   "Grab a Crush": { retired: true },
   "Seneca": { retired: true },
+  // "Grab a leaf sarı box olanı $3.99" — the small Grabba, confirmed by the owner.
+  "Graba Leaf Crushed": { priceCents: 399 },
+  // "Glass pipe sadece iki tür var artık": two pipes left, $14.99 and $19.99.
+  // Mapped by the owner: the small spoon pipes and the MJ Arsenal.
+  "Small Pipe": { priceCents: 1499 },
+  "MJ Arsenal Spoon Pipe": { priceCents: 1999 },
+  "Glass Pipe": { retired: true },
 };
 
 /* "Pouches Ultra ve Alp hariç hepsi 10.99" — every nicotine pouch is $10.99
