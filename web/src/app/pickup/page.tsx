@@ -120,26 +120,25 @@ export default async function PickupPage() {
 
         <section className={g.inside}>
           <h2 className={g.sectionTitle}>What&rsquo;s inside</h2>
-          {/* The view up the aisle, not the wide shot the homepage uses. This
-              page's job is findability — public reviews say the unit is hard to
-              locate — and this frame carries the things you actually navigate
-              by: the two Puff Vegas A-frames, the mall's marble floor and glass
-              shopfront on the left, the length of the wall on the right. It is
-              what you see as you walk up, so it lets someone confirm they are
-              in the right place.
+          {/* The view up the aisle as you walk in, not the wide shot the
+              homepage uses. This page's job is findability, and this frame
+              carries what you navigate by: the Zippo and Wegacell stands at
+              the door, the glass cases on the right, the vape wall, and the
+              hexagon lights down the ceiling.
 
-              Cropped from a 1152x2467 original, which is far too tall for a
-              page; the top 300px were ceiling conduit. No scrim — on this page
-              the shop is the content, not a backdrop for a headline. */}
+              Shot 2026-11-16 by the shop (research/photos/aisle-2026-11-16.jpg).
+              It replaced an older aisle photo taken before the hexagon lights
+              went in, which showed a ceiling the shop no longer has. No scrim
+              — on this page the shop is the content, not a backdrop. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className={g.insideShot}
-            src="/hero/aisle-1152.webp"
-            srcSet="/hero/aisle-640.webp 640w, /hero/aisle-1152.webp 1152w"
+            src="/shop/aisle-2026-1280.webp"
+            srcSet="/shop/aisle-2026-640.webp 640w, /shop/aisle-2026-1280.webp 1280w"
             sizes="(min-width: 1200px) 620px, 100vw"
-            width={1152}
-            height={1440}
-            alt="Looking up the aisle inside Puff Vegas: two Puff Vegas signs by the entrance, glass cases of pipes on the right, the wall of vapes behind them."
+            width={1280}
+            height={960}
+            alt="Inside Puff Vegas from the door: hexagon lights down the ceiling, glass cases of pipes and glass on the right, the vape wall behind them, Zippo and Wegacell stands by the entrance."
             loading="lazy"
             decoding="async"
           />
