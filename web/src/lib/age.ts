@@ -6,9 +6,9 @@ export { AGE_COOKIE, AGE_HEADER, AGE_MAX_AGE } from "./age-shared";
  * Affirmation cookie signing.
  *
  * Deliberately built on Web Crypto rather than `node:crypto` so the SAME
- * implementation runs in middleware (Edge runtime) and in route handlers
- * (Node). That matters for correctness, not just tidiness: the signature has
- * to be checked in middleware, because middleware is what collapses the cookie
+ * implementation runs in the proxy (src/proxy.ts) and in route handlers,
+ * whichever runtime either lands on. That matters for correctness, not just tidiness: the signature has
+ * to be checked in the proxy, because the proxy is what collapses the cookie
  * to the single bit the CDN caches on. If the page verified instead, two
  * visitors — one with a valid cookie, one with a forged one — would normalise
  * to the same cache key while expecting different HTML.
