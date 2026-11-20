@@ -135,10 +135,10 @@ export default async function DeliveryPage({
             <br />
             {DELIVERY_MINIMUM_LABEL}.
             <br />
-            Any hour.
+            Noon to midnight.
           </h1>
           <p className={d.heroSub}>
-            We run to Strip hotels around the clock from {SHOP_STREET}. One
+            We run to Strip hotels from noon to midnight from {SHOP_STREET}; the shop itself never closes. One
             price, whatever you order and wherever you are on the Boulevard.
             You pay the runner at handoff.
           </p>

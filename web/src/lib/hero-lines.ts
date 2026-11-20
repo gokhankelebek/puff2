@@ -40,7 +40,7 @@ const BANDS: Record<HeroBand, readonly HeroLine[]> = {
     ["Still up?", "So are we."],
     ["Out of nicotine?", "Text us."],
     ["3 AM is", "our rush hour."],
-    ["Stay in.", "We'll meet you at the valet."],
+    ["Up late?", "Walk over. We never close."],
   ],
   dawn: [
     ["Still", "here."],
@@ -48,11 +48,12 @@ const BANDS: Record<HeroBand, readonly HeroLine[]> = {
   ],
 };
 
-/** True at any hour; mixed into every band so they get airtime too. */
+/** True at any hour; mixed into every band so they get airtime too. Delivery
+    runs noon to midnight only, so nothing here may promise a run after 12. */
 const ANY_HOUR: readonly HeroLine[] = [
   ["Never closed.", "Never far."],
   ["The Strip's", "24-hour smoke shop."],
-  ["$20 flat. Any hotel.", "Any hour."],
+  ["$20 flat. Any hotel.", "Noon to midnight."],
 ];
 
 /** The brief's four bands, by Vegas wall-clock hour. */

@@ -16,7 +16,7 @@ export type DepartmentInput = {
  * in different regulatory buckets.
  */
 const CIGARILLO_TITLE =
-  /cigarillo|\bleaf\b|\bwraps?\b|swisher|\bdutch\b|white owl|black\s*&\s*mild|backwoods|al capone|good times|grabba|graba|grab a|hot skull|talon/i;
+  /cigarillo|\bleaf\b|\bwraps?\b|swisher|\bdutch\b|white owl|black\s*&\s*mild|backwoods|al capone|good times|grabba|graba|grab a|hot skull/i;
 
 export function departmentFor(m: DepartmentInput): Department {
   const c = m.category ?? "";
@@ -28,21 +28,30 @@ export function departmentFor(m: DepartmentInput): Department {
      Copenhagen, Skoal) is deliberately NOT caught here — that is smokeless and
      stays unpublished until its own warning text exists. */
   if (m.regulatoryClass === "pouch" || /nicotine pouch/i.test(c)) return "pouch";
-  /* Cigarillos, leaf and wraps get their own shelf (Kemal, 2026-11-18): the
-     Cigars shelf had Swishers and Dutches between the Montecristos, and
-     Accessories had Backwoods and Grabba between the cones. Papers and cones
-     stay in Accessories. Tested before the category rules below, because the
-     POS files these under both "Cigarillos" and "Leaf". */
+  /* Kemal, 2026-11-19: Talon is shelved with the cigarettes. Department only;
+     its regulatory class (and so its delivery rules) is unchanged. */
+  if (/^talon$/i.test(m.title.trim())) return "cigarettes";
+  /* Hookahs and bowls on the Hookah shelf even when the POS filed them as
+     accessories (Kemal, 2026-11-19). Charcoal stays in Accessories. */
   if (
-    (m.regulatoryClass === "cigar" || m.regulatoryClass === "rollYourOwn") &&
-    !/paper|cones?\b|cons\b/i.test(m.title) &&
+    m.regulatoryClass === "accessory" &&
+    /\bhookah\b/i.test(m.title) &&
+    !/charcoal|coal|burner/i.test(m.title)
+  )
+    return "hookah";
+  /* Cigarillos & Wraps (Kemal, 2026-11-18, widened 2026-11-19): cigarillos,
+     leaf and wraps, and also papers, cones and rolling tobacco. Accessories
+     keeps only what is left: charcoal, butane and the like. Tested before the
+     category rules below, because the POS files these under "Cigarillos",
+     "Leaf", "Rolling Papers…" and "Rolling Tobacco" alike. */
+  if (m.regulatoryClass === "rollYourOwn") return "cigarillos";
+  if (m.regulatoryClass === "accessory" && /paper|cones?\b|cons\b/i.test(m.title))
+    return "cigarillos";
+  if (
+    m.regulatoryClass === "cigar" &&
     (CIGARILLO_TITLE.test(m.title) || /cigarillo|^leaf$/i.test(c))
   )
     return "cigarillos";
-  // Papers and cones, wherever the POS filed them ("Rolling Papers,
-  // Cigarillos, Leaf & Wraps" would otherwise send them to Cigars).
-  if (m.regulatoryClass === "accessory" && /paper|cones?\b|cons\b/i.test(m.title))
-    return "accessories";
   if (/glass|bong|pipe/i.test(c)) return "glass";
   if (/hookah|shisha/i.test(c)) return "hookah";
   if (/^cigar$|cigarillo/i.test(c)) return "cigars";

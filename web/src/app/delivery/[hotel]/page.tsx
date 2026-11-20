@@ -27,7 +27,7 @@ import { jsonLd, breadcrumbLd } from "@/lib/jsonld";
 /**
  * Per-hotel delivery landing pages — the local moat.
  *
- * The $20-flat, 24/7 Strip delivery is the shop's biggest
+ * The $20-flat, noon-to-midnight Strip delivery is the shop's biggest
  * differentiator and the lowest-competition local intent ("vape delivery
  * {hotel}", "smoke shop near {hotel}"), but it used to collapse to one
  * /delivery?hotel= query URL with nothing indexable behind it.
@@ -52,8 +52,8 @@ export async function generateMetadata({
   const hotel = hotelBySlug(slug);
   if (!hotel) return { title: "Not found | Puff Vegas" };
   return {
-    title: `Vape & Smoke Delivery to ${hotel.name} — $20 Flat, 24 Hours | Puff Vegas`,
-    description: `24-hour vape, cigar, hookah and nicotine-pouch delivery to ${hotel.name} on the Las Vegas Strip. Text or call to order: $20 flat on orders over $79, about 25–40 minutes. Meet the runner at valet or rideshare pickup, ID checked at handoff.`,
+    title: `Vape & Smoke Delivery to ${hotel.name} — $20 Flat, Noon to Midnight | Puff Vegas`,
+    description: `Vape, cigar, hookah and nicotine-pouch delivery to ${hotel.name}, noon to midnight, on the Las Vegas Strip. Text or call to order: $20 flat on orders over $79, about 25–40 minutes. Meet the runner at valet or rideshare pickup, ID checked at handoff.`,
     alternates: { canonical: `/delivery/${hotel.slug}` },
   };
 }
@@ -122,7 +122,7 @@ export default async function HotelDeliveryPage({
         </nav>
 
         <section className={h.hero} aria-labelledby="hotel-title">
-          <p className={h.eyebrow}>24-hour Strip delivery</p>
+          <p className={h.eyebrow}>Strip delivery, noon to midnight</p>
           <h1 className={h.title} id="hotel-title">
             Delivery to
             <br />
@@ -134,7 +134,7 @@ export default async function HotelDeliveryPage({
           <p className={h.sub}>
             Vapes, cigars, hookah and nicotine pouches, run from our counter at{" "}
             {SHOP_STREET} inside {SHOP_MALL} straight to {hotel.name} — about
-            25–40 minutes, any hour of the night. Cigarettes are in-store only.
+            25–40 minutes, from noon to midnight. After midnight, walk over — the shop never closes. Cigarettes are in-store only.
           </p>
           <div className={h.ctas}>
             <OrderButtons hotel={hotel.name} />
