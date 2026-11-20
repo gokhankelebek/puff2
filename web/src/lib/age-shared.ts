@@ -1,13 +1,12 @@
 /**
  * Constants only — no node builtins.
  *
- * Middleware runs in the Edge runtime, which has no `node:crypto`. Anything
- * the middleware touches has to live here; the HMAC lives in `age.ts` and is
- * only ever imported from Node contexts (route handlers, server components).
+ * Kept free of node builtins so the proxy (src/proxy.ts) and every page can
+ * share it without dragging the HMAC along; that lives in `age.ts`.
  */
 
 export const AGE_COOKIE = "pv_age";
-/** Normalised single bit injected by middleware. See middleware.ts. */
+/** Normalised single bit injected by the proxy. See proxy.ts. */
 export const AGE_HEADER = "x-pv-age";
 /** Pathname for the tab bar's aria-current. Same request, not a cache key. */
 export const PATH_HEADER = "x-pv-path";

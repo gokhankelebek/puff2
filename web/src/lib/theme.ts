@@ -3,7 +3,7 @@
  *
  * ── Why localStorage and not a cookie ──────────────────────────────────────
  *
- * The age gate already costs us a cache dimension: the middleware normalises
+ * The age gate already costs us a cache dimension: the proxy normalises
  * its cookie down to a single bit precisely so there are exactly two cached
  * variants of every URL at the CDN. A theme cookie would double that to four
  * — and buy nothing, because the theme changes nothing the server renders. It

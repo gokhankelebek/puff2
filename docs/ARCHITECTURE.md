@@ -48,7 +48,7 @@ that no longer exists.
 stay put as long as the name the shop uses does. This is the ownership rule from
 [DATA-PIPELINE.md](DATA-PIPELINE.md) made concrete.
 
-`src/middleware.ts` handles the age cookie and sets the `AGE_HEADER` the pages read.
+`src/proxy.ts` (formerly `middleware.ts`) handles the age cookie and sets the `AGE_HEADER` the pages read.
 
 ---
 

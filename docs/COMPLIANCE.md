@@ -102,7 +102,7 @@ checkout waits on that.
 ## Age gate
 
 Cookie `pv_age`, 365 days, surfaced to pages as the `x-pv-age` header by
-`src/middleware.ts`. It is a **form POST**, not a JS modal — see the progressive
+`src/proxy.ts`. It is a **form POST**, not a JS modal — see the progressive
 enhancement rule in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 21+ at the door, every order, no exceptions. Nevada requires a scan for anyone

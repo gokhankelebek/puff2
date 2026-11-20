@@ -18,7 +18,7 @@ import { verifyAffirmation } from "@/lib/age";
  * cache key; if the page decided validity independently, a valid and a forged
  * cookie would share a cache entry while expecting different HTML.
  */
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const cookie = request.cookies.get(AGE_COOKIE)?.value;
   const affirmed = await verifyAffirmation(cookie);
 
