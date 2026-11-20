@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
   title: "Smoke Shop on the Las Vegas Strip — Open 24 Hours | Puff Vegas",
   description:
-    "Open 24 hours on the Las Vegas Strip, inside Grand Bazaar Shops next to Ole Red. Disposables, cigarettes, premium cigars, hookah and glass. 24/7 delivery, $20 flat to any Strip hotel on orders over $79, meet us downstairs, cash on handover.",
+    "Open 24 hours on the Las Vegas Strip, inside Grand Bazaar Shops next to Ole Red. Disposables, cigarettes, premium cigars, hookah and glass. Delivery noon to midnight, $20 flat to any Strip hotel on orders over $79, meet us downstairs, cash on handover.",
   alternates: { canonical: "/" },
   /* Env-gated: noindex until launch so the in-progress build is not indexed
      under the preview domain. Set NEXT_PUBLIC_SITE_INDEXABLE=1 at go-live. */
@@ -154,7 +154,7 @@ const STORE_NODE = {
   ],
   areaServed: {
     "@type": "GeoCircle",
-    name: "Puff Vegas 24/7 delivery zone",
+    name: "Puff Vegas delivery zone (noon to midnight)",
     geoMidpoint: {
       "@type": "GeoCoordinates",
       latitude: 36.113777,

@@ -345,7 +345,11 @@ export function formatDeliveryFee(cents: number): string {
 export const DELIVERY_STRIP_FEE_LABEL = formatDeliveryFee(DELIVERY_FEE_CENTS);
 export const DELIVERY_MINIMUM_LABEL = `${formatDeliveryFee(DELIVERY_MINIMUM_CENTS)} minimum`;
 /** The two facts as one phrase — the site says this in a dozen places. */
-export const DELIVERY_TERMS_LABEL = `${DELIVERY_STRIP_FEE_LABEL} flat · ${DELIVERY_MINIMUM_LABEL}`;
+/** Delivery runs noon to midnight (Kemal, 2026-11-19: "biz 12pm 12 am
+ *  yapıyoruz"). The shop itself is open 24 hours; only the runs stop. */
+export const DELIVERY_HOURS_LABEL = "noon to midnight";
+export const DELIVERY_HOURS_SHORT = "12 PM–12 AM";
+export const DELIVERY_TERMS_LABEL = `${DELIVERY_STRIP_FEE_LABEL} flat · ${DELIVERY_MINIMUM_LABEL} · ${DELIVERY_HOURS_SHORT}`;
 
 /** Clark County sales tax, applied at 8.375% — same as the product pages. */
 /* Clark County sales tax. Currently unused: the only caller was the product

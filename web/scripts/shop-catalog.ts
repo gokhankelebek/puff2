@@ -282,7 +282,6 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "Zig-Zag Wraps": { priceCents: 300 },
   "Black & Mild 5 Pack": { priceCents: 997 },
   "Backwoods 5pk": { priceCents: 997 }, // "Backwoods Leaf Wraps"
-  "Grabba Leaf": { priceCents: 997 },
   "Grabba Leaf Green": { priceCents: 997 },
   "Loose Leaf": { priceCents: 1292 },
 
@@ -343,8 +342,11 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "RAZ Disposable Vape 25000 Puffs": { retired: true }, // "Raz 2500k"
   "Grab a Crush": { retired: true },
   "Seneca": { retired: true },
-  // "Grab a leaf sarı box olanı $3.99" — the small Grabba, confirmed by the owner.
-  "Graba Leaf Crushed": { priceCents: 399 },
+  // "Grab a leaf sarı box olanı $3.99" is the yellow-box Grabba Leaf: Kemal
+  // posted its page ($9.97) on 2026-11-19 with "Bunun fiyatı 3.99". The
+  // $3.99 briefly sat on Graba Leaf Crushed instead; it is back at $3.92.
+  "Grabba Leaf": { priceCents: 399 },
+  "Graba Leaf Crushed": { priceCents: 392 },
   // "Glass pipe sadece iki tür var artık": two pipes left, $14.99 and $19.99.
   // Mapped by the owner: the small spoon pipes and the MJ Arsenal.
   "Small Pipe": { priceCents: 1499 },

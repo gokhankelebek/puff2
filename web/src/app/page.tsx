@@ -57,13 +57,13 @@ const RAIL_SIZE = 10;
 const FLOOR_NOTES: Record<Department, string> = {
   vape: "Disposables, pods and juice",
   cigars: "Walk-in humidor",
-  cigarillos: "Swishers, Backwoods, Grabba",
+  cigarillos: "Swishers, Backwoods, papers, cones",
   cigarettes: "Every pack, behind the counter",
   pouch: "ZYN, Velo, Alp and more",
   hookah: "Shisha, bowls and charcoal",
   glass: "Blown here in Vegas",
   hemp: "In the shop, not listed yet",
-  accessories: "Lighters, papers, grinders",
+  accessories: "Charcoal and butane",
 };
 
 
@@ -327,8 +327,8 @@ export default async function HomePage() {
               <span className={s.bandLabel}>Strip hotels served</span>
             </li>
             <li className={s.bandStat}>
-              <span className={s.bandFigure}>24/7</span>
-              <span className={s.bandLabel}>Every hour</span>
+              <span className={s.bandFigure}>12–12</span>
+              <span className={s.bandLabel}>Noon to midnight</span>
             </li>
           </ul>
           {/* Moved down from the hero, where it took the lower half for one
