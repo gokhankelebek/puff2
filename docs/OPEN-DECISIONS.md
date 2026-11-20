@@ -28,7 +28,7 @@ Every URL in the old Ecwid sitemap 301s here — see
 | **3 products with no image** | `butane`, `mpb-hookah-bowl`, `vape-juice` — all generic SKUs. Needs a decision on what to even photograph. |
 | **Elf Bar** | Absent from both the POS export and the live site. Deliberate, or a gap in the catalogue? |
 | **`meet` points in `web/src/lib/hotels.ts`** | Left empty on purpose. Every resort handles outside delivery differently, several change the rule by time of night, and none of it is published anywhere verifiable. Inventing "meet at the north valet" would read as authoritative and strand a driver and a customer at two different doors. The shop should fill these in as it learns each property. |
-| **Night-shoot photography** | `/pickup` has three labelled empty placeholders: *Ole Red from the Boulevard · the turn into Grand Bazaar · our door*. Most people arrive in the dark and the Strip looks nothing like its daytime self. Placeholders are labelled as placeholders rather than filled with stock. |
+| **Night-shoot photography** | `/pickup` now uses real shop photos (storefront, promenade poster, and the aisle, re-shot 2026-11-16 after the hexagon lights went in). All of them are daytime. Most people arrive in the dark, so a night set of the approach is still worth shooting. The 2026-11-16 set (50 shots, shop's Drive) also has the blade sign and OPEN neon; that frame is not used because the neon dog wears cannabis-leaf glasses, against the no-THC/CBD rule. |
 
 ## Ordering has no back end 🔴
 
