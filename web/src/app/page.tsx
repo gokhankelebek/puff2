@@ -7,6 +7,7 @@ import { AgeBanner, BottomNav, Footer, Header, UtilityBar } from "@/components/C
 import { AGE_HEADER } from "@/lib/age-shared";
 import { isNight, vegasHour } from "@/lib/time";
 import { heroLine } from "@/lib/hero-lines";
+import { isBlackFriday } from "@/lib/black-friday";
 import {
   commerce,
   formatMoney,
@@ -170,6 +171,19 @@ export default async function HomePage() {
             />
           </div>
         </section>
+
+        {/* /deals had no link from anywhere but the sitemap. While the Black
+            Friday deals run, the homepage points at them; afterwards this
+            strip disappears on its own (lib/black-friday.ts). */}
+        {isBlackFriday() && (
+          <a className={s.bfStrip} href="/deals">
+            <span className={s.bfStripTag}>Black Friday</span>
+            <span className={s.bfStripText}>
+              Vapes buy 3, get 1 free · $20 vape basket · perfume 2 for $25.99
+            </span>
+            <span aria-hidden="true">→</span>
+          </a>
+        )}
 
         <Bulbs />
 

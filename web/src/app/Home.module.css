@@ -770,3 +770,31 @@
     font-size: 17px;
   }
 }
+
+/* Black Friday strip — a link to /deals while the deals run. */
+.bfStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 16px var(--gutter) 0;
+  padding: 14px 16px;
+  border: 1px solid var(--magenta);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.bfStrip:hover { border-color: var(--border-hover); }
+
+.bfStripTag {
+  font-family: var(--font-display);
+  line-height: 0.92;
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--magenta);
+}
+
+.bfStripText { flex: 1 1 220px; color: var(--text-muted); }

@@ -44,6 +44,9 @@ export function departmentFor(m: DepartmentInput): Department {
      keeps only what is left: charcoal, butane and the like. Tested before the
      category rules below, because the POS files these under "Cigarillos",
      "Leaf", "Rolling Papers…" and "Rolling Tobacco" alike. */
+  // Nectar collectors are glass, whatever the POS filed them under
+  // (Kemal, 2026-11-20: "pipe yada bong lara ekleyelim").
+  if (m.regulatoryClass === "accessory" && /nectar collector/i.test(m.title)) return "glass";
   if (m.regulatoryClass === "rollYourOwn") return "cigarillos";
   if (m.regulatoryClass === "accessory" && /paper|cones?\b|cons\b/i.test(m.title))
     return "cigarillos";
