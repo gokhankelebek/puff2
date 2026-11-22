@@ -6072,12 +6072,12 @@
   "vendorHandle": "cigar-cutters",
   "title": "Cigar Cutters",
   "category": null,
-  "regulatoryClass": "cigar",
-  "publishable": false,
+  "regulatoryClass": "accessory",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 10,
   "stock": 82,
-  "priceCents": 369,
+  "priceCents": 461,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -17232,14 +17232,14 @@
  {
   "slug": "grinder",
   "vendorHandle": "grender",
-  "title": "Grinder",
+  "title": "Aluminium Grinder",
   "category": "Glass Pipe & Bong",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 6,
   "stock": 104,
-  "priceCents": 800,
+  "priceCents": 1000,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -24847,11 +24847,11 @@
   "title": "Maven Pro Yellow Torch",
   "category": "Torch",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 1,
-  "stock": -1,
-  "priceCents": 5000,
+  "stock": 3,
+  "priceCents": 5998,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -26923,14 +26923,14 @@
  {
   "slug": "nectar-collector",
   "vendorHandle": "nectar-collector",
-  "title": "Nectar Collector",
+  "title": "Nectar Collector Kit",
   "category": "Part of WD",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 3,
   "stock": 25,
-  "priceCents": 2499,
+  "priceCents": 2768,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -30991,7 +30991,7 @@
   "title": "Perfume",
   "category": "Parfum",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 2,
   "stock": 121,
@@ -44924,12 +44924,12 @@
   "vendorHandle": "weighmax-hd-100-gold-digital-scale",
   "title": "WeighMax HD-100 Gold Digital Scale",
   "category": null,
-  "regulatoryClass": "unknown",
-  "publishable": false,
+  "regulatoryClass": "accessory",
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 1,
-  "stock": 1,
-  "priceCents": 2000,
+  "stock": 3,
+  "priceCents": 3299,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -46537,10 +46537,10 @@
  {
   "slug": "zippo-lighters",
   "vendorHandle": "zippo-lighters",
-  "title": "ZIPPO LIGHTERs",
+  "title": "Zippo Lighters",
   "category": "Lighter",
   "regulatoryClass": "accessory",
-  "publishable": false,
+  "publishable": true,
   "onlineSkus": 0,
   "skuCount": 164,
   "stock": 113,
@@ -47082,5 +47082,351 @@
   },
   "imageUrl": null,
   "brand": "Zyn"
+ },
+ {
+  "slug": "small-torch-lighter",
+  "vendorHandle": "small-torch-lighter",
+  "title": "Small Torch Lighter",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 999,
+  "flavors": [
+   {
+    "value": "Purple",
+    "family": null
+   },
+   {
+    "value": "Orange",
+    "family": null
+   },
+   {
+    "value": "Smoke",
+    "family": null
+   }
+  ],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "designer-torch-lighter",
+  "vendorHandle": "designer-torch-lighter",
+  "title": "Designer Torch Lighter",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 2768,
+  "flavors": [
+   {
+    "value": "Gold Marble",
+    "family": null
+   },
+   {
+    "value": "Blue & White",
+    "family": null
+   },
+   {
+    "value": "Black Leaf",
+    "family": null
+   }
+  ],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "carbon-fiber-long-torch",
+  "vendorHandle": "carbon-fiber-long-torch",
+  "title": "Carbon Fiber Long Torch",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 5998,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "double-flame-torch-lighter",
+  "vendorHandle": "double-flame-torch-lighter",
+  "title": "Double Flame Torch Lighter",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 2307,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "torch-gun-lighter",
+  "vendorHandle": "torch-gun-lighter",
+  "title": "Torch Gun Lighter",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 2768,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "pro-torch-gun",
+  "vendorHandle": "pro-torch-gun",
+  "title": "Pro Torch Gun",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 3691,
+  "flavors": [
+   {
+    "value": "Red",
+    "family": null
+   },
+   {
+    "value": "White",
+    "family": null
+   },
+   {
+    "value": "Black",
+    "family": null
+   }
+  ],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "scorch-gold-torch",
+  "vendorHandle": "scorch-gold-torch",
+  "title": "Scorch Gold Torch",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 3691,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null,
+  "brand": "Scorch"
+ },
+ {
+  "slug": "scorch-gold-mini-torch",
+  "vendorHandle": "scorch-gold-mini-torch",
+  "title": "Scorch Gold Mini Torch",
+  "category": "Torch",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 3691,
+  "flavors": [
+   {
+    "value": "Black",
+    "family": null
+   },
+   {
+    "value": "Red",
+    "family": null
+   },
+   {
+    "value": "Green",
+    "family": null
+   }
+  ],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null,
+  "brand": "Scorch"
+ },
+ {
+  "slug": "zippo-flints",
+  "vendorHandle": "zippo-flints",
+  "title": "Zippo Flints (6 Pack)",
+  "category": "Lighter",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 399,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null,
+  "brand": "Zippo"
+ },
+ {
+  "slug": "zippo-lighter-fluid",
+  "vendorHandle": "zippo-lighter-fluid",
+  "title": "Zippo Lighter Fluid",
+  "category": "Lighter",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 999,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null,
+  "brand": "Zippo"
+ },
+ {
+  "slug": "phone-charger-usb-c",
+  "vendorHandle": "phone-charger-usb-c",
+  "title": "Phone Charger & USB-C Cable",
+  "category": "Smoke Part",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 1999,
+  "flavors": [
+   {
+    "value": "Wall charger",
+    "family": null
+   },
+   {
+    "value": "USB-C cable",
+    "family": null
+   }
+  ],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "weighmax-j-1000-scale",
+  "vendorHandle": "weighmax-j-1000-scale",
+  "title": "WeighMax J-1000 Digital Scale",
+  "category": "Smoke Part",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 2799,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null,
+  "brand": "WeighMax"
+ },
+ {
+  "slug": "novelty-grinders",
+  "vendorHandle": "novelty-grinders",
+  "title": "Novelty Grinders",
+  "category": "Smoke Part",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 2499,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
+ },
+ {
+  "slug": "micro-nectar-collector",
+  "vendorHandle": "micro-nectar-collector",
+  "title": "Micro Nectar Collector",
+  "category": "Glass Pipe & Bong",
+  "regulatoryClass": "accessory",
+  "publishable": true,
+  "onlineSkus": 1,
+  "skuCount": 1,
+  "stock": 3,
+  "priceCents": 1845,
+  "flavors": [],
+  "nicotineMg": [],
+  "nonFlavorVariants": {
+   "hardware": 0,
+   "packSize": 0,
+   "other": 0
+  },
+  "imageUrl": null
  }
 ]

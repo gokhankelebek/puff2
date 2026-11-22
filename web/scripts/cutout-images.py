@@ -130,6 +130,8 @@ WEBP_QUALITY = 82
 # So they are named. They keep their backdrop and get a plate, which is
 # unremarkable next to a product with its face punched out.
 FORCE_PLATE = {
+    "zippo-flints": "white blister card; the model keeps only the flint wheel",
+    "micro-nectar-collector": "clear glass on white; the model drops most of the glass",
     "fasta-drop-50k-nicotine-vape": "model keeps only the red frame, box face drops out",
     "lucky-strike": "model keeps the roundel, the white pack body drops out",
     "swisher-sweets-leaf": "full-bleed pouch; model keeps only the printed leaf",

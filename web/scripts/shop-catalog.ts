@@ -11,6 +11,7 @@
 import type { FlavorFamily, RegulatoryClass } from "../src/lib/commerce/types";
 import { classifyVariant } from "./flavors";
 import { SHOP_FLAVORS } from "./shop-flavors";
+import { SHOP_PRODUCTS } from "./shop-products";
 
 /** The fields these rules read and write. The importer's Model is a superset. */
 export type ShopModel = {
@@ -39,6 +40,9 @@ export const SHOP_CLASS: Record<string, RegulatoryClass> = {
   "On Plus Nicotine Pouches": "pouch", // "ON! PLUS"
   "Zig-Zag Cones": "accessory", // "ZigZag Cigar Cones"
   "OCB BAMBOO CONES": "accessory", // "OCB Cones … bamboo"
+  // --- Kemal's accessories, 2026-11-20. Not tobacco, whatever the POS guessed.
+  "Cigar Cutters": "accessory",
+  "WeighMax HD-100 Gold Digital Scale": "accessory",
 };
 
 /**
@@ -352,6 +356,19 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "Small Pipe": { priceCents: 1499 },
   "MJ Arsenal Spoon Pipe": { priceCents: 1999 },
   "Glass Pipe": { retired: true },
+
+  // --- Kemal, WhatsApp group, 2026-11-20: accessories with prices. Products
+  //     the POS never had are in shop-products.ts; these are the POS rows that
+  //     match one of his photos exactly.
+  "Cigar Cutters": { publish: true, priceCents: 461 },
+  "WeighMax HD-100 Gold Digital Scale": { publish: true, priceCents: 3299, inStock: true },
+  "Maven Pro Yellow Torch": { publish: true, priceCents: 5998, inStock: true },
+  // "Zippo da fiyatlar değişiyor, üstünde oluyor" — the price is printed on
+  // each one; the listing keeps the POS price as the usual one.
+  "ZIPPO LIGHTERs": { publish: true, title: "Zippo Lighters" },
+  "Nectar Collector": { publish: true, priceCents: 2768, title: "Nectar Collector Kit" },
+  "Grinder": { publish: true, priceCents: 1000, title: "Aluminium Grinder" },
+  "Perfume": { publish: true },
 };
 
 /* "Pouches Ultra ve Alp hariç hepsi 10.99" — every nicotine pouch is $10.99
@@ -371,6 +388,38 @@ const POUCH_PRICE_EXCEPT = /\bultra\b|\balp\b/i;
  * apply-shop-catalog.ts work from the committed snapshot without a POS export.
  */
 export function applyShop(models: ShopModel[]) {
+  // Shop-defined products first, so every rule below sees them like any other.
+  const have = new Set(models.map((m) => (m as ShopModel & { slug?: string }).slug));
+  for (const p of SHOP_PRODUCTS) {
+    if (have.has(p.slug)) continue;
+    models.push({
+      slug: p.slug,
+      vendorHandle: p.slug,
+      title: p.title,
+      category: p.category,
+      regulatoryClass: "accessory",
+      publishable: false,
+      onlineSkus: 1,
+      skuCount: 1,
+      stock: 3,
+      priceCents: p.priceCents,
+      flavors: [],
+      nicotineMg: [],
+      nonFlavorVariants: { hardware: 0, packSize: 0, other: 0 },
+      imageUrl: null,
+    } as ShopModel);
+  }
+  const byShop = new Map(SHOP_PRODUCTS.map((p) => [p.slug, p]));
+  for (const m of models) {
+    const p = byShop.get((m as ShopModel & { slug?: string }).slug ?? "");
+    if (!p) continue;
+    // Absolute values, so a re-run (or a hand edit here) always wins.
+    m.title = p.title;
+    m.category = p.category;
+    m.priceCents = p.priceCents;
+    m.flavors = (p.styles ?? []).map((value) => ({ value, family: null }));
+  }
+
   for (const m of models) {
     const cls = SHOP_CLASS[m.title];
     if (cls) m.regulatoryClass = cls;
@@ -405,10 +454,18 @@ export function applyShop(models: ShopModel[]) {
 
   const editsFired = new Set<string>();
   const shopPublished = new Set<ShopModel>();
+  // An edit that renames a product must still find it on the next run, when
+  // the catalogue already carries the new title.
+  const byNewTitle = new Map(
+    Object.entries(SHOP_EDITS)
+      .filter(([, e]) => e.title)
+      .map(([k, e]) => [e.title as string, k]),
+  );
   for (const m of models) {
-    const e = SHOP_EDITS[m.title];
-    if (!e) continue;
-    editsFired.add(m.title);
+    const key = SHOP_EDITS[m.title] ? m.title : byNewTitle.get(m.title);
+    const e = key ? SHOP_EDITS[key] : undefined;
+    if (!e || !key) continue;
+    editsFired.add(key);
     if (e.priceCents !== undefined) m.priceCents = e.priceCents;
     if (e.inStock && m.stock <= 2) m.stock = 3;
     if (e.publish) shopPublished.add(m);
@@ -416,7 +473,8 @@ export function applyShop(models: ShopModel[]) {
   }
 
   for (const m of models) {
-    m.brand = brandOf(m.title);
+    m.brand =
+      brandOf(m.title) ?? byShop.get((m as ShopModel & { slug?: string }).slug ?? "")?.brand;
     const classOk = PUBLISHABLE_CLASSES.has(m.regulatoryClass);
     const online = m.onlineSkus > 0 || shopPublished.has(m);
     m.publishable = classOk && online && m.priceCents !== null;

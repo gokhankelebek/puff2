@@ -14,6 +14,7 @@ import {
 } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
 import { commerce, formatMoney, type Product } from "@/lib/commerce";
+import { BLACK_FRIDAY_DEALS, isBlackFriday } from "@/lib/black-friday";
 import {
   GRAVEYARD_FROM,
   GRAVEYARD_TO,
@@ -22,7 +23,7 @@ import {
 } from "@/lib/time";
 
 export const metadata: Metadata = {
-  title: "Deals — graveyard shift and this week | Puff Vegas",
+  title: "Deals — Black Friday, graveyard shift and this week | Puff Vegas",
   description:
     "Overnight deals at Puff Vegas on the Las Vegas Strip. Graveyard shift discount between 2 and 6 AM, plus what we are moving this week.",
   alternates: { canonical: "/deals" },
@@ -50,6 +51,7 @@ export default async function DealsPage() {
 
   const now = new Date();
   const graveyard = isGraveyard();
+  const blackFriday = isBlackFriday(now);
   const minsLeft = graveyardMinutesLeft(now);
 
   const all = await commerce.getProducts();
@@ -69,6 +71,45 @@ export default async function DealsPage() {
 
       <main className={j.main}>
         <h1 className={j.pageTitle}>Deals</h1>
+
+        {blackFriday && (
+          <section className={j.bf} aria-labelledby="bf">
+            <h2 className={j.bfTitle} id="bf">
+              Black Friday
+            </h2>
+            <p className={j.bfNote}>In the shop and on delivery, while it lasts.</p>
+            {/* Two of the three deals are vapes, so the plate goes here,
+                above them, not only beside the "moving" list further down. */}
+            <PageNicotineWarning
+              products={
+                BLACK_FRIDAY_DEALS.some((d) => d.nicotine)
+                  ? [{ regulatoryClass: "ends" }]
+                  : []
+              }
+            />
+            <ul className={j.bfList}>
+              {BLACK_FRIDAY_DEALS.map((d) => (
+                <li key={d.id} className={j.bfDeal}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className={j.bfImg}
+                    src={d.image.src}
+                    width={d.image.w}
+                    height={d.image.h}
+                    alt={d.image.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <p className={j.bfHeadline}>{d.headline}</p>
+                  <p className={j.bfDetail}>{d.detail}</p>
+                </li>
+              ))}
+            </ul>
+            <a className={j.join} href={PHONE_HREF.replace("tel:", "sms:")}>
+              Text us to claim it
+            </a>
+          </section>
+        )}
 
         {graveyard ? (
           <section className={j.feature} aria-labelledby="gy">

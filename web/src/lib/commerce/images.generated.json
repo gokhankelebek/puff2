@@ -1144,5 +1144,119 @@
   "provenance": "own",
   "bytes": 108014,
   "cutout": true
+ },
+ "small-torch-lighter": {
+  "src": "/p/small-torch-lighter.webp",
+  "provenance": "own",
+  "bytes": 57514,
+  "cutout": true
+ },
+ "cigar-cutters": {
+  "src": "/p/cigar-cutters.webp",
+  "provenance": "own",
+  "bytes": 35850,
+  "cutout": true
+ },
+ "phone-charger-usb-c": {
+  "src": "/p/phone-charger-usb-c.webp",
+  "provenance": "own",
+  "bytes": 31354,
+  "cutout": true
+ },
+ "zippo-lighters": {
+  "src": "/p/zippo-lighters.webp",
+  "provenance": "own",
+  "bytes": 54094,
+  "cutout": true
+ },
+ "designer-torch-lighter": {
+  "src": "/p/designer-torch-lighter.webp",
+  "provenance": "own",
+  "bytes": 56566,
+  "cutout": true
+ },
+ "carbon-fiber-long-torch": {
+  "src": "/p/carbon-fiber-long-torch.webp",
+  "provenance": "own",
+  "bytes": 23304,
+  "cutout": true
+ },
+ "zippo-flints": {
+  "src": "/p/zippo-flints.png",
+  "provenance": "own",
+  "bytes": 173192,
+  "plate": "light"
+ },
+ "double-flame-torch-lighter": {
+  "src": "/p/double-flame-torch-lighter.webp",
+  "provenance": "own",
+  "bytes": 46476,
+  "cutout": true
+ },
+ "zippo-lighter-fluid": {
+  "src": "/p/zippo-lighter-fluid.webp",
+  "provenance": "own",
+  "bytes": 26864,
+  "cutout": true
+ },
+ "torch-gun-lighter": {
+  "src": "/p/torch-gun-lighter.webp",
+  "provenance": "own",
+  "bytes": 24182,
+  "cutout": true
+ },
+ "scorch-gold-torch": {
+  "src": "/p/scorch-gold-torch.webp",
+  "provenance": "own",
+  "bytes": 21868,
+  "cutout": true
+ },
+ "pro-torch-gun": {
+  "src": "/p/pro-torch-gun.webp",
+  "provenance": "own",
+  "bytes": 13210,
+  "cutout": true
+ },
+ "scorch-gold-mini-torch": {
+  "src": "/p/scorch-gold-mini-torch.webp",
+  "provenance": "own",
+  "bytes": 41796,
+  "cutout": true
+ },
+ "maven-pro-yellow-torch": {
+  "src": "/p/maven-pro-yellow-torch.webp",
+  "provenance": "own",
+  "bytes": 10064,
+  "cutout": true
+ },
+ "micro-nectar-collector": {
+  "src": "/p/micro-nectar-collector.png",
+  "provenance": "own",
+  "bytes": 161011,
+  "plate": "light"
+ },
+ "nectar-collector": {
+  "src": "/p/nectar-collector.webp",
+  "provenance": "own",
+  "bytes": 17058,
+  "cutout": true
+ },
+ "weighmax-hd-100-gold-digital-scale": {
+  "src": "/p/weighmax-hd-100-gold-digital-scale.webp",
+  "provenance": "own",
+  "bytes": 50404,
+  "cutout": true
+ },
+ "weighmax-j-1000-scale": {
+  "src": "/p/weighmax-j-1000-scale.webp",
+  "provenance": "own",
+  "bytes": 22938,
+  "cutout": true
+ },
+ "novelty-grinders": {
+  "src": "/p/novelty-grinders.webp",
+  "provenance": "own",
+  "bytes": 60692,
+  "cutout": true
  }
 }
