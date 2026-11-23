@@ -10,7 +10,7 @@ import { heroLine } from "@/lib/hero-lines";
 import { isBlackFriday } from "@/lib/black-friday";
 import {
   commerce,
-  formatMoney,
+  formatMoney, formatPrice,
   stockLabel,
   DEPARTMENT_LABELS,
   DEPARTMENTS,
@@ -179,7 +179,7 @@ export default async function HomePage() {
           <a className={s.bfStrip} href="/deals">
             <span className={s.bfStripTag}>Black Friday</span>
             <span className={s.bfStripText}>
-              Vapes buy 3, get 1 free · $20 vape basket · perfume 2 for $25.99
+              Vapes buy 3, get 1 free · $20 basket vapes in the shop · perfume 2 for $25.99
             </span>
             <span aria-hidden="true">→</span>
           </a>
@@ -256,7 +256,7 @@ export default async function HomePage() {
                     )}
                   </span>
                   <span className={s.railName}>{p.title}</span>
-                  <span className={s.railPrice}>{formatMoney(p.price)}</span>
+                  <span className={s.railPrice}>{formatPrice(p)}</span>
                   <StockNote product={p} />
                 </a>
               </li>

@@ -201,8 +201,8 @@ export default async function OrderSheet() {
         {totals.pickupOnly.length > 0 && (
           <div className={o.held}>
             <p className={o.heldNote}>
-              Cigarettes are pickup only — we can&rsquo;t deliver them. Switch to
-              pick up, or remove them to send the rest.
+              These are pickup only — cigarettes, and anything you choose in
+              the shop. Switch to pick up, or remove them to send the rest.
             </p>
             <ul className={o.lines}>
               {totals.pickupOnly.map((l) => (

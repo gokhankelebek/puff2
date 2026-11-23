@@ -17232,7 +17232,7 @@
  {
   "slug": "grinder",
   "vendorHandle": "grender",
-  "title": "Aluminium Grinder",
+  "title": "Plastic Grinder",
   "category": "Glass Pipe & Bong",
   "regulatoryClass": "accessory",
   "publishable": true,
@@ -46544,7 +46544,7 @@
   "onlineSkus": 0,
   "skuCount": 164,
   "stock": 113,
-  "priceCents": 1995,
+  "priceCents": 2699,
   "flavors": [],
   "nicotineMg": [],
   "nonFlavorVariants": {
@@ -46552,7 +46552,9 @@
    "packSize": 0,
    "other": 0
   },
-  "imageUrl": null
+  "imageUrl": null,
+  "priceFrom": true,
+  "pickupOnly": "Pick yours in the shop — every Zippo is priced on the box"
  },
  {
   "slug": "zohm-extra-strength-260",

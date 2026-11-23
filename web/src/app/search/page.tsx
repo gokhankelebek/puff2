@@ -12,7 +12,7 @@ import {
   commerce,
   DEPARTMENT_LABELS,
   DEPARTMENTS,
-  formatMoney,
+  formatMoney, formatPrice,
   stockLabel,
   type Department,
   type Product,
@@ -248,7 +248,7 @@ function Hit({ product: p }: { product: Product }) {
           <span className={s.tileCat}>{p.department}</span>
         </div>
         <span className={s.tileFoot}>
-          <span className={s.tilePrice}>{formatMoney(p.price)}</span>
+          <span className={s.tilePrice}>{formatPrice(p)}</span>
           <span className={s.tileStock}>
             {p.inStoreOnly ? p.inStoreReason : stockLabel(p.stock)}
           </span>

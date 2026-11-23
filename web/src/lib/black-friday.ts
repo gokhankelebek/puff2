@@ -36,13 +36,14 @@ export const BLACK_FRIDAY_DEALS: BlackFridayDeal[] = [
   },
   {
     id: "vape-basket",
-    headline: "$20 vape basket",
-    detail: "Disposables from the Black Friday basket, $20. Ask what is in it tonight.",
+    headline: "Vape basket: $20 each, pickup only",
+    // Kemal, 2026-11-21: "20$ vape tanesi ama pick up yapalım".
+    detail: "Any disposable from the Black Friday basket, $20 each. In the shop only — come pick yours.",
     image: {
       src: "/deals/bf-vape-basket.webp",
       w: 666,
       h: 890,
-      alt: "A wire basket full of boxed disposable vapes, Black Friday deal, $20.",
+      alt: "A wire basket full of boxed disposable vapes, Black Friday deal, $20 each.",
     },
     nicotine: true,
   },

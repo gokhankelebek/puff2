@@ -1,5 +1,5 @@
 import s from "./ProductTiles.module.css";
-import { formatMoney, stockLabel, type Product } from "@/lib/commerce";
+import { formatMoney, formatPrice, stockLabel, type Product } from "@/lib/commerce";
 import { deliveryTextBody, productTextName, smsHref } from "@/lib/contact";
 
 /**
@@ -85,7 +85,7 @@ export function ProductTiles({ items }: { items: Product[] }) {
                 </span>
                 {p.brand ? <span className={s.brand}>{p.brand}</span> : null}
                 <span className={s.name}>{p.title}</span>
-                <span className={s.price}>{formatMoney(p.price)}</span>
+                <span className={s.price}>{formatPrice(p)}</span>
                 <span className={s.stock} data-tone={note.tone}>
                   {note.text}
                 </span>

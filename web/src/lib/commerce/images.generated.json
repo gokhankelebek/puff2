@@ -1258,5 +1258,17 @@
   "provenance": "own",
   "bytes": 60692,
   "cutout": true
+ },
+ "grinder": {
+  "src": "/p/grinder.webp",
+  "provenance": "own",
+  "bytes": 74982,
+  "cutout": true
+ },
+ "perfume": {
+  "src": "/p/perfume.webp",
+  "provenance": "own",
+  "bytes": 85980,
+  "cutout": true
  }
 }

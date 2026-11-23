@@ -49,6 +49,9 @@ type GeneratedModel = {
   /** Present only for `hemp`, and only once the shop attaches one. Without it
    *  the importer never marks a hemp model publishable. */
   coa?: Product["coa"];
+  /** Set by the shop (scripts/shop-catalog.ts). */
+  priceFrom?: boolean;
+  pickupOnly?: string;
 };
 
 
@@ -115,12 +118,15 @@ function toProduct(m: GeneratedModel): Product {
     // Cigarettes stay in-store: NRS 370.585(4)(b) lets a dealer sell them
     // "from the premises for which the license was issued", and whether that
     // permits off-premises delivery is unresolved. Defaults to no.
-    deliveryEligible: m.regulatoryClass !== "cigarette",
-    inStoreOnly: m.regulatoryClass === "cigarette",
+    // The shop can also hold an item to the counter (pickupOnly) — Zippos,
+    // which customers choose in person.
+    deliveryEligible: m.regulatoryClass !== "cigarette" && !m.pickupOnly,
+    inStoreOnly: m.regulatoryClass === "cigarette" || Boolean(m.pickupOnly),
     inStoreReason:
       m.regulatoryClass === "cigarette"
         ? "Pickup only"
-        : undefined,
+        : m.pickupOnly,
+    priceFrom: m.priceFrom || undefined,
     puffCount: m.puffCount,
     flavors: m.flavors.length ? m.flavors : undefined,
     flavorFamily: dominantFamily(m),
