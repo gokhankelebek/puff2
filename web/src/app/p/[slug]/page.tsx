@@ -16,7 +16,7 @@ import {
 import { AGE_HEADER } from "@/lib/age-shared";
 import {
   commerce,
-  formatMoney,
+  formatMoney, formatPrice,
   pricePerThousandPuffs,
   puffsInHumanUnits,
   stockLabel,
@@ -40,7 +40,7 @@ export async function generateMetadata({
   if (!product) return { title: "Not found | Puff Vegas" };
 
   return {
-    title: `${product.title} — ${formatMoney(product.price)} | Puff Vegas`,
+    title: `${product.title} — ${formatPrice(product)} | Puff Vegas`,
     description: product.description?.slice(0, 155),
     alternates: { canonical: `/p/${product.slug}` },
   };
@@ -205,7 +205,7 @@ export default async function ProductPage({
 
             <div>
               <div className={s.priceRow}>
-                <span className={s.price}>{formatMoney(product.price)}</span>
+                <span className={s.price}>{formatPrice(product)}</span>
                 {product.compareAt && (
                   <span className={s.compareAt}>
                     MSRP {formatMoney(product.compareAt)}

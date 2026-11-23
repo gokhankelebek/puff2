@@ -13,7 +13,7 @@ import {
   PHONE_HREF,
 } from "@/components/Chrome";
 import { AGE_HEADER } from "@/lib/age-shared";
-import { commerce, formatMoney, type Product } from "@/lib/commerce";
+import { commerce, formatMoney, formatPrice, type Product } from "@/lib/commerce";
 import { BLACK_FRIDAY_DEALS, isBlackFriday } from "@/lib/black-friday";
 import {
   GRAVEYARD_FROM,
@@ -77,7 +77,7 @@ export default async function DealsPage() {
             <h2 className={j.bfTitle} id="bf">
               Black Friday
             </h2>
-            <p className={j.bfNote}>In the shop and on delivery, while it lasts.</p>
+            <p className={j.bfNote}>While it lasts. The basket is in the shop only.</p>
             {/* Two of the three deals are vapes, so the plate goes here,
                 above them, not only beside the "moving" list further down. */}
             <PageNicotineWarning
@@ -201,7 +201,7 @@ function DealRow({ product: p, index }: { product: Product; index: number }) {
           )}
         </span>
         <span className={j.rowBody}>
-          <span className={j.rowHeadline}>{formatMoney(p.price)}</span>
+          <span className={j.rowHeadline}>{formatPrice(p)}</span>
           <span className={j.rowName}>{p.title}</span>
           <span className={j.rowNote}>
             {p.brand ? `${p.brand} · ` : ""}In the shop or delivered

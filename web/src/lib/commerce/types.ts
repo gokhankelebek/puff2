@@ -156,6 +156,8 @@ export type Product = {
   department: Department;
   regulatoryClass: RegulatoryClass;
   price: Money;
+  /** The price is the lowest of several (each piece priced on it). */
+  priceFrom?: boolean;
   /** Manufacturer's list price. Only ever set when it is literally true. */
   compareAt?: Money;
   /**
@@ -298,6 +300,11 @@ export type CommerceAdapter = {
 /* ---------------------------------------------------------------------------
    Derived helpers. Pure, so they are trivially testable.
    --------------------------------------------------------------------------- */
+
+/** A product's price as shown: "From $26.99" when it varies by piece. */
+export function formatPrice(p: Pick<Product, "price" | "priceFrom">): string {
+  return p.priceFrom ? `From ${formatMoney(p.price)}` : formatMoney(p.price);
+}
 
 export function formatMoney(m: Money): string {
   return `$${(m.cents / 100).toFixed(2)}`;

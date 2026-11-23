@@ -25,6 +25,10 @@ export type ShopModel = {
   priceCents: number | null;
   flavors: { value: string; family: FlavorFamily | null }[];
   nonFlavorVariants: { hardware: number; packSize: number; other: number };
+  /** Shown as "From $x": the price varies by piece and this is the lowest. */
+  priceFrom?: boolean;
+  /** Sold at the counter only; the reason, in the customer's words. */
+  pickupOnly?: string;
 };
 
 /**
@@ -185,6 +189,8 @@ export const PUBLISHABLE_CLASSES = new Set<RegulatoryClass>([
  *  - `inStock`    the shop says it is on the shelf although the POS count is
  *                 zero or negative (sales rung up without receiving). Lifts the
  *                 count just past the "low" tier so it reads "usually here".
+ *  - `priceFrom`  the price is the cheapest of several; shown as "From $x".
+ *  - `pickupOnly` counter only (not delivered), with the reason shown.
  *  - `publish`    the shop wants it online although no SKU carries the POS
  *                 "sell online" flag. Stands in for that flag ONLY — the class
  *                 must still be publishable and the price set, so this cannot
@@ -198,6 +204,12 @@ export type ShopEdit = {
   title?: string;
   inStock?: true;
   publish?: true;
+  /** The price is the lowest of several; the site says "From $x". */
+  priceFrom?: true;
+  /** Counter only, with the reason the customer sees. */
+  pickupOnly?: string;
+  /** Titles an earlier `title` edit gave it, so a rename can be renamed again. */
+  aka?: string[];
 };
 export const SHOP_EDITS: Record<string, ShopEdit> = {
   // --- Owner's handwritten vape list, 2026-10-01 ("kalktı" = discontinued).
@@ -365,9 +377,18 @@ export const SHOP_EDITS: Record<string, ShopEdit> = {
   "Maven Pro Yellow Torch": { publish: true, priceCents: 5998, inStock: true },
   // "Zippo da fiyatlar değişiyor, üstünde oluyor" — the price is printed on
   // each one; the listing keeps the POS price as the usual one.
-  "ZIPPO LIGHTERs": { publish: true, title: "Zippo Lighters" },
+  // Kemal, 2026-11-21: "en ucuzu sanırım 26.99 … dükkana gelip seçmeleri
+  // lazım" — cheapest is $26.99, and people should come in and pick one.
+  "ZIPPO LIGHTERs": {
+    publish: true,
+    title: "Zippo Lighters",
+    priceCents: 2699,
+    priceFrom: true,
+    pickupOnly: "Pick yours in the shop — every Zippo is priced on the box",
+  },
   "Nectar Collector": { publish: true, priceCents: 2768, title: "Nectar Collector Kit" },
-  "Grinder": { publish: true, priceCents: 1000, title: "Aluminium Grinder" },
+  // "alüminyum değil aslında plastic grinder olacak" (2026-11-21).
+  "Grinder": { publish: true, priceCents: 1000, title: "Plastic Grinder", aka: ["Aluminium Grinder"] },
   "Perfume": { publish: true },
 };
 
@@ -458,8 +479,7 @@ export function applyShop(models: ShopModel[]) {
   // the catalogue already carries the new title.
   const byNewTitle = new Map(
     Object.entries(SHOP_EDITS)
-      .filter(([, e]) => e.title)
-      .map(([k, e]) => [e.title as string, k]),
+      .flatMap(([k, e]) => [e.title, ...(e.aka ?? [])].filter(Boolean).map((t) => [t as string, k])),
   );
   for (const m of models) {
     const key = SHOP_EDITS[m.title] ? m.title : byNewTitle.get(m.title);
@@ -468,6 +488,8 @@ export function applyShop(models: ShopModel[]) {
     editsFired.add(key);
     if (e.priceCents !== undefined) m.priceCents = e.priceCents;
     if (e.inStock && m.stock <= 2) m.stock = 3;
+    if (e.priceFrom) m.priceFrom = true;
+    if (e.pickupOnly) m.pickupOnly = e.pickupOnly;
     if (e.publish) shopPublished.add(m);
     if (e.title) m.title = e.title;
   }
