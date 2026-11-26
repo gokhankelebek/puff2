@@ -5,6 +5,7 @@ import { INIT_SCRIPT } from "@/lib/theme";
 import InlineScript from "@/components/InlineScript";
 import { SITE_ORIGIN, SITE_INDEXABLE } from "@/lib/shop";
 import { jsonLd } from "@/lib/jsonld";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
@@ -222,6 +223,11 @@ export default function RootLayout({
             the measurement the plan says to have on before tuning. Active only
             on Vercel with Speed Insights enabled in the project. */}
         <SpeedInsights />
+        {/* Vercel Web Analytics — page views and referrers in the Vercel
+            dashboard, cookieless. Runs alongside GA4 (which carries the
+            tel/sms/directions events). Active only once Web Analytics is
+            enabled for the project in Vercel. */}
+        <Analytics />
         <GoogleAnalytics />
       </body>
     </html>
